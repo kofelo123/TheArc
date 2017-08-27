@@ -1,7 +1,7 @@
-# starlightfestival
+# TheArk
 8.24~
 
-주제:대구별빛축제 반응형 웹페이지
+주제: 대구 강정보 디아크 반응형 웹페이지
 
 URL:
 
