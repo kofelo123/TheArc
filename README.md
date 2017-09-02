@@ -3,7 +3,7 @@
 
 주제: 대구 강정보 디아크 반응형 웹페이지
 
-URL:
+URL:http://13.124.71.129:8080/ 
 
 -개발환경-
 
@@ -22,3 +22,4 @@ FontEnd - Bootstrap
 WAS - Tomcat - 8.0
 
 Hosting - AWS(Ubuntu)
+
