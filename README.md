@@ -19,6 +19,6 @@ Build Tool - Maven
 
 FontEnd - Bootstrap
 
-WAS - Tomcat - 9.0
+WAS - Tomcat - 8.0
 
 Hosting - AWS(Ubuntu)

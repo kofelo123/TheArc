@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>The Ark</title>
     <meta name="description" content="">
-
+ 
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/bootstrap/css/style.css">
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" media="screen" data-name="skins">
 
-    <link href="/resources/bootstrap/css/fractionslider.css" rel="stylesheet" type="text/css">
+    <link href="/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
     <link href="/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
 
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/switcher.css" media="screen" />
@@ -34,7 +34,7 @@
 <!--Start Header-->
 <div id="top-fix" class="clearfix">
     <header id="header" class="container">
-        <div class="row">
+       <!--  <div class="row">
             <div class="hidden-xs col-sm-7 top-info">
                 <span><i class="fa fa-phone"></i>전화번호: 053-620-0001</span>
                 <span><i class="fa fa-envelope"></i>Email: TheArk@naver.com</span>
@@ -49,7 +49,7 @@
                     <li><a class="my-google" href=""><i class="fa fa-google-plus"></i></a></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <!-- Logo / Mobile Menu -->
             <div id="logo-bar" class="col-sm-12 ">
@@ -72,9 +72,9 @@
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">디아크소개</a>
+                        <li class="active"><a href="index.html">디아크소개</a>
                             <ul class="dropdown-menu">
-                                <li><a href="index_2.html">디아크란</a></li>
+                                <li><a href="index_2.html">디아크란</a></li>
                                 <li><a href="index_3.html">관람안내</a></li>
                                 <li><a href="index_4.html">디아크풍경</a></li>
                                 <li><a href="index_5.html">오시는길</a></li>
@@ -94,16 +94,16 @@
                         <li><a href="#">이벤트</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="about.html">임시</a>
+                                    <a href="about.html">임시</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="about.html">임시</a></li>
                                         <li><a href="about-2.html">임시</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="services.html">임시</a></li>
+                                <li><a href="services.html">임시</a></li>
                                 <li><a href="faq.html">임시</a></li>
                                 <li><a href="sidebar-right.html">임시</a></li>
-                                <li><a href="sidebar-left.html">임시</a></li>
+                                <li><a href="sidebar-left.html">임시</a></li>
                                 <li><a href="404-page.html">임시</a></li>
                             </ul>
                         </li>
@@ -112,15 +112,15 @@
                             <ul class="dropdown-menu">
                                 <li><a href="portfolio_1.html">자주하는질문</a></li>
                                 <li><a href="portfolio_1.html">묻고답하기</a></li>
-                                <li><a href="portfolio_2.html">언론보도</a></li>
+                                <li><a href="portfolio_2.html">언론보도</a></li>
                                 <li><a href="portfolio_3.html">포토존</a></li>
                                 <li><a href="portfolio_4.html">방문후기</a></li>
                                 <li>
-                                    <a href="portfolio_single.html">자유게시판</a>
+                                    <a href="portfolio_single.html">자유게시판</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="portfolio_single.html">임시</a></li>
+                                        <li><a href="portfolio_single.html">임시</a></li>
                                         <li><a href="portfolio_single_2.html">임시</a></li>
-                                        <li><a href="portfolio_single_3.html">임시</a></li>
+                                        <li><a href="portfolio_single_3.html">임시</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -130,7 +130,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="blog-large-image.html">공지사항</a></li>
                                 <li><a href="blog-medium-image.html">서포터즈</a></li>
-                                <li><a href="blog-post.html">임시</a></li>
+                                <li><a href="blog-post.html">임시</a></li>
                             </ul>
                         </li>
 
@@ -138,7 +138,7 @@
                             </ul>
                         </li>
 
-                        <li><a href="contact.html">Contact</a></li>
+                       
                     </ul>
                 </div>
             </div>
@@ -150,7 +150,7 @@
         <div class="fs_loader"></div>
 
         <div class="slide">
-        	<img src="/resources/bootstrap/images/1.jpg" style="width:100%;height:100%;">
+        	<img src="/resources/bootstrap/images/1-1.PNG" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
          <div class="slide">
@@ -722,8 +722,8 @@
 
     <script src="/resources/bootstrap/js/main.js"></script>
     <!-- Start Style Switcher -->
-    <div class="switcher"></div>
-    <!-- End Style Switcher -->
+<!--     <div class="switcher"></div>
+ -->    <!-- End Style Switcher -->
 
     <script>
         $(window).load(function(){
