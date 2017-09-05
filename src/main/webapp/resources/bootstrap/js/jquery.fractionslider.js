@@ -29,9 +29,9 @@
 				'transitionOut' : 'left', // default out - transition
 				'fullWidth' : false, // transition over the full width of the window
 				'delay' : 0, // default delay for elements
-				'timeout' : 2000, // default timeout before switching slides
-				'speedIn' : 2500, // default in - transition speed
-				'speedOut' : 1000, // default out - transition speed
+				'timeout' : 4000, // default timeout before switching slides
+				'speedIn' : 1000, // default in - transition speed
+				'speedOut' : 0, // default out - transition speed
 				'easeIn' : 'easeOutExpo', // default easing in
 				'easeOut' : 'easeOutCubic', // default easing out
 

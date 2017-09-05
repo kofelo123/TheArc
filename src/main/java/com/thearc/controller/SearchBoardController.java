@@ -16,8 +16,12 @@ public class SearchBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 	
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
-	  public String home(Locale locale, Model model) {
-	   
-	    return "sboard/main";
+	  public void main(Locale locale, Model model) {
+	   	  
 	  }
+	 
+	 @RequestMapping(value="/faq",method=RequestMethod.GET)
+	 public void faq(Model model){
+		 
+	 }
 }

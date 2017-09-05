@@ -1,150 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" class="no-js" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>The Ark</title>
-    <meta name="description" content="">
- 
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/bootstrap/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" media="screen" data-name="skins">
+
 
     <link href="/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
     <link href="/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/switcher.css" media="screen" />
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body class="home">
- <div id="rainy-container">
-   <!--  <img id="background" alt="background" class="background" src="images/head-3.png"/> -->
-</div> 
-<!--Start Header-->
-<div id="top-fix" class="clearfix">
-    <header id="header" class="container">
-       <!--  <div class="row">
-            <div class="hidden-xs col-sm-7 top-info">
-                <span><i class="fa fa-phone"></i>전화번호: 053-620-0001</span>
-                <span><i class="fa fa-envelope"></i>Email: TheArk@naver.com</span>
-            </div>
-            <div class="col-sm-5 top-info clearfix">
-                <ul>
-                    <li><a class="my-facebook" href=""><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="my-tweet" href=""><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="my-pint" href=""><i class="fa fa-pinterest"></i></a></li>
-                    <li><a class="my-rss" href=""><i class="fa fa-rss"></i></a></li>
-                    <li><a class="my-skype" href=""><i class="fa fa-skype"></i></a></li>
-                    <li><a class="my-google" href=""><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-            </div>
-        </div> -->
-        <div class="row">
-            <!-- Logo / Mobile Menu -->
-            <div id="logo-bar" class="col-sm-12 ">
-                <div id="logo" >
-                    <h1><a href="index.html"><img src="/resources/bootstrap/images/logo2.png" alt="theark" /></a></h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- Navigation
-            ================================================== -->
-            <div class="navbar navbar-default navbar-static-top" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse ">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">디아크소개</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index_2.html">디아크란</a></li>
-                                <li><a href="index_3.html">관람안내</a></li>
-                                <li><a href="index_4.html">디아크풍경</a></li>
-                                <li><a href="index_5.html">오시는길</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="#">관광코스</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="elements.html">금주의 디아크</a></li>
-                                <li><a href="columns.html">야자수 테라리움</a></li>
-                                <li><a href="typography.html">수상레저체험</a></li>
-                                <li><a href="pricing-tables.html">바닷속이야기</a></li>
-                                <li><a href="icons.html">감성아카데미</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="#">이벤트</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="about.html">임시</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="about.html">임시</a></li>
-                                        <li><a href="about-2.html">임시</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="services.html">임시</a></li>
-                                <li><a href="faq.html">임시</a></li>
-                                <li><a href="sidebar-right.html">임시</a></li>
-                                <li><a href="sidebar-left.html">임시</a></li>
-                                <li><a href="404-page.html">임시</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="#">커뮤니티</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="portfolio_1.html">자주하는질문</a></li>
-                                <li><a href="portfolio_1.html">묻고답하기</a></li>
-                                <li><a href="portfolio_2.html">언론보도</a></li>
-                                <li><a href="portfolio_3.html">포토존</a></li>
-                                <li><a href="portfolio_4.html">방문후기</a></li>
-                                <li>
-                                    <a href="portfolio_single.html">자유게시판</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio_single.html">임시</a></li>
-                                        <li><a href="portfolio_single_2.html">임시</a></li>
-                                        <li><a href="portfolio_single_3.html">임시</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li><a href="#">고객센터</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-large-image.html">공지사항</a></li>
-                                <li><a href="blog-medium-image.html">서포터즈</a></li>
-                                <li><a href="blog-post.html">임시</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="contact.html">사이트맵</a></li>
-                            </ul>
-                        </li>
-
-                       
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Container / End -->
-    </header>
+<%@include file="/WEB-INF/views/include/header.jsp"%>
     <!--Start Slider-->
     <section class="slider" >
         <div class="fs_loader"></div>
@@ -611,121 +473,10 @@
     </section>
     </section>
 <!--end wrapper-->
-
-
-    <!--start footer-->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-3 col-lg-3">
-                    <div class="widget_title">
-                        <h4><span>About Us</span></h4>
-                    </div>
-                    <div class="widget_content">
-                        <p>Donec earum rerum hic tenetur ans sapiente delectus, ut aut reiciendise voluptat maiores alias consequaturs aut perferendis.</p>
-                        <ul class="contact-details-alt">
-                            <li><i class="fa fa-map-marker"></i> <p><strong>Address</strong>:#2021</p></li>
-                            <li><i class="fa fa-user"></i> <p><strong>Phone</strong>:(+91) 7696263851</p></li>
-                            <li><i class="fa fa-envelope"></i> <p><strong>Email</strong>: <a href="#">mail@example.com</a></p></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3">
-                    <div class="widget_title">
-                        <h4><span>Recent Posts</span></h4>
-                    </div>
-                    <div class="widget_content">
-                         <ul class="links">
-                            <li><a href="#">Aenean commodo ligula eget dolor<span>November 07, 2014</span></a></li>
-                            <li><a href="#">Temporibus autem quibusdam <span>November 05, 2014</span></a></li>
-                            <li><a href="#">Debitis aut rerum saepe <span>November 03, 2014</span></a></li>
-                            <li><a href="#">Et voluptates repudiandae <span>November 02, 2014</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3">
-                    <div class="widget_title">
-                        <h4><span>Twitter</span></h4>
-
-                    </div>
-                    <div class="widget_content">
-                        <ul class="tweet_list">
-                            <li class="tweet_content item">
-                                <p class="tweet_link"><a href="#">@jquery_rain </a> Lorem ipsum dolor et, consectetur adipiscing eli</p>
-                                <span class="time">29 September 2014</span>
-                            </li>
-                            <li class="tweet_content item">
-                                <p class="tweet_link"><a href="#">@jquery_rain </a> Lorem ipsum dolor et, consectetur adipiscing eli</p>
-                                <span class="time">29 September 2014</span>
-                            </li>
-                            <li class="tweet_content item">
-                                <p class="tweet_link"><a href="#">@jquery_rain </a> Lorem ipsum dolor et, consectetur adipiscing eli</p>
-                                <span class="time">29 September 2014</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3">
-                    <div class="widget_title">
-                        <h4><span>Flickr Gallery</span></h4>
-
-                    </div>
-                    <div class="widget_content">
-                        <div class="flickr">
-                            <ul id="flickrFeed" class="flickr-feed"></ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--end footer-->
-
-    <section class="footer_bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="copyright">&copy; Copyright 2014 jQuery Rain | Powered by  <a href="http://jQueryrain.com/"> jQuery Rain</a></p>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="footer_social">
-                        <ul class="footbot_social">
-                            <li><a class="fb" href="#." data-placement="top" data-toggle="tooltip" title="Facbook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="twtr" href="#." data-placement="top" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="dribbble" href="#." data-placement="top" data-toggle="tooltip" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a class="skype" href="#." data-placement="top" data-toggle="tooltip" title="Skype"><i class="fa fa-skype"></i></a></li>
-                            <li><a class="rss" href="#." data-placement="top" data-toggle="tooltip" title="RSS"><i class="fa fa-rss"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
-    <script src="/resources/bootstrap/js/bootstrap.js"></script>
-    <script src="/resources/bootstrap/js/jquery.easing.1.3.js"></script>
-    <script src="/resources/bootstrap/js/retina-1.1.0.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.cookie.js"></script> <!-- jQuery cookie -->
-    <script type="text/javascript" src="/resources/bootstrap/js/styleswitch.js"></script> <!-- Style Colors Switcher -->
-    <script src="/resources/bootstrap/js/jquery.smartmenus.min.js"></script>
-    <script src="/resources/bootstrap/js/jquery.smartmenus.bootstrap.min.js"></script>
-    <script src="/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script>
-    <script charset="utf-8" type="text/javascript" src="/resources/bootstrap/js/jquery.fractionslider.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.jcarousel.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jflickrfeed.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/swipe.js"></script>
-    <!-- <script type="text/javascript" src="js/rainyday.js"></script> -->
-
-    <script src="/resources/bootstrap/js/main.js"></script>
-    <!-- Start Style Switcher -->
-<!--     <div class="switcher"></div>
- -->    <!-- End Style Switcher -->
-
-    <script>
+	
+    <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
+ <script charset="utf-8" type="text/javascript" src="/resources/bootstrap/js/jquery.fractionslider.js"></script>
+  <script>
         $(window).load(function(){
             $('.slider').fractionSlider({
                 'fullWidth': 			true,
@@ -733,31 +484,21 @@
                 'responsive': 			true,
                 'dimensions': 			"1920,335",
                 'increase': 			true,
-                'pauseOnHover': 		true,
-                'slideEndAnimation': 	true,
+                'pauseOnHover': 		false,
+                'slideEndAnimation': 	false,
                 'autoChange':           true
             });
         });
 
-        /*                              Rainy-day
-         /*----------------------------------------------------------------*/
-        function run() {
-            var image = document.getElementById('background');
-            image.onload = function() {
-                var engine = new RainyDay({
-                    element: image,
-                    image: this
-                });
-                engine.trail = engine.TRAIL_SMUDGE;
-    //            engine.rain([ [1, 0, 30], [1, 2, 2] ],600);
-                engine.rain([ [0, 2, 200], [3, 3, 1] ], 100);
-            };
-            image.crossOrigin = 'anonymous';
-            image.src = 'images/head-3.png';
-        }
-        window.onload = function() {
-            run();
-        };
-    </script>
-</body>
-</html>
+    	$('#loginbutton').on("click", function(evt) {
+
+			self.location = "/user/login";
+
+		});
+    	$('#joinbutton').on("click", function(evt) {
+
+			self.location = "/user/join";
+
+		});
+    </script> 
+    
