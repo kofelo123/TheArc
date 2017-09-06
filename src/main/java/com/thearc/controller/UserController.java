@@ -134,10 +134,11 @@ public class UserController {
 	  @RequestMapping(value ="/findZipNum" , method=RequestMethod.POST)
 	  public void findZipNumPost(Model model,AddressVO address) throws Exception{
 		  									///AddressVO 필드 중 dong을 넘김.
-		  System.out.println("findzipnum ...");
-		  
+		  System.out.println("findzipnum ...userController");
+		  System.out.println(address);
 		  
 		  model.addAttribute("addressList",service.findzipnum(address));
+		  System.out.println("returnTest:"+service.findzipnum(address));
 	  }
 	  
 	  @RequestMapping(value = "/idfind", method = RequestMethod.GET)

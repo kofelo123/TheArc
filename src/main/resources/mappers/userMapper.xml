@@ -29,12 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	 
-	<select id="findzipnum" resultType="AddressVO">
-		<![CDATA[
-		select * from address where dong like "%"#{dong}"%"
-		 
-		]]>
+	<select id="findzipnum" resultType="AddressVO">		
+		select * from address where dong LIKE CONCAT('%',#{dong},'%')
 	</select><!-- (기본적으로 mybatis의 #{}은 ' ' 처리가된다. 그래서 더큰 범위가 있을때는 ""해야한다.  -->
+		<!-- select * from address where dong like "%"#{dong}"%" -->
 
 	<select id="idfindofmail" resultType="UserVO">
 		select uid,uname from tbl_user where email= #{email3}

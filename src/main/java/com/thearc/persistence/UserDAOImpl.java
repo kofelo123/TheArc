@@ -63,6 +63,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<AddressVO> findzipnum(AddressVO address) {
 		// TODO Auto-generated method stub
+		System.out.println("userDaoImpl 전달받은 AddressVO:"+address);
+		System.out.println("userDaoImpl 리턴할 AddressVO:"+session.selectList(namespace + ".findzipnum", address));
 		return session.selectList(namespace + ".findzipnum", address);
 	}
 

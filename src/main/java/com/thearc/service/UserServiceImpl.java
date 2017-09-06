@@ -73,6 +73,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<AddressVO> findzipnum(AddressVO address) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("리턴할 UserServiceImpl의 address"+dao.findzipnum(address));
 		return dao.findzipnum(address);
 	}
 

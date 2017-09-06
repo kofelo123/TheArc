@@ -23,7 +23,26 @@
 </head> -->
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <body>
-
+	<div id="targetTop"></div><!--  임의로 만들었다. 우측 메뉴때문에. -->
+	
+	 <section class="promo_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="promo_content">
+                        <h3>자주하는질문</h3>
+                        <p> </p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="pb_action">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 	<!--start wrapper-->
 	<section class="wrapper">
 		<section class="content faq">
@@ -213,28 +232,9 @@
             </div>
         </section>
 	</section>
-	<!--end wrapper-->
- <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
-  <!--   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/retina-1.1.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.cookie.js"></script> jQuery cookie
-    <script type="text/javascript" src="js/styleswitch.js"></script> Style Colors Switcher
-    <script src="js/jquery.smartmenus.min.js"></script>
-    <script src="js/jquery.smartmenus.bootstrap.min.js"></script>
-    <script src="js/jquery-scrolltofixed-min.js"></script>
-    <script type="text/javascript" src="js/jquery.jcarousel.js"></script>
-    <script type="text/javascript" src="js/jflickrfeed.js"></script>
-    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="js/swipe.js"></script>
-    <script type="text/javascript" src="js/rainyday.js"></script>
-    <script type="text/javascript" src="js/rainy-script.js"></script>
-    <script src="js/main.js"></script>
+	
 
-    Start Style Switcher
-    <div class="switcher"></div>
-    End Style Switcher
-</body>
-</html> -->
+	<!--end wrapper-->
+ <%@include file="/WEB-INF/views/include/footer.jsp"%>
+ 
+ 
