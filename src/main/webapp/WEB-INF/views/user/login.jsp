@@ -16,7 +16,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet"
+<link href="/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- iCheck -->
 <link href="/resources/plugins/iCheck/square/blue.css" rel="stylesheet"
@@ -45,6 +45,12 @@
 <!-- <link rel='stylesheet' id='_style-css'  href='http://11st.com/wp-content/plugins/maintenance/load/style.css?ver=4.6.1' type='text/css' media='all' /> -->
 <link href="/resources/bootstrap/css/11st2.css" rel="stylesheet"
 	type="text/css" media='all' />
+	
+	<!-- ///배경관련  -->
+<link rel="stylesheet" href="/resources/bootstrap/css/vegas.min.css">
+		<script src="/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
+		<script src="/resources/bootstrap/js/vegas.min.js"></script>
+		
 <style id='_style-inline-css' type='text/css'>
 body {
 	background-color: #111111
@@ -77,6 +83,8 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 .ie7 .company-name {
 	color: #ffffff
 }
+
+
 </style>
 <script type='text/javascript'
 	src='http://11st.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
@@ -208,3 +216,20 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 	</div>
 </body>
 </html>
+
+	<script>
+			$(function(){
+				$('body').vegas({
+					slides:[
+
+						{
+							video : {
+								src: ['/resources/bootstrap/dew.webm'],
+								loop:true,
+								mute:true
+							}
+						}
+					]
+				});
+			});
+		</script>

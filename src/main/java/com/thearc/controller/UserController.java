@@ -184,5 +184,9 @@ public class UserController {
 		  return "redirect:/user/login";	/* */
 		 
 	 }
+	  @RequestMapping(value = "/logintest", method = RequestMethod.GET)
+	  public void logintest() {
+		  
+	  }
 	
 }

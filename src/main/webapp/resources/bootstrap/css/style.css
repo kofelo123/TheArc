@@ -2604,7 +2604,7 @@ ul.client_items {
 .btn-default
 {
     color:#fff;
-    background:#E74C3C;
+    background:#2576bc;
     border:none;
     border-radius:2px;
     transition:all 0.3s ease-in-out;
@@ -2613,8 +2613,8 @@ ul.client_items {
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
 {
     color:#fff;
-    background:#D53A29;
-    border-bottom-color:#B02B1C;
+    background:#2576bc;
+    border-bottom-color:#2576bc;
 }
 /* Social Buttons
 ====================================*/
@@ -3121,12 +3121,12 @@ ul.nav-tabs li.last-tab a
 /* 23. PAGINATION										 */
 /* ===================================================== */
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background:#E74C3C;
-    border-color: #E74C3C;
+    background:#95e6bd;
+    border-color: #95e6bd;
 }
 .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background:#ec7063;
-    border-color: #ec7063;
+    background:#95e6bd;
+    border-color: #95e6bd;
 }
 
 /* ==================================================

@@ -3,7 +3,7 @@ function go_save() {
     alert("아이디를 입력하여 주세요.");
     document.formm.uid.focus();
   } else if (document.formm.uid.value != document.formm.reid.value) {
-    alert("중복확인을 클릭하여 주세요.");//아이디 중복확인 실시 여부 확인 위해서 input type hidden 하나따로뒀다,
+    alert("중복확인을 클릭하여 주세요.");
     document.formm.uid.focus();
   } else if (document.formm.upw.value == "") {
     alert("비밀번호를 입력해 주세요.");

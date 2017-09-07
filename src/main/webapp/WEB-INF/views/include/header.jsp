@@ -91,14 +91,14 @@
 
                         <li><a href="#">커뮤니티</a>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/sboard/list">자유게시판</a>
+                                </li>
                                 <li><a href="/sboard/faq">자주하는질문</a></li>
                                 <li><a href="#">묻고답하기</a></li>
                                 <li><a href="portfolio_2.html">언론보도</a></li>
                                 <li><a href="portfolio_3.html">포토존</a></li>
                                 <li><a href="portfolio_4.html">방문후기</a></li>
-                                <li>
-                                    <a href="portfolio_single.html">자유게시판</a>
-                                </li>
                             </ul>
                         </li>
 

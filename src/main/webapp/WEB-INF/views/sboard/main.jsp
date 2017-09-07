@@ -6,30 +6,31 @@
     <link href="/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
     <link href="/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
 
+<%@include file="/WEB-INF/views/include/header2.jsp"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
     <!--Start Slider-->
     <section class="slider" >
         <div class="fs_loader"></div>
+        
+        <div class="slide">
+        	<img src="/resources/bootstrap/images/2-3.jpg" style="width:100%;height:100%;">
+            <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
+        </div>
 
 		<div class="slide">
         	<img src="/resources/bootstrap/images/2-2.jpg" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
-        <div class="slide">
-        	<img src="/resources/bootstrap/images/2-3.jpg" style="width:100%;height:100%;">
-            <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
-        </div>
+       
         <div class="slide">
         	<img src="/resources/bootstrap/images/1-1.PNG" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
-         
-         
       
         </div>
     </section>
 
-    </section> -->
+    </section> 
     <!--End Slider-->
 </div>
 <!--End Header-->
@@ -412,6 +413,7 @@
 <!--end wrapper-->
 	
     <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
+    <%@include file="/WEB-INF/views/include/footer2.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
  <script charset="utf-8" type="text/javascript" src="/resources/bootstrap/js/jquery.fractionslider.js"></script>
   <script>
         $(window).load(function(){
