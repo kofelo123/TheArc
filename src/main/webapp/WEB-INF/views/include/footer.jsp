@@ -84,4 +84,15 @@
 		    }); 
 		    
 		})
+		/* 로그인,회원가입 버튼  */
+		$('#loginbutton').on("click", function(evt) {
+
+			self.location = "/user/login";
+
+		});
+    	$('#joinbutton').on("click", function(evt) {
+
+			self.location = "/user/join";
+
+		});
 </script>

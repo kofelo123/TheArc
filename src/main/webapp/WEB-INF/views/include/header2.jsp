@@ -13,3 +13,5 @@
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
    
      <link rel="icon" type="image/png"  href="/resources/bootstrap/image/lodingthearc3.png"/>
+     
+     

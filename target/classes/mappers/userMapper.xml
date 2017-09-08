@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.thearc.mapper.userMapper">
 	
 	<select id="login" resultType="UserVO">
-		select uid, upw, uname from tbl_user there uid = #{uid} and upw = #{upw}
+		select uid, upw, uname from tbl_user where uid = #{uid} and upw = #{upw}
 	</select>
 	
 	

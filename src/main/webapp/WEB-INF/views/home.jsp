@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 	<title>TheArc</title>
 
+ <link rel="icon" type="image/png"  href="/resources/bootstrap/image/lodingthearc3.png"/>
 <style>
 @CHARSET "UTF-8";
 html, body { margin: 0;

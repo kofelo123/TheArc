@@ -6,7 +6,7 @@
 
 
 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
@@ -23,13 +23,17 @@
   margin: auto;
   
 }
+.content{
+	
+	 background-image: url(/resources/bootstrap/images/bg2.jpg);
+}
 </style>
 
 <!-- Main content -->
 <section class="content">
-	<div class="row">
+	<div class="row" style="margin-left:18%">
 		<!-- left column -->
-		<div class="col-md-12" style="width:80%;padding-left:2%">
+		<div class="col-sm-10 col-md-10 col-lg-10" >
 			<!-- general form elements -->
 			<div class="box box-primary">
 			<div class="box-header">

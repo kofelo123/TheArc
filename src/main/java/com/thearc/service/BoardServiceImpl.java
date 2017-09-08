@@ -48,7 +48,7 @@ public class BoardServiceImpl implements BoardService {
 	// return dao.read(bno);
 	// }
 
-	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Transactional(isolation = Isolation.READ_COMMITTED)///격리레벨-커밋된  데이터에 대한 읽기허용 ->업데이트중인,커미소되지 않은 데이터에 접근불가,읽는 유저는 커밋이전만 볼수있다.
 	@Override
 	public BoardVO read(Integer bno) throws Exception {
 		dao.updateViewCnt(bno);

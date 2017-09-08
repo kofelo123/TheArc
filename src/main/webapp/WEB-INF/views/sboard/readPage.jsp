@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 
+<%@include file="../include/header2.jsp"%>
 <%@include file="../include/header.jsp"%>
 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
@@ -14,11 +14,10 @@
     
     
     
-<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
-<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 <!-- Main content -->
     <style type="text/css">
     .popup {position: absolute;}
@@ -45,9 +44,9 @@
      
 
 <section class="content">
-	<div class="row">
+	<div class="row" style="margin-left:20%">
 		<!-- left column -->
-		<div class="col-md-12">
+		<div class="col-sm-9 col-md-9 col-lg-9">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				
@@ -64,107 +63,72 @@
 				</form>
 
 				<div class="box-body">
-				<div class="mailbox-read-info">
-				 <div class="user-panel">  <!-- user패널좀 수정해야할듯  -->
-            <div class="pull-left image">
-              <img src="/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-            </div>
-            <h4>&nbsp;&nbsp;${boardVO.writer}</h4>
-         &nbsp;&nbsp;&nbsp;<fmt:formatDate pattern="MM-dd HH:mm" value="${boardVO.regdate}" />
-          </div>
-						
-						
-					</div>
-					<div class="mailbox-read-info">
-					
+				
+				<div class="row">
+					<div class="col-sm-8 col-md-8 col-lg-8">
 						<h2 style="float:left;">${boardVO.title }</h2>
-						<div class="optionbox">
-						
-					
-						<!-- <div class="fbshare">
-						<a href="#" onClick="window.open('http://www.facebook.com/sharer/sharer.php?u=http://www.smartitcording.com/sboard/readPage?bno=201&uid=kofelo123', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" title="페이스북 공유" ></i></a>
-						</div> -->
-					
-						<div class="fbshare" >
-						<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.smartitcording.com%2Fsboard${sboardNum }%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
-						<!-- <a href="http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D201%26uid%3Dkofelo123" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a> -->
-                         </div><!--www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D201%26uid%3Dkofelo123  -->
-					
-						<!-- 	<a href="http://www.facebook.com/sharer/sharer.php?u=http://www.smartitcording.com/sboard/readPage?bno=201&uid=kofelo123" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>  -->
-						<div class="twitter">
-						<a href="#" onClick="window.open('https://twitter.com/intent/tweet?text=스마트IT 코딩단 - ${boardVO.title }&url=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
-						
-                         </div>
-                         
-                        <%--  <div class="bookmark" >
-                         <a href="/sboard${sboardNum }/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:#3c763d"><i class="fa fa-bookmark-o"  data-toggle="tooltip" data-placement="left" title="스크랩"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
-                         
-                         </div> --%>
-                         
-						
+					</div>
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						 <h3>작성자:${boardVO.writer}</h3>
+         			<h4 style="margin-top:-15px;"><fmt:formatDate pattern="MM-dd HH:mm" value="${boardVO.regdate}" /></h4>
+         			
+					</div>
+					<div class="col-sm-1 col-md-1 col-lg-1">
+						<c:if test="${likeVO.likecheck=='n' }">
 							<c:if test="${likeVO.likecheck=='n' }">
-						<div class="iconlike">
-						<a href="/sboard${sboardNum }/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
-						</div>
+							<div class="iconlike">
+								<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+							</div>
 						</c:if>
 						
 						<c:if test="${likeVO.likecheck=='y' }">
-						<div class="iconlike">
-						<a href="/sboard${sboardNum }/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
-						</div>
-							</c:if>
-							
-						</div>
-					</div>
-					<%-- <div class="form-group">
-						<label for="exampleInputPassword1">Content</label>
-						<textarea class="form-control" name="content" rows="3"
-							readonly="readonly">${boardVO.content}</textarea>
-					</div>
-					 --%>
+							<div class="iconlike">
+								<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
+							</div>
+						</c:if>
+						</c:if>
+					</div>	
+						
+				</div>
+			   <div><hr></div>
+					
 					 <div class="mailbox-read-message">
                	${boardVO.content}
               
                 
               </div>
-					<%-- <textarea div id="summernote" name="content" readonly="readonly">${boardVO.content }</textarea></div>
-  <script>
-  $(document).ready(function(){
-	  $('#summernote').summernote({
-		  height: 'auto',                 
-		  minHeight: null,             
-		  maxHeight: null,             
-		  focus: false,
-		  
-		  toolbar: [
-		 		   
-		  		  ],
-		  
-			
-		});
-	  $('#summernote').summernote('foreColor', 'white');	 
-	  $('#summernote').summernote('disable');
-	  
-	 
-	
-  });
-  </script> --%>
+				
 					
 				</div>
 				<!-- /.box-body -->
 				
   <div class="box-footer">
-    
-    <div><hr></div>
+    <div class="row">
+ 
 
     <ul class="mailbox-attachments clearfix uploadedList">
-    </ul>
+    </ul>	
+    <div class="col-sm-4">
  <c:if test="${login.uid == boardVO.writer}">
     <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
     <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
  </c:if>
     <button type="submit" class="btn btn-primary" id="goListBtn">목록</button>
-  </div>
+    	</div>
+    	<div class="col-sm-1 col-sm-offset-6">
+    	<div class="fbshare" style="font-size:35px;">
+			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
+         </div>
+		</div>			
+		<div class="twitter" style="font-size:35px;">
+			<a href="#" onClick="window.open('https://twitter.com/intent/tweet?text=스마트IT 코딩단 - ${boardVO.title }&url=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
+        </div>
+                         
+						
+						
+			</div><!-- row  -->
+			
+ 		 </div>
 
 			</div>
 			<!-- /.box -->
@@ -173,12 +137,6 @@
 
 
 	<!-- /.row -->
-
-
-
-
-		
-
 
 <div class="box box-success">
   <div class="box-header">
@@ -189,9 +147,7 @@
   <c:if test="${not empty login}">  
   <div class="box-body">
   <div class="user-panel">  <!-- user패널좀 수정해야할듯  -->
-            <div class="pull-left image">
-              <img src="/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-            </div>
+           
             <h4>&nbsp;&nbsp;${boardVO.writer}</h4>
       
           </div>
@@ -212,8 +168,6 @@
   </c:if>				                 
 </div>            
 
-
-		
 		<!-- The time line -->
 		<ul class="timeline">
 		  <!-- timeline time label -->
@@ -232,27 +186,9 @@
 
 		</div>
 		<!-- /.col -->
-			<div class="bannerlink">
-	<div class="banner">
-		<img src="/resources/bootstrap/image/banner.jpg" />
-		
-		
-	</div>
-	<div id="mlink" class="mbx">
-			<ul>
-			<li class="ico7"><a href="http://sgsso.dhu.ac.kr" target="_blank" title="새창으로 학생종합정보 홈페이지 연결">학생종합정보</a></li>
-            <li class="ico5"><a href="http://library.dhu.ac.kr/" target="_blank" title="새창으로 도서관 홈페이지 연결">도서관</a></li>	
-            <li class="ico6"><a href="http://bis.gbgs.go.kr/bs/businfo/sub03_03.jsp" target="_blank" title="새창으로 경산버스 홈페이지 연결">경산버스</a></li>					
-			<li class="ico9"><a href="https://mail.dhu.ac.kr/" target="_blank" title="새창으로 웹메일 홈페이지 연결">웹메일</a></li>
-			<li class="ico11"><a href="http://lifelong.dhu.ac.kr/" target="_blank" title="새창으로 평생교육원 홈페이지 연결">평생교육원</a></li>
-			<li class="ico4"><a href="http://www.jaan.co.kr/" target="_blank" title="새창으로 자안쇼핑몰 홈페이지 연결">자안쇼핑몰</a></li>
-			</ul>
-		</div>
-	</div>
+			
 	</div>
 	<!-- /.row -->
-
-
           
 <!-- Modal -->
 <div id="modifyModal" class="modal modal-primary fade" role="dialog">
@@ -279,6 +215,9 @@
 </section>
 <!-- /.content -->
 
+
+<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer2.jsp"%>
 
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
@@ -385,7 +324,7 @@
 		if ($(".timeline li").size() > 1) {
 			return;
 		}
-		getPage("/replies${sboardNum}/" + bno + "/1");
+		getPage("/replies/" + bno + "/1");
 
 	});
 
@@ -395,7 +334,7 @@
 
 		replyPage = $(this).attr("href");
 
-		getPage("/replies${sboardNum}/" + bno + "/" + replyPage);
+		getPage("/replies/" + bno + "/" + replyPage);
 
 	});
 
@@ -408,7 +347,7 @@
 
 		$.ajax({
 			type : 'post',
-			url : '/replies${sboardNum}/',
+			url : '/replies/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -424,7 +363,7 @@
 				if (result == 'SUCCESS') {
 					alert("등록 되었습니다.");
 					replyPage = 1;
-					getPage("/replies${sboardNum}/" + bno + "/" + replyPage);
+					getPage("/replies/" + bno + "/" + replyPage);
 					//replyerObj.val("");
 					replytextObj.val("");
 				}
@@ -448,7 +387,7 @@
 
 		$.ajax({
 			type : 'put',
-			url : '/replies${sboardNum}/' + rno,
+			url : '/replies/' + rno,
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "PUT"
@@ -461,7 +400,7 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("수정 되었습니다.");
-					getPage("/replies${sboardNum}/" + bno + "/" + replyPage);
+					getPage("/replies/" + bno + "/" + replyPage);
 				}
 			}
 		});
@@ -474,7 +413,7 @@
 
 		$.ajax({
 			type : 'delete',
-			url : '/replies${sboardNum}/' + rno,
+			url : '/replies/' + rno,
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "DELETE"
@@ -484,7 +423,7 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("삭제 되었습니다.");
-					getPage("/replies${sboardNum}/" + bno + "/" + replyPage);
+					getPage("/replies/" + bno + "/" + replyPage);
 				}
 			}
 		});
@@ -500,7 +439,7 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "/sboard${sboardNum}/modifyPage");
+		formObj.attr("action", "/sboard/modifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
@@ -529,13 +468,13 @@ $(document).ready(function(){
 	 	if(arr.length > 0){
 			$.post("/deleteAllFiles",{files:arr}, function(){
 				
-				formObj.attr("action", "/sboard${sboardNum}/removePage");
+				formObj.attr("action", "/sboard/removePage");
 				formObj.submit();
 				
 			});
 		}else{
 			
-			formObj.attr("action", "/sboard${sboardNum}/removePage");
+			formObj.attr("action", "/sboard/removePage");
 			formObj.submit();
 		}
 		
@@ -547,14 +486,14 @@ $(document).ready(function(){
 	
 	$("#goListBtn ").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/sboard${sboardNum}/list");
+		formObj.attr("action", "/sboard/list");
 		formObj.submit();
 	});
 	
 	var bno = ${boardVO.bno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
-	$.getJSON("/sboard${sboardNum}/getAttach/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
+	$.getJSON("/sboard/getAttach/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
 		$(list).each(function(){
 			
 			var fileInfo = getFileInfo(this);
@@ -605,5 +544,3 @@ function goLogin(){
 
 
 
-
-<%@include file="../include/footer.jsp"%>

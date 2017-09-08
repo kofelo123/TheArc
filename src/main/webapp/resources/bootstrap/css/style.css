@@ -2603,11 +2603,16 @@ ul.client_items {
 ================================================== */
 .btn-default
 {
-    color:#fff;
+	
+	color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+
+   /*  color:#fff;
     background:#2576bc;
     border:none;
     border-radius:2px;
-    transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out; */
 }
 .btn-default:hover,
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
@@ -2987,9 +2992,15 @@ ul.nav-tabs li.last-tab a
 }
 .panel-default > .panel-heading
 {
-    background:none;
-    border-bottom:1px solid #DDDDDD;
+	
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+
+    /* background:none;
+    border-bottom:1px solid #DDDDDD; */
 }
+
 .panel-title > a
 {
     font-size: 16px;

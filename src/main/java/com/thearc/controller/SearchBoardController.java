@@ -72,9 +72,13 @@ public class SearchBoardController {
 	    
 	    LikeVO likevo = service.checklike(uid,bno); //
 	    System.out.println("likevo테스트:"+likevo); // likevo.get~이 안된다 null 일경우 java nullpoint exception이된다. 그래서 그냥 likevo.tostring식으로 접근한다.
+	    System.out.println("uid값 테스트"+uid);
+	    if(uid.length()>0){
 	    if(likevo==null) // null일경우 넣기위한 로직이다( 왜냐하면 null 인상태로 model.addAttribute가 에러가 났었다. 모델에 객체내용없이 뷰에 전달이 안된다. 
 	    	service.insertlikedefault(uid, bno); // uid,bno만 넣어주기 떄문에 'n'상태가 된다.      ///근데 굳이 이렇게 안해도 더 간결하게 false를 default로두고  하는 방법도 있지않을까..
 	    model.addAttribute(service.checklike(uid,bno));//추천여부체크 ///위에코드랑좀 겹치는데..
+	    }
+	    
 	    
 	  }
 

@@ -26,7 +26,7 @@ public class LikeVO {
 		this.likecheck = likecheck;
 	}
 	@Override
-	public String toString() { // tostring은 sysout에서 그냥 객체이름을 쓰면 이것이 적용되는것같다.
+	public String toString() {
 		return "LikeVO [bno=" + bno + ", uid=" + uid + ", likecheck="
 				+ likecheck
 					+ "]";
