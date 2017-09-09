@@ -24,11 +24,11 @@
         </div>
     </section>
 <!-- end footer  --> 
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
+<!--댓글테스트용-->     <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.js"></script>
     <script src="/resources/bootstrap/js/jquery.easing.1.3.js"></script>
     <script src="/resources/bootstrap/js/retina-1.1.0.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.cookie.js"></script> <!-- jQuery cookie -->
+    <script type="text/javascript" src="/resources/bootstrap/js/jquery.cookie.js"></script> 
     <script src="/resources/bootstrap/js/jquery.smartmenus.min.js"></script>
     <script src="/resources/bootstrap/js/jquery.smartmenus.bootstrap.min.js"></script>
     <script src="/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script>
@@ -40,7 +40,7 @@
     <script type="text/javascript" src="/resources/bootstrap/js/swipe.js"></script>
     
     <script src="/resources/bootstrap/js/main.js"></script>
-    
+     
     <style>
 	/*퀵메뉴*/
 		#quick_nav {position:absolute; width:50px; height:100%; right:0; top:12%; border-left:1px solid #d7d7d7; margin:100px 0 0 0;overflow:hidden; background:url(../images/common/bg_quick.jpg) no-repeat scroll 100% 0 transparent; background-color:#373737; z-index:1;  }

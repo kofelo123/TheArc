@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" media="screen" data-name="skins">
 </head>
 
+  
 <body class="home">
 
 <!--Start Header-->

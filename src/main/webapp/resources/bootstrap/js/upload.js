@@ -22,7 +22,7 @@ function getFileInfo(fullName){
 		getLink = "/displayFile?fileName="+front + end;
 		
 	}else{
-		imgsrc ="/resources/dist/img/file.png";
+		imgsrc ="/resources/bootstrap/img/file.png";
 		fileLink = fullName.substr(12);
 		getLink = "/displayFile?fileName="+fullName;
 	}

@@ -7,11 +7,11 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+ <!--   댓글테스트<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->  
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
-    
+  
     
     
 <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
@@ -74,19 +74,40 @@
          			
 					</div>
 					<div class="col-sm-1 col-md-1 col-lg-1">
-						<c:if test="${likeVO.likecheck=='n' }">
-							<c:if test="${likeVO.likecheck=='n' }">
+						<c:choose>
+							<c:when test="${likeVO.likecheck == null }">
+								<div class="iconlike">
+									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+								</div>
+							</c:when>
+							<c:when test="${likeVO.likecheck == 'n' }">
+								<div class="iconlike">
+									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+								</div>
+							</c:when>
+							<c:when test="${likeVO.likecheck == 'y' }">
+								<div class="iconlike">
+									<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
+								</div>
+							</c:when>
+							<%-- <c:if test="${likeVO.likecheck=='n' }">
+							<div class="iconlike">
+								<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+							</div>
+						</c:if> --%>
+						
+				<%-- 		<c:if test="${likeVO.likecheck==null }">
 							<div class="iconlike">
 								<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 							</div>
 						</c:if>
-						
-						<c:if test="${likeVO.likecheck=='y' }">
+						 --%>
+					<%-- 	<c:if test="${likeVO.likecheck=='y' }">
 							<div class="iconlike">
 								<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
 							</div>
-						</c:if>
-						</c:if>
+						</c:if> --%>
+						</c:choose>
 					</div>	
 						
 				</div>
@@ -117,11 +138,11 @@
     	</div>
     	<div class="col-sm-1 col-sm-offset-6">
     	<div class="fbshare" style="font-size:35px;">
-			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
+			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
          </div>
 		</div>			
 		<div class="twitter" style="font-size:35px;">
-			<a href="#" onClick="window.open('https://twitter.com/intent/tweet?text=스마트IT 코딩단 - ${boardVO.title }&url=http%3A%2F%2Fwww.smartitcording.com%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
+			<a href="#" onClick="window.open('https://twitter.com/intent/tweet?text=디아크 - ${boardVO.title }&url=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
         </div>
                          
 						
@@ -218,6 +239,7 @@
 
 <%@include file="../include/footer.jsp"%>
 <%@include file="../include/footer2.jsp"%>
+
 
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
@@ -321,7 +343,7 @@
 
 	$("#repliesDiv").on("click", function() {
 
-		if ($(".timeline li").size() > 1) {
+		if ($(".timeline li").size() > 1) {///이미열려있다면 그대로 빠져나오는 return 인거 같다.
 			return;
 		}
 		getPage("/replies/" + bno + "/1");

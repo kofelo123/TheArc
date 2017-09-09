@@ -12,15 +12,21 @@
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
     
+    <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    
     
     
 <style>
 .fileDrop {
-  width: 80%;
+  width: 70%;
   height: 100px;
   border: 1px dotted #ecb775;
-  background-color: #effecb;
+  /* background-color: #effecb; */
+  background-size: 100% 100px;
+  background-image: url(/resources/bootstrap/images/filedrop.png);
   margin: auto;
+  
   
 }
 .content{

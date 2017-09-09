@@ -1,26 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@include file="../include/header2.jsp"%>
 <%@include file="../include/header.jsp"%>
 
 <style>
 .fileDrop {
-  width: 80%;
+  width: 70%;
   height: 100px;
-  border: 1px dotted gray;
-  background-color: lightslategrey;
+  border: 1px dotted #ecb775;
+  /* background-color: #effecb; */
+  background-size: 100% 100px;
+  background-image: url(/resources/bootstrap/images/filedrop.png);
   margin: auto;
   
 }
 </style>
 
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+    
+    
+    <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    
+    	
 
 <!-- Main content -->
 
 <section class="content">
-	<div class="row">
+	<div class="row" style="margin-left:18%">
 		<!-- left column -->
-		<div class="col-md-12" style="width:80%;padding-left:2%">
+		<div class="col-sm-10 col-md-10 col-lg-10">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
@@ -70,7 +82,7 @@
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">업로드할 파일을 아래에 드래그&드롭 해주세요</label>
-			<div class="fileDrop" style="background-color:#effecb";border="1px dotted #ecb775"></div>
+			<div class="fileDrop"></div>
 		</div>
 	</div>
 
@@ -94,23 +106,7 @@
 
 			</div>
 			<!-- /.box -->
-			<div class="bannerlink">
-	<div class="banner">
-		<img src="/resources/bootstrap/image/banner.jpg" />
 		
-		
-	</div>
-	<div id="mlink" class="mbx">
-			<ul>
-			<li class="ico7"><a href="http://sgsso.dhu.ac.kr" target="_blank" title="새창으로 학생종합정보 홈페이지 연결">학생종합정보</a></li>
-            <li class="ico5"><a href="http://library.dhu.ac.kr/" target="_blank" title="새창으로 도서관 홈페이지 연결">도서관</a></li>	
-            <li class="ico6"><a href="http://bis.gbgs.go.kr/bs/businfo/sub03_03.jsp" target="_blank" title="새창으로 경산버스 홈페이지 연결">경산버스</a></li>					
-			<li class="ico9"><a href="https://mail.dhu.ac.kr/" target="_blank" title="새창으로 웹메일 홈페이지 연결">웹메일</a></li>
-			<li class="ico11"><a href="http://lifelong.dhu.ac.kr/" target="_blank" title="새창으로 평생교육원 홈페이지 연결">평생교육원</a></li>
-			<li class="ico4"><a href="http://www.jaan.co.kr/" target="_blank" title="새창으로 자안쇼핑몰 홈페이지 연결">자안쇼핑몰</a></li>
-			</ul>
-		</div>
-	</div>
 	</div>
 		</div>
 		<!--/.col (left) -->
