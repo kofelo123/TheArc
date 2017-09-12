@@ -35,8 +35,8 @@ public class SearchBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 	
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
-	  public void main(Locale locale, Model model) {
-	   	  
+	  public void main(Locale locale, Model model) throws Exception {
+	   	  model.addAttribute("weather",service.getWeather());
 	  }
 	 
 	 @RequestMapping(value="/faq",method=RequestMethod.GET)
@@ -183,6 +183,10 @@ public class SearchBoardController {
 	  
 	  @RequestMapping(value="/fbshare", method = RequestMethod.GET)
 	  public void fbshare(@RequestParam("bno") int bno)throws Exception{
+		  
+	  }
+	  @RequestMapping(value="/location", method = RequestMethod.GET)
+	  public void location()throws Exception{
 		  
 	  }
 }

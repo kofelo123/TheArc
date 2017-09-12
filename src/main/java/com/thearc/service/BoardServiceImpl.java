@@ -1,5 +1,8 @@
 package com.thearc.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,9 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thearc.domain.BoardVO;
 import com.thearc.domain.Criteria;
+import com.thearc.domain.JsonVO;
 import com.thearc.domain.LikeVO;
 import com.thearc.domain.SearchCriteria;
 import com.thearc.persistence.BoardDAO;
+import com.thearc.util.ApiExplorer;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -160,6 +165,16 @@ public class BoardServiceImpl implements BoardService {
 	public void updateliken(String uid, int bno) throws Exception {
 		// TODO Auto-generated method stub
 		dao.updateliken(uid, bno);
+	}
+
+	@Override
+	public List<JsonVO> getWeather() throws Exception {
+		// TODO Auto-generated method stub
+		List<JsonVO> jlist = new ArrayList<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String today=sdf.format(new Date());
+        
+        return new ApiExplorer().forecast(today);
 	}
 
 }

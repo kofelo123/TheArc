@@ -60,7 +60,7 @@
                                 <li><a href="index_2.html">디아크란</a></li>
                                 <li><a href="index_3.html">관람안내</a></li>
                                 <li><a href="index_4.html">디아크풍경</a></li>
-                                <li><a href="index_5.html">오시는길</a></li>
+                                <li><a href="/sboard/location">오시는길</a></li>
                             </ul>
                         </li>
 

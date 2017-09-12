@@ -34,26 +34,127 @@
     <!--End Slider-->
 </div>
 <!--End Header-->
+<style>
+.row h3{
+	line-height:0px;
+}
+.promo_box .container{
+width:100%;
+}
+
+</style>
 
 <!--start wrapper-->
 <section class="wrapper">
     <section class="promo_box">
         <div class="container">
             <div class="row">
-                <div class="col-sm-9">
-                    <div class="promo_content">
-                        <h3>Rainy is awesome responsive template, with refreshingly clean design.</h3>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                <div class="col-sm-2 col-sm-offset-1">
+                	
+                	<c:choose>
+      					 <c:when test="${weather.get(0).sky == '1'}">
+     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <h3>맑음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(0).sky == '2'}">
+     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <h3>구름조금</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(0).sky == '3'}">
+     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <h3>구름많음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(0).sky == '4'}">
+     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <h3>흐림</h3>
+  					     </c:when>
+  					 </c:choose>
+                    <h3>강수확률: ${weather.get(0).pop}%</h3>
+                    <h3>습도: ${weather.get(0).reh}%</h3>
+                    <h3>기온: ${weather.get(0).t3h}℃</h3>
+                    <h2>오전 9시 기준</h2>
+                </div>
+                <div class="col-sm-2">
+                    	<c:choose>
+      					 <c:when test="${weather.get(1).sky == '1'}">
+     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <h3>맑음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(1).sky == '2'}">
+     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <h3>구름조금</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(1).sky == '3'}">
+     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <h3>구름많음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(1).sky == '4'}">
+     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <h3>흐림</h3>
+  					     </c:when>
+  					 </c:choose>
+                    <h3>강수확률: ${weather.get(1).pop}%</h3>
+                    <h3>습도: ${weather.get(1).reh}%</h3>
+                    <h3>기온: ${weather.get(1).t3h}℃</h3>
+                    <h2>낮 12시 기준</h2>
+                </div>
+                <div class="col-sm-2">
+                   	<c:choose>
+      					 <c:when test="${weather.get(2).sky == '1'}">
+     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <h3>맑음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(2).sky == '2'}">
+     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <h3>구름조금</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(2).sky == '3'}">
+     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <h3>구름많음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(2).sky == '4'}">
+     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <h3>흐림</h3>
+  					     </c:when>
+  					 </c:choose>
+                    <h3>강수확률: ${weather.get(2).pop}%</h3>
+                    <h3>습도: ${weather.get(2).reh}%</h3>
+                    <h3>기온: ${weather.get(2).t3h}℃</h3>
+                    <h2>오후 3시 기준</h2>
+                </div>
+                <div class="widthControl">
+                <div class="col-sm-2">
+                	
+                    	<c:choose>
+      					 <c:when test="${weather.get(3).sky == '1'}">
+     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <h3>맑음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(3).sky == '2'}">
+     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <h3>구름조금</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(3).sky == '3'}">
+     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <h3>구름많음</h3>
+  					     </c:when>
+      					 <c:when test="${weather.get(3).sky == '4'}">
+     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <h3>흐림</h3>
+  					     </c:when>
+  					 </c:choose>
+                    <h3>강수확률: ${weather.get(3).pop}%</h3>
+                    <h3>습도: ${weather.get(3).reh}%</h3>
+                    <h3>기온: ${weather.get(3).t3h}℃</h3>
+                    <h2>오후6시기준</h2>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="pb_action">
-                        <a class="btn btn-lg btn-default" href="#fakelink">
-                            <i class="fa fa-shopping-cart"></i>
-                            Download Now
-                        </a>
-                    </div>
-                </div>
+                 <div class="col-sm-2">
+                 	<div class="time" style="margin-left:-60px;margin-top:10px;">
+               		  	<img src="/resources/bootstrap/images/weather/time.PNG"  />
+                 	</div>
+                 </div>
+                
             </div>
         </div>
     </section>

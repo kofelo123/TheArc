@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.thearc.domain.BoardVO;
 import com.thearc.domain.Criteria;
+import com.thearc.domain.JsonVO;
 import com.thearc.domain.LikeVO;
 import com.thearc.domain.SearchCriteria;
 
@@ -40,5 +41,7 @@ public interface BoardService {
 	public void updatelikey(String uid, int bno) throws Exception;
 
 	public void updateliken(String uid, int bno) throws Exception;
+	
+	public List<JsonVO> getWeather()throws Exception;
 
 }
