@@ -115,21 +115,26 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri,String category) throws Exception {
 
-		return dao.listSearch(cri);
+		return dao.listSearch(cri,category);
 	}
 
 	@Override
-	public int listSearchCount(SearchCriteria cri) throws Exception {
+	public int listSearchCount(SearchCriteria cri,String category) throws Exception {
 
-		return dao.listSearchCount(cri);
+		return dao.listSearchCount(cri,category);
 	}
 
 	@Override
 	public List<String> getAttach(Integer bno) throws Exception {
 
 		return dao.getAttach(bno);
+	}
+	
+	@Override
+	public String getAttachOne(Integer bno) throws Exception {
+		return dao.getAttachOne(bno);
 	}
 
 	@Override
@@ -176,5 +181,7 @@ public class BoardServiceImpl implements BoardService {
         
         return new ApiExplorer().forecast(today);
 	}
+
+	
 
 }

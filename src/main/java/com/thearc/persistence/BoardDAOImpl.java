@@ -72,15 +72,23 @@ public class BoardDAOImpl implements BoardDAO {
   }
 
   @Override
-  public List<BoardVO> listSearch(SearchCriteria cri) throws Exception {
-
-    return session.selectList(namespace + ".listSearch", cri);
+  public List<BoardVO> listSearch(SearchCriteria cri,String category) throws Exception {
+	  Map<String ,Object> paramMap = new HashMap<String ,Object>();
+	  paramMap.put("cri", cri);
+	  paramMap.put("category", category);
+	  System.out.println("Test:"+paramMap);
+	  System.out.println("Test:"+session.selectList(namespace + ".listSearch", paramMap));
+    return session.selectList(namespace + ".listSearch", paramMap);
   }
 
   @Override
-  public int listSearchCount(SearchCriteria cri) throws Exception {
-
-    return session.selectOne(namespace + ".listSearchCount", cri);
+  public int listSearchCount(SearchCriteria cri,String category) throws Exception {
+	  Map<String , Object> paramMap = new HashMap<String ,Object>();
+	  
+	  paramMap.put("cri", cri);
+	  paramMap.put("category", category);
+	 
+    return session.selectOne(namespace + ".listSearchCount", paramMap);
   }
 
   @Override
@@ -204,6 +212,12 @@ public void addAttach2(String fullName) throws Exception {
   
   session.insert(namespace+".addAttach2", fullName);
   
+}
+
+@Override
+public String getAttachOne(Integer bno) throws Exception {
+	
+	return session.selectOne(namespace + ".getAttachOne", bno);
 }
 
 }

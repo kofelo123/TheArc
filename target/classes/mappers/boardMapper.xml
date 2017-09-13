@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.thearc.mapper.BoardMapper">
 
 	<insert id="create">
-		insert into tbl_board (title, content, writer)
-		values(#{title},#{content}, #{writer})
+		insert into tbl_board (title, content, writer,category)
+		values(#{title},#{content}, #{writer},#{category})
 	</insert>
 	<insert id="create2">
 		insert into tbl_board2 (title, content, writer)
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  where bno > 0 
  order by bno desc, regdate desc
  limit #{page}, 10
- ]]>
+ ]]>	
 	</select>
 
 	<select id="listCriteria" resultType="BoardVO">
@@ -83,30 +83,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<sql id="search">
-		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">
-				and title like CONCAT('%', #{keyword}, '%')
+		<if test="cri.searchType != null">
+			<if test="cri.searchType == 't'.toString()">
+				and title like CONCAT('%', #{cri.keyword}, '%')
 			</if>
-			<if test="searchType == 'c'.toString()">
-				and content like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'c'.toString()">
+				and content like CONCAT('%', #{cri.keyword}, '%')
 			</if>
-			<if test="searchType == 'w'.toString()">
-				and writer like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'w'.toString()">
+				and writer like CONCAT('%', #{cri.keyword}, '%')
+			</if>	
+			<if test="cri.searchType == 'tc'.toString()">
+				and ( title like CONCAT('%', #{cri.keyword}, '%') OR content like
+				CONCAT('%', #{cri.keyword}, '%'))
 			</if>
-			<if test="searchType == 'tc'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%') OR content like
-				CONCAT('%', #{keyword}, '%'))
+			<if test="cri.searchType == 'cw'.toString()">
+				and ( content like CONCAT('%', #{cri.keyword}, '%') OR writer like
+				CONCAT('%', #{cri.keyword}, '%'))
 			</if>
-			<if test="searchType == 'cw'.toString()">
-				and ( content like CONCAT('%', #{keyword}, '%') OR writer like
-				CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'tcw'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'tcw'.toString()">
+				and ( title like CONCAT('%', #{cri.keyword}, '%')
 				OR
-				content like CONCAT('%', #{keyword}, '%')
+				content like CONCAT('%', #{cri.keyword}, '%')
 				OR
-				writer like CONCAT('%', #{keyword}, '%'))
+				writer like CONCAT('%', #{cri.keyword}, '%'))
 			</if>
 		</if>
 	</sql>
@@ -115,14 +115,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <![CDATA[  
   select * 
   from tbl_board 
-  where bno > 0 
+  where bno > 0 and category = #{category}
 ]]>
 
 		<include refid="search"></include>
   
 <![CDATA[    
   order by bno desc
-  limit #{pageStart}, #{perPageNum}
+  limit #{cri.pageStart}, #{cri.perPageNum}
 ]]>
 	</select>
 
@@ -130,7 +130,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <![CDATA[  
   select count(bno) 
   from tbl_board 
-  where bno > 0 
+  where bno > 0 and category = #{category}
 ]]>
 		<include refid="search"></include>
 
@@ -159,7 +159,13 @@ insert into tbl_attach2(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
 
 <select id="getAttach" resultType="string">
 select fullname from tbl_attach where bno = #{bno} order by regdate
+</select>
+ 
+<select id="getAttachOne" resultType="string"> 
+select fullname from tbl_attach where bno = #{bno} order by regdate limit 1
 </select> 
+
+
 
  
 <delete id="deleteAttach">

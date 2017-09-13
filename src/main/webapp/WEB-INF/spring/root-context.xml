@@ -48,6 +48,7 @@
 	</bean>
 	<context:component-scan base-package="com.thearc.persistence"></context:component-scan>
 	 <context:component-scan base-package="com.thearc.service"></context:component-scan>
+	 <context:component-scan base-package="com.thearc.aop"></context:component-scan>
 	<aop:config>
 	</aop:config>
 	

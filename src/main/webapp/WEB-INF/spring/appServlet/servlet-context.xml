@@ -46,11 +46,11 @@
 		
 	  
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
-	    <mapping path="/sboard*/register"/>
-	    <mapping path="/sboard*/modifyPage"/>
-	    <mapping path="/sboard*/removePage"/>
+	    <mapping path="/sboard/register/*"/>
+	    <mapping path="/sboard/modifyPage"/>
+	    <mapping path="/sboard/removePage"/>
 	    <mapping path="/sboard/mail/listmail"/>
-	    <mapping path="/sboard*/readPage/like"/>	
+	    <mapping path="/sboard/readPage/like/"/>	
 	        
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	

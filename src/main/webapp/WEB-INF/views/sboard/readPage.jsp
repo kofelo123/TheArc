@@ -461,7 +461,7 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "/sboard/modifyPage");
+		formObj.attr("action", "/sboard/modifyPage/${category}");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});

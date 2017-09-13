@@ -29,9 +29,9 @@ public interface BoardDAO {
   
   //use for dynamic sql
   
-  public List<BoardVO> listSearch(SearchCriteria cri)throws Exception;
+  public List<BoardVO> listSearch(SearchCriteria cri,String category)throws Exception;
   
-  public int listSearchCount(SearchCriteria cri)throws Exception;
+  public int listSearchCount(SearchCriteria cri,String category)throws Exception;
   
   
   public void updateReplyCnt(Integer bno, int amount)throws Exception;
@@ -43,6 +43,8 @@ public interface BoardDAO {
   public void addAttach2(String fullName)throws Exception;
   
   public List<String> getAttach(Integer bno)throws Exception;  
+
+  public String getAttachOne(Integer bno)throws Exception;//썸네일 게시판용  
    
   public void deleteAttach(Integer bno)throws Exception;
   

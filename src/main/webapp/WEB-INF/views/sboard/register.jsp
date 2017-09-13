@@ -53,6 +53,7 @@
 		<div class="form-group">
 			<label for="exampleInputEmail1">제목</label> <input type="text"
 				name='title' class="form-control" placeholder="제목을 입력해주세요">
+				<input type="hidden" name='category' value="${category}">
 		</div>
 		<!-- <div class="form-group"	>
 			<label for="exampleInputPassword1">Content</label>
@@ -78,7 +79,7 @@
 		
 		
 		<div class="form-group">
-			<label for="exampleInputEmail1">작성자</label> 
+			<label for="exampleInputEmail1">작성자 </label> 
 			<input type="text" name="writer" 
 			  class="form-control"  value="${login.uid }" readonly>
 		</div>

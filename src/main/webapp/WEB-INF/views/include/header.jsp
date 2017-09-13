@@ -66,7 +66,7 @@
 
                         <li><a href="#">관광코스</a>
                             <ul class="dropdown-menu">
-                                <li><a href="elements.html">금주의 디아크</a></li>
+                                <li><a href="/sboard/list/thisweek">금주의 디아크</a></li>
                                 <li><a href="columns.html">야자수 테라리움</a></li>
                                 <li><a href="typography.html">수상레저체험</a></li>
                                 <li><a href="pricing-tables.html">바닷속이야기</a></li>
@@ -94,27 +94,27 @@
                         <li><a href="#">커뮤니티</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/sboard/list">자유게시판</a>
+                                    <a href="/sboard/list/free">자유게시판</a>
                                 </li>
                                 <li><a href="/sboard/faq">자주하는질문</a></li>
-                                <li><a href="#">묻고답하기</a></li>
-                                <li><a href="portfolio_2.html">언론보도</a></li>
+                                <li><a href="/sboard/list/qna">묻고답하기</a></li>
+                                <li><a href="/sboard/list/news">언론보도</a></li>
                                 <li><a href="portfolio_3.html">포토존</a></li>
-                                <li><a href="portfolio_4.html">방문후기</a></li>
+                                <li><a href="/sboard/list/visit">방문후기</a></li>
                             </ul>
                         </li>
 
                         <li><a href="#">고객센터</a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-large-image.html">공지사항</a></li>
-                                <li><a href="blog-medium-image.html">서포터즈</a></li>
+                                <li><a href="/sboard/list/notice">공지사항</a></li>
+                                <li><a href="/sboard/list/supporter">서포터즈</a></li>
                                 <li><a href="blog-post.html">임시</a></li>
                             </ul>
                         </li>
 
                         <li><a href="contact.html">사이트맵</a></li>
-                            </ul>
-                        </li>
+                         
+                     
 
                        
                     </ul>
@@ -123,3 +123,5 @@
         </div>
         <!-- Container / End -->
     </header>
+    
+    <%@ include file="analytics.jsp"%>	

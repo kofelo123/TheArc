@@ -44,13 +44,13 @@ public class SearchBoardController {
 		 
 	 }
 	 
-	 @RequestMapping(value = "/list", method = RequestMethod.GET)
-	  public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	 @RequestMapping(value = "/list/{category}", method = RequestMethod.GET) ///9/12 pathVariable을 통한 다중게시판 테스트
+	  public String listPage(@ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category) throws Exception {
 
 	    logger.info(cri.toString());
 
 	    // model.addAttribute("list", service.listCriteria(cri));
-	    model.addAttribute("list", service.listSearchCriteria(cri));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<뭔소린지, 검색에 맞게 db에서 게시글들 모두긁어온다.
+	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
 	    
 	    
@@ -58,14 +58,15 @@ public class SearchBoardController {
 	    pageMaker.setCri(cri);
 
 	    // pageMaker.setTotalCount(service.listCountCriteria(cri));
-	    pageMaker.setTotalCount(service.listSearchCount(cri));
+	    pageMaker.setTotalCount(service.listSearchCount(cri,category));
 	    							//listSearchCount는 게시글갯수 카운트(cri(검색조건에맞는)) 그래서 totalcount를 setter해주는것
 	    model.addAttribute("pageMaker", pageMaker);
-	   
+	    
+	    return "/sboard/list";
 	  }
 
-	  @RequestMapping(value = "/readPage", method = RequestMethod.GET)
-	  public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
+	  @RequestMapping(value = "/readPage/{category}", method = RequestMethod.GET)
+	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid,@PathVariable("category")String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 	      throws Exception {
 		System.out.println("user테스트:"+uid);
 	    model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
@@ -79,7 +80,7 @@ public class SearchBoardController {
 	    	service.insertlikedefault(uid, bno); // uid,bno만 넣어주기 떄문에 'n'상태가 된다.      ///근데 굳이 이렇게 안해도 더 간결하게 false를 default로두고  하는 방법도 있지않을까..
 	    model.addAttribute(service.checklike(uid,bno));//추천여부체크 ///위에코드랑좀 겹치는데..
 	    }
-	    
+	    return "/sboard/readPage";
 	  }
 
 	  @RequestMapping(value = "/removePage", method = RequestMethod.POST)
@@ -97,13 +98,15 @@ public class SearchBoardController {
 	    return "redirect:/sboard/list";
 	  }
 
-	  @RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-	  public void modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	  @RequestMapping(value = "/modifyPage/{category}", method = RequestMethod.GET)///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
+	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category) throws Exception {
 
-	    model.addAttribute(service.read(bno));
+	    model.addAttribute(service.read(bno)); ///BoardVO return = category 포함.
+	    
+	    return "/sboard/modifyPage";
 	  }
 
-	  @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+	  @RequestMapping(value = "/modifyPage/{category}", method = RequestMethod.POST)
 	  public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
 	    logger.info(cri.toString());
@@ -118,18 +121,20 @@ public class SearchBoardController {
 
 	    logger.info(rttr.toString());
 
-	    return "redirect:/sboard/list";
+	    return "redirect:/sboard/list/"+board.getCategory();
 	  }
 
-	  @RequestMapping(value = "/register", method = RequestMethod.GET)
-	  public void registGET() throws Exception {
-
+	  @RequestMapping(value = "/register/{category}", method = RequestMethod.GET)
+	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
+		  model.addAttribute(category);
 	    logger.info("regist get ...........");
+	    
+	    return "/sboard/register";
 	  }
 
-	  @RequestMapping(value = "/register", method = RequestMethod.POST)
+	  @RequestMapping(value = "/register/{category}", method = RequestMethod.POST)
 	  public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
-
+		  
 	    logger.info("regist post ...........");
 	    logger.info(board.toString());
 
@@ -137,7 +142,7 @@ public class SearchBoardController {
 
 	    rttr.addFlashAttribute("msg", "SUCCESS");
 
-	    return "redirect:/sboard/list";
+	    return "redirect:/sboard/list/"+board.getCategory();
 	  }
 	  
 	  	
@@ -146,6 +151,13 @@ public class SearchBoardController {
 	  public List<String> getAttach(@PathVariable("bno")Integer bno)throws Exception{
 	    
 	    return service.getAttach(bno);
+	  }  
+	  
+	  @RequestMapping("/getAttachOne/{bno}")//썸네일 게시판용
+	  @ResponseBody
+	  public String getAttachOne(@PathVariable("bno")Integer bno)throws Exception{
+		  
+		  return service.getAttachOne(bno);
 	  }  
 	  
 
