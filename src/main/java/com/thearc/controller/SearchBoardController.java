@@ -53,6 +53,10 @@ public class SearchBoardController {
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
 	    
+	    //썸네일게시판용	
+	    if(category.equals("thisweek")||category.equals("photo"))
+	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
+	    //
 	    
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);

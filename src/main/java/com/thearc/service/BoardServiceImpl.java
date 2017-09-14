@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 
 		for (String fileName : files) {
-			dao.addAttach(fileName);
+			dao.addAttach(fileName); //board없었는데 썸네일 필요로 인해서 넣음
 		}
 	}
 
@@ -116,8 +116,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> listSearchCriteria(SearchCriteria cri,String category) throws Exception {
-
 		return dao.listSearch(cri,category);
+	}
+	
+	@Override
+	public List<String> listThumnail(SearchCriteria cri, String category) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listThumnail(cri,category);
 	}
 
 	@Override
@@ -181,6 +186,8 @@ public class BoardServiceImpl implements BoardService {
         
         return new ApiExplorer().forecast(today);
 	}
+
+	
 
 	
 

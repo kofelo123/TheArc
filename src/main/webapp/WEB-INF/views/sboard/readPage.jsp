@@ -518,7 +518,7 @@ $(document).ready(function(){
 	$.getJSON("/sboard/getAttach/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
 		$(list).each(function(){
 			
-			var fileInfo = getFileInfo(this);
+			var fileInfo = getFileInfo(this);//this는 list안의  fullname 하나
 			
 			var html = template(fileInfo);
 			

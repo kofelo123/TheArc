@@ -99,7 +99,7 @@
                                 <li><a href="/sboard/faq">자주하는질문</a></li>
                                 <li><a href="/sboard/list/qna">묻고답하기</a></li>
                                 <li><a href="/sboard/list/news">언론보도</a></li>
-                                <li><a href="portfolio_3.html">포토존</a></li>
+                                <li><a href="/sboard/list/photo">포토존</a></li>
                                 <li><a href="/sboard/list/visit">방문후기</a></li>
                             </ul>
                         </li>

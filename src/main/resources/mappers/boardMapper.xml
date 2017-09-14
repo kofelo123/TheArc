@@ -125,6 +125,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   limit #{cri.pageStart}, #{cri.perPageNum}
 ]]>
 	</select>
+	
+	 
+		<select id="listThumnail" resultType="String">
+<![CDATA[  
+select fullName from tbl_attach 
+where imgnum=1 and bno IN (select bno from tbl_board where category=#{category})
+
+]]>
+
+	
+  
+<![CDATA[    
+  order by bno desc
+  limit #{cri.pageStart}, #{cri.perPageNum}
+]]>
+	</select>
 
 	<select id="listSearchCount" resultType="int">
 <![CDATA[  
@@ -135,6 +151,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="search"></include>
 
 	</select>
+	
+	
 
 
  
@@ -147,11 +165,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   update tbl_board set viewcnt = viewcnt +1 where bno = #{bno}
 </update>
 
+<select id="countImgNum" resultType="int">
+	select count(fullName) from tbl_attach where bno= LAST_INSERT_ID();
+</select>
 
- 
+ <update id="updateImgNum">
+update tbl_attach set imgnum = #{count} where fullName=#{fullName};
+</update>
+
 <insert id="addAttach">
 insert into tbl_attach(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
 </insert> 
+
+
+
+
 <insert id="addAttach2">
 insert into tbl_attach2(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
 </insert> 

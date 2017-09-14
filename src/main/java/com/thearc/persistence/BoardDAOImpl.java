@@ -76,9 +76,15 @@ public class BoardDAOImpl implements BoardDAO {
 	  Map<String ,Object> paramMap = new HashMap<String ,Object>();
 	  paramMap.put("cri", cri);
 	  paramMap.put("category", category);
-	  System.out.println("Test:"+paramMap);
-	  System.out.println("Test:"+session.selectList(namespace + ".listSearch", paramMap));
     return session.selectList(namespace + ".listSearch", paramMap);
+  }
+  
+  @Override
+  public List<String> listThumnail(SearchCriteria cri, String category) throws Exception {
+	  Map<String ,Object> paramMap = new HashMap<String ,Object>();
+	  paramMap.put("cri", cri);
+	  paramMap.put("category", category);
+    return session.selectList(namespace + ".listThumnail", paramMap);
   }
 
   @Override
@@ -114,6 +120,17 @@ public class BoardDAOImpl implements BoardDAO {
   public void addAttach(String fullName) throws Exception {
     
     session.insert(namespace+".addAttach", fullName);
+    //
+    int count=session.selectOne(namespace+".countImgNum");
+    System.out.println("countTest"+count);
+   
+    //
+    Map<String, Object> paramMap = new HashMap<String, Object>();
+    
+    paramMap.put("count", count);
+    paramMap.put("fullName", fullName);
+    
+    session.update(namespace+".updateImgNum", paramMap);
     
   }
   
@@ -219,5 +236,7 @@ public String getAttachOne(Integer bno) throws Exception {
 	
 	return session.selectOne(namespace + ".getAttachOne", bno);
 }
+
+
 
 }

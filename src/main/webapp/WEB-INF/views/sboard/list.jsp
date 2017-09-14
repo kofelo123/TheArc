@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 
 <%@include file="../include/header2.jsp"%>
@@ -77,7 +79,7 @@
 					<c:when test="${category eq 'thisweek' }"> 
 						<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<c:forEach items="${list}" var="boardVO">
+						<c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
 					<tr>
 						<div class="blog_medium">
 							<article class="post">
@@ -87,15 +89,16 @@
 								</div>
 								<figure class="post_img">
 									<div class="image">
-									<!-- <a href="#">
-										<img src="images/blog/blog_medium_1.png" alt="이미지없음">
-									</a> -->
+										 <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="500" width="300" alt="이미지없음">
+									</a>
 									</div>
 								</figure>
 								<div class="post_content">
 									<div class="post_meta">
 										<h2>
-											<a href="#">${boardVO.title}</a>
+											<a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+											${boardVO.title}</a>
 										</h2>
 										<div class="metaInfo">
 											<span><i class="fa fa-user"></i> By <a href="#">${boardVO.writer}</a> </span>
@@ -132,6 +135,54 @@
 					</c:forEach>
 					</div>
 				</div><!-- /row끝, 썸네일게시판  -->
+				</c:when>
+					 
+					 <c:when test="${category eq 'photo' }"> <!-- 포토존게시판 -->
+					 <div class="row">
+            <!--begin isotope -->
+                <div class="isotope col-lg-12">
+                <ul id="list" class="portfolio_list clearfix ">
+                <c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
+                    <!--begin portfolio_list -->
+                    
+
+                        <!--begin List Item -->
+
+                        <li class="list_item col-lg-4 col-md-4 col-sm-4">
+                            <div class="recent-item">
+                                <figure class="touching medium">
+                                    <div class="pic">
+                                        <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
+										 </a>
+                                    </div>
+                                    <div class="skin-overlay"></div>
+                                    
+                                   <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/>
+                                   <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
+									
+                                    <a href="/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
+                                    <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                    <figcaption class="item-description">
+                                        <h5>${boardVO.title}</h5>
+                                        <span>${boardVO.writer}</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </li>
+                        <!--end List Item -->
+
+          
+                    <!--end portfolio_list -->
+                    </c:forEach>
+                       </ul>       
+                </div>
+             </div><!-- 포토존게시판 -->
+             
+				
+				
 					</c:when>
 				
 				<c:otherwise>
@@ -249,20 +300,8 @@
 
 				});
 				
-				var bno = 3216;
-				var template = Handlebars.compile($("#templateAttach").html());
 				
-				$.getJSON("/sboard/getAttachOne/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
-					$(list).each(function(){
-						
-						var fileInfo = getFileInfo(this);
-						
-						var html = template(fileInfo);
-						
-						 $(".image").append(html);
-						
-					});
-				});
+				
 				
 				
 

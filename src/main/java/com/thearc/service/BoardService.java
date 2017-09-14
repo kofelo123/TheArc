@@ -25,6 +25,8 @@ public interface BoardService {
 	public int listCountCriteria(Criteria cri) throws Exception;
 
 	public List<BoardVO> listSearchCriteria(SearchCriteria cri,String category) throws Exception;
+	
+	public List<String> listThumnail(SearchCriteria cri,String category) throws Exception;
 
 	public int listSearchCount(SearchCriteria cri,String category) throws Exception;
 
