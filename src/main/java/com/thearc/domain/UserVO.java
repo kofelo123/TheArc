@@ -19,8 +19,16 @@ public class UserVO {
 	private String phone3;	
 	private Timestamp indate;
 	private String encrypthash; // 해쉬코드값 저장용
+	private String authority;
 	
 	
+	public String getAuthority() {
+		return authority;
+	}
+	
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -112,12 +120,12 @@ public class UserVO {
 		this.encrypthash = encrypthash;
 	}
 	
+
 	@Override
 	public String toString() {
-		return "MemberVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", upoint=" + upoint + ", email=" + email
+		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", upoint=" + upoint + ", email=" + email
 				+ ", email2=" + email2 + ", email3=" + email3 + ", zipNum=" + zipNum + ", addr1=" + addr1 + ", addr2="
 				+ addr2 + ", phone=" + phone + ", phone2=" + phone2 + ", phone3=" + phone3 + ", indate=" + indate
-				+ ", encrypthash=" + encrypthash + "]";
+				+ ", encrypthash=" + encrypthash + ", authority=" + authority + "]";
 	}
-	
 }

@@ -95,4 +95,5 @@
 			self.location = "/user/join";
 
 		});
+    	
 </script>

@@ -32,12 +32,20 @@
                 </div>
                      <!--  </div> -->
                     <!-- <div class="col-lg-2 col-md-2 col-xs-12"> -->
+                    
+                    <c:if test="${empty login }">
                     <div class="col-sm-1 " style="margin-right:-20px;margin-top:10px">
                       <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
                      </div>
               		<div class="col-sm-1 " style="margin-top:10px">
                       <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
                      </div>
+                    </c:if>
+                    <c:if test="${not empty login }">
+                    	<img src="/resources/bootstrap/image/user.png"/ style="float:left;margin-top:9px;"><h3>일반회원 ${login.uid}</h3>
+                    	<button type="button" id="message" onClick="window.open('/sboard/mail/listmail?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok">메세지함</button>
+                    	
+                    </c:if>
               
             </div>
         </div>

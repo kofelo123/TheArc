@@ -32,6 +32,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     if (userVO != null) {
 
       logger.info("new login success");
+      System.out.println(userVO);
       session.setAttribute(LOGIN, userVO);
      
            
@@ -45,8 +46,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       }
       // response.sendRedirect("/");
       Object dest = session.getAttribute("dest");
-
-      response.sendRedirect(dest != null ? (String) dest : "/");
+      System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
+      response.sendRedirect(dest != null ? (String)dest : "/");
     }
   }
 

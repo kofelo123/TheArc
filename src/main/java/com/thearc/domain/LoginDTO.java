@@ -4,6 +4,14 @@ public class LoginDTO {
 	private String uid;
 	private String upw;
 	private boolean useCookie;
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	private String authority;
 	
 	public String getUid() {
 		return uid;
@@ -23,12 +31,12 @@ public class LoginDTO {
 	public void setUseCookie(boolean useCookie) {
 		this.useCookie = useCookie;
 	}
-	
 	@Override
 	public String toString() {
-		return "LoginDTO [uid=" + uid + ", upw=" + upw + ", useCookie="
-				+ useCookie + "]";
+		return "LoginDTO [uid=" + uid + ", upw=" + upw + ", useCookie=" + useCookie + ", authority=" + authority + "]";
 	}
+	
+	
 	
 	
 }

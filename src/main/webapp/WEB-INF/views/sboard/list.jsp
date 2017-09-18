@@ -79,8 +79,8 @@
 					<c:when test="${category eq 'thisweek' }"> 
 						<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
 					<tr>
+						<c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
 						<div class="blog_medium">
 							<article class="post">
 								<div class="post_date">
@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="skin-overlay"></div>
                                     
-                                   <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/>
+                                   <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/><!-- 썸네일 ->원본이미지 띄우기   -->
                                    <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
 									
                                     <a href="/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>

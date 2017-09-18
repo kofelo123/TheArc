@@ -28,4 +28,12 @@ public class HomeController {
 	    return "home";
 	  }
 	
+	@RequestMapping(value = "/error403", method = RequestMethod.GET)
+	public String error403() {
+		
+		return "error/error403";
+	}
+	
+	
+	
 }

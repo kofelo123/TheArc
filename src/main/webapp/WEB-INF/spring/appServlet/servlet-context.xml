@@ -51,6 +51,7 @@
 	    <mapping path="/sboard/removePage"/>
 	    <mapping path="/sboard/mail/listmail"/>
 	    <mapping path="/sboard/readPage/like/"/>	
+	    <mapping path="/sboard/list/supporter"/>	
 	        
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	

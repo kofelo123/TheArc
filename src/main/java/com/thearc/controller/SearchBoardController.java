@@ -1,5 +1,6 @@
 package com.thearc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,8 +36,19 @@ public class SearchBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 	
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
-	  public void main(Locale locale, Model model) throws Exception {
+	  public void main(Locale locale, Model model, SearchCriteria cri) throws Exception {
 	   	  model.addAttribute("weather",service.getWeather());
+	   	 
+	   	 cri.setPerPageNum(5);
+	   	 List<List<BoardVO>> minBoard = new ArrayList<List<BoardVO>>();//미니게시판 - 4개 리스트를 담는 2중forEach사용
+	   	 minBoard.add(service.listSearchCriteria(cri,"free"));
+	   	 minBoard.add(service.listSearchCriteria(cri,"notice"));
+	   	 minBoard.add(service.listSearchCriteria(cri,"news"));
+	   	 minBoard.add(service.listSearchCriteria(cri,"visit"));
+	   	 model.addAttribute("minBoard", minBoard);
+	   	model.addAttribute("photo", service.listSearchCriteria(cri,"photo"));
+	   	model.addAttribute("thumNail",service.listThumnail(cri,"photo"));
+	   	 
 	  }
 	 
 	 @RequestMapping(value="/faq",method=RequestMethod.GET)
@@ -53,7 +65,7 @@ public class SearchBoardController {
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
 	    
-	    //썸네일게시판용	
+	    //썸네일게시판용	+포토존
 	    if(category.equals("thisweek")||category.equals("photo"))
 	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
 	    //

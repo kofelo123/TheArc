@@ -15,7 +15,7 @@ public class AdminDAOImpl implements AdminDAO{
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace = "com.smartitcording.mapper.AdminMapper";
+	private static String namespace = "com.thearc.mapper.AdminMapper";
 
 	@Override
 	public List<UserVO> listuser() throws Exception {

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 
 
@@ -42,6 +44,11 @@
 width:100%;
 }
 
+@font-face {
+    font-family: 'Typo_DecoVariety';
+    src: url(/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
+}
+
 </style>
 
 <!--start wrapper-->
@@ -49,7 +56,53 @@ width:100%;
     <section class="promo_box">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-1">
+            	
+            	<div class="col-sm-1"></div>
+            	
+            	<c:forEach items="${weather }" var="weatherObj" varStatus="status" begin="0" end="3">
+            		<div class="col-sm-2">
+            			
+                	<c:choose>
+      					 <c:when test="${weatherObj.sky == '1'}">
+     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <h3>맑음</h3>
+  					     </c:when>
+      					 <c:when test="${weatherObj.sky == '2'}">
+     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <h3>구름조금</h3>
+  					     </c:when>
+      					 <c:when test="${weatherObj.sky == '3'}">
+     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <h3>구름많음</h3>
+  					     </c:when>
+      					 <c:when test="${weatherObj.sky == '4'}">
+     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <h3>흐림</h3>
+  					     </c:when>
+  					 </c:choose>
+                    <h3>강수확률: ${weatherObj.pop}%</h3>
+                    <h3>습도: ${weatherObj.reh}%</h3>
+                    <h3>기온: ${weatherObj.t3h}℃</h3>
+                    
+                    <c:choose>
+                    <c:when test="${status.index==0 }">
+                    <h2> 오전 9시 기준</h2>
+                    </c:when>
+                    <c:when test="${status.index==1 }">
+                    <h2> 낮 12시 기준</h2>
+                    </c:when>
+                    <c:when test="${status.index==2 }">
+                    <h2> 오후 3시 기준</h2>
+                    </c:when>
+                    <c:when test="${status.index==3 }">
+                    <h2> 오후 6시 기준</h2>
+                    </c:when>
+                    </c:choose>	
+            		</div>
+				</c:forEach>
+				
+				            
+               <%--  <div class="col-sm-2 col-sm-offset-1">
                 	
                 	<c:choose>
       					 <c:when test="${weather.get(0).sky == '1'}">
@@ -74,6 +127,7 @@ width:100%;
                     <h3>기온: ${weather.get(0).t3h}℃</h3>
                     <h2>오전 9시 기준</h2>
                 </div>
+                
                 <div class="col-sm-2">
                     	<c:choose>
       					 <c:when test="${weather.get(1).sky == '1'}">
@@ -147,104 +201,18 @@ width:100%;
                     <h3>습도: ${weather.get(3).reh}%</h3>
                     <h3>기온: ${weather.get(3).t3h}℃</h3>
                     <h2>오후6시기준</h2>
-                    </div>
-                </div>
+                    </div> --%>
                  <div class="col-sm-2">
                  	<div class="time" style="margin-left:-60px;margin-top:10px;">
                		  	<img src="/resources/bootstrap/images/weather/time.PNG"  />
                  	</div>
                  </div>
+                </div>
                 
             </div>
         </div>
     </section>
 
-    <!--start info service-->
-    <section class="info_service">
-        <div class="container">
-            <div class="row sub_content">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-laptop"></i></a>
-                            </div>
-                            <h3>Modern Design</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-heart"></i></a>
-                            </div>
-                            <h3>Clean &amp; Minimal</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-trophy"></i></a>
-                            </div>
-                            <h3>Branding Theme</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row sub_content">
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-gear"></i></a>
-                            </div>
-                            <h3>Easy To Customize</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-volume-off"></i></a>
-                            </div>
-                            <h3>Multimedia Support</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="serviceBox_1">
-                        <div class="icon_service">
-                            <div class="hover-icon new-effect">
-                                <a href=""><i class="service-1-icon hover-icon-images fa fa-suitcase"></i></a>
-                            </div>
-                            <h3>Documentation</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, cons adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus mag dis parturient.</p>
-                        <a class="read" href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--end info service-->
 
     <section class="latest_work">
         <div class="container">
@@ -252,264 +220,88 @@ width:100%;
                 <div class="carousel-intro">
                     <div class="col-md-12">
                         <div class="dividerHeading">
-                            <h4><span>Recent Work</span></h4>
+                            <h4><span>포토존</span></h4>
                         </div>
-                        <div class="carousel-navi">
-                            <div id="work-prev" class="arrow-left jcarousel-prev"><i class="fa fa-angle-left"></i></div>
-                            <div id="work-next" class="arrow-right jcarousel-next"><i class="fa fa-angle-right"></i></div>
-                        </div>
+                        
                         <div class="clearfix"></div>
                     </div>
                 </div>
 
                 <div class="jcarousel recent-work-jc">
                     <ul class="jcarousel-list">
+                     <c:forEach items="${photo}" var="boardVO" varStatus="status" begin="0" end="5">
                         <!-- Recent Work Item -->
                         <li class="col-sm-12 col-md-3 col-lg-3">
                             <div class="recent-item">
                                 <figure class="touching medium">
                                     <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_1.png" alt="" />
+                                        <a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
+										 </a>
                                     </div>
                                     <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_1.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link">
+                                    
+                                    <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/><!-- 썸네일 ->원본이미지 띄우기   -->
+                                   <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
+									
+									
+                                   <a href="/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
+                                    <a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
                                         <i class="fa fa-link"></i>
                                     </a>
                                     <figcaption class="item-description">
-                                        <h5>Lorem ipsum</h5>
-                                        <span>Technology</span>
+                                        <h5>${boardVO.title}</h5>
+                                        <span>${boardVO.writer}</span>
                                     </figcaption>
                                 </figure>
                             </div>
                         </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_2.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_2.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Dolorsit</h5>
-                                        <span>Technology</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_3.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_3.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Working in Shop</h5>
-                                        <span>Photography</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_4.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_4.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Sailing</h5>
-                                        <span>Photography</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_5.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_5.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>House</h5>
-                                        <span>Architecture</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_1.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_3.png" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Nevide</h5>
-                                        <span>Motion</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_2.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_2.png" class="hover-zoom mfp-image"><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Sunrise</h5>
-                                        <span>Photography</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
-
-                        <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
-                            <div class="recent-item">
-                                <figure class="touching medium">
-                                    <div class="pic">
-                                        <img src="/resources/bootstrap/images/portfolio/portfolio_3.png" alt="" />
-                                    </div>
-                                    <div class="skin-overlay"></div>
-                                    <a href="/resources/bootstrap/images/portfolio/full/portfolio_3.png" class="hover-zoom mfp-image"><i class="fa fa-search"></i></a>
-                                    <a href="portfolio_single.html" class="hover-link"><i class="fa fa-link"></i></a>
-                                    <figcaption class="item-description">
-                                        <h5>Vena Branding</h5>
-                                        <span>Identity</span>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </li>
+						</c:forEach>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <section class="feature_bottom">
-        <div class="container">
-            <div class="row sub_content">
-                <div class="col-md-6">
-                    <div class="dividerHeading">
-                        <h4><span>Why Choose Us?</span></h4>
-
-                    </div>
-                    <ul class="list_style circle">
-                        <li><a href="#">Donec convallis, metus nec tempus aliquet</a></li>
-                        <li><a href="#">Aenean commodo ligula eget dolor</a></li>
-                        <li><a href="#">Cum sociis natoque penatibus mag ipsum</a></li>
-                        <li><a href="#">Lorem ipsum dolor sit amet cons adipiscing</a></li>
-                        <li><a href="#">Accumsan vulputate faucibus turpis dictum</a></li>
-                        <li><a href="#">Nullam ultrices eros accumsan vulputate</a></li>
-                        <li><a href="#">Nunc aliquet tincidunt metus sit amet</a></li>
-                    </ul>
-                </div>
-
-                <!-- TESTIMONIALS -->
-                <div class="col-md-6">
-                    <div class="dividerHeading">
-                        <h4><span>What Client's Say</span></h4>
-                    </div>
-
-                    <div class="testimonial carousel slide" id="testimonial-carousel">
-                        <div class="carousel-inner">
-                            <div class="active item">
-                                <div class="testimonial-item">
-                                    <div class="icon"><i class="fa fa-quote-right"></i></div>
-                                    <blockquote>
-                                        <p>Donec convallis, metus nec tempus aliquet, nunc metus adipiscing leo, a lobortis nisi dui ut odio. Nullam ultrices, eros accumsan vulputate faucibus, turpis tortor dictum.</p>
-                                    </blockquote>
-                                    <div class="testimonial-review">
-                                        <img alt="testimoni" src="/resources/bootstrap/images/testimonials/1.png">
-                                        <h1>Tom Jobs,<small>Company Inc.</small></h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="testimonial-item">
-                                    <div class="icon"><i class="fa fa-quote-right"></i></div>
-                                    <blockquote>
-                                        <p>Metus aliquet tincidunt metus, sit amet mattis lectus sodales ac. Suspendisse rhoncus dictum eros, ut egestas eros luctus eget. Nam nibh sem, mattis et feugiat ut, porttitor nec risus.</p>
-                                    </blockquote>
-                                    <div class="testimonial-review">
-                                        <img alt="testimoni" src="/resources/bootstrap/images/testimonials/2.png">
-                                        <h1>Tom Jobs<small>Leopard</small></h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="testimonial-item">
-                                    <div class="icon"><i class="fa fa-quote-right"></i></div>
-                                    <blockquote>
-                                        <p>Nunc aliquet tincidunt metus, sit amet mattis lectus sodales ac. Suspendisse rhoncus dictum eros, ut egestas eros luctus eget. Nam nibh sem, mattis et feugiat ut, porttitor nec risus.</p>
-                                    </blockquote>
-                                    <div class="testimonial-review">
-                                        <img alt="testimoni" src="/resources/bootstrap/images/testimonials/3.png">
-                                        <h1>Tom Jobs<small>Leopard</small></h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="testimonial-buttons"><a data-slide="prev" href="#testimonial-carousel"><i class="fa fa-chevron-left"></i></a>
-                            <a data-slide="next" href="#testimonial-carousel"><i class="fa fa-chevron-right"></i></a></div>
-                    </div>
-                </div><!-- TESTIMONIALS END -->
+    
+    <!-- 미니게시판  (2중foreach)-->
+    <section class="content">
+    <div class="container">
+         <div class="row">
+              <c:forEach items="${minBoard}" var="minList">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">${minList.get(0).category}게시판</h3>
             </div>
-        </div>
-    </section>
-    <section class="clients">
-        <div class="container">
-            <div class="row sub_content">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="dividerHeading">
-                        <h4><span>Our Clients</span></h4>
-                    </div>
-
-                    <div class="our_clients">
-                        <ul class="client_items clearfix">
-                            <li class="col-sm-3 col-md-3 col-lg-3">
-                                <a href="services.html"  data-placement="top" data-toggle="tooltip" title="client 1" ><img src="images/clients/1.png" alt="" /></a>
-                            </li>
-                            <li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="top" data-toggle="tooltip" title="client 2" ><img src="images/clients/2.png" alt="" /></a></li>
-                            <li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="top" data-toggle="tooltip" title="client 3" ><img src="images/clients/3.png" alt="" /></a></li>
-                            <li class="col-sm-3 col-md-3 col-lg-3"><a href="services.html" data-placement="top" data-toggle="tooltip" title="client 4" ><img src="images/clients/4.png" alt="" /></a></li>
-                        </ul><!--/ .client_items-->
-                    </div>
-                </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-hover table-striped">
+              <tr><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+              	<c:forEach items="${minList }" var="boardVO">
+                <tr style="font-family:Typo_DecoVariety; font-size:17px;color:#337ab7;">
+                  <th><a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>${boardVO.title}</th></a>
+                  <th>${boardVO.writer}</th>
+                  <th><fmt:formatDate pattern="MM-dd"
+										value="${boardVO.regdate}" /></th>
+                  <th>${boardVO.viewcnt}</th>
+        		</c:forEach>
+                </tr>
+              
+              </table>
             </div>
+            <!-- /.box-body -->
+           </div>
+          <!-- /.box -->
         </div>
+                </c:forEach>
+      </div>
+      <!-- /.row -->
+      </div>
+      <!-- 컨테이너(80%)  -->
     </section>
+     
+      
+      
     </section>
 <!--end wrapper-->
 	
