@@ -29,9 +29,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       HttpServletResponse response, Object handler) throws Exception {
     
     HttpSession session = request.getSession();   
-    
   
-    System.out.println("SessionTest:"+session.getAttribute("login"));
     if(session.getAttribute("login") == null){
     
       logger.info("current user is not logined");
@@ -96,7 +94,16 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    	}
 	    		
 	    }
-	  
+	    
+	    pathName=url[url.length-1];
+	    if(pathName.equals("admin")){
+	    	UserVO vo = (UserVO) session.getAttribute("login");
+	    	if(vo.getAuthority().equals("user")||vo.getAuthority().equals("supporter")){
+	    		response.sendRedirect("/error403");
+	    	}
+	    		
+	    }
+	    
 	  
 	  
   }

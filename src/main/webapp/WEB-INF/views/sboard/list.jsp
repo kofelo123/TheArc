@@ -98,37 +98,20 @@
 									<div class="post_meta">
 										<h2>
 											<a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
-											${boardVO.title}</a>
+											${fn:substring(boardVO.title,0,15 )}..</a>
 										</h2>
 										<div class="metaInfo">
 											<span><i class="fa fa-user"></i> By <a href="#">${boardVO.writer}</a> </span>
 											<span><i class="fa fa-comments"></i> <a href="#">${boardVO.replycnt}</a></span>
 										</div>
 									</div>
-									<p>${boardVO.content }</p>
-									<a class="btn btn-small btn-default" href="#">자세히 보기</a>
+									<%-- <p>${boardVO.content }</p> --%>
+									<p>${fn:substring(boardVO.content,0,100) } ...</p>
+									<%-- "${fn:substring(thumNail[status.index],0,12)}" --%>
 								</div>
 							</article>
 													
-						<!-- 	<article class="post no_images">
-								<div class="post_date">
-									<span class="day">28</span>
-									<span class="month">Nov</span>
-								</div>
-								<div class="post_content">
-									<div class="post_meta">
-										<h2>
-											<a href="#">perferendis dolor asperio</a>
-										</h2>
-										<div class="metaInfo">
-											<span><i class="fa fa-user"></i> By <a href="#">John Doe</a> </span>
-											<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt  ut aut reiciendise voluptat maiores alias consequaturs aut perferendis doloribus asperiores ut labore.</p>
-									<a class="btn btn-small btn-default" href="#">Read More</a>
-								</div>
-							</article> -->
+						
 							
 						</div>
 					</tr>

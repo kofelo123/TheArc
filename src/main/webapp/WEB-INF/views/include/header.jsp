@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/bootstrap/css/style.css">
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" media="screen" data-name="skins">
+    
+ 	<meta property="og:title"              content="${boardVO.title }" />
+	<meta property="og:description"        content="${boardVO.content }" />
+	<meta property="og:image"              content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFa8hrulJs73ktd-t_ST_Bgjqq9Hu3LIWUyEx0F2vQGmtX7ou" />
 </head>
 
   
@@ -42,9 +46,25 @@
                      </div>
                     </c:if>
                     <c:if test="${not empty login }">
-                    	<img src="/resources/bootstrap/image/user.png"/ style="float:left;margin-top:9px;"><h3>일반회원 ${login.uid}</h3>
-                    	<button type="button" id="message" onClick="window.open('/sboard/mail/listmail?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok">메세지함</button>
-                    	
+                    <div class="col-sm-1">
+                    	<c:choose>
+                    		<c:when test="${login.authority=='user' }">
+                    	<img src="/resources/bootstrap/img/user.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(일반회원)</h4>
+                    		</c:when>
+                    		<c:when test="${login.authority=='supporter' }">
+                    	<img src="/resources/bootstrap/img/supporter.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(서포터즈)</h4>
+                    		</c:when>
+                    		<c:when test="${login.authority=='admin' }">
+                    	<img src="/resources/bootstrap/img/king.jpg"  style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(관리자)</h4>
+                    		</c:when>
+                    	</c:choose>
+                    </div>
+                    <div class="col-sm-1">
+                    	<button type="button" id="message" onClick="window.open('/sboard/mail/listmail?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-15px;">메세지함</button>
+                    </div>
+                    <div class="col-sm-1">
+                    	<button type="button" id="logout" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-60%;">로그아웃</button>
+                    </div>
                     </c:if>
               
             </div>
@@ -63,11 +83,11 @@
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">디아크소개</a>
+                        <li><a href="#">디아크소개</a>
                             <ul class="dropdown-menu">
-                                <li><a href="index_2.html">디아크란</a></li>
-                                <li><a href="index_3.html">관람안내</a></li>
-                                <li><a href="index_4.html">디아크풍경</a></li>
+                                <li><a href="/sboard/thearc">디아크란</a></li>
+                                <li><a href="/sboard/exhibit">관람안내</a></li>
+                               <!--  <li><a href="index_4.html">디아크풍경</a></li> -->
                                 <li><a href="/sboard/location">오시는길</a></li>
                             </ul>
                         </li>
@@ -84,18 +104,8 @@
 
                         <li><a href="#">이벤트</a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="about.html">임시</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="about.html">임시</a></li>
-                                        <li><a href="about-2.html">임시</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="services.html">임시</a></li>
-                                <li><a href="faq.html">임시</a></li>
-                                <li><a href="sidebar-right.html">임시</a></li>
-                                <li><a href="sidebar-left.html">임시</a></li>
-                                <li><a href="404-page.html">임시</a></li>
+                                <li><a href="/sboard/list/game">오락실</a></li>
+                                <li><a href="/sboard/list/race">포토레이싱대회</a></li>
                             </ul>
                         </li>
 
@@ -104,8 +114,6 @@
                                 <li>
                                     <a href="/sboard/list/free">자유게시판</a>
                                 </li>
-                                <li><a href="/sboard/faq">자주하는질문</a></li>
-                                <li><a href="/sboard/list/qna">묻고답하기</a></li>
                                 <li><a href="/sboard/list/news">언론보도</a></li>
                                 <li><a href="/sboard/list/photo">포토존</a></li>
                                 <li><a href="/sboard/list/visit">방문후기</a></li>
@@ -115,14 +123,18 @@
                         <li><a href="#">고객센터</a>
                             <ul class="dropdown-menu">
                                 <li><a href="/sboard/list/notice">공지사항</a></li>
+                                 <li><a href="/sboard/faq">자주하는질문</a></li>
+                                <li><a href="/sboard/list/qna">묻고답하기</a></li>
                                 <li><a href="/sboard/list/supporter">서포터즈</a></li>
-                                <li><a href="blog-post.html">임시</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="contact.html">사이트맵</a></li>
-                         
-                     
+                        <li><a href="#">기타</a>
+                         <ul class="dropdown-menu">
+                                <li><a href="#" onClick="window.open('/music', '', 'width=680, height=420,left=830, top=330'); return false;"><i class="glyphicon glyphicon-music" style="color:#25c1ef"></i> <span>뮤직플레이어</span></a></li>
+                                 <li><a href="https://github.com/kofelo123/TheArc"><i class="fa fa-github "></i> <span>깃허브</span></a></li>
+                            </ul>
+                    	 </li>
 
                        
                     </ul>

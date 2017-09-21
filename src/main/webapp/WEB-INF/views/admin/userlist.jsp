@@ -15,42 +15,10 @@
 		<div class="col-md-12" style="width:80%">
 			<!-- general form elements -->
 			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">사용자 검색</h3>
-				</div>
+				
 
 
-				<div class='box-body'>
-
-					<select name="searchType">
-						<option value="n"
-							<c:out value="${cri.searchType == null?'selected':''}"/>>
-							---</option>
-						<option value="t"
-							<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
-							Title</option>
-						<option value="c"
-							<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
-							Content</option>
-						<option value="w"
-							<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
-							Writer</option>
-						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
-							Title OR Content</option>
-						<option value="cw"
-							<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
-							Content OR Writer</option>
-						<option value="tcw"
-							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							Title OR Content OR Writer</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-					<button id='searchBtn'>Search</button>
-					
-
-				</div>
-			</div>
+				
 
 
 			<div class="box">
@@ -60,11 +28,14 @@
 				<div class="box-body">
 					<table class="table table-hover table-striped" >
 						<tr>
-							<th style="width: 180px">아이디</th>
+							<th style="width: 140px">아이디</th>
 							<th style="width: 150px">이름</th>
 							<th>연락처</th>
 							<th>메일</th>
-							<th style="width: 120px">권한</th>
+							
+							<th style="width: 100px">권한</th>
+							<th style="width:100px">변경</th>
+							<th style="width:100px">삭제</th>
 						</tr>
 
 						<c:forEach items="${userVO}" var="userlist">
@@ -74,7 +45,13 @@
 								<td>${userlist.uname}</td>
 								<td>${userlist.phone2}</td>
 								<td>${userlist.email2 }</td>
-								<td>일반사용자</td>
+								<td>${userlist.authority }</td>
+								<td>
+									<button id="authoritymodify" name="modify" onClick="window.location.href='/admin/authmodify?uid=${userlist.uid}&authority=${userlist.authority}'">변경</button>
+								</td>
+								<td>
+									<button id="userDrop" name="delete" onClick="window.location.href='/admin/userDrop?uid=${userlist.uid}&authority=${userlist.authority}'">삭제</button>
+								</td>
 							</tr>
 
 						</c:forEach>
@@ -152,6 +129,8 @@
 					self.location = "register";
 
 				});
+				
+				
 
 			});
 </script>

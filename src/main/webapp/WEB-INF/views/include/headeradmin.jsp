@@ -42,7 +42,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="/sboard/list" class="logo">
+        <a href="/sboard/main" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b></b></span>
           <!-- logo for regular state and mobile devices -->
@@ -172,9 +172,7 @@
             <li class="header" style="background-color:#ddf5f8;"></li>
             <li class="header" style="background-color:#ddf5f8;"></li>
             
-              <li><a href="https://github.com/kofelo123/TheArc"><i class="fa fa-github "></i> <span>깃허브</span></a></li>
-            <li><a href="#" onClick="window.open('/sboard/chat', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-circle-o text-yellow"></i> <span>채팅</span></a></li>
-            <li><a href="#" onClick="window.open('/sboard/music', '', 'width=600, height=400,left=900, top=350'); return false;"><i class="glyphicon glyphicon-music" style="color:#25c1ef"></i> <span>뮤직플레이어</span></a></li>
+             
            </ul>
         </section>
         <!-- /.sidebar -->

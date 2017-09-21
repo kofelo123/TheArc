@@ -6,7 +6,7 @@
             <div class="row">
             	<br/><br/>
                 <div class="col-md-6">
-                    <p class="copyright">&copy; Copyright 2014 jQuery Rain | Powered by  <a href="http://jQueryrain.com/"> jQuery Rain</a></p>
+                    <p class="copyright">&copy; Copyright 2017 한국IT교육원 | Powered by  <a href="http://www.github.com/kofelo123/TheArc/"> 허정원</a></p>
                 </div>
 
                 <div class="col-md-6">
@@ -52,14 +52,14 @@
 
 	<div id="quick_nav">
     <ul>
-        <li><a href="/"><img src="/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
-        <li><a href="/business/aramarina/application_for/portmis.asp?devide=2_2_3"><img src="/resources/bootstrap/images/common/btn_quick02.jpg" alt="갑문이용 신고" /></a></li>
-		<li><a href="/download/giwaterway_report.hwp"><img src="/resources/bootstrap/images/common/btn_quick09.jpg" alt="갑문신고 양식 다운로드" /></a></li>
-        <li><a href="/business/aramarina/charge/water_surface.asp?devide=2_2_2"><img src="/resources/bootstrap/images/common/btn_quick03.jpg" alt="마리나 이용요금" /></a></li>
-        <li><a href="/business/aramarina/subscription.asp?devide=2_2_5"><img src="/resources/bootstrap/images/common/btn_quick08.jpg" alt="요·보트 계류신청" /></a></li>
-        <li><a href="/business/hydrophilic_leisure/cultural_facilities/bicyclerental.asp?devide=2_1_3"><img src="/resources/bootstrap/images/common/btn_quick04.jpg" alt="자전거 이용안내" /></a></li>
-        <li><a href="/business/hydrophilic_leisure/cultural_facilities/camping.asp?devide=2_1_3"><img src="/resources/bootstrap/images/common/btn_quick05.jpg" alt="캠핑장 이용안내" /></a></li>
-        <li><a href="/business/aramarina/waterleisure_yacht/water_leisure.asp?devide=2_2_4"><img src="/resources/bootstrap/images/common/btn_quick06.jpg" alt="수상레저 이용안내" /></a></li>
+        <li><a href="/sboard/main"><img src="/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
+        <li><a href="/sboard/location"><img src="/resources/bootstrap/images/common/btn_quick02.jpg" alt="찾아오는길" /></a></li>
+		<li><a href="/sboard/list/free"><img src="/resources/bootstrap/images/common/btn_quick03.jpg" alt="자유게시판" /></a></li>
+        <li><a href="/sboard/list/thisweek"><img src="/resources/bootstrap/images/common/btn_quick09.jpg" alt="금주의디아크" /></a></li>
+        <li><a href="/sboard/exhibit"><img src="/resources/bootstrap/images/common/btn_quick08.jpg" alt="관람안내" /></a></li>
+        <li><a href="/sboard/list/notice"><img src="/resources/bootstrap/images/common/btn_quick04.jpg" alt="공지사항" /></a></li>
+        <li><a href="/sboard/list/qna"><img src="/resources/bootstrap/images/common/btn_quick05.jpg" alt="묻고 답하기" /></a></li>
+        <li><a href="/sboard/faq"><img src="/resources/bootstrap/images/common/btn_quick06.jpg" alt="자주하는 질문" /></a></li>
         <li><a class="slidescrolltop" target="logo-bar" style="cursor:pointer;" title="상단으로 이동"><img src="/resources/bootstrap/images/common/btn_quick07.jpg" alt="TOP" /></a></li>
     </ul>
 </div>
@@ -95,5 +95,8 @@
 			self.location = "/user/join";
 
 		});
+    	$('#logout').on("click", function(evt){
+			self.location = "/user/logout";    		
+    	});
     	
 </script>

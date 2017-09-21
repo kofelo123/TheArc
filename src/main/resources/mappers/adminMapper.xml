@@ -12,4 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="adminlogin" resultType="UserVO">
  		select uid,upw from tbl_user where uid=#{uid} and upw=#{upw}
  	</select>
+ 	
+ 	<update id="authmodify">
+ 		update tbl_user set authority=#{authority} where uid=#{uid}
+ 	</update>
+ 	
+ 	<delete id="userDropCheck">
+ 		delete from tbl_check where uid=#{uid}
+ 	</delete>
+ 	<delete id="userDropMessage">
+ 		delete from tbl_message where sender=#{uid}
+ 	</delete>
+ 	<delete id="userDropUser">
+ 		delete from tbl_user where uid=#{uid}
+ 	</delete>
 </mapper>

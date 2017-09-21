@@ -27,8 +27,8 @@ input[type=button], input[type=submit] {
 </style>
 <script type="text/javascript">
 function idok(){ ///부모페이지로 값전달
-  opener.formm.uid.value="${user.uid}"; 
-  opener.formm.reid.value="${user.uid}";
+  opener.form.uid.value="${user.uid}"; 
+  opener.form.reid.value="${user.uid}";
   self.close();
 }
 </script>
@@ -36,14 +36,14 @@ function idok(){ ///부모페이지로 값전달
 <body>
 <div id="wrap">
   <h1>ID 중복확인</h1>
-  <form method=get name=formm style="margin-right:0"  > <!-- 그냥 get함수로 바꿧다 post굳이 안하고(파라미터 관련)   -->
+  <form method=get name=form style="margin-right:0"  > <!-- 그냥 get함수로 바꿧다 post굳이 안하고(파라미터 관련)   -->
 	
     아이디  <input type=text name="uid" value=""> 
             <input type=submit value="검색" class="submit"><br>     
     <div style="margin-top: 20px">   
       <c:if test="${answer == -1}">
         <script type="text/javascript">
-          opener.document.formm.uid.value="";
+          opener.document.form.uid.value="";
         </script>
         ${user.uid}는 이미 사용중인 아이디입니다.
       </c:if>

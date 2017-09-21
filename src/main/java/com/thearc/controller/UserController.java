@@ -150,9 +150,6 @@ public class UserController {
 	  
 	 @RequestMapping(value="/mailhashcheck", method = RequestMethod.GET)
 	  public void mailhashcheck(UserVO user,Model model) throws Exception{
-		  System.out.println("콘솔테스트");
-		  System.out.println(user.getEncrypthash());
-		  System.out.println(user.getUid());
 		  
 		  UserVO user2 =service.hashbyid(user);
 		  if(user2.getUid()!=null)
@@ -183,5 +180,15 @@ public class UserController {
 	  public void logintest() {
 		  
 	  }
+	  @RequestMapping(value = "/jusoPopup", method = RequestMethod.GET)
+	  public void jusoPopup() {
+		  
+	  }
+	  @RequestMapping(value = "/jusoPopup", method = RequestMethod.POST)
+	  public void jusoPopupPost() {
+		  
+	  }
+	  
+	  
 	
 }

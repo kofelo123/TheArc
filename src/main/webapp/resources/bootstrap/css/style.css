@@ -432,7 +432,7 @@ a:hover{
 }
 .navbar-default .navbar-nav > li{ border-left:1px solid #262626; border-right:1px solid #595959;}
 
-.navbar-default .navbar-nav > li:first-child { border-left:none; }
+.navbar-default .navbar-nav > li:first-child {  border-left:1px solid #262626;  }
 
 .navbar-default .navbar-nav > li > a{
     padding:14px 25px;

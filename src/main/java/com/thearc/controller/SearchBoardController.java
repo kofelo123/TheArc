@@ -48,7 +48,7 @@ public class SearchBoardController {
 	   	 model.addAttribute("minBoard", minBoard);
 	   	model.addAttribute("photo", service.listSearchCriteria(cri,"photo"));
 	   	model.addAttribute("thumNail",service.listThumnail(cri,"photo"));
-	   	 
+	   	 	
 	  }
 	 
 	 @RequestMapping(value="/faq",method=RequestMethod.GET)
@@ -99,8 +99,8 @@ public class SearchBoardController {
 	    return "/sboard/readPage";
 	  }
 
-	  @RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+	  @RequestMapping(value = "/removePage/{category}", method = RequestMethod.POST)
+	  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable("category")String category) throws Exception {
 
 	    service.remove(bno);
 
@@ -111,7 +111,7 @@ public class SearchBoardController {
 
 	    rttr.addFlashAttribute("msg", "SUCCESS");
 
-	    return "redirect:/sboard/list";
+	    return "redirect:/sboard/list/"+category;
 	  }
 
 	  @RequestMapping(value = "/modifyPage/{category}", method = RequestMethod.GET)///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
@@ -193,7 +193,7 @@ public class SearchBoardController {
 	    System.out.println("uid 테스트"+uid);
 	    service.addlike(bno);
 	    service.updatelikey(uid,bno);
-	    return "redirect:/sboard/readPage?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
+	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
 	    
 	  }
 	  @RequestMapping(value = "/readPage/dislike", method = RequestMethod.GET)
@@ -204,7 +204,7 @@ public class SearchBoardController {
 	    System.out.println("uid 테스트"+uid);
 	    service.sublike(bno);	
 	    service.updateliken(uid,bno);
-	    return "redirect:/sboard/readPage?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
+	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
 	    
 	  }
 	  
@@ -215,6 +215,14 @@ public class SearchBoardController {
 	  }
 	  @RequestMapping(value="/location", method = RequestMethod.GET)
 	  public void location()throws Exception{
+		  
+	  }
+	  @RequestMapping(value="/thearc", method = RequestMethod.GET)
+	  public void thearc()throws Exception{
+		  
+	  }
+	  @RequestMapping(value="/exhibit", method = RequestMethod.GET)
+	  public void exhibit()throws Exception{
 		  
 	  }
 }

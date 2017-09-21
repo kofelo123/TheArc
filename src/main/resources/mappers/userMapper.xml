@@ -35,15 +35,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- select * from address where dong like "%"#{dong}"%" -->
 
 	<select id="idfindofmail" resultType="UserVO">
-		select uid,uname from tbl_user where email= #{email3}
+		select uid,upw,uname from tbl_user where email= #{email3}
 	</select>
 	
-	<update id="encrypthash">
+	<!-- <update id="encrypthash">
 		update tbl_user set encrypthash = #{pwUriEnc} where uid = #{userid}
 	</update>
-	
+	 -->
 	<select id="hashbyid" resultType="UserVO">
-		select uid from tbl_user where encrypthash = #{encrypthash}
+		select uid from tbl_user where upw = #{upw} and uid = #{uid}
 	</select>
 	
 	<update id="modifypw">

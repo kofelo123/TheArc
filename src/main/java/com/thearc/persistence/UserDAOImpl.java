@@ -74,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace + ".idfindofmail", user);
 	}
 
-	@Override
+	/*@Override
 	public void encrypthash(String pwUriEnc, String userid) { // keeplogin참조 ->
 																// 여기서 여러 파라미터
 																// 지원x-> map으로
@@ -85,7 +85,7 @@ public class UserDAOImpl implements UserDAO {
 		paramMap.put("userid", userid);
 
 		session.update(namespace + ".encrypthash", paramMap);
-	}
+	}*/
 
 	@Override
 	public UserVO hashbyid(UserVO user) {

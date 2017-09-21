@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			
+				<section>
+					<h1>The Arc</h1><br/>
+					<h3>대구 강정보 디아크 홈페이지</h3><br/>
+					<small><a href="http://thearc.co.kr" target="_blank">www.thearc.co.kr</a><br><br>Create by <a href="http://github.com/kofelo123" target="_blank">허정원</a></small>
+				</section>
+				
+				<section>
+					<section>
+						<h1>개발환경</h1>
+					</section>
+					<section>
+						<h2>작업환경</h2>
+							<div class="fragment" style="margin-left:250px;">
+								<img src="presentation/sts.PNG" style="height:100px;width:100px;display:block"/>
+								<img src="presentation/mysql.PNG" style="height:100px;width:100px;display:block"/>
+								<img src="presentation/maven.PNG" style="height:100px;width:100px;display:block"/>
+							
+								<div class="fragment2" style="position:absolute;top:120px;right:250px;">
+									<img src="presentation/bootstrap.PNG" style="height:100px;width:100px;display:block"/>
+									<img src="presentation/tomcat.PNG" style="height:100px;width:100px;display:block"/>
+									<img src="presentation/github.PNG" style="height:100px;width:100px;display:block"/>
+								</div>		
+							</div>											
+					</section>
+					<section>
+						<h2>서버환경</h2><br>
+							<div class="fragment" style="margin-left:250px;">
+								<img src="presentation/aws.PNG" style="height:100px;width:100px;display:block"/>
+								<img src="presentation/ubuntu.PNG" style="height:100px;width:100px;display:block"/>
+								<img src="presentation/gabia.PNG" style="height:100px;width:100px;display:block"/>
+							
+								<div class="fragment" style="position:absolute;top:190px;right:250px;">
+									<img src="presentation/filezila.PNG" style="height:100px;width:100px;display:block"/>
+									<img src="presentation/xshell.PNG" style="height:100px;width:100px;display:block"/>
+								</div>		
+							</div>		
+					</section>		
+			
+				</section>
+				
+				<section>
+					<section>
+						<h2>홈페이지 기능소개</h2>
+					</section>
+					<section>
+						
+						<h2>회원</h2><br>
+						<div class="fragment">
+							<ul>
+								<li>로그인</li>
+								<li>회원가입</li>
+								<li>ID/PW찾기</li>
+								<li>권한</li>
+								<li>메세지함</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>API활용</h2><br>
+						<div class="fragment">
+							<ul>
+								<li>구글맵API</li>
+								<li>기상API</li>
+								<li>도로명주소API</li>
+								<li>유투브API</li>
+								<li>아파치 commond mail API</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>게시판</h2><br>
+						<div class="fragment">
+							<ul>
+								<li>다중게시판(종류,미니)</li>
+								<li>댓글</li>
+								<li>업로드</li>
+								<li>에디터</li>
+								<li>SNS</li>
+							</ul>
+						</div>
+					</section>
+					
+				</section>
+				
+				<section>
+					<h2>DB 테이블</h2>
+					<div class="fragment">
+						<img src="presentation/db.PNG"/>
+					</div>
+				</section>
+				
+				<section>
+					<h2>홈페이지 시연</h2><br>
+					<h4 style="color:blue"><a href="http://www.thearc.co.kr" target="blank">http: // www . thearc . co . kr</a></h4>
+				</section>
+				
+				<section>
+					<h2><a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">구현설명</a></h2><br>
+					<a href="#/6"><h4>프로젝트구조</h4></a>
+					<a href="#/7"><h4>의존주입</h4></a>
+					<a href="#/8"><h4>AOP & 트랜잭션</h4></a>
+					<a href="#/9"><h4>스프링 인터셉터</h4></a>
+					<a href="#/10"><h4>Ajax&REST</h4></a>
+				</section>
+				
+				<section>
+					<section>
+					<h2>프로젝트구조</h2>
+					<div class="fragment" style="position:absolute;top:-20px;left:-180px;height:750px;">
+					<img src="presentation/projectstructure.PNG" />
+					</div>
+					<img class="fragment" src="presentation/structure2.PNG" style="margin-right:50px;"/>
+					<img class="fragment" src="presentation/structure3.PNG" />
+					<img class="fragment" src="presentation/structure4.PNG" />
+					</section>
+					
+					<section>
+						<h2>스프링 MVC 구조</h2>
+					<img class="fragment" src="presentation/springmvc2.PNG" />
+					<div class="fragment" style="position:absolute;bottom:60px;right:-20px;height:30px;width:30px;">
+						<a href="#/5"><img src="presentation/turnback.PNG" /></a>
+					</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>의존주입<span>( DI , IOC )</span></h2><br>
+						<div class="fragment"><h3>응집도 & <span class="fragment highlight-red grow" >결합도</span></h3></div><br>
+						<span class="fragment">new 의존클래스 x ->  </span><span class="fragment"> 종속적 x - 유지보수 강점</span><br><br>
+						<span class="fragment">인터페이스</span><span class="fragment">  <--- 구체적 의존모듈 주입</span> <br><br>
+						<span class="fragment">배포후 수정-> </span><span class="fragment"> .class -  xml에서 수정</span>
+					</section>
+					
+					<section>
+					<h2>의존주입 적용</h2><br>
+					<h4 class="fragment">Xml 기반 &nbsp;  vs&nbsp;&nbsp; 어노테이션기반</h4>	
+					<h5 class="fragment">가변적요소    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고정적요소</h5>	
+					
+				</section>
+					<section>
+						<h3>xml 기반</h3><br>
+						<pre><code class="hljs" data-trim contenteditable>
+						<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+							<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+							<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1/thearc"></property>
+							<property name="username" value="thearc"></property>
+							<property name="password" value="thearc"></property>
+						</bean>
+						
+						<bean id="ipAddress" class="java.lang.String">
+							<constructor-arg value="localhost"></constructor-arg>
+						</bean>
+						
+						<beans:bean id="uploadPath" class="java.lang.String">
+							<beans:constructor-arg value="C:\\zzz\\upload">
+							</beans:constructor-arg>
+						</beans:bean>
+					</code></pre>
+					</section>
+				
+					<section>
+						<h2>어노테이션 기반</h2><br>
+						<pre><code class="hljs" data-trim contenteditable>
+							@Controller
+							public class SearchBoardController {
+							
+							@Repository
+							public class MessageDAOImpl implements MessageDAO { ...
+							
+							@Service
+							public class AdminServiceImpl implements AdminService {
+							
+							(root-context.xml , servlet-context.xml)
+							<context:component-scan base-package="com.thearc.controller" />
+							<context:component-scan base-package="com.thearc.persistence"/>
+							<context:component-scan base-package="com.thearc.service"/>
+	 						
+						</code></pre>
+					</section>
+					<section>
+						<h2>주입</h2><br>
+						<pre><code class="hljs" data-trim contenteditable>
+							public class SearchBoardController {
+							 @Inject
+							 private BoardService service; //인터페이스타입
+							 
+							 service.listSearchCriteria(cri,"free")
+							 
+						   public class BoardServiceImpl implements BoardService {
+							@Inject
+							private BoardDAO dao; //인터페이스타입
+							
+							dao.create(board);
+							
+						public class BoardDAOImpl implements BoardDAO {
+						  @Inject
+ 						  private SqlSession session;
+ 						  
+ 						  session.insert(namespace + ".create", vo);
+						</code></pre>
+						<div class="fragment" style="position:absolute;bottom:60px;right:-20px;height:30px;width:30px;">
+						<a href="#/5"><img src="presentation/turnback.PNG" /></a>
+					</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h3>AOP</h3>
+						<div><h3 class="fragment highlight-red grow">응집도 <span class="fragment" style="color:black;"> & 결합도</span></h3></div>
+						<img class="fragment" src="presentation/aop.PNG"/>
+						<aside class="notes">
+						중복 코드의 제거
+• 횡단 관심(CrossCutting Concerns)을 여러 모듈에 반복적으로 기술되는 현상을 방지
+– 비즈니스 로직의 가독성 향상
+• 핵심기능 코드로부터 횡단 관심 코드를 분리함으로써 비즈니스 로직의 가독성 향상
+– 생산성 향상
+• 비즈니스 로직의 독립으로 인한 개발의 집중력을 높임
+– 재사용성 향상
+• 횡단 관심 코드는 여러 모듈에서 재사용될 수 있음
+– 변경 용이성 증대
+• 횡단 관심 코드가 하나의 모듈로 관리되기 때문에 이에 대한 변경 발생시 용이하게 수행할 수 있음
+						
+						</aside>
+					</section>
+					
+					<section>
+					<h2>트랜잭션 적용</h2><br>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+						<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+							<property name="dataSource" ref="dataSource"></property>
+						</bean>
+					
+						@Transactional
+						@Override
+						public void remove(Integer bno) throws Exception {
+							dao.deleteAttach(bno);
+							dao.delete(bno);
+						}
+						
+						@Transactional(isolation = Isolation.READ_COMMITTED)///격리레벨-커밋된  데이터에 대한 읽기허용 ->업데이트중인,커밋되지 않은 데이터에 접근불가,읽는 유저는 커밋이전만 볼수있다.
+						@Override
+						public BoardVO read(Integer bno) throws Exception {
+							dao.updateViewCnt(bno);
+							return dao.read(bno);
+						}
+					</code></pre>
+					<div class="fragment" style="position:absolute;bottom:60px;right:-20px;height:30px;width:30px;">
+						<a href="#/5"><img src="presentation/turnback.PNG" /></a>
+					</div>
+				</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>스프링 인터셉터</h2>
+						<h4 class="fragment">서블릿필터 vs 스프링 인터셉터</h4>
+						<img class="fragment" src="presentation/interceptor.PNG"/>
+					</section>
+					<section>
+						<h2>인터셉터 vs AOP</h2><br>
+						<h4 class="fragment">공통점 : 사전,사후 처리</h4>
+						<h4 class="fragment">차이점 : 파라미터차이</h4><br>
+						<h4 class="fragment"><span class="fragment highlight-blue">인터셉터 메소드</span></h4>
+						<ul class="fragment">
+							<li>preHandle()</li>
+							<li>postHandle()</li>
+							<li>afterCompletion()</li>
+						</ul>
+					</section>
+					<section>
+						<h2>인터셉터 적용</h2>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+							 //servlet-context.xml
+							 <beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
+							   
+							   <interceptors>
+								  <interceptor>
+							         <mapping path="/user/loginPost" />
+							         <beans:ref bean="loginInterceptor" />
+							       </interceptor>
+						        </interceptors>	
+							 
+							 //LoginInterceptor
+							 @Override
+ 							 public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+							 	 HttpSession session = request.getSession();
+   								 if (session.getAttribute(LOGIN) != null) {
+     							 	logger.info("clear login data before");
+     							 session.removeAttribute(LOGIN);
+    							}
+						    	return true;
+  							}
+  							
+  							
+						  @Override
+ 						 public void postHandle(HttpServletRequest request,HttpServletResponse response, Object handler,ModelAndView modelAndView) throws Exception {
+    						
+    						HttpSession session = request.getSession();
+						    ModelMap modelMap = modelAndView.getModelMap();  
+   						    Object userVO = modelMap.get("userVO");
+   						    
+   						    if (userVO != null) {
+    						  logger.info("new login success");
+   						   	  System.out.println(userVO);
+   						      session.setAttribute(LOGIN, userVO);
+						    if(request.getParameter("useCookie") != null) {
+						        logger.info("remember me................");
+    						    Cookie loginCookie = new Cookie("loginCookie", session.getId());
+    						    loginCookie.setPath("/");
+    						    loginCookie.setMaxAge(60 * 60 * 24 * 7);
+  						        response.addCookie(loginCookie);
+   						   }
+						      Object dest = session.getAttribute("dest");
+  						      System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
+ 						      response.sendRedirect(dest != null ? (String)dest : "/");
+ 						   }
+ 						 }
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>인터셉터적용2</h2>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+						//servlet-context.xml
+						<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
+						<interceptor>  <!-- 로그인해야 접근할수있게   -->
+	  						  <mapping path="/sboard/register/*"/>
+	   						 <mapping path="/sboard/modifyPage"/>
+	   						 <mapping path="/sboard/removePage"/>
+	   						 <mapping path="/sboard/mail/listmail"/>
+	   						 <mapping path="/sboard/readPage/like/"/>	
+	   						 <mapping path="/sboard/list/supporter"/>	
+	  						  <beans:ref bean="authInterceptor"/>
+				 		 </interceptor>	
+						//AuthInterceptor
+							@Override
+  							public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
+							    HttpSession session = request.getSession();   
+    							if(session.getAttribute("login") == null){
+							      logger.info("current user is not logined");
+							      saveDest(request);
+						      Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+						      if(loginCookie != null) { 
+						        UserVO userVO = service.checkLoginBefore(loginCookie.getValue());
+						        logger.info("USERVO: " + userVO);
+					         if(userVO != null){
+          						session.setAttribute("login", userVO);
+					          authorization(request,response);
+          					return true;
+    						    }
+   						   }
+    					  response.sendRedirect("/user/login");
+     					 return false;
+   						 }
+   						 authorization(request,response);
+    				return true;
+  						}  
+						</code></pre>
+						<div class="fragment" style="position:absolute;bottom:60px;right:-20px;height:30px;width:30px;">
+						<a href="#/5"><img src="presentation/turnback.PNG" /></a>
+					</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h1>REST & AJAX</h1>
+					</section>
+					<section>
+						<h2> REST  </h2>
+						<h4 class="fragment">URI = 데이터</h4>
+						<h4 class="fragment">@Response Body -> @Rest Controller</h4>
+						<h4 class="fragment">서버단에서는 데이터만 전송(JSON)</h4>
+						<h4 class="fragment">클라이언트단에서의 처리가 많을때 적합</h4>
+						<h4 class="fragment">Ajax등을 처리</h4>
+						<h4 class="fragment">Restful</h4>
+					</section>
+					<section>
+						<h2>Ajax</h2><br>
+						<h4 class="fragment">비동기화 처리</h4>
+						<h4 class="fragment">화면전환 없는 처리</h4>
+						<h4 class="fragment">$ajax()로 서버단 로직 호출 - 데이터받음</h4>
+						<h4 class="fragment">REST방식과 함께 사용, JSON데이터 사용</h4>
+					</section>
+					<section>
+						<h2>적용-댓글</h2>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+							@RestController
+							@RequestMapping("/replies")
+							public class ReplyController {
+								...
+						  @RequestMapping(value = "", method = RequestMethod.POST)
+						  public ResponseEntity<String> register(@RequestBody ReplyVO vo) { ///코드에서 예외대신에 Response Entity를 이용해서 사용자에게 정보를 전달한다.(HTTP상태코드+데이터 함께 전송가능)
+						
+						    ResponseEntity<String> entity = null;///ResponseEntity는 메세지와 http status정보를 같이 전송할수있는 스프링제공 클래스.	
+						    try {
+						      service.addReply(vo);
+						      entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+						    } catch (Exception e) {
+						      e.printStackTrace();
+						      entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+						    }
+						    return entity;
+						  }
+						...
+						//readPage.jsp
+						
+						$("#replyAddBtn").on("click", function() {
+
+						var replyerObj = $("#newReplyWriter");
+						var replytextObj = $("#newReplyText");
+						var replyer = replyerObj.val();
+						var replytext = replytextObj.val();
+				
+						$.ajax({
+							type : 'post',
+							url : '/replies/',
+							headers : {
+								"Content-Type" : "application/json",
+								"X-HTTP-Method-Override" : "POST"
+							},
+							dataType : 'text',
+							data : JSON.stringify({
+								bno : bno,
+								replyer : replyer,
+								replytext : replytext
+							}),
+							success : function(result) {
+								console.log("result: " + result);
+								if (result == 'SUCCESS') {
+									alert("등록 되었습니다.");
+									replyPage = 1;
+									getPage("/replies/" + bno + "/" + replyPage);
+									//replyerObj.val("");
+									replytextObj.val("");
+								}
+							}
+						});
+					});
+					
+						</code></pre>
+					</section>
+					<section>
+						<h2>적용-업로드</h2>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+					$(".fileDrop").on("drop", function(event){
+					event.preventDefault();
+					
+					var files = event.originalEvent.dataTransfer.files;
+					
+					var file = files[0];
+				
+					var formData = new FormData();
+					
+					formData.append("file", file);	
+					
+					
+					$.ajax({
+						  url: '/uploadAjax',
+						  data: formData,
+						  dataType:'text',
+						  processData: false,
+						  contentType: false,
+						  type: 'POST',
+						  success: function(data){
+							  
+							  var fileInfo = getFileInfo(data);
+							  
+							  var html = template(fileInfo);
+							  
+							  $(".uploadedList").append(html);
+						  }
+						});	
+				});
+				//UploadController
+				@Controller
+				public class UploadController {
+				...
+				@ResponseBody
+			    @RequestMapping(value ="/uploadAjax", method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+			    public ResponseEntity<String> uploadAjax(MultipartFile file)throws Exception{
+			    
+			    logger.info("originalName: " + file.getOriginalFilename());
+			    
+			    return 
+			      new ResponseEntity<>(
+			          UploadFileUtils.uploadFile(uploadPath, 
+			                file.getOriginalFilename(), 
+			                file.getBytes()), 
+			          HttpStatus.CREATED);
+				  }
+						</code></pre>
+					</section>
+				</section>
+				
+				<section>
+					<h2>보완하고 싶은부분</h2><br>
+					<h4 class="fragment">시큐리티 처리</h4>
+					<h4 class="fragment">다양한 Ajax처리</h4>
+					<h4 class="fragment">모바일 반응형처리</h4>
+					<h4 class="fragment">다양한 관리자페이지기능</h4>
+					<h4 class="fragment">구글 애널리틱스 연동</h4>
+				</section>
+				<section>
+					<h2>End</h2>
+					<div class="fragment"><br>
+						<a href="http://www.thearc.co.kr">www.thearc.co.kr</a><br><br>
+						<h4><a href="http://www.github.com/kofelo123">허정원</a></h4>
+					</div>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

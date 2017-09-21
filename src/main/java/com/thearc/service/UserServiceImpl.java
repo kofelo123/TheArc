@@ -102,18 +102,15 @@ public class UserServiceImpl implements UserService {
 		email.setAuthenticator(new DefaultAuthenticator("hlw123", "ekflrktmaajfl"));
 		email.setStartTLSRequired(true);
 		
-		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환
-		String pwUriEnc = EncryptUtil.getSHA256(user2.getUid());/// id받아온 값으로
+		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
+//		String pwUriEnc = EncryptUtil.getSHA256(user2.getUid());/// id받아온 값으로
 		/// 해쉬화적용한다. id가
 		/// pk라서 고유함
-		System.out.println("sha256 암호화 해쉬코드 적용으로 인한 고유의값:" + pwUriEnc);
-		String userid = user2.getUid();
-		dao.encrypthash(pwUriEnc, userid);
-		System.out.println(userid);
 		
-		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/user/mailhashcheck?encrypthash="
-				+pwUriEnc + "&uid="+userid+"><img src=\"/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
-						+user2.getUname() +  " 님의 아이디는:" + user2.getUid() + "입니다.<br/>"
+//		dao.encrypthash(pwUriEnc, userid);
+		
+		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/user/mailhashcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
+						+user2.getUname() +  " 님의 아이디는 " + user2.getUid() + " 입니다.<br/>"
 						+" 위의 이미지링크를 클릭하시면 비밀번호를 변하실수 있습니다.";
 						
 		email.setFrom("hlw123@naver.com"); 
@@ -204,6 +201,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void modifypw(UserVO user) throws Exception {
 		// TODO Auto-generated method stub
+		user.setUpw(encrypt.getSHA256(user.getUpw()));
 		dao.modifypw(user);
 	}
 }

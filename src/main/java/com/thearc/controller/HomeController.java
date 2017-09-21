@@ -33,6 +33,21 @@ public class HomeController {
 		
 		return "error/error403";
 	}
+	@RequestMapping(value = "/error404", method = RequestMethod.GET)
+	public String error404() {
+		
+		return "error/error404";
+	}
+	@RequestMapping(value = "/error500", method = RequestMethod.GET)
+	public String error500() {
+		
+		return "error/error500";
+	}
+	@RequestMapping(value = "/music", method = RequestMethod.GET)
+	public void muiscPlayer() {
+		
+	}
+	
 	
 	
 	

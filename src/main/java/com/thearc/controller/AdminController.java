@@ -49,4 +49,19 @@ public class AdminController {
 		model.addAttribute("sboardNum","chartpage");
 	}
 	
+	@RequestMapping(value="/authmodify" , method=RequestMethod.GET)
+	public String charts(Model model,UserVO user)throws Exception{
+		service.authmodify(user);
+		model.addAttribute("userVO",service.listuser());
+		return "/admin/userlist";
+	}
+	@RequestMapping(value="/userDrop" , method=RequestMethod.GET)
+	public String userDrop(Model model,UserVO user)throws Exception{
+		service.userDrop(user);
+		model.addAttribute("userVO",service.listuser());
+		return "/admin/userlist";
+	}
+	
+	
+	
 }

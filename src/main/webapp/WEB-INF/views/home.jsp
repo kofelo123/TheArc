@@ -142,7 +142,8 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 <div id="visual">
   <div id="video-bg">
     <iframe src="https://www.youtube.com/embed/djH6aLcJDqw?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=2">
-    </iframe>
+    <!-- <iframe src="https://www.youtube.com/embed/GZKZKdVThTE?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=124"> -->
+     </iframe>
   </div>
   
    <div id="visual-content">

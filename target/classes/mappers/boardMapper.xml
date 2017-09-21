@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="read" resultType="com.thearc.domain.BoardVO">
 		select
-		bno, title, content, writer, regdate, viewcnt , replycnt,countlike
+		bno, title, content, writer, regdate, viewcnt , replycnt,countlike,category
 		from
 		tbl_board
 		where bno = #{bno}

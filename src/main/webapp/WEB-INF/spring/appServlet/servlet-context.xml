@@ -43,7 +43,7 @@
 			<mapping path="/user/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
-		
+	
 	  
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
 	    <mapping path="/sboard/register/*"/>

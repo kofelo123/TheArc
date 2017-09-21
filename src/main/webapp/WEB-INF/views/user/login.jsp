@@ -209,6 +209,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 				접근금지</a><input type="submit" class="button" name="submit" id="submit"
 				value="로그인" tabindex="4" /><input type="hidden"
 				name="is_custom_login" value="1" />
+				
 		</form>
 		<div id="btn-open-login-form" class="btn-open-login-form">
 			<i class="foundicon-lock"></i>

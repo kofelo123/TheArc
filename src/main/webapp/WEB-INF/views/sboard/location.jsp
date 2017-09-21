@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
     <title>디아크 찾아오시는길</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -65,9 +64,29 @@
     </style>
   </head>
   <body>
-  		<div class="row" style="margin-left:20%">
+  <div class="row" ></div>
+  <div class="col-sm-8 col-sm-offset-2" >
+  <section class="subtitle" style="background-image: url('/resources/bootstrap/images/subtitle.png');">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9" >
+                    <div class="subcontent" style="color:white;margin-top:10px;">
+                    <span class="home" ><a href="/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/sboard/location" style="color:white;">오시는길</a></strong>
+                    
+                        <h2 style="color:white">찾아 오시는 길</h2>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+   		 </section>
+
+    
+   	 </div>
+    
+  		<div class="row">
 		<!-- left column -->
-		<div class="col-sm-10 col-md-10 col-lg-10">
+		<div class="col-sm-8 col-sm-offset-2">
     <input id="origin-input" class="controls" type="text"
         placeholder="출발지를 입력해주세요!">
 
@@ -228,6 +247,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSnMW4kIIlD48ao8_Rf7pm9qs51WeCyIk&libraries=places&callback=initMap"
         async defer></script>
       
+     <div class="row">
+     	<div class="col-sm-8 col-sm-offset-2">
+  <img src="/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px;"/>
+      <img src="/resources/bootstrap/images/location4.PNG" style="margin-top:30px;"/>
+      <img src="/resources/bootstrap/images/location3.PNG" style="margin-bottom:100px;margin-top:30px;"/>
+      </div>
+      </div>
   </body>
 </html> 
  <%----%> <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
