@@ -57,14 +57,16 @@ width:100%;
 <!--start wrapper-->
 <section class="wrapper">
     <section class="promo_box">
+    <jsp:useBean id="toDay" class="java.util.Date" />
         <div class="container">
             <div class="row">
-            	
-            	<div class="col-sm-1"></div>
-            	
+				<div class="col-sm-11 col-sm-offset-1 col-xs-12">	
+	<h4><fmt:formatDate value="${toDay}" pattern="yy년 MM월 dd일" /> 대구광역시 달성군 다사읍 기준</h4> 
+            		</div>
             	<c:forEach items="${weather }" var="weatherObj" varStatus="status" begin="0" end="3">
-            		<div class="col-sm-2">
-            			
+            		<div class="col-sm-1 col-sm-offset-1 col-xs-6">
+            		
+            		
                 	<c:choose>
       					 <c:when test="${weatherObj.sky == '1'}">
      					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
@@ -89,124 +91,23 @@ width:100%;
                     
                     <c:choose>
                     <c:when test="${status.index==0 }">
-                    <h2> 오전 9시 기준</h2>
+                    <h2> 오전 9시</h2>
                     </c:when>
                     <c:when test="${status.index==1 }">
-                    <h2> 낮 12시 기준</h2>
+                    <h2> 낮 12시</h2>
                     </c:when>
                     <c:when test="${status.index==2 }">
-                    <h2> 오후 3시 기준</h2>
+                    <h2> 오후 3시</h2>
                     </c:when>
                     <c:when test="${status.index==3 }">
-                    <h2> 오후 6시 기준</h2>
+                    <h2> 오후 6시</h2>
                     </c:when>
                     </c:choose>	
             		</div>
 				</c:forEach>
-				
-				            
-               <%--  <div class="col-sm-2 col-sm-offset-1">
-                	
-                	<c:choose>
-      					 <c:when test="${weather.get(0).sky == '1'}">
-     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
-     					    <h3>맑음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(0).sky == '2'}">
-     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
-     					    <h3>구름조금</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(0).sky == '3'}">
-     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
-     					    <h3>구름많음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(0).sky == '4'}">
-     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
-     					    <h3>흐림</h3>
-  					     </c:when>
-  					 </c:choose>
-                    <h3>강수확률: ${weather.get(0).pop}%</h3>
-                    <h3>습도: ${weather.get(0).reh}%</h3>
-                    <h3>기온: ${weather.get(0).t3h}℃</h3>
-                    <h2>오전 9시 기준</h2>
-                </div>
-                
-                <div class="col-sm-2">
-                    	<c:choose>
-      					 <c:when test="${weather.get(1).sky == '1'}">
-     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
-     					    <h3>맑음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(1).sky == '2'}">
-     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
-     					    <h3>구름조금</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(1).sky == '3'}">
-     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
-     					    <h3>구름많음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(1).sky == '4'}">
-     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
-     					    <h3>흐림</h3>
-  					     </c:when>
-  					 </c:choose>
-                    <h3>강수확률: ${weather.get(1).pop}%</h3>
-                    <h3>습도: ${weather.get(1).reh}%</h3>
-                    <h3>기온: ${weather.get(1).t3h}℃</h3>
-                    <h2>낮 12시 기준</h2>
-                </div>
-                <div class="col-sm-2">
-                   	<c:choose>
-      					 <c:when test="${weather.get(2).sky == '1'}">
-     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
-     					    <h3>맑음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(2).sky == '2'}">
-     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
-     					    <h3>구름조금</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(2).sky == '3'}">
-     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
-     					    <h3>구름많음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(2).sky == '4'}">
-     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
-     					    <h3>흐림</h3>
-  					     </c:when>
-  					 </c:choose>
-                    <h3>강수확률: ${weather.get(2).pop}%</h3>
-                    <h3>습도: ${weather.get(2).reh}%</h3>
-                    <h3>기온: ${weather.get(2).t3h}℃</h3>
-                    <h2>오후 3시 기준</h2>
-                </div>
-                <div class="widthControl">
-                <div class="col-sm-2">
-                	
-                    	<c:choose>
-      					 <c:when test="${weather.get(3).sky == '1'}">
-     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
-     					    <h3>맑음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(3).sky == '2'}">
-     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
-     					    <h3>구름조금</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(3).sky == '3'}">
-     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
-     					    <h3>구름많음</h3>
-  					     </c:when>
-      					 <c:when test="${weather.get(3).sky == '4'}">
-     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
-     					    <h3>흐림</h3>
-  					     </c:when>
-  					 </c:choose>
-                    <h3>강수확률: ${weather.get(3).pop}%</h3>
-                    <h3>습도: ${weather.get(3).reh}%</h3>
-                    <h3>기온: ${weather.get(3).t3h}℃</h3>
-                    <h2>오후6시기준</h2>
-                    </div> --%>
+								
                  <div class="col-sm-2">
-                 	<div class="time" style="margin-left:-60px;margin-top:10px;">
+                 	<div class="time" style="margin-top:10px;">
                		  	<img src="/resources/bootstrap/images/weather/time.PNG"  />
                  	</div>
                  </div>
@@ -234,7 +135,7 @@ width:100%;
                     <ul class="jcarousel-list">
                      <c:forEach items="${photo}" var="boardVO" varStatus="status" begin="0" end="5">
                         <!-- Recent Work Item -->
-                        <li class="col-sm-12 col-md-3 col-lg-3">
+                        <li class="col-sm-12 ">
                             <div class="recent-item">
                                 <figure class="touching medium">
                                     <div class="pic">
@@ -269,7 +170,7 @@ width:100%;
     <!-- 미니게시판  (2중foreach)-->
     <section class="content">
     <div class="container">
-         <div class="row">
+         <div class="row responmini">
               <c:forEach items="${minBoard}" var="minList">
         <div class="col-md-6">
           <div class="box">
@@ -279,14 +180,14 @@ width:100%;
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-hover table-striped">
-              <tr><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+              <tr><th>제목</th><th>작성자</th><th class="responth">작성일</th><th class="responth">조회수</th></tr>
               	<c:forEach items="${minList }" var="boardVO">
                 <tr style="font-family:Typo_DecoVariety; font-size:17px;color:#337ab7;">
                   <th><a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>${boardVO.title}</th></a>
                   <th>${boardVO.writer}</th>
-                  <th><fmt:formatDate pattern="MM-dd"
+                  <th class="responth"><fmt:formatDate pattern="MM-dd"
 										value="${boardVO.regdate}" /></th>
-                  <th>${boardVO.viewcnt}</th>
+                  <th class="responth">${boardVO.viewcnt}</th>
         		</c:forEach>
                 </tr>
               

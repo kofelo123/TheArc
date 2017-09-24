@@ -36,6 +36,12 @@
 	
 	 background-image: url(/resources/bootstrap/images/bg2.jpg);
 }
+
+@media only screen and (max-width: 768px){
+.content .row{
+	margin-left:0% !important;	
+}
+}
   	
     </style>
        
@@ -49,7 +55,7 @@
 <section class="content">
 	<div class="row" style="margin-left:20%">
 		<!-- left column -->
-		<div class="col-sm-9 col-md-9 col-lg-9">
+		<div class="col-sm-9 col-md-9 col-lg-9 col-xs-12">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				
@@ -68,10 +74,10 @@
 				<div class="box-body">
 				
 				<div class="row">
-					<div class="col-sm-8 col-md-8 col-lg-8">
+					<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
 						<h2 style="float:left;">${boardVO.title }</h2>
 					</div>
-					<div class="col-sm-3 col-md-3 col-lg-3">
+					<div class="col-sm-3 col-md-3 col-lg-3 col-xs-4">
 						 <h3>작성자:${boardVO.writer}</h3>
          			<h4 style="margin-top:-15px;"><fmt:formatDate pattern="MM-dd HH:mm" value="${boardVO.regdate}" /></h4>
          			
@@ -115,13 +121,13 @@
 						
 				</div>
 			   <div><hr></div>
-					
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
 					 <div class="mailbox-read-message">
                	${boardVO.content}
               
                 
               </div>
-				
+				</div>
 					
 				</div>
 				<!-- /.box-body -->
@@ -132,14 +138,14 @@
 
     <ul class="mailbox-attachments clearfix uploadedList">
     </ul>	
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-xs-4">
  <c:if test="${login.uid == boardVO.writer}">
     <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
     <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
  </c:if>
     <button type="submit" class="btn btn-primary" id="goListBtn">목록</button>
     	</div>
-    	<div class="col-sm-1 col-sm-offset-6">
+    	<div class="col-sm-1 col-sm-offset-6 col-xs-3 col-xs-offset-4">
     	<div class="fbshare" style="font-size:35px;">
 			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
          </div>

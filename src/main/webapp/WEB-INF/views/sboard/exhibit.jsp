@@ -26,7 +26,7 @@
             </div>
         </div>
    		 </section>
-    
+    <div class="responimg">
    	 <img src="/resources/bootstrap/images/exhibit1.PNG" style="margin-top:30px"/>
    	 <img src="/resources/bootstrap/images/exhibit2.PNG" />
    	 <img src="/resources/bootstrap/images/exhibit3.PNG" />
@@ -35,9 +35,8 @@
    	 <img src="/resources/bootstrap/images/exhibit5.PNG"/>
    	 <img src="/resources/bootstrap/images/exhibit6.PNG"/>
    	 <img src="/resources/bootstrap/images/exhibit7.PNG"/>
-   	 <img src="/resources/bootstrap/images/exhibit8.PNG"/>
    	 <img src="/resources/bootstrap/images/exhibit9.PNG" style="margin-bottom:100px"/>
-   	 
+   	 </div>
    	 </div>
 	</div>
 

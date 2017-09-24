@@ -47,22 +47,26 @@
 		#quick_nav ul {height:100%; margin:0; padding:0; position:fixed;}
 		#quick_nav ul li {padding:0; text-align:center; line-height:1;}
 		#quick_nav ul li a:hover{ opacity:0.7}
+		
+		@media only screen and (max-width: 767px){
+			#quick_nav{ display:none;}
+		}
 	</style>
 	
 
 	<div id="quick_nav">
-    <ul>
-        <li><a href="/sboard/main"><img src="/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
-        <li><a href="/sboard/location"><img src="/resources/bootstrap/images/common/btn_quick02.jpg" alt="찾아오는길" /></a></li>
-		<li><a href="/sboard/list/free"><img src="/resources/bootstrap/images/common/btn_quick03.jpg" alt="자유게시판" /></a></li>
-        <li><a href="/sboard/list/thisweek"><img src="/resources/bootstrap/images/common/btn_quick09.jpg" alt="금주의디아크" /></a></li>
-        <li><a href="/sboard/exhibit"><img src="/resources/bootstrap/images/common/btn_quick08.jpg" alt="관람안내" /></a></li>
-        <li><a href="/sboard/list/notice"><img src="/resources/bootstrap/images/common/btn_quick04.jpg" alt="공지사항" /></a></li>
-        <li><a href="/sboard/list/qna"><img src="/resources/bootstrap/images/common/btn_quick05.jpg" alt="묻고 답하기" /></a></li>
-        <li><a href="/sboard/faq"><img src="/resources/bootstrap/images/common/btn_quick06.jpg" alt="자주하는 질문" /></a></li>
-        <li><a class="slidescrolltop" target="logo-bar" style="cursor:pointer;" title="상단으로 이동"><img src="/resources/bootstrap/images/common/btn_quick07.jpg" alt="TOP" /></a></li>
-    </ul>
-</div>
+	    <ul>
+	        <li><a href="/sboard/main"><img src="/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
+	        <li><a href="/sboard/location"><img src="/resources/bootstrap/images/common/btn_quick02.jpg" alt="찾아오는길" /></a></li>
+			<li><a href="/sboard/list/free"><img src="/resources/bootstrap/images/common/btn_quick03.jpg" alt="자유게시판" /></a></li>
+	        <li><a href="/sboard/list/thisweek"><img src="/resources/bootstrap/images/common/btn_quick09.jpg" alt="금주의디아크" /></a></li>
+	        <li><a href="/sboard/exhibit"><img src="/resources/bootstrap/images/common/btn_quick08.jpg" alt="관람안내" /></a></li>
+	        <li><a href="/sboard/list/notice"><img src="/resources/bootstrap/images/common/btn_quick04.jpg" alt="공지사항" /></a></li>
+	        <li><a href="/sboard/list/qna"><img src="/resources/bootstrap/images/common/btn_quick05.jpg" alt="묻고 답하기" /></a></li>
+	        <li><a href="/sboard/faq"><img src="/resources/bootstrap/images/common/btn_quick06.jpg" alt="자주하는 질문" /></a></li>
+	        <li><a class="slidescrolltop" target="logo-bar" style="cursor:pointer;" title="상단으로 이동"><img src="/resources/bootstrap/images/common/btn_quick07.jpg" alt="TOP" /></a></li>
+	    </ul>
+	</div>
  
 </body>
 </html>

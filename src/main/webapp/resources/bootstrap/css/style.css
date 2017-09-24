@@ -11,7 +11,7 @@
      7.  BLOG STYLING
      8.  404 PAGE
      9.  ABOUT PAGE
-     10. CONTACT PAGE FORM
+     10. CONTACT PAGE FORM	
      11. ICON LIST PAGE
      12. RECENT WORK CAROUSEL
      13. TESTIMONIALS
@@ -320,7 +320,7 @@ a:hover{
     border:none;
 }
 .navbar-toggle{
-    background:#303436;
+    background:#1e7cab;
     border:none;
     padding:10px 10px;
     border-radius:3px;
@@ -389,7 +389,7 @@ a:hover{
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form{
     border-color: transparent;
-    margin-left: 30%;
+    margin-left: 25%;
 }
 /* scrolling arrows for tall menus */
 .navbar-nav span.scroll-up, .navbar-nav span.scroll-down {
@@ -400,6 +400,12 @@ a:hover{
     overflow:hidden;
     text-align:center;
 }
+/* .navbar-header a,.navbar-header img{
+    	display:none;
+    } */
+    .navbar-responsive{
+    	display:none;
+    }
 .navbar-nav span.scroll-up-arrow, .navbar-nav span.scroll-down-arrow {
     position:absolute;
     top:-2px;
@@ -453,7 +459,7 @@ a:hover{
 .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
 .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus
 {
-    background:#E74C3C!important;
+    background:#337ab7!important;
     color:#fff!important;
 }
 /* add more indentation for 2+ level sub in collapsible mode - Bootstrap normally supports just 1 level sub menus */
@@ -1903,6 +1909,8 @@ label{
 .latest_work{
     position: relative;
 }
+
+
 .jcarousel {
     position: relative;
     overflow: hidden;
@@ -3736,6 +3744,12 @@ ul{
 
     .widget_content{ padding-bottom:25px; }
     .shares li.shareslabel h3{ padding:8px 7px; }
+    
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border-color: transparent;
+    margin-left: 15%;
+}
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -3764,8 +3778,26 @@ ul{
 }
 
 @media only screen and (max-width: 767px) {
-
-    #logo-bar{ display: none;}
+	
+	.navbar-header{
+		background-color:#74c7ea;
+	}
+	
+	.navbar-responsive {
+		display:inline;
+	}
+	
+	
+	/* 
+   .navbar-header{
+   	display:block;
+   	
+   } */
+/*   */
+    #logo-bar{ 
+    display: none;
+    
+    }
 
     #logo { margin: 7px 0 7px 15px; }
     
@@ -3781,6 +3813,7 @@ ul{
         background:#fff;
         border-color: transparent;
     }
+    
     .navbar.scroll-to-fixed-fixed{
         box-shadow: 0 0 10px #9c9999;
     }
@@ -3792,6 +3825,13 @@ ul{
         position: absolute;
         width: 100%;
     }
+    .latest_work{
+    	display:none;
+    }
+	
+.responmini .responth {
+		display:none;
+	}
     
     .dropdown-menu .dropdown-menu{margin:0 0 0 0!important;}
 
@@ -3814,7 +3854,7 @@ ul{
     }
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus
     {
-        background:#E74C3C;
+        background:#3c8dbc;
         color:#fff;
     }
     .navbar-nav .sub-arrow, .navbar-nav .collapsible .sub-arrow
@@ -3931,3 +3971,4 @@ ul{
     }
     .author_bio{margin-top:51%;}
 }
+

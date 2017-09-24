@@ -22,6 +22,11 @@
 	
 	 background-image: url(/resources/bootstrap/images/bg2.jpg);
 }
+@media only screen and (max-width: 768px){
+.content .row{
+	margin-left:0% !important;	
+}
+}
 </style>
 
 <!-- Main content -->
@@ -90,7 +95,7 @@
 								<figure class="post_img">
 									<div class="image">
 										 <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
-										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="500" width="300" alt="이미지없음">
+										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="700"  alt="이미지없음">
 									</a>
 									</div>
 								</figure>
@@ -106,7 +111,7 @@
 										</div>
 									</div>
 									<%-- <p>${boardVO.content }</p> --%>
-									<p>${fn:substring(boardVO.content,0,100) } ...</p>
+									<%-- <p>${fn:substring(boardVO.content,0,15) } ...</p> --%>
 									<%-- "${fn:substring(thumNail[status.index],0,12)}" --%>
 								</div>
 							</article>
@@ -181,19 +186,19 @@
 									href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' style="color:#337ab7">
 										${boardVO.title} <%-- <strong>[${boardVO.replycnt}  ]</strong> --%>
 								</a></td>
-								<td style="width:7%">
+								<td class="responsive" style="width:7%">
 									<i class="fa fa-comment-o"  title="댓글">&nbsp;&nbsp;&nbsp;&nbsp;${boardVO.replycnt}</i>
 								</td>
-								<td style="width:7%">								
+								<td class="responsive" style="width:7%">								
 									<i class="fa fa-thumbs-o-up" title="좋아요" >&nbsp;&nbsp;&nbsp;&nbsp;${boardVO.countlike }</i>
 								</td>
-								<td style="width:25%">
+								<td class="responsive" style="width:25%">
 								<i class="glyphicon glyphicon-eye-open" title="조회수">&nbsp;${boardVO.viewcnt  }</i>
 								</td>
-								<td class="mailbox-date" style="width:10%"><fmt:formatDate pattern="MM-dd HH:mm"
+								<td class="mailbox-date responsive" style="width:10%"><fmt:formatDate pattern="MM-dd HH:mm"
 										value="${boardVO.regdate}" /></td>
 								<%-- <td><span class="badge bg-aqua">${boardVO.viewcnt }</span></td> --%>
-								<td class="mailbox-subject">${boardVO.writer} </td>
+								<td class="mailbox-subject" style="width:10%">${boardVO.writer} </td>
 							</tr>
 
 						</c:forEach>

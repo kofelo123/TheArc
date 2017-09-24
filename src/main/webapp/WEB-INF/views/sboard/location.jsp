@@ -86,7 +86,7 @@
     
   		<div class="row">
 		<!-- left column -->
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col-sm-8 col-sm-offset-2 col-xs-12">
     <input id="origin-input" class="controls" type="text"
         placeholder="출발지를 입력해주세요!">
 
@@ -248,10 +248,10 @@
         async defer></script>
       
      <div class="row">
-     	<div class="col-sm-8 col-sm-offset-2">
-  <img src="/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px;"/>
-      <img src="/resources/bootstrap/images/location4.PNG" style="margin-top:30px;"/>
-      <img src="/resources/bootstrap/images/location3.PNG" style="margin-bottom:100px;margin-top:30px;"/>
+     	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+  <img src="/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px; width:100%"/>
+      <img src="/resources/bootstrap/images/location4.PNG" style="margin-top:30px; width:100%"/>
+      <img src="/resources/bootstrap/images/location3.PNG" style="margin-bottom:100px;margin-top:30px; width:100%"/>
       </div>
       </div>
   </body>

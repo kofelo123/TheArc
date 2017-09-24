@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+
 </head>
 <body>
  <div class="row" >
@@ -26,12 +27,13 @@
             </div>
         </div>
    		 </section>
-    
+   	<div class="responimg">
    	 <img src="/resources/bootstrap/images/thearc1.PNG" />
    	 <img src="/resources/bootstrap/images/thearc2.PNG" />
    	 <img src="/resources/bootstrap/images/thearc3.PNG" />
    	 <img src="/resources/bootstrap/images/thearc4.PNG" />
    	 <img src="/resources/bootstrap/images/thearc5.PNG" style="margin-bottom:100px;" />
+   	 </div>
    	 </div>
 	</div>
 </body>

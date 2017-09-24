@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>The Ark</title>
+    <title>The Arc</title>
     <meta name="description" content="">
  
     <!-- CSS FILES -->
@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" media="screen" data-name="skins">
     
  	<meta property="og:title"              content="${boardVO.title }" />
-	<meta property="og:description"        content="${boardVO.content }" />
+	<%-- <meta property="og:description"        content="${boardVO.content }" />  이부분때문에 summernote 에러난다.--%>
 	<meta property="og:image"              content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFa8hrulJs73ktd-t_ST_Bgjqq9Hu3LIWUyEx0F2vQGmtX7ou" />
 </head>
 
@@ -27,26 +27,24 @@
     <header id="header" class="container">
         <div class="row">
             <!-- Logo / Mobile Menu -->
-            <div id="logo-bar" class="col-sm-12 ">
+            <div id="logo-bar">
                 <!-- <div id="logo" > -->
-                <div class="col-sm-9 col-xs-12 ">
-                	<div class="mainlogo" style="margin-left:30%">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-1 col-sm-6 ">
+                	<div class="mainlogo">
                     	<h1><a href="/sboard/main"><img src="/resources/bootstrap/images/mainlogo.png" alt="theark" /></a></h1>
                     </div>
                 </div>
-                     <!--  </div> -->
-                    <!-- <div class="col-lg-2 col-md-2 col-xs-12"> -->
                     
                     <c:if test="${empty login }">
-                    <div class="col-sm-1 " style="margin-right:-20px;margin-top:10px">
+                    <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="/* margin-right:% ;*/margin-top:10px">
                       <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
                      </div>
-              		<div class="col-sm-1 " style="margin-top:10px">
+              		<div class="col-md-2 col-lg-1 col-sm-2" style="margin-top:10px">
                       <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
                      </div>
                     </c:if>
                     <c:if test="${not empty login }">
-                    <div class="col-sm-1">
+                    <div class="col-lg-1 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2">
                     	<c:choose>
                     		<c:when test="${login.authority=='user' }">
                     	<img src="/resources/bootstrap/img/user.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(일반회원)</h4>
@@ -74,12 +72,18 @@
             ================================================== -->
             <div class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="navbar-header">
+                	<div class="navbar-responsive">
+                	<a href="/sboard/main">
+                		<img src="/resources/bootstrap/images/thearc.PNG" style="width:100px;height:40px;margin-left:40%;margin-top:10px;" />
+                	</a>
+                	</div>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">

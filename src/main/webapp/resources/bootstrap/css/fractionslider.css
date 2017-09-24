@@ -122,3 +122,17 @@
 .fs-custom-pager-wrapper .active{
     /*background:url(../images/fraction-slider/fs.pager.png) 0px 0px no-repeat transparent;*/
 }
+
+@media only screen and (max-width: 767px){
+	
+	.fraction-slider{
+    position:relative;
+    width:100%; height:100%;
+    overflow:visible;
+}
+.fraction-slider .slide{
+    display:none; width:100%; height:300px;
+    position:absolute;
+    z-index:5000;
+}
+}

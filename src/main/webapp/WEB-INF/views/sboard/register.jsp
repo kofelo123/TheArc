@@ -33,6 +33,11 @@
 	
 	 background-image: url(/resources/bootstrap/images/bg2.jpg);
 }
+
+@media only screen and (max-width: 768px){
+.content .row{
+	margin-left:0% !important;	
+}
 </style>
 
 <!-- Main content -->
