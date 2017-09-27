@@ -3480,7 +3480,7 @@ table.text-center, table.text-center td, table.text-center th {
 
 @media ( max-width :768px) {
 	.login-box, .register-box {
-		width: 50%;
+		width: 80%;
 		margin-top: 20px
 	}
 }

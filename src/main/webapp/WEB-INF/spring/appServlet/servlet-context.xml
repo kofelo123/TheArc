@@ -47,10 +47,10 @@
 	  
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
 	    <mapping path="/sboard/register/*"/>
-	    <mapping path="/sboard/modifyPage"/>
-	    <mapping path="/sboard/removePage"/>
-	    <mapping path="/sboard/mail/listmail"/>
-	    <mapping path="/sboard/readPage/like/"/>	
+	    <mapping path="/sboard/modifyPage/*"/>
+	    <mapping path="/sboard/removePage/*"/>
+	    <mapping path="/sboard/mail/listmail/*"/>
+	    <mapping path="/sboard/readPage/like*"/>	
 	    <mapping path="/sboard/list/supporter"/>	
 	        
 	    <beans:ref bean="authInterceptor"/>
@@ -60,12 +60,12 @@
 	
 	
 	
+	<interceptors>
+  <beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+</interceptors>
 	
 	
 	<context:component-scan base-package="com.thearc.controller" />
 	
-	<interceptors>
-  <beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
-</interceptors>
 
 </beans:beans>

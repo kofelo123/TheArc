@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
     
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 <style>
 .fileDrop {

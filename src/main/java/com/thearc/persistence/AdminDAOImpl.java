@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.thearc.domain.BoardVO;
 import com.thearc.domain.UserVO;
 
 @Repository
@@ -34,8 +35,11 @@ public class AdminDAOImpl implements AdminDAO{
 		// TODO Auto-generated method stub
 		if(user.getAuthority().equals("user")){
 			user.setAuthority("supporter");
-		}else
+		}else if(user.getAuthority().equals("supporter")){
+			user.setAuthority("ban");
+		}else{
 			user.setAuthority("user");
+		}
 		 session.update(namespace + ".authmodify",user);
 	}
 
@@ -46,6 +50,50 @@ public class AdminDAOImpl implements AdminDAO{
 		session.delete(namespace + ".userDropCheck",user);
 		session.delete(namespace + ".userDropMessage",user);
 		session.delete(namespace + ".userDropUser",user);
+	}
+
+
+	@Override
+	public List<String> dayBoard() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".dayBoard");
+	}
+
+
+	@Override
+	public List<String> dayReply() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".dayReply");
+	}
+
+
+	@Override
+	public List<String> cateBoardview() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".cateBoardview");
+	}
+
+
+	@Override
+	public List<String> weekcateBoard() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".weekcateBoard");
+	}
+
+
+	@Override
+	public List<String> weekReplyCount() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace + ".weekReplyCount");
+	}
+
+
+	@Override
+	public void boardDrop(BoardVO board) throws Exception {
+		// TODO Auto-generated method stub
+		session.delete(namespace +".boardDrop1",board);
+		session.delete(namespace +".boardDrop2",board);///자식테이블(댓글,첨부 선삭제 후 board삭제)
+		session.delete(namespace +".boardDrop3",board);
 	}
 	
 	

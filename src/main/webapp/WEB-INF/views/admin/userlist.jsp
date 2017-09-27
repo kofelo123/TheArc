@@ -39,12 +39,12 @@
 						</tr>
 
 						<c:forEach items="${userVO}" var="userlist">
-
+							
 							<tr>
 								<td>${userlist.uid}</td>
 								<td>${userlist.uname}</td>
-								<td>${userlist.phone2}</td>
-								<td>${userlist.email2 }</td>
+								<td>${userlist.phone}</td>
+								<td>${userlist.email }</td>
 								<td>${userlist.authority }</td>
 								<td>
 									<button id="authoritymodify" name="modify" onClick="window.location.href='/admin/authmodify?uid=${userlist.uid}&authority=${userlist.authority}'">변경</button>

@@ -27,7 +27,7 @@
 	<div class="box box-primary direct-chat direct-chat-primary" style="border-top-color:#f39c12;">
 	
 	 <div class="box-header with-border">
-              <h3 class="box-title">스마트 IT 채팅</h3>
+              <h3 class="box-title"> 채팅</h3>
 
               <div class="box-tools pull-right">
                 <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">^.^</span>

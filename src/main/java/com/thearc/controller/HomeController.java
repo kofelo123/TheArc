@@ -55,6 +55,11 @@ public class HomeController {
 		
 		return "error/error500";
 	}
+	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	public String ban() {
+		
+		return "error/ban";
+	}
 	@RequestMapping(value = "/music", method = RequestMethod.GET)
 	public void muiscPlayer() {
 		

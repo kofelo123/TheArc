@@ -44,7 +44,7 @@
 }
   	
     </style>
-       
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <div class='popup back' style="display:none;"></div>
     <div id="popup_front" class='popup front' style="display:none;">
@@ -74,29 +74,30 @@
 				<div class="box-body">
 				
 				<div class="row">
-					<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
-						<h2 style="float:left;">${boardVO.title }</h2>
+					<div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+						<h2 style="float:left;">제목:${boardVO.title }</h2>
 					</div>
-					<div class="col-sm-3 col-md-3 col-lg-3 col-xs-4">
+					<div class="col-sm-3 col-md-3 col-lg-3 col-xs-10">
 						 <h3>작성자:${boardVO.writer}</h3>
          			<h4 style="margin-top:-15px;"><fmt:formatDate pattern="MM-dd HH:mm" value="${boardVO.regdate}" /></h4>
          			
 					</div>
 					<div class="col-sm-1 col-md-1 col-lg-1">
+					<c:if test="${not empty login }">
 						<c:choose>
 							<c:when test="${likeVO.likecheck == null }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'n' }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'y' }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
+									<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<%-- <c:if test="${likeVO.likecheck=='n' }">
@@ -117,6 +118,7 @@
 							</div>
 						</c:if> --%>
 						</c:choose>
+					</c:if>
 					</div>	
 						
 				</div>
@@ -138,14 +140,14 @@
 
     <ul class="mailbox-attachments clearfix uploadedList">
     </ul>	
-    <div class="col-sm-4 col-xs-4">
+    <div class="col-sm-4 col-xs-8">
  <c:if test="${login.uid == boardVO.writer}">
     <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
     <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
  </c:if>
     <button type="submit" class="btn btn-primary" id="goListBtn">목록</button>
     	</div>
-    	<div class="col-sm-1 col-sm-offset-6 col-xs-3 col-xs-offset-4">
+    	<div class="col-sm-1 col-sm-offset-6 col-xs-3 ">
     	<div class="fbshare" style="font-size:35px;">
 			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
          </div>
@@ -178,7 +180,7 @@
   <div class="box-body">
   <div class="user-panel">  <!-- user패널좀 수정해야할듯  -->
            
-            <h4>&nbsp;&nbsp;${boardVO.writer}</h4>
+            <h4>&nbsp;&nbsp;${login.uid}</h4>
       
           </div>
           <input type="hidden" id="newReplyWriter" value="${login.uid }">

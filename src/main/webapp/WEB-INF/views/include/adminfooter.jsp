@@ -9,7 +9,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 10.01	
         </div>
-        <strong>Copyright &copy; 2016 <a href="https://github.com/kofelo123">HeoJeongWon</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2017 <a href="https://github.com/kofelo123">허정원</a></strong> All rights reserved.
       </footer>
      </div> 
       <!-- Control Sidebar -->      

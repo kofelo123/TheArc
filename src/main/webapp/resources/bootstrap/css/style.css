@@ -493,7 +493,7 @@ a:hover{
 
 .navbar-nav .dropdown-menu > li > a:hover
 {
-    color:#E74C3C;
+    color:#3c8dbc;
 }
 .navbar-nav ul.sm-nowrap > li > a {
     white-space:nowrap;
@@ -1308,7 +1308,7 @@ ul.tags {
     display: block;
 }
 .blog_medium .day {
-    background:#E74C3C;
+    background:#3c8dbc;
     color: #FFFFFF;
     font-size: 22px;
     font-weight: 600;

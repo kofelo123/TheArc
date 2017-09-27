@@ -23,12 +23,17 @@
 	 background-image: url(/resources/bootstrap/images/bg2.jpg);
 }
 @media only screen and (max-width: 768px){
-.content .row{
-	margin-left:0% !important;	
-}
+	.content .row{
+		margin-left:0% !important;	
+	}
+	
+	 .box-body #keywordInput{
+		width:130px;
+	} 
+
 }
 </style>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Main content -->
 <section class="content">
 	<div class="row" style="margin-left:17%">
@@ -63,8 +68,8 @@
 							내용+작성자</option>
 						<option value="tcw"
 							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							제목+내용+작성자</option>
-					</select> <input type="text" name='keyword' id="keywordInput"  style="background-color:#e8faf1"
+							제목+내용+작성자</option> 
+					</select> <input type="text" name='keyword' id="keywordInput"  style="background-color:#e8faf1;"
 						value='${cri.keyword }'>
 					<button id='searchBtn'  style="background-color:#e8faf1">검색</button>
 					
@@ -75,7 +80,9 @@
 
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">${category}게시판</h3>
+					<h3 class="box-title">
+				${category }
+					게시판</h3>
 				</div>
 				<!--  게시판 리스트 본문 -->
 				<!--  썸네일게시판 -->
@@ -83,7 +90,7 @@
 				
 					<c:when test="${category eq 'thisweek' }"> 
 						<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12  col-sm-12 col-md-12 col-lg-12">
 					<tr>
 						<c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
 						<div class="blog_medium">
@@ -103,7 +110,7 @@
 									<div class="post_meta">
 										<h2>
 											<a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
-											${fn:substring(boardVO.title,0,15 )}..</a>
+											${boardVO.title}</a>
 										</h2>
 										<div class="metaInfo">
 											<span><i class="fa fa-user"></i> By <a href="#">${boardVO.writer}</a> </span>
@@ -215,6 +222,8 @@
 				<!--  버튼 -->
  				<button id='newBtn' style="background-color:#8ecbff;color:white;outline:0;border:0">새 글 쓰기</button>
 					<div class="text-center">
+					
+						
 						<ul class="pagination">
 
 							<c:if test="${pageMaker.prev}">
@@ -236,6 +245,7 @@
 							</c:if>
 
 						</ul>
+						
 					</div>
 
 				</div>

@@ -145,6 +145,7 @@ public class SearchBoardController {
 		  model.addAttribute(category);
 	    logger.info("regist get ...........");
 	    
+	    
 	    return "/sboard/register";
 	  }
 
@@ -187,7 +188,7 @@ public class SearchBoardController {
 	
 	  @RequestMapping(value = "/readPage/like", method = RequestMethod.GET)
 	  public String like(@RequestParam("bno") int bno,@RequestParam("uid") String uid,BoardVO board) throws Exception {
-
+		  System.out.println("BoardTest:"+board);
 	    logger.info("like add ...........");
 	    System.out.println("bno 테스트:"+bno);
 	    System.out.println("uid 테스트"+uid);

@@ -95,8 +95,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    		
 	    }
 	    
-	    pathName=url[url.length-1];
-	    if(pathName.equals("admin")){
+	    pathName=url[url.length-2]+"/"+url[url.length-1];
+	    if(pathName.equals("register/notice")){
 	    	UserVO vo = (UserVO) session.getAttribute("login");
 	    	if(vo.getAuthority().equals("user")||vo.getAuthority().equals("supporter")){
 	    		response.sendRedirect("/error403");

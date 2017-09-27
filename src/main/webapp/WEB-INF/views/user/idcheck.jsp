@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>아이디 중복 체크</title>
 <link href="CSS/subpage.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
 body{   
-  background-color:#44576f;
+  background-color:#6b5d5d;
   font-family: Verdana;
 }
 #wrap{     

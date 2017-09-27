@@ -22,6 +22,7 @@
     <![endif]
 </head> -->
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 	<div id="targetTop"></div><!--  임의로 만들었다. 우측 메뉴때문에. -->
 	

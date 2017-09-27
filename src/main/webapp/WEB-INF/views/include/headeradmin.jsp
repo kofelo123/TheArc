@@ -76,7 +76,7 @@
             <div class="pull-left info">
               <p>&nbsp;&nbsp;관리자</p>
 
-              <a href="/user/login"><i class="fa fa-circle text-admin"></i> 관리자모드</a>
+              <a href="/user/login"><i class="fa fa-circle text-admin" style="color:gold"></i> 관리자모드</a>
             </div>
           </div>
           
@@ -98,33 +98,34 @@
           <ul class="sidebar-menu">
             <li class="header">Admin Link</li>
             
-             <c:if test="${sboardNum=='userlist'}">
             <li class="treeview active">
-              </c:if>
-                <c:if test="${sboardNum!='userlist'}">
                      <li class="treeview">
-                </c:if>
-              <a href="userlist">
+              <a href="/admin/userlist">
                 <i class="fa fa-files-o"></i>
                 <span>사용자 목록</span>
-                <span class="label label-primary pull-right">4</span>
+                <span class="label label-primary pull-right"></span>
               </a>
                  </li>
             
             
-            <c:if test="${sboardNum=='chartpage'}">
             <li class="treeview active">
-            </c:if>
-            <c:if test="${sboardNum!='chartpage'}">
               <li class="treeview">
-            </c:if>
-              <a href="chartpage">
+              <a href="/admin/chartpage">
                 <i class="fa fa-pie-chart"></i>
                 <span>통계</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
              
             </li>
+            
+              <li class="treeview">
+              <a href="/admin/superadmin/free">
+                <i class="fa fa-edit"></i> <span>게시판관리</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              
+            </li>
+            
                           <li class="header" style="background-color:#ddf5f8;"></li>
                                         <li class="header" style="background-color:#ddf5f8;"></li>
                                         
@@ -137,7 +138,7 @@
         
             
             
-            <li class="treeview">
+          <!--   <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
                 <span>사용자권한</span>
@@ -145,23 +146,17 @@
               </a>
              
             </li>
+           -->
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>게시판관리</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-table"></i> <span>관리자게시판</span>
+              <a href="">
+                <i class="fa fa-table"></i> <span>캘린더</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-calendar"></i> <span>일정관리</span>
+                <i class="fa fa-calendar"></i> <span>기타</span>
                 <!-- <small class="label pull-right bg-red">3</small> -->
               </a>
             </li>

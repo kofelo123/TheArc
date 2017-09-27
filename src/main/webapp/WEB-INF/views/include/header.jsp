@@ -6,6 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <title>The Arc</title>
     <meta name="description" content="">
  
@@ -74,7 +75,7 @@
                 <div class="navbar-header">
                 	<div class="navbar-responsive">
                 	<a href="/sboard/main">
-                		<img src="/resources/bootstrap/images/thearc.PNG" style="width:100px;height:40px;margin-left:40%;margin-top:10px;" />
+                		<img src="/resources/bootstrap/images/thearc.PNG" style="width:100px;height:40px;margin-left:35%;margin-top:10px;" />
                 	</a>
                 	</div>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -136,7 +137,7 @@
                         <li><a href="#">기타</a>
                          <ul class="dropdown-menu">
                                 <li><a href="#" onClick="window.open('/music', '', 'width=680, height=420,left=830, top=330'); return false;"><i class="glyphicon glyphicon-music" style="color:#25c1ef"></i> <span>뮤직플레이어</span></a></li>
-                                 <li><a href="https://github.com/kofelo123/TheArc"><i class="fa fa-github "></i> <span>깃허브</span></a></li>
+                                 <li><a href="https://github.com/kofelo123/TheArc" target="_blank"><i class="fa fa-github "></i> <span>깃허브</span></a></li>
                             </ul>
                     	 </li>
 

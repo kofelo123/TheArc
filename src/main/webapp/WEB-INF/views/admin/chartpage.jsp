@@ -6,6 +6,7 @@
 
 <%@include file="../include/headeradmin.jsp"%>
 <%@ include file="../include/analytics.jsp"%>	
+
     <!-- Main content -->
     <section class="content" style="width:90%">
       <div class="row">
@@ -13,7 +14,7 @@
           <!-- AREA CHART -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">일일 사용자 방문 통계</h3>
+              <h3 class="box-title">일일 게시물 , 댓글 통계</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -33,7 +34,7 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">사용 브라우저 통계</h3>
+              <h3 class="box-title">한주간 게시판별 방문 통계</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -54,7 +55,7 @@
           <!-- LINE CHART -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">일일 사용자 통계-선형</h3>
+              <h3 class="box-title">일일 게시글 , 댓글 통계-선형</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -74,7 +75,7 @@
           <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">동시접속자 통계</h3>
+              <h3 class="box-title">한주간 게시판별 작성글,댓글 통계</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -113,6 +114,9 @@
 <script src="/resources/bootstrap/js/demo.js"></script>
 <!-- page script -->
 <script>
+
+var d = new Date();
+
   $(function () {
     /* ChartJS
      * -------
@@ -128,8 +132,10 @@
     // This will get the first returned node in the jQuery collection.
     var areaChart = new Chart(areaChartCanvas);
 
+   
+    
     var areaChartData = {
-      labels: ["8일", "9일", "10일", "11일", "12일", "13일", "14일"],
+      labels: [ d.getDate()-6+"일", d.getDate()-5+"일", d.getDate()-4+"일", d.getDate()-3+"일", d.getDate()-2+"일", d.getDate()-1+"일", d.getDate()+"일"],
       datasets: [
         {
           label: "Electronics",
@@ -139,8 +145,9 @@
           pointStrokeColor: "#c1c7d1",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
+          data: [${chart2.get(6)}, ${chart2.get(5)}, ${chart2.get(4)}, ${chart2.get(3)}, ${chart2.get(2)}, ${chart2.get(1)}, ${chart2.get(0)}]
+        }
+          ,
         {
           label: "Digital Goods",
           fillColor: "rgba(60,141,188,0.9)",
@@ -149,8 +156,9 @@
           pointStrokeColor: "rgba(60,141,188,1)",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(60,141,188,1)",
-          data: [28, 48, 40, 19, 86, 27, 90]
+          data: [ ${chart1.get(6)}, ${chart1.get(5)}, ${chart1.get(4)}, ${chart1.get(3)}, ${chart1.get(2)}, ${chart1.get(1)}, ${chart1.get(0)}]
         }
+          
       ]
     };
 	
@@ -213,40 +221,40 @@
     var pieChart = new Chart(pieChartCanvas);
     var PieData = [
       {
-        value: 700,
+        value: ${chart3.get(0)},
         color: "#f56954",
         highlight: "#f56954",
-        label: "크롬"
+        label: "자유게시판"
       },
       {
-        value: 500,
+        value: ${chart3.get(1)},
         color: "#00a65a",
         highlight: "#00a65a",
-        label: "익스플로어"
+        label: "포토존"
       },
       {
-        value: 400,
+        value: ${chart3.get(2)},
         color: "#f39c12",
         highlight: "#f39c12",
-        label: "파이어폭스"
+        label: "방문후기"
       },
       {
-        value: 600,
+        value: ${chart3.get(3)},
         color: "#00c0ef",
         highlight: "#00c0ef",
-        label: "사파리"
+        label: "묻고답하기"
       },
       {
-        value: 300,
+        value: ${chart3.get(4)},
         color: "#3c8dbc",
         highlight: "#3c8dbc",
-        label: "오페라"
+        label: "언론보도"
       },
       {
-        value: 100,
+        value: ${chart3.get(5)},
         color: "#d2d6de",
         highlight: "#d2d6de",
-        label: "네비게이터"
+        label: "금주의디아크"
       }
     ];
     var pieOptions = {
@@ -280,9 +288,39 @@
     //-------------
     //- BAR CHART -
     //-------------
+     var varChartData = {
+      labels: [ "자유게시판","포토존","방문후기","묻고답하기","뉴스","금주의 디아크","공지사항"],
+      datasets: [
+        {
+          label: "Electronics",
+          fillColor: "rgba(210, 214, 222, 1)",
+          strokeColor: "rgba(210, 214, 222, 1)",
+          pointColor: "rgba(210, 214, 222, 1)",
+          pointStrokeColor: "#c1c7d1",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [${chart4.get(6)}, ${chart4.get(5)}, ${chart4.get(4)}, ${chart4.get(3)}, ${chart4.get(2)}, ${chart4.get(1)}, ${chart4.get(0)}]
+        }
+          ,
+        {
+          label: "Digital Goods",
+          fillColor: "rgba(60,141,188,0.9)",
+          strokeColor: "rgba(60,141,188,0.8)",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [ ${chart5.get(6)}, ${chart5.get(5)}, ${chart5.get(4)}, ${chart5.get(3)}, ${chart5.get(2)}, ${chart5.get(1)}, ${chart5.get(0)}]
+        }
+          
+      ]
+    };
+    
+    
+    
     var barChartCanvas = $("#barChart").get(0).getContext("2d");
     var barChart = new Chart(barChartCanvas);
-    var barChartData = areaChartData;
+    var barChartData = varChartData;
     barChartData.datasets[1].fillColor = "#00a65a";
     barChartData.datasets[1].strokeColor = "#00a65a";
     barChartData.datasets[1].pointColor = "#00a65a";

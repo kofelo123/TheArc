@@ -4,6 +4,9 @@ public class LoginDTO {
 	private String uid;
 	private String upw;
 	private boolean useCookie;
+	
+	private String authority;
+	
 	public String getAuthority() {
 		return authority;
 	}
@@ -11,7 +14,6 @@ public class LoginDTO {
 		this.authority = authority;
 	}
 
-	private String authority;
 	
 	public String getUid() {
 		return uid;

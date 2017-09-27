@@ -11,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.thearc.domain.UserVO;
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
   private static final String LOGIN = "login";
@@ -28,9 +30,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     ModelMap modelMap = modelAndView.getModelMap();  
     Object userVO = modelMap.get("userVO");
-   
+  
+	   
     if (userVO != null) {
-
+    	
       logger.info("new login success");
       System.out.println(userVO);
       session.setAttribute(LOGIN, userVO);
@@ -47,6 +50,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       // response.sendRedirect("/");
       Object dest = session.getAttribute("dest");
       System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
+      
+      /*아래 ban체크용 */
+      UserVO uvo=(UserVO) userVO;
+      if(uvo.getAuthority().equals("ban")){
+    	  session.removeAttribute(LOGIN);
+   	   response.sendRedirect("/ban");
+      }else//원래 아래 코드만 있었는데 sendredirect 두번 처리하는 에러떄문에 여기서 분기문을 둠.
       response.sendRedirect(dest != null ? (String)dest : "/");
     }
   }
@@ -54,7 +64,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+	  
     HttpSession session = request.getSession();
 
     if (session.getAttribute(LOGIN) != null) {
