@@ -103,9 +103,9 @@ function jusoCallBack(roadAddrPart1,addrDetail){
       </fieldset>
       <fieldset>
         <legend>추가정보</legend><br>
-        <label>우편번호</label> 
+        <label>주소록</label> 
         <input type="text"       name="zipNum"   size="10" placeholder="-------------->">      
-        <input type="button"     value="우편 번호"  onclick="goPopup();" style="margin-left:10px"><br>
+        <input type="button"     value="주소록"  onclick="goPopup();" style="margin-left:10px"><br>
         <div id="callBackDiv">
         <label>주소</label> 
         <input type="text"     id="roadAddrPart1"   name="roadAddrPart1"   size="30" style="margin-left:30px"><br>

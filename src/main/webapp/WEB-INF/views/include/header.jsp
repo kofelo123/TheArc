@@ -100,17 +100,18 @@
                         <li><a href="#">관광코스</a>
                             <ul class="dropdown-menu">
                                 <li><a href="/sboard/list/thisweek">금주의 디아크</a></li>
-                                <li><a href="columns.html">야자수 테라리움</a></li>
-                                <li><a href="typography.html">수상레저체험</a></li>
-                                <li><a href="pricing-tables.html">바닷속이야기</a></li>
-                                <li><a href="icons.html">감성아카데미</a></li>
+                                <li><a href="/sboard/list/terarium">야자수 테라리움</a></li>
+                                <li><a href="/sboard/list/leisure">수상레저체험</a></li>
+                                <li><a href="/sboard/list/seastory">바닷속이야기</a></li>
+                                <li><a href="/sboard/list/academy">감성아카데미</a></li>
                             </ul>
                         </li>
 
                         <li><a href="#">이벤트</a>
                             <ul class="dropdown-menu">
-                                <li><a href="/sboard/list/game">오락실</a></li>
                                 <li><a href="/sboard/list/race">포토레이싱대회</a></li>
+                                <li><a href="/sboard/list/mythearc">내가 담은 디아크</a></li>
+                                <li><a href="/sboard/list/musicvideo">뮤직비디오</a></li>
                             </ul>
                         </li>
 
