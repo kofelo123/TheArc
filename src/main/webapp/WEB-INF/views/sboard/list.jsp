@@ -86,9 +86,9 @@
 				</div>
 				<!--  게시판 리스트 본문 -->
 				<!--  썸네일게시판 -->
-				<c:choose>
+				<c:choose>   
 				
-					<c:when test="${category eq 'thisweek' }"> 
+					<c:when test="${category eq 'thisweek' || category eq 'terarium'|| category eq 'leisure'|| category eq 'seastory'|| category eq 'academy'}"> 
 						<div class="row">
 					<div class="col-xs-12  col-sm-12 col-md-12 col-lg-12">
 					<tr>

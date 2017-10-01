@@ -66,7 +66,7 @@ public class SearchBoardController {
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
 	    
 	    //썸네일게시판용	+포토존
-	    if(category.equals("thisweek")||category.equals("photo"))
+	    if(category.equals("thisweek")||category.equals("photo")||category.equals("terarium")||category.equals("leisure")||category.equals("seastory")||category.equals("academy"))
 	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
 	    //
 	    

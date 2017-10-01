@@ -239,11 +239,11 @@ mit 라이센스의 summernote 오픈소스 에디터를 적용시켰기 떄문�
 				
 				<section>
 					<h2><a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">구현설명</a></h2><br>
-					<a href="#/6"><h4>프로젝트구조</h4></a>
-					<a href="#/7"><h4>의존주입</h4></a>
-					<a href="#/8"><h4>AOP & 트랜잭션</h4></a>
-					<a href="#/9"><h4>스프링 인터셉터</h4></a>
-					<a href="#/10"><h4>Ajax&REST</h4></a>
+					<!-- <a href="#/6"><h4>프로젝트구조</h4></a> -->
+					<a href="#/6"><h4>의존주입</h4></a><br>
+					<!-- <a href="#/8"><h4>AOP & 트랜잭션</h4></a> -->
+					<a href="#/7"><h4>스프링 인터셉터</h4></a><br>
+					<a href="#/8"><h4>Ajax&REST</h4></a>
 					
 					<aside class="notes">
 			구현설명을 하겠습니다.
@@ -251,7 +251,7 @@ mit 라이센스의 summernote 오픈소스 에디터를 적용시켰기 떄문�
 	</aside>
 				</section>
 				
-				<section>
+			<!-- 	<section>
 					<section>
 					<h2>프로젝트구조</h2>
 					<div class="fragment" style="position:absolute;top:-20px;left:-180px;height:750px;">
@@ -286,10 +286,10 @@ controller와 dao사이에서 완충역할을 하는 service계층으로 전달�
 controller에서 model로 viewResolver에 의해 인식된 jsp에 데이터가 전달됩니다.				
 	</aside>
 					</section>
-				</section>
+				</section> -->
 				
 				<section>
-					<section>
+					<!-- <section>
 						<h2>의존주입<span>( DI , IOC )</span></h2><br>
 						<div class="fragment"><h3>응집도 & <span class="fragment highlight-red grow" >결합도</span></h3></div><br>
 						<span class="fragment">new 의존클래스 x ->  </span><span class="fragment"> 종속적 x - 유지보수 강점</span><br><br>
@@ -302,12 +302,13 @@ controller에서 model로 viewResolver에 의해 인식된 jsp에 데이터가 �
 자바코드에서 인터페이스를 타입으로 두고 외부 xml에서 구체적인 의존모듈을 주입함으로 인해서 유지보수에 강점을 가집니다.
 또, 배포후에 class파일만 남게 되어 자바소스상에서 수정하기 힘든데, 의존주입을 통해 xml에서 쉽게 수정이 가능합니다.				
 	</aside>
-					</section>
+					</section> -->
 					
 					<section>
 					<h2>의존주입 적용</h2><br>
+					<h4 class="fragment" style="margin-left:-70px;">스프링빈 등록</h4>	
 					<h4 class="fragment">Xml 기반 &nbsp;  vs&nbsp;&nbsp; 어노테이션기반</h4>	
-					<h5 class="fragment">가변적요소    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고정적요소</h5>	
+					<h5 class="fragment" style="margin-left:-70px;">가변적요소    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고정적요소</h5>	
 					<aside class="notes">
 		의존주입을 적용해보겠습니다.
 스프링의 bean 등록은 xml기반 과 어노테이션기반으로 나뉩니다.
@@ -400,7 +401,7 @@ xml에서 직접 빈을 명시해서 등록하게되고 이런 빈들 같은 경
 					</section>
 				</section>
 				
-				<section>
+				<!-- <section>
 					<section>
 						<h3>AOP</h3>
 						<div><h3 class="fragment highlight-red grow">응집도 <span class="fragment" style="color:black;"> & 결합도</span></h3></div>
@@ -451,10 +452,10 @@ xml에서 직접 빈을 명시해서 등록하게되고 이런 빈들 같은 경
 	</aside>
 	
 				</section>
-				</section>
+				</section> -->
 				
 				<section>
-					<section>
+					<!-- <section>
 						<h2>스프링 인터셉터</h2>
 						<h4 class="fragment">서블릿필터 vs 스프링 인터셉터</h4>
 						<img class="fragment" src="presentation/interceptor.PNG"/>
@@ -463,22 +464,17 @@ xml에서 직접 빈을 명시해서 등록하게되고 이런 빈들 같은 경
 인터셉터는 특정 매핑을 가로챈다는 점에서
 인터셉터는 서블릿의 필터와 유사한 개념이나, 좀더 스프링 context에 접근이 용이하다는 차이점이 있습니다.			
 	</aside>
-					</section>
+					</section> -->
 					<section>
-						<h2>인터셉터 vs AOP</h2><br>
-						<h4 class="fragment">공통점 : 사전,사후 처리</h4>
-						<h4 class="fragment">차이점 : 파라미터차이</h4><br>
+						<h2>인터셉터</h2><br>
+						<h4 class="fragment">사전,사후 처리</h4>
 						<h4 class="fragment"><span class="fragment highlight-blue">인터셉터 메소드</span></h4>
 						<ul class="fragment">
 							<li>preHandle()</li>
 							<li>postHandle()</li>
 							<li>afterCompletion()</li>
 						</ul>
-						인터셉터와 AOP에 대해 비교해보겠습니다.
-공통점으로는 사전,사후처리가 가능하다는 점이며, 차이점은 파라미터가 인터셉터는 resquest,response를 받으
-aop의 advice는 joinpoint나 proceedingJoinpoint 등을 받게됩니다.
-인터셉터의 메소드로는 prehandle() posthandle() afterCompletion() 이 있으며
-각각 컨트롤러 전,후 처리, DispatcherServlet의 후처리 가되겠습니다.
+						
 					</section>
 					<section>
 						<h2>인터셉터 적용</h2>
@@ -597,7 +593,7 @@ loginPOst,즉 로그인버튼을 눌렀을때 전처리로 이미있는 세션�
 		마지막으로 REST 와 AJAX에 대해 설명하겠습니다.				
 	</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2> REST  </h2>
 						<h4 class="fragment">URI = 데이터  &nbsp;&nbsp;&nbsp;ex)'/boards/123'</h4>
 						<h4 class="fragment">@Response Body -> @Rest Controller</h4>
@@ -625,7 +621,7 @@ RESTController는 데이터(JSON)를 반환한다고 볼수있습니다.
  $ajax()로 서버단 로직을 직접 호출하여 JSON 등의 데이터를 받아 클라이언트에서 바로 처리하며
  REST방식과 함꼐 사용합니다.				
 	</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>적용-댓글</h2>
 						<pre class="fragment"><code class="hljs" data-trim contenteditable>

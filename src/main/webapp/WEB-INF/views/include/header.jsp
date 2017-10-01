@@ -99,11 +99,11 @@
 
                         <li><a href="#">관광코스</a>
                             <ul class="dropdown-menu">
-                                <li><a href="/sboard/list/thisweek">금주의 디아크</a></li>
                                 <li><a href="/sboard/list/terarium">야자수 테라리움</a></li>
                                 <li><a href="/sboard/list/leisure">수상레저체험</a></li>
                                 <li><a href="/sboard/list/seastory">바닷속이야기</a></li>
                                 <li><a href="/sboard/list/academy">감성아카데미</a></li>
+                                <li><a href="/sboard/list/thisweek">금주의 디아크</a></li>
                             </ul>
                         </li>
 
