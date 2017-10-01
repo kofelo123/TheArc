@@ -43,15 +43,11 @@
 .promo_box .container{
 width:100%;
 }
-
 @font-face {
     font-family: 'Typo_DecoVariety';
     src: url(/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
 }
-
-
  
-
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -69,6 +65,7 @@ width:100%;
             		
             		
                 	<c:choose>
+                		
       					 <c:when test="${weatherObj.sky == '1'}">
      					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
      					    <h3>맑음</h3>
@@ -85,7 +82,13 @@ width:100%;
      					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
      					    <h3>흐림</h3>
   					     </c:when>
+  					     <c:otherwise>
+  					     	<img src="/resources/bootstrap/images/weather/noweather.PNG" />
+  					     	<h3>10AM이후갱신</h3>
+  					     </c:otherwise>
   					 </c:choose>
+  					 
+  					 
                     <h3>강수확률: ${weatherObj.pop}%</h3>
                     <h3>습도: ${weatherObj.reh}%</h3>
                     <h3>기온: ${weatherObj.t3h}℃</h3>
@@ -226,7 +229,6 @@ width:100%;
                 'autoChange':           true
             });
         });
-
     
     </script> 
     

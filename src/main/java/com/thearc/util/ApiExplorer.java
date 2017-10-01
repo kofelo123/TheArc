@@ -55,7 +55,14 @@ public class ApiExplorer {
 			 String subVal;
 			 String[] split = line.split("fcstValue");
 			 //9시
+			System.out.println("test:"+split.length);
 			 vo.setTime("0900");
+			 if(split.length==1){
+				 vo.setPop("?");
+				 vo.setReh("?");
+				 vo.setSky("?");
+				 vo.setT3h("?");
+			 }else{
 			 subVal=(split[1].substring(2,4)).replace(",","");
 			 vo.setPop(subVal);
 			 
@@ -67,12 +74,18 @@ public class ApiExplorer {
 			 
 			 subVal=(split[5].substring(2,4)).replace(",","");
 			 vo.setT3h(subVal);
-			 
+			 }
 			 jsonList.add(vo);
 			 //
 			 //12시
 			 vo= new JsonVO();
 			 vo.setTime("1200");
+			 if(split.length==1){
+				 vo.setPop("?");
+				 vo.setReh("?");
+				 vo.setSky("?");
+				 vo.setT3h("?");
+			 }else{
 			 subVal=(split[10].substring(2,4)).replace(",","");
 			 vo.setPop(subVal);
 			 
@@ -84,12 +97,18 @@ public class ApiExplorer {
 			 
 			 subVal=(split[16].substring(2,4)).replace(",","");
 			 vo.setT3h(subVal);
-			 
+			 }
 			 jsonList.add(vo);
 			 //
 			 //15시
 			 vo= new JsonVO();
 			 vo.setTime("1500");
+			 if(split.length==1){
+				 vo.setPop("?");
+				 vo.setReh("?");
+				 vo.setSky("?");
+				 vo.setT3h("?");
+			 }else{
 			 subVal=(split[21].substring(2,4)).replace(",","");
 			 vo.setPop(subVal);
 			 
@@ -101,12 +120,18 @@ public class ApiExplorer {
 			 
 			 subVal=(split[25].substring(2,4)).replace(",","");
 			 vo.setT3h(subVal);
-			 
+			 }
 			 jsonList.add(vo);
 			 //
 			 //18시
 			 vo= new JsonVO();
 			 vo.setTime("1800");
+			 if(split.length==1){
+				 vo.setPop("?");
+				 vo.setReh("?");
+				 vo.setSky("?");
+				 vo.setT3h("?");
+			 }else{
 			 subVal=(split[31].substring(2,4)).replace(",","");
 			 vo.setPop(subVal);
 			 
@@ -118,7 +143,7 @@ public class ApiExplorer {
 			 
 			 subVal=(split[37].substring(2,4)).replace(",","");
 			 vo.setT3h(subVal);
-			 
+			 }
 			 jsonList.add(vo);
 			 //
 			 System.out.println(jsonList);
