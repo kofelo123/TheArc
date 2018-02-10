@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 
 
-    <link href="/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
-    <link href="/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
+    <link href="/thearc/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
+    <link href="/thearc/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
 
 <%@include file="/WEB-INF/views/include/header2.jsp"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
@@ -15,17 +15,17 @@
         <div class="fs_loader"></div>
         
         <div class="slide">
-        	<img src="/resources/bootstrap/images/2-3.jpg" style="width:100%;height:100%;">
+        	<img src="/thearc/resources/bootstrap/images/2-3.jpg" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
 
 		<div class="slide">
-        	<img src="/resources/bootstrap/images/2-2.jpg" style="width:100%;height:100%;">
+        	<img src="/thearc/resources/bootstrap/images/2-2.jpg" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
        
         <div class="slide">
-        	<img src="/resources/bootstrap/images/1-1.PNG" style="width:100%;height:100%;">
+        	<img src="/thearc/resources/bootstrap/images/1-1.PNG" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
       
@@ -45,7 +45,7 @@ width:100%;
 }
 @font-face {
     font-family: 'Typo_DecoVariety';
-    src: url(/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
+    src: url(/thearc/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
 }
  
 </style>
@@ -67,23 +67,23 @@ width:100%;
                 	<c:choose>
                 		
       					 <c:when test="${weatherObj.sky == '1'}">
-     					    <img src="/resources/bootstrap/images/weather/sun.PNG" />
+     					    <img src="/thearc/resources/bootstrap/images/weather/sun.PNG" />
      					    <h3>맑음</h3>
   					     </c:when>
       					 <c:when test="${weatherObj.sky == '2'}">
-     					    <img src="/resources/bootstrap/images/weather/littleCloud.PNG" />
+     					    <img src="/thearc/resources/bootstrap/images/weather/littleCloud.PNG" />
      					    <h3>구름조금</h3>
   					     </c:when>
       					 <c:when test="${weatherObj.sky == '3'}">
-     					    <img src="/resources/bootstrap/images/weather/manyCloud.PNG" />
+     					    <img src="/thearc/resources/bootstrap/images/weather/manyCloud.PNG" />
      					    <h3>구름많음</h3>
   					     </c:when>
       					 <c:when test="${weatherObj.sky == '4'}">
-     					    <img src="/resources/bootstrap/images/weather/rain.PNG" />
+     					    <img src="/thearc/resources/bootstrap/images/weather/rain.PNG" />
      					    <h3>흐림</h3>
   					     </c:when>
   					     <c:otherwise>
-  					     	<img src="/resources/bootstrap/images/weather/noweather.PNG" />
+  					     	<img src="/thearc/resources/bootstrap/images/weather/noweather.PNG" />
   					     	<h3>10AM이후갱신</h3>
   					     </c:otherwise>
   					 </c:choose>
@@ -112,7 +112,7 @@ width:100%;
 								
                  <div class="col-sm-2">
                  	<div class="time" style="margin-top:10px;">
-               		  	<img src="/resources/bootstrap/images/weather/time.PNG"  />
+               		  	<img src="/thearc/resources/bootstrap/images/weather/time.PNG"  />
                  	</div>
                  </div>
                 </div>
@@ -143,8 +143,8 @@ width:100%;
                             <div class="recent-item">
                                 <figure class="touching medium">
                                     <div class="pic">
-                                        <a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>
-										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
+                                        <a href='/thearc/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/thearc/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
 										 </a>
                                     </div>
                                     <div class="skin-overlay"></div>
@@ -153,8 +153,8 @@ width:100%;
                                    <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
 									
 									
-                                   <a href="/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
+                                   <a href="/thearc/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
+                                    <a href='/thearc/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
                                         <i class="fa fa-link"></i>
                                     </a>
                                     <figcaption class="item-description">
@@ -187,7 +187,7 @@ width:100%;
               <tr><th>제목</th><th>작성자</th><th class="responth">작성일</th><th class="responth">조회수</th></tr>
               	<c:forEach items="${minList }" var="boardVO">
                 <tr style="font-family:Typo_DecoVariety; font-size:17px;color:#337ab7;">
-                  <th><a href='/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>${boardVO.title}</th></a>
+                  <th><a href='/thearc/sboard/readPage/${boardVO.category}?bno=${boardVO.bno}&uid=${login.uid}'>${boardVO.title}</th></a>
                   <th>${boardVO.writer}</th>
                   <th class="responth"><fmt:formatDate pattern="MM-dd"
 										value="${boardVO.regdate}" /></th>
@@ -215,7 +215,7 @@ width:100%;
 	
     <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
     <%@include file="/WEB-INF/views/include/footer2.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
- <script charset="utf-8" type="text/javascript" src="/resources/bootstrap/js/jquery.fractionslider.js"></script>
+ <script charset="utf-8" type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.fractionslider.js"></script>
   <script>
         $(window).load(function(){
             $('.slider').fractionSlider({

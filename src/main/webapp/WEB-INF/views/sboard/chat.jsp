@@ -7,16 +7,16 @@
 	<meta charset="UTF-8">
     <title>채팅</title>
     
-     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/thearc/resources/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/resources/bootstrap/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/thearc/resources/bootstrap/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="/resources/bootstrap/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/thearc/resources/bootstrap/css/skins/_all-skins.min.css">
   
  
 
@@ -51,8 +51,8 @@
               <div class="direct-chat-contacts">
                 <ul class="contacts-list">
                   <li>
-                    <a href="#">
-                      <img class="contacts-list-img" src="/resources/bootstrap/img/king.jpg" alt="User Image">
+                    <a href="/thearc#">
+                      <img class="contacts-list-img" src="/thearc/resources/bootstrap/img/king.jpg" alt="User Image">
 
                       <div class="contacts-list-info">
                             <span class="contacts-list-name">
@@ -180,7 +180,7 @@
                     <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                   </div>
                   /.direct-chat-info
-                  <img class="direct-chat-img" src="/resources/bootstrap/dist/img/user1-128x128.jpg" alt="Message User Image">/.direct-chat-img
+                  <img class="direct-chat-img" src="/thearc/resources/bootstrap/dist/img/user1-128x128.jpg" alt="Message User Image">/.direct-chat-img
                   <div class="direct-chat-text">
                     Is this template really for free? That's unbelievable!
                   </div>
@@ -209,8 +209,8 @@
               <div class="direct-chat-contacts">
                 <ul class="contacts-list">
                   <li>
-                    <a href="#">
-                      <img class="contacts-list-img" src="/resources/bootstrap/dist/img/user1-128x128.jpg" alt="User Image">
+                    <a href="/thearc#">
+                      <img class="contacts-list-img" src="/thearc/resources/bootstrap/dist/img/user1-128x128.jpg" alt="User Image">
 
                       <div class="contacts-list-info">
                             <span class="contacts-list-name">
@@ -248,15 +248,15 @@
       
         jQuery 2.2.3
           -->
-<script src="/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/thearc/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- Slimscroll -->
-<script src="/resources/bootstrap/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/resources/bootstrap/js/app.min.js"></script>
+<script src="/thearc/resources/bootstrap/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/resources/bootstrap/js/demo.js"></script>
+<script src="/thearc/resources/bootstrap/js/demo.js"></script>
 </html>

@@ -74,7 +74,7 @@ function result(zipNum,sido,gugun,dong) {
     <tr>
       <td>${addressVO.zipNum}</td>
         <td>
-          <a href="#" onclick="return result('${addressVO.zipNum}','${addressVO.sido}', '${addressVO.gugun}','${addressVO.dong}')">
+          <a href="/thearc#" onclick="return result('${addressVO.zipNum}','${addressVO.sido}', '${addressVO.gugun}','${addressVO.dong}')">
             ${addressVO.sido} ${addressVO.gugun} ${addressVO.dong} 
           </a><!--///onclick 메소드앞에 return을 붙여주면 true면 href링크로 이동,false면 이동하지 않는다고한다.   -->
         </td>

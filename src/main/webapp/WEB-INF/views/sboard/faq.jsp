@@ -27,12 +27,12 @@
 	<div id="targetTop"></div><!--  임의로 만들었다. 우측 메뉴때문에. -->
 	
  <div class="col-sm-8 col-sm-offset-2" style="margin-bottom:30px;" >
-  <section class="subtitle" style="background-image: url('/resources/bootstrap/images/subtitle.png');">
+  <section class="subtitle" style="background-image: url('/thearc/resources/bootstrap/images/subtitle.png');">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9" >
                     <div class="subcontent" style="color:white;margin-top:10px;">
-                    <span class="home" ><a href="/sboard/main" style="color:white;">Home </a>  < </span> <span>고객센터 < </span> <strong><a href="/sboard/faq" style="color:white;">자주 하는 질문</a></strong>
+                    <span class="home" ><a href="/thearc/sboard/main" style="color:white;">Home </a>  < </span> <span>고객센터 < </span> <strong><a href="/thearc/sboard/faq" style="color:white;">자주 하는 질문</a></strong>
                     
                         <h2 style="color:white">자주 하는 질문</h2>
                     </div>
@@ -58,7 +58,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseOne" data-parent="#accordion" data-toggle="collapse">
                                         	자전거는 무료로 대여해주나요?
                                         </a>
                                     </h4>
@@ -73,7 +73,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseTwo" data-parent="#accordion" data-toggle="collapse">
                                           	  체험신청 하고 싶은데 어떻게 하나요?
                                         </a>
                                     </h4>
@@ -91,7 +91,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseThree" data-parent="#accordion" data-toggle="collapse">
                                          		   체험신청했는데  취소하려면 어떻게 해야하나요?
 
 
@@ -111,7 +111,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseFive" data-parent="#accordion" data-toggle="collapse">
                                            
 체험신청 모바일로 할수 있나요?
 
@@ -133,7 +133,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseSix" data-parent="#accordion" data-toggle="collapse">
                                           		전시 대관 신청은 어떻게 하나요?
                                         </a>
                                     </h4>
@@ -152,7 +152,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseSeven" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseSeven" data-parent="#accordion" data-toggle="collapse">
                                             
 								실내체험관에 소방대피로가 안내되어있나요?
                                         </a>
@@ -168,7 +168,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseEight" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseEight" data-parent="#accordion" data-toggle="collapse">
                                             물놀이장 수영복 필수인가요? 
                                         </a>
                                     </h4>
@@ -188,7 +188,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapseNine" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapseNine" data-parent="#accordion" data-toggle="collapse">
                                            		몽키매직쇼는 어떻게 관람하나요?
                                         </a>
                                     </h4>
@@ -208,7 +208,7 @@
                                         <span class="accordian-icon">
                                             <i class="switch fa fa-plus-circle"></i>
                                         </span>
-                                        <a href="#collapsetweleve" data-parent="#accordion" data-toggle="collapse">
+                                        <a href="/thearc#collapsetweleve" data-parent="#accordion" data-toggle="collapse">
                                             
 체험신청 글쓰기에 등급이 필요 하나요?
                                         </a>

@@ -24,22 +24,22 @@
         </div>
     </section>
 <!-- end footer  --> 
-<!--댓글테스트용-->    <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
-    <script src="/resources/bootstrap/js/bootstrap.js"></script>
-    <script src="/resources/bootstrap/js/jquery.easing.1.3.js"></script>
-    <!-- <script src="/resources/bootstrap/js/retina-1.1.0.min.js"></script> -->
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.cookie.js"></script>  
-    <script src="/resources/bootstrap/js/jquery.smartmenus.min.js"></script> 
-    <script src="/resources/bootstrap/js/jquery.smartmenus.bootstrap.min.js"></script>
+<!--댓글테스트용-->    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script src="/thearc/resources/bootstrap/js/bootstrap.js"></script>
+    <script src="/thearc/resources/bootstrap/js/jquery.easing.1.3.js"></script>
+    <!-- <script src="/thearc/resources/bootstrap/js/retina-1.1.0.min.js"></script> -->
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.cookie.js"></script>  
+    <script src="/thearc/resources/bootstrap/js/jquery.smartmenus.min.js"></script> 
+    <script src="/thearc/resources/bootstrap/js/jquery.smartmenus.bootstrap.min.js"></script>
   
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.jcarousel.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jflickrfeed.js"></script> 
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="/resources/bootstrap/js/swipe.js"></script>
-     <script src="/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.jcarousel.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jflickrfeed.js"></script> 
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/swipe.js"></script>
+     <script src="/thearc/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script>
    
-    <script src="/resources/bootstrap/js/main.js"></script>
+    <script src="/thearc/resources/bootstrap/js/main.js"></script>
     
     <style>
 	/*퀵메뉴*/
@@ -56,15 +56,15 @@
 
 	<div id="quick_nav">
 	    <ul>
-	        <li><a href="/sboard/main"><img src="/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
-	        <li><a href="/sboard/location"><img src="/resources/bootstrap/images/common/btn_quick02.jpg" alt="찾아오는길" /></a></li>
-			<li><a href="/sboard/list/free"><img src="/resources/bootstrap/images/common/btn_quick03.jpg" alt="자유게시판" /></a></li>
-	        <li><a href="/sboard/list/thisweek"><img src="/resources/bootstrap/images/common/btn_quick09.jpg" alt="금주의디아크" /></a></li>
-	        <li><a href="/sboard/exhibit"><img src="/resources/bootstrap/images/common/btn_quick08.jpg" alt="관람안내" /></a></li>
-	        <li><a href="/sboard/list/notice"><img src="/resources/bootstrap/images/common/btn_quick04.jpg" alt="공지사항" /></a></li>
-	        <li><a href="/sboard/list/qna"><img src="/resources/bootstrap/images/common/btn_quick05.jpg" alt="묻고 답하기" /></a></li>
-	        <li><a href="/sboard/faq"><img src="/resources/bootstrap/images/common/btn_quick06.jpg" alt="자주하는 질문" /></a></li>
-	        <li><a class="slidescrolltop" target="logo-bar" style="cursor:pointer;" title="상단으로 이동"><img src="/resources/bootstrap/images/common/btn_quick07.jpg" alt="TOP" /></a></li>
+	        <li><a href="/thearc/sboard/main"><img src="/thearc/resources/bootstrap/images/common/btn_quick01.jpg" alt="HOME" /></a></li>
+	        <li><a href="/thearc/sboard/location"><img src="/thearc/resources/bootstrap/images/common/btn_quick02.jpg" alt="찾아오는길" /></a></li>
+			<li><a href="/thearc/sboard/list/free"><img src="/thearc/resources/bootstrap/images/common/btn_quick03.jpg" alt="자유게시판" /></a></li>
+	        <li><a href="/thearc/sboard/list/thisweek"><img src="/thearc/resources/bootstrap/images/common/btn_quick09.jpg" alt="금주의디아크" /></a></li>
+	        <li><a href="/thearc/sboard/exhibit"><img src="/thearc/resources/bootstrap/images/common/btn_quick08.jpg" alt="관람안내" /></a></li>
+	        <li><a href="/thearc/sboard/list/notice"><img src="/thearc/resources/bootstrap/images/common/btn_quick04.jpg" alt="공지사항" /></a></li>
+	        <li><a href="/thearc/sboard/list/qna"><img src="/thearc/resources/bootstrap/images/common/btn_quick05.jpg" alt="묻고 답하기" /></a></li>
+	        <li><a href="/thearc/sboard/faq"><img src="/thearc/resources/bootstrap/images/common/btn_quick06.jpg" alt="자주하는 질문" /></a></li>
+	        <li><a class="slidescrolltop" target="logo-bar" style="cursor:pointer;" title="상단으로 이동"><img src="/thearc/resources/bootstrap/images/common/btn_quick07.jpg" alt="TOP" /></a></li>
 	    </ul>
 	</div>
  
@@ -91,16 +91,16 @@
 		/* 로그인,회원가입 버튼  */
 		$('#loginbutton').on("click", function(evt) {
 
-			self.location = "/user/login";
+			self.location = "/thearc/user/login";
 
 		});
     	$('#joinbutton').on("click", function(evt) {
 
-			self.location = "/user/join";
+			self.location = "/thearc/user/join";
 
 		});
     	$('#logout').on("click", function(evt){
-			self.location = "/user/logout";    		
+			self.location = "/thearc/user/logout";    		
     	});
     	
 </script>

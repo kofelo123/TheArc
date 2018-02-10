@@ -38,11 +38,11 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">게시물 관리</h3>
 					 <ul class="list-sort">
-                            <li><a href="/admin/superadmin/free" data-sort="id" data-order="desc" class="category-sort-link active">자유게시판</a></li>
-                            <li><a href="/admin/superadmin/news" data-sort="voteCount" data-order="desc" class="category-sort-link ">언론보도</a></li>
-                            <li><a href="/admin/superadmin/visit" data-sort="noteCount" data-order="desc" class="category-sort-link ">방문후기</a></li>
-                            <li><a href="/admin/superadmin/notice" data-sort="scrapCount" data-order="desc" class="category-sort-link ">공지사항</a></li>
-                            <li><a href="/admin/superadmin/qna" data-sort="viewCount" data-order="desc" class="category-sort-link ">묻고답하기</a></li>
+                            <li><a href="/thearc/admin/superadmin/free" data-sort="id" data-order="desc" class="category-sort-link active">자유게시판</a></li>
+                            <li><a href="/thearc/admin/superadmin/news" data-sort="voteCount" data-order="desc" class="category-sort-link ">언론보도</a></li>
+                            <li><a href="/thearc/admin/superadmin/visit" data-sort="noteCount" data-order="desc" class="category-sort-link ">방문후기</a></li>
+                            <li><a href="/thearc/admin/superadmin/notice" data-sort="scrapCount" data-order="desc" class="category-sort-link ">공지사항</a></li>
+                            <li><a href="/thearc/admin/superadmin/qna" data-sort="viewCount" data-order="desc" class="category-sort-link ">묻고답하기</a></li>
                         </ul>
 				</div>
 				<div class="box-body" >
@@ -96,7 +96,7 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="/thearc${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 

@@ -53,7 +53,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         
       }
 
-      response.sendRedirect("/user/login");
+      response.sendRedirect("/thearc/user/login");
       return false;
     }
     authorization(request,response);

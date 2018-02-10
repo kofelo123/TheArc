@@ -103,13 +103,14 @@ public class UserServiceImpl implements UserService {
 		email.setStartTLSRequired(true);
 		
 		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
+		
 //		String pwUriEnc = EncryptUtil.getSHA256(user2.getUid());/// id받아온 값으로
 		/// 해쉬화적용한다. id가
 		/// pk라서 고유함
 		
 //		dao.encrypthash(pwUriEnc, userid);
 		
-		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/user/mailhashcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
+		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/thearc/user/mailhashcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
 						+user2.getUname() +  " 님의 아이디는 " + user2.getUid() + " 입니다.<br/>"
 						+" 위의 이미지링크를 클릭하시면 비밀번호를 변하실수 있습니다.";
 						

@@ -9,11 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Demo CSS -->
-	<link rel="stylesheet" href="/resources/bootstrap/css/mu/demo.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="/resources/bootstrap/css/mu/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/thearc/resources/bootstrap/css/mu/demo.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/thearc/resources/bootstrap/css/mu/flexslider.css" type="text/css" media="screen" />
 
 	<!-- Modernizr -->
-  <script src="/resources/bootstrap/js/mu/modernizr.js"></script>
+  <script src="/thearc/resources/bootstrap/js/mu/modernizr.js"></script>
 
 </head>
 <body class="loading" style="background-color:#b7a767">
@@ -27,17 +27,17 @@
         <div class="flexslider">
           <ul class="slides">
           <li>
-  	    	    <img src="/resources/bootstrap/images/cafe2.png" />
+  	    	    <img src="/thearc/resources/bootstrap/images/cafe2.png" />
   	    		</li>
           	<li>
-  	    	    <img src="/resources/bootstrap/images/cafe1.jpg" />
+  	    	    <img src="/thearc/resources/bootstrap/images/cafe1.jpg" />
   	    		</li>
   	    		
   	    		<li>
-  	    	    <img src="/resources/bootstrap/images/cafe3.jpg" />
+  	    	    <img src="/thearc/resources/bootstrap/images/cafe3.jpg" />
   	    		</li>
             <li>
-  	    	    <img src="/resources/bootstrap/images/cafe4.jpg" />
+  	    	    <img src="/thearc/resources/bootstrap/images/cafe4.jpg" />
   	    		</li>
   	    	
           </ul>
@@ -53,7 +53,7 @@
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
 
   <!-- FlexSlider -->
-  <script defer src="/resources/bootstrap/js/mu/jquery.flexslider.js"></script>
+  <script defer src="/thearc/resources/bootstrap/js/mu/jquery.flexslider.js"></script>
 
   <script type="text/javascript">
     $(function(){
@@ -71,14 +71,14 @@
 
 
   <!-- Syntax Highlighter -->
-  <script type="text/javascript" src="/resources/bootstrap/js/mu/shCore.js"></script>
-  <script type="text/javascript" src="/resources/bootstrap/js/mu/shBrushXml.js"></script>
-  <script type="text/javascript" src="/resources/bootstrap/js/mu/shBrushJScript.js"></script>
+  <script type="text/javascript" src="/thearc/resources/bootstrap/js/mu/shCore.js"></script>
+  <script type="text/javascript" src="/thearc/resources/bootstrap/js/mu/shBrushXml.js"></script>
+  <script type="text/javascript" src="/thearc/resources/bootstrap/js/mu/shBrushJScript.js"></script>
 
   <!-- Optional FlexSlider Additions -->
-  <script src="/resources/bootstrap/js/mu/jquery.easing.js"></script>
-  <script src="/resources/bootstrap/js/mu/jquery.mousewheel.js"></script>
-  <script defer src="/resources/bootstrap/js/mu/demo.js"></script><!-- 중복가능성  -->
+  <script src="/thearc/resources/bootstrap/js/mu/jquery.easing.js"></script>
+  <script src="/thearc/resources/bootstrap/js/mu/jquery.mousewheel.js"></script>
+  <script defer src="/thearc/resources/bootstrap/js/mu/demo.js"></script><!-- 중복가능성  -->
 
 
 <!-- SCM Music Player http://scmplayer.net -->

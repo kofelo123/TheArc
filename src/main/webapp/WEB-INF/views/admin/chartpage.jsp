@@ -101,17 +101,17 @@
     <!-- /.content -->
     
     <!-- jQuery 2.2.3 -->
-<script src="/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/thearc/resources/bootstrap/js/bootstrap.min.js"></script>
 <!-- ChartJS 1.0.1 -->
-<script src="/resources/bootstrap/plugins/chartjs/Chart.min.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
+<script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/resources/bootstrap/dist/js/app.min.js"></script>
+<script src="/thearc/resources/bootstrap/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/resources/bootstrap/js/demo.js"></script>
+<script src="/thearc/resources/bootstrap/js/demo.js"></script>
 <!-- page script -->
 <script>
 

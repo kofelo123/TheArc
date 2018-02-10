@@ -8,14 +8,14 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap 3.3.4 -->
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="/resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
-     <script src="/resources/bootstrap/js/member.js"></script>
+    <link href="/thearc/resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+     <script src="/thearc/resources/bootstrap/js/member.js"></script>
 	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,11 +25,11 @@
     <![endif]-->
     
     	<!-- ///배경관련  -->
-		<link rel="stylesheet" href="/resources/bootstrap/css/vegas.min.css">
-		<script src="/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
-		<script src="/resources/bootstrap/js/vegas.min.js"></script>
+		<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
+		<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
+		<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
     <!-- 아래부터 도로명주소   -->
-    <link rel="stylesheet" href="/resources/bootstrap/css/addrlinkSample.css">
+    <link rel="stylesheet" href="/thearc/resources/bootstrap/css/addrlinkSample.css">
 <script language="javascript">
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
 //document.domain = "abc.go.kr";
@@ -37,7 +37,7 @@
 function goPopup(){
 	// 주소검색을 수행할 팝업 페이지를 호출합니다.
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("/user/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("/thearc/user/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
     //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
@@ -55,7 +55,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
   <body class="login-page">
     <div class="login-box2">
       <div class="login-logo">
-        <a href="/user/login"><b>회원가입</b></a>
+        <a href="/thearc/user/login"><b>회원가입</b></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg"></p>
@@ -71,7 +71,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
   </div> -->
     <div class="joinForm" >
   
-    <form id="join" action="/user/joinPost" method="post" name="form">
+    <form id="join" action="/thearc/user/joinPost" method="post" name="form">
 
       <fieldset>
         <legend>기본정보</legend><br>
@@ -164,7 +164,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 
 						{
 							video : {
-								src: ['/resources/bootstrap/dew.webm'],
+								src: ['/thearc/resources/bootstrap/dew.webm'],
 								loop:true,
 								mute:true
 							}

@@ -9,16 +9,16 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 10.01	
         </div>
-        <strong>Copyright &copy; 2017 <a href="https://github.com/kofelo123">허정원</a></strong> All rights reserved.
+        <strong>Copyright &copy; 2017 <a href="/thearchttps://github.com/kofelo123">허정원</a></strong> All rights reserved.
       </footer>
      </div> 
       <!-- Control Sidebar -->      
       <aside class="control-sidebar control-sidebar-dark">                
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+          <li><a href="/thearc#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
           
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+          <li><a href="/thearc#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -27,7 +27,7 @@
             <h3 class="control-sidebar-heading">Recent Activity</h3>
             <ul class='control-sidebar-menu'>
               <li>
-                <a href='javascript::;'>
+                <a href='/thearcjavascript::;'>
                   <i class="menu-icon fa fa-birthday-cake bg-red"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
@@ -36,7 +36,7 @@
                 </a>
               </li>
               <li>
-                <a href='javascript::;'>
+                <a href='/thearcjavascript::;'>
                   <i class="menu-icon fa fa-user bg-yellow"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
@@ -45,7 +45,7 @@
                 </a>
               </li>
               <li>
-                <a href='javascript::;'>
+                <a href='/thearcjavascript::;'>
                   <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
@@ -54,7 +54,7 @@
                 </a>
               </li>
               <li>
-                <a href='javascript::;'>
+                <a href='/thearcjavascript::;'>
                   <i class="menu-icon fa fa-file-code-o bg-green"></i>
                   <div class="menu-info">
                     <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
@@ -67,7 +67,7 @@
             <h3 class="control-sidebar-heading">Tasks Progress</h3> 
             <ul class='control-sidebar-menu'>
               <li>
-                <a href='javascript::;'>               
+                <a href='/thearcjavascript::;'>               
                   <h4 class="control-sidebar-subheading">
                     Custom Template Design
                     <span class="label label-danger pull-right">70%</span>
@@ -78,7 +78,7 @@
                 </a>
               </li> 
               <li>
-                <a href='javascript::;'>               
+                <a href='/thearcjavascript::;'>               
                   <h4 class="control-sidebar-subheading">
                     Update Resume
                     <span class="label label-success pull-right">95%</span>
@@ -89,7 +89,7 @@
                 </a>
               </li> 
               <li>
-                <a href='javascript::;'>               
+                <a href='/thearcjavascript::;'>               
                   <h4 class="control-sidebar-subheading">
                     Laravel Integration
                     <span class="label label-waring pull-right">50%</span>
@@ -100,7 +100,7 @@
                 </a>
               </li> 
               <li>
-                <a href='javascript::;'>               
+                <a href='/thearcjavascript::;'>               
                   <h4 class="control-sidebar-subheading">
                     Back End Framework
                     <span class="label label-primary pull-right">68%</span>
@@ -168,7 +168,7 @@
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Delete chat history
-                  <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                  <a href="/thearcjavascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
                 </label>                
               </div><!-- /.form-group -->
             </form>
@@ -182,12 +182,12 @@
 
 
      <!-- Bootstrap 3.3.2 JS -->
-     <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="/thearc/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <!---->
-    <script src='/resources/plugins/fastclick/fastclick.min.js'></script>
+    <script src='/thearc/resources/plugins/fastclick/fastclick.min.js'></script>
    
-    <script src="/resources/dist/js/app.min.js" type="text/javascript"></script>
+    <script src="/thearc/resources/dist/js/app.min.js" type="text/javascript"></script>
    
-    <script src="/resources/dist/js/demo.js" type="text/javascript"></script> 
+    <script src="/thearc/resources/dist/js/demo.js" type="text/javascript"></script> 
   </body>
 </html>

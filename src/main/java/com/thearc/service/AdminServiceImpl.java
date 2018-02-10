@@ -2,6 +2,7 @@ package com.thearc.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import com.thearc.util.EncryptUtil;
 @Service
 public class AdminServiceImpl implements AdminService {
 	
+
 	@Inject
 	private EncryptUtil encrypt;
 	

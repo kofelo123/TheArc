@@ -75,7 +75,7 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="/thearclist${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 

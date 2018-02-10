@@ -12,7 +12,7 @@
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
     
-    <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,14 +24,14 @@
   border: 1px dotted #ecb775;
   /* background-color: #effecb; */
   background-size: 100% 100px;
-  background-image: url(/resources/bootstrap/images/filedrop.png);
+  background-image: url(/thearc/resources/bootstrap/images/filedrop.png);
   margin: auto;
   
   
 }
 .content{
 	
-	 background-image: url(/resources/bootstrap/images/bg2.jpg);
+	 background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
 }
 
 @media only screen and (max-width: 768px){
@@ -126,7 +126,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/thearc/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
@@ -144,7 +144,7 @@
 <script>
 
 function goLogin(){
-	self.location ="/user/login";
+	self.location ="/thearc/user/login";
 }
 
 
@@ -168,7 +168,7 @@ $(".fileDrop").on("drop", function(event){
 	
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: '/thearc/uploadAjax',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
@@ -177,6 +177,7 @@ $(".fileDrop").on("drop", function(event){
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
+			  console.log("testtest"+fileInfo);
 			  
 			  var html = template(fileInfo);
 			  

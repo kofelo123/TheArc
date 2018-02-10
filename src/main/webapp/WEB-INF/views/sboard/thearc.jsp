@@ -14,12 +14,12 @@
 <body>
  <div class="row" >
   <div class="col-sm-8 col-sm-offset-2" >
-  <section class="subtitle" style="background-image: url('/resources/bootstrap/images/subtitle.png');">
+  <section class="subtitle" style="background-image: url('/thearc/resources/bootstrap/images/subtitle.png');">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9" >
                     <div class="subcontent" style="color:white;margin-top:10px;">
-                    <span class="home" ><a href="/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/sboard/thearc" style="color:white;">디아크란</a></strong>
+                    <span class="home" ><a href="/thearc/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/thearc/sboard/thearc" style="color:white;">디아크란</a></strong>
                     
                         <h2 style="color:white">디아크란?</h2>
                     </div>
@@ -29,11 +29,11 @@
         </div>
    		 </section>
    	<div class="responimg">
-   	 <img src="/resources/bootstrap/images/thearc1.PNG" />
-   	 <img src="/resources/bootstrap/images/thearc2.PNG" />
-   	 <img src="/resources/bootstrap/images/thearc3.PNG" />
-   	 <img src="/resources/bootstrap/images/thearc4.PNG" />
-   	 <img src="/resources/bootstrap/images/thearc5.PNG" style="margin-bottom:100px;" />
+   	 <img src="/thearc/resources/bootstrap/images/thearc1.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/thearc2.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/thearc3.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/thearc4.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/thearc5.PNG" style="margin-bottom:100px;" />
    	 </div>
    	 </div>
 	</div>

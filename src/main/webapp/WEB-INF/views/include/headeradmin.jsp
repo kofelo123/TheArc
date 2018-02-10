@@ -8,16 +8,16 @@
     <title>관리자 페이지</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="/resources/bootstrap/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="/thearc/resources/bootstrap/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +26,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- jQuery 2.1.4 -->
-    <script src="/resources/bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/thearc/resources/bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     
      
      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="/sboard/main" class="logo">
+        <a href="/thearc/sboard/main" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b></b></span>
           <!-- logo for regular state and mobile devices -->
@@ -51,7 +51,7 @@
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <a href="/thearc#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -71,12 +71,12 @@
          
              <div class="user-panel">  <!-- user패널좀 수정해야할듯  -->
             <div class="pull-left image">
-              <img src="/resources/bootstrap/img/king.jpg" class="img-circle" alt="User Image" />
+              <img src="/thearc/resources/bootstrap/img/king.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p>&nbsp;&nbsp;관리자</p>
 
-              <a href="/user/login"><i class="fa fa-circle text-admin" style="color:gold"></i> 관리자모드</a>
+              <a href="/thearc/user/login"><i class="fa fa-circle text-admin" style="color:gold"></i> 관리자모드</a>
             </div>
           </div>
           
@@ -100,7 +100,7 @@
             
             <li class="treeview active">
                      <li class="treeview">
-              <a href="/admin/userlist">
+              <a href="/thearc/admin/userlist">
                 <i class="fa fa-files-o"></i>
                 <span>사용자 목록</span>
                 <span class="label label-primary pull-right"></span>
@@ -110,7 +110,7 @@
             
             <li class="treeview active">
               <li class="treeview">
-              <a href="/admin/chartpage">
+              <a href="/thearc/admin/chartpage">
                 <i class="fa fa-pie-chart"></i>
                 <span>통계</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -119,7 +119,7 @@
             </li>
             
               <li class="treeview">
-              <a href="/admin/superadmin/free">
+              <a href="/thearc/admin/superadmin/free">
                 <i class="fa fa-edit"></i> <span>게시판관리</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -139,7 +139,7 @@
             
             
           <!--   <li class="treeview">
-              <a href="#">
+              <a href="/thearc#">
                 <i class="fa fa-laptop"></i>
                 <span>사용자권한</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -148,14 +148,14 @@
             </li>
            -->
             <li class="treeview">
-              <a href="">
+              <a href="/thearc">
                 <i class="fa fa-table"></i> <span>캘린더</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               
             </li>
             <li>
-              <a href="#">
+              <a href="/thearc#">
                 <i class="fa fa-calendar"></i> <span>기타</span>
                 <!-- <small class="label pull-right bg-red">3</small> -->
               </a>

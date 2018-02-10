@@ -67,12 +67,12 @@
   <body>
   <div class="row" ></div>
   <div class="col-sm-8 col-sm-offset-2" >
-  <section class="subtitle" style="background-image: url('/resources/bootstrap/images/subtitle.png');">
+  <section class="subtitle" style="background-image: url('/thearc/resources/bootstrap/images/subtitle.png');">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9" >
                     <div class="subcontent" style="color:white;margin-top:10px;">
-                    <span class="home" ><a href="/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/sboard/location" style="color:white;">오시는길</a></strong>
+                    <span class="home" ><a href="/thearc/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/thearc/sboard/location" style="color:white;">오시는길</a></strong>
                     
                         <h2 style="color:white">찾아 오시는 길</h2>
                     </div>
@@ -129,7 +129,7 @@
         '</div>'+
         '<h2 id="firstHeading" class="firstHeading">디아크</h2>'+
         '<div id="bodyContent">'+
-        '<img src="/resources/bootstrap/images/4-1.jpg">'+
+        '<img src="/thearc/resources/bootstrap/images/4-1.jpg">'+
         '<p><b>위치 </b>: 대구광역시 달성군 다사읍 강정본길 57' +
         '<br/><br/><b>주요시설 사항</b>:'+
         '<br/>지하1층: 전시실, 다목적실, 세미나'+
@@ -250,9 +250,9 @@
       
      <div class="row">
      	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
-  <img src="/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px; width:100%"/>
-      <img src="/resources/bootstrap/images/location4.PNG" style="margin-top:30px; width:100%"/>
-      <img src="/resources/bootstrap/images/location3.PNG" style="margin-bottom:100px;margin-top:30px; width:100%"/>
+  <img src="/thearc/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px; width:100%"/>
+      <img src="/thearc/resources/bootstrap/images/location4.PNG" style="margin-top:30px; width:100%"/>
+      <img src="/thearc/resources/bootstrap/images/location3.PNG" style="margin-bottom:100px;margin-top:30px; width:100%"/>
       </div>
       </div>
   </body>

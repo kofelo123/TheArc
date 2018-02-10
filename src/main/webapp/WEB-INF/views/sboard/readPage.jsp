@@ -14,7 +14,7 @@
   
     
     
-<script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
+<script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
@@ -34,7 +34,7 @@
      
      .content{
 	
-	 background-image: url(/resources/bootstrap/images/bg2.jpg);
+	 background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
 }
 
 @media only screen and (max-width: 768px){
@@ -87,34 +87,34 @@
 						<c:choose>
 							<c:when test="${likeVO.likecheck == null }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'n' }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'y' }">
 								<div class="iconlike">
-									<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
+									<a href="/thearc/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<%-- <c:if test="${likeVO.likecheck=='n' }">
 							<div class="iconlike">
-								<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+								<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 							</div>
 						</c:if> --%>
 						
 				<%-- 		<c:if test="${likeVO.likecheck==null }">
 							<div class="iconlike">
-								<a href="/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+								<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 							</div>
 						</c:if>
 						 --%>
 					<%-- 	<c:if test="${likeVO.likecheck=='y' }">
 							<div class="iconlike">
-								<a href="/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
+								<a href="/thearc/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
 							</div>
 						</c:if> --%>
 						</c:choose>
@@ -149,11 +149,11 @@
     	</div>
     	<div class="col-sm-1 col-sm-offset-6 col-xs-3 ">
     	<div class="fbshare" style="font-size:35px;">
-			<a href="#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
+			<a href="/#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fthearc%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
          </div>
 		</div>			
 		<div class="twitter" style="font-size:35px;">
-			<a href="#" onClick="window.open('https://twitter.com/intent/tweet?text=디아크 - ${boardVO.title }&url=http%3A%2F%2Fwww.thearc.co.kr%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
+			<a href="/#" onClick="window.open('https://twitter.com/intent/tweet?text=디아크 - ${boardVO.title }&url=http%3A%2F%2Fwww.thearc.co.kr%2Fthearc%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
         </div>
                          
 						
@@ -335,17 +335,17 @@
 		var str = "";
 
 		if (pageMaker.prev) {
-			str += "<li><a href='" + (pageMaker.startPage - 1)
+			str += "<li><a href='/thearc" + (pageMaker.startPage - 1)
 					+ "'> << </a></li>";
 		}
 
 		for (var i = pageMaker.startPage, len = pageMaker.endPage; i <= len; i++) {
 			var strClass = pageMaker.cri.page == i ? 'class=active' : '';
-			str += "<li "+strClass+"><a href='"+i+"'>" + i + "</a></li>";
+			str += "<li "+strClass+"><a href='/thearc"+i+"'>" + i + "</a></li>";
 		}
 
 		if (pageMaker.next) {
-			str += "<li><a href='" + (pageMaker.endPage + 1)
+			str += "<li><a href='/thearc" + (pageMaker.endPage + 1)
 					+ "'> >> </a></li>";
 		}
 
@@ -357,7 +357,7 @@
 		if ($(".timeline li").size() > 1) {///이미열려있다면 그대로 빠져나오는 return 인거 같다.
 			return;
 		}
-		getPage("/replies/" + bno + "/1");
+		getPage("/thearc/replies/" + bno + "/1");
 
 	});
 
@@ -367,7 +367,7 @@
 
 		replyPage = $(this).attr("href");
 
-		getPage("/replies/" + bno + "/" + replyPage);
+		getPage("/thearc/replies/" + bno + "/" + replyPage);
 
 	});
 
@@ -380,7 +380,7 @@
 
 		$.ajax({
 			type : 'post',
-			url : '/replies/',
+			url : '/thearc/replies/',
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "POST"
@@ -396,7 +396,7 @@
 				if (result == 'SUCCESS') {
 					alert("등록 되었습니다.");
 					replyPage = 1;
-					getPage("/replies/" + bno + "/" + replyPage);
+					getPage("/thearc/replies/" + bno + "/" + replyPage); //등록후 댓글 리스트 새로고침 하는것..
 					//replyerObj.val("");
 					replytextObj.val("");
 				}
@@ -420,7 +420,7 @@
 
 		$.ajax({
 			type : 'put',
-			url : '/replies/' + rno,
+			url : '/thearc/replies/' + rno,
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "PUT"
@@ -433,7 +433,7 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("수정 되었습니다.");
-					getPage("/replies/" + bno + "/" + replyPage);
+					getPage("/thearc/replies/" + bno + "/" + replyPage);
 				}
 			}
 		});
@@ -446,7 +446,7 @@
 
 		$.ajax({
 			type : 'delete',
-			url : '/replies/' + rno,
+			url : '/thearc/replies/' + rno,
 			headers : {
 				"Content-Type" : "application/json",
 				"X-HTTP-Method-Override" : "DELETE"
@@ -456,14 +456,14 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("삭제 되었습니다.");
-					getPage("/replies/" + bno + "/" + replyPage);
+					getPage("/thearc/replies/" + bno + "/" + replyPage);
 				}
 			}
 		});
 	});
 </script>
 
-
+<!-- <form role="form" -->
 <script>
 $(document).ready(function(){
 	
@@ -472,7 +472,7 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "/sboard/modifyPage/${category}");
+		formObj.attr("action", "/thearc/sboard/modifyPage/${category}");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
@@ -499,15 +499,15 @@ $(document).ready(function(){
 		
 		console.log(arr);
 	 	if(arr.length > 0){
-			$.post("/deleteAllFiles",{files:arr}, function(){
+			$.post("/thearc/deleteAllFiles",{files:arr}, function(){
 				
-				formObj.attr("action", "/sboard/removePage/${category}");
+				formObj.attr("action", "/thearc/sboard/removePage/${category}");
 				formObj.submit();
 				
 			});
 		}else{
 			
-			formObj.attr("action", "/sboard/removePage/${category}");
+			formObj.attr("action", "/thearc/sboard/removePage/${category}");
 			formObj.submit();
 		}
 		
@@ -519,15 +519,17 @@ $(document).ready(function(){
 	
 	$("#goListBtn ").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/sboard/list/${category}");
+		formObj.attr("action", "/thearc/sboard/list/${category}");
 		formObj.submit();
 	});
 	
 	var bno = ${boardVO.bno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
-	$.getJSON("/sboard/getAttach/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
+	$.getJSON("/thearc/sboard/getAttach/"+bno,function(list){ ///searchboardcontroller에 파라미터 있음.
 		$(list).each(function(){
+			
+			console.log("fileInfo"+this);
 			
 			var fileInfo = getFileInfo(this);//this는 list안의  fullname 하나
 			
@@ -570,7 +572,7 @@ $(document).ready(function(){
 
 
 function goLogin(){
-	self.location ="/user/login";
+	self.location ="/thearc/user/login";
 }
 
 </script>

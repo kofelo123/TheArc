@@ -10,7 +10,7 @@
   border: 1px dotted #ecb775;
   /* background-color: #effecb; */
   background-size: 100% 100px;
-  background-image: url(/resources/bootstrap/images/filedrop.png);
+  background-image: url(/thearc/resources/bootstrap/images/filedrop.png);
   margin: auto;
   
 }
@@ -22,7 +22,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
     
     
-    <script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script>
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
     
     	
@@ -115,7 +115,7 @@
 	<!-- /.row -->
 </section>
 
-<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/thearc/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
@@ -154,7 +154,7 @@ $(document).ready(function(){
 	
 	
 	$(".btn-warning").on("click", function(){
-	  self.location = "/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
+	  self.location = "/thearc/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
 			  "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 	});
 	
@@ -185,7 +185,7 @@ $(".fileDrop").on("drop", function(event){
 	formData.append("file", file);	
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: '/thearc/uploadAjax',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
@@ -210,7 +210,7 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 	var that = $(this);
 	 
 	$.ajax({
-	   url:"/deleteFile",
+	   url:"/thearc/deleteFile",
 	   type:"post",
 	   data: {fileName:$(this).attr("href")},
 	   dataType:"text",
@@ -226,7 +226,7 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 var bno = ${boardVO.bno};
 var template = Handlebars.compile($("#template").html());
 
-$.getJSON("/sboard/getAttach/"+bno,function(list){
+$.getJSON("/thearc/sboard/getAttach/"+bno,function(list){
 	$(list).each(function(){
 		
 		var fileInfo = getFileInfo(this);
@@ -328,15 +328,15 @@ $("#popup_img").on("click", function(){
 	</div>
 </form>
 
-<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/thearc/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
 <li>
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
   <div class="mailbox-attachment-info">
-	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	<a href="{{fullName}}" 
+	<a href="/thearc{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	<a href="/thearc{{fullName}}" 
      class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
 	</span>
   </div>

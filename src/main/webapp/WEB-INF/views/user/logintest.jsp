@@ -5,9 +5,9 @@
 		<title>로그인</title>
 		
 		
-<link rel="stylesheet" href="/resources/bootstrap/css/vegas.min.css">
-		<script src="/resources/bootstrap/jquery-2.1.3.min.js"></script>
-		<script src="/resources/bootstrap/js/vegas.min.js"></script>
+<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
+		<script src="/thearc/resources/bootstrap/jquery-2.1.3.min.js"></script>
+		<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="js/html5shiv.min.js"></script>
 		<![endif]-->
@@ -23,7 +23,7 @@
 
 						{
 							video : {
-								src: ['/resources/bootstrap/bootdew.mp4','/resources/bootstrap/dew.webm','/resources/bootstrap/dew.ogv'],
+								src: ['/thearc/resources/bootstrap/bootdew.mp4','/thearc/resources/bootstrap/dew.webm','/thearc/resources/bootstrap/dew.ogv'],
 								loop:true,
 								mute:true
 							}

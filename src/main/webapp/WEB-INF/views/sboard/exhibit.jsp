@@ -13,12 +13,12 @@
 
 <div class="row" >
   <div class="col-sm-8 col-sm-offset-2" >
-  <section class="subtitle" style="background-image: url('/resources/bootstrap/images/subtitle.png');">
+  <section class="subtitle" style="background-image: url('/thearc/resources/bootstrap/images/subtitle.png');">
         <div class="container">
             <div class="row">
                 <div class="col-sm-9" >
                     <div class="subcontent" style="color:white;margin-top:10px;">
-                    <span class="home" ><a href="/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/sboard/exhibhit" style="color:white;">관람안내</a></strong>
+                    <span class="home" ><a href="/thearc/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/thearc/sboard/exhibhit" style="color:white;">관람안내</a></strong>
                     
                         <h2 style="color:white">관람안내</h2>
                     </div>
@@ -28,15 +28,15 @@
         </div>
    		 </section>
     <div class="responimg">
-   	 <img src="/resources/bootstrap/images/exhibit1.PNG" style="margin-top:30px"/>
-   	 <img src="/resources/bootstrap/images/exhibit2.PNG" />
-   	 <img src="/resources/bootstrap/images/exhibit3.PNG" />
-   	 <img src="/resources/bootstrap/images/exhibit10.PNG" style="margin-top:50px;margin-bottom:50px;"/>
-   	 <img src="/resources/bootstrap/images/exhibit11.PNG" />
-   	 <img src="/resources/bootstrap/images/exhibit5.PNG"/>
-   	 <img src="/resources/bootstrap/images/exhibit6.PNG"/>
-   	 <img src="/resources/bootstrap/images/exhibit7.PNG"/>
-   	 <img src="/resources/bootstrap/images/exhibit9.PNG" style="margin-bottom:100px"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit1.PNG" style="margin-top:30px"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit2.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/exhibit3.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/exhibit10.PNG" style="margin-top:50px;margin-bottom:50px;"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit11.PNG" />
+   	 <img src="/thearc/resources/bootstrap/images/exhibit5.PNG"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit6.PNG"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit7.PNG"/>
+   	 <img src="/thearc/resources/bootstrap/images/exhibit9.PNG" style="margin-bottom:100px"/>
    	 </div>
    	 </div>
 	</div>

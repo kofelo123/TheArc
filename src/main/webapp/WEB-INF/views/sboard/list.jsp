@@ -9,18 +9,18 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- 썸네일게시판용 -->
-<script type="text/javascript" src="/resources/bootstrap/js/upload.js"></script> 
+<script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
 <style>
 @font-face {
     font-family: 'Typo_DecoVariety';
-    src: url(/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
+    src: url(/thearc/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
 }
 .content{
 	
-	 background-image: url(/resources/bootstrap/images/bg2.jpg);
+	 background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
 }
 @media only screen and (max-width: 768px){
 	.content .row{
@@ -101,20 +101,20 @@
 								</div>
 								<figure class="post_img">
 									<div class="image">
-										 <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
-										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="700"  alt="이미지없음">
+										 <a href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/thearc/displayFile?fileName=${thumNail[status.index]}" height="700"  alt="이미지없음">
 									</a>
 									</div>
 								</figure>
 								<div class="post_content">
 									<div class="post_meta">
 										<h2>
-											<a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+											<a href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
 											${boardVO.title}</a>
 										</h2>
 										<div class="metaInfo">
-											<span><i class="fa fa-user"></i> By <a href="#">${boardVO.writer}</a> </span>
-											<span><i class="fa fa-comments"></i> <a href="#">${boardVO.replycnt}</a></span>
+											<span><i class="fa fa-user"></i> By <a href="/thearc#">${boardVO.writer}</a> </span>
+											<span><i class="fa fa-comments"></i> <a href="/thearc#">${boardVO.replycnt}</a></span>
 										</div>
 									</div>
 									<%-- <p>${boardVO.content }</p> --%>
@@ -147,8 +147,8 @@
                             <div class="recent-item">
                                 <figure class="touching medium">
                                     <div class="pic">
-                                        <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
-										 <img src="/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
+                                        <a href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}'>
+										 <img src="/thearc/displayFile?fileName=${thumNail[status.index]}" height="200" width="200" alt="이미지없음">
 										 </a>
                                     </div>
                                     <div class="skin-overlay"></div>
@@ -156,8 +156,8 @@
                                    <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/><!-- 썸네일 ->원본이미지 띄우기   -->
                                    <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
 									
-                                    <a href="/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
-                                    <a href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
+                                    <a href="/thearc/thearc/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
+                                    <a href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
                                         <i class="fa fa-link"></i>
                                     </a>
                                     <figcaption class="item-description">
@@ -190,7 +190,7 @@
 							<tr style="font-family:Typo_DecoVariety; font-size:20px">
 								<%-- <td>${boardVO.bno}</td> --%>
 								<td style="width: 40%;padding-left:20px;"><a
-									href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' style="color:#337ab7">
+									href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' style="color:#337ab7">
 										${boardVO.title} <%-- <strong>[${boardVO.replycnt}  ]</strong> --%>
 								</a></td>
 								<td class="responsive" style="width:7%">
@@ -294,7 +294,7 @@
 
 				$('#newBtn').on("click", function(evt) {
 					
-					self.location = "/sboard/register/${category}";
+					self.location = "/thearc/sboard/register/${category}";
 
 				});
 				

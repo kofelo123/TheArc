@@ -10,17 +10,17 @@
 	name='viewport'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap 3.3.4 -->
-<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+<link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Font Awesome Icons -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet"
+<link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- iCheck -->
-<link href="/resources/plugins/iCheck/square/blue.css" rel="stylesheet"
+<link href="/thearc/resources/plugins/iCheck/square/blue.css" rel="stylesheet"
 	type="text/css" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,16 +41,16 @@
 	href='http://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%2C300italic%2C400italic%2C600italic%2C700italic%2C800italic&#038;subset=devanagari&#038;ver=4.6.1'
 	type='text/css' media='all' />
 <!-- <link rel='stylesheet' id='_iconstyle-css'  href='http://11st.com/wp-content/plugins/maintenance/load/images/fonts-icon/icons.style.css?ver=4.6.1' type='text/css' media='all' /> -->
-<link href="/resources/bootstrap/css/11st.css" rel="stylesheet"
+<link href="/thearc/resources/bootstrap/css/11st.css" rel="stylesheet"
 	type="text/css" media='all' />
 <!-- <link rel='stylesheet' id='_style-css'  href='http://11st.com/wp-content/plugins/maintenance/load/style.css?ver=4.6.1' type='text/css' media='all' /> -->
-<link href="/resources/bootstrap/css/11st2.css" rel="stylesheet"
+<link href="/thearc/resources/bootstrap/css/11st2.css" rel="stylesheet"
 	type="text/css" media='all' />
 	
 	<!-- ///배경관련  -->
-<link rel="stylesheet" href="/resources/bootstrap/css/vegas.min.css">
-		<script src="/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
-		<script src="/resources/bootstrap/js/vegas.min.js"></script>
+<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
+		<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
+		<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
 		
 <style id='_style-inline-css' type='text/css'>
 body {
@@ -148,13 +148,13 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 
 			<div class="login-box">
 				<div class="login-logo">
-					<a href="/user/login"><b>The Arc</b></a>
+					<a href="/thearc/user/login"><b>The Arc</b></a>
 				</div>
 				<!-- /.login-logo -->
 				<div class="login-box-body">
 					<p class="login-box-msg"></p>
 
-					<form action="/user/loginPost" method="post">
+					<form action="/thearc/user/loginPost" method="post">
 						<div class="form-group has-feedback">
 							<input type="text" name="uid" class="form-control"
 								placeholder="아이디입력" /> <span
@@ -182,8 +182,8 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 					</form>
 
 
-					<a href="/user/idfind">아이디-비밀번호 찾기</a><br> <a
-						href="/user/join" class="text-center">회원가입</a>
+					<a href="/thearc/user/idfind">아이디-비밀번호 찾기</a><br> <a
+						href="/thearc/user/join" class="text-center">회원가입</a>
 
 				</div>
 				<!-- /.login-box-body -->
@@ -200,7 +200,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 	<!--  로그인폼  -->
 	<div class="login-form-container">
 		<form name="login-form" id="login-form" class="login-form"
-			method="post" action="/admin/admLogPost">
+			method="post" action="/thearc/admin/admLogPost">
 			<label for="">관리자 로그인</label><span class="licon user-icon"><input
 				type="text" name="uid" id="log" value="" size="20"
 				class="input username" placeholder="관리자아이디" /></span><span
@@ -226,7 +226,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 
 						{
 							video : {
-								src: ['/resources/bootstrap/dew.webm'],
+								src: ['/thearc/resources/bootstrap/dew.webm'],
 								loop:true,
 								mute:true
 							}

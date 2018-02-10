@@ -20,7 +20,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 
  
- 
+ //로그인시 이곳에서 인터셉트
   @Override
   public void postHandle(HttpServletRequest request, 
       HttpServletResponse response, Object handler,
@@ -55,9 +55,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       UserVO uvo=(UserVO) userVO;
       if(uvo.getAuthority().equals("ban")){
     	  session.removeAttribute(LOGIN);
-   	   response.sendRedirect("/ban");
+   	   response.sendRedirect("/thearc/ban");
       }else//원래 아래 코드만 있었는데 sendredirect 두번 처리하는 에러떄문에 여기서 분기문을 둠.
-      response.sendRedirect(dest != null ? (String)dest : "/");
+      response.sendRedirect(dest != null ? (String)dest : "/thearc/"); //로그인성공시 이부분 작동
     }
   }
 

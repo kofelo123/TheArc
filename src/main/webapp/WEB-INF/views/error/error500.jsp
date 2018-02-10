@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-<img src="/resources/bootstrap/images/error500.PNG" style="margin-top:150px;" /><br/>
+<img src="/thearc/resources/bootstrap/images/error500.PNG" style="margin-top:150px;" /><br/>
  500에러 - 웹 서버에서 요청을 수행할수 없습니다.<br>
  죄송합니다 이 에러는 관리자의 잘못된 처리로 인한 가능성이 높습니다.<br>
  관리자에게 쪽지 혹은 게시판에 문의해주세요.<br>

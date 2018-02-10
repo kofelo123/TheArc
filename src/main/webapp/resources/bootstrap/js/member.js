@@ -18,7 +18,7 @@ function go_save() {
     alert("이메일을 입력해 주세요.");
     document.form.email.focus();
   } else {
-    document.form.action = "/user/joinPost";
+    document.form.action = "/thearc/user/joinPost";
     document.form.submit();
   }
 }
@@ -29,7 +29,7 @@ function idcheck() {
     document.form.uid.focus();
     return;
   }
- var url = "/user/idcheck?uid=" 
+ var url = "/thearc/user/idcheck?uid=" 
 + document.form.uid.value;//? 로 바꾸니 controller requestmapping이 인식됨-> 동시에 파라미터가 잘전달됨.
  /* var url = "/user/idcheck&uid="   ///뒤늦게 보니 웃기다. 당연한건데..
 + document.form.uid.value;*/
@@ -40,7 +40,7 @@ function idcheck() {
 }/**/
 
 function post_zip() {
-  var url = "/user/findZipNum";
+  var url = "/thearc/user/findZipNum";
   window.open( url, "_blank_1",
 "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=400, top=400, left=1100 ");
 }
