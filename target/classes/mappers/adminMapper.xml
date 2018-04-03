@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<delete id="userDropUser">
  		delete from tbl_user where uid=#{uid}
  	</delete>
- 	
+ 	<!-- AreaChart - 일일게시물, 댓글통계  -->
  	<select id="dayBoard" resultType="string">
  	 <![CDATA[
  		select count(*) from tbl_board where regdate > CURDATE()
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          select count(*) from tbl_board where regdate < CURDATE()-6 and regdate > CURDATE()-7;
          ]]>
  	</select>
- 	
+ 	<!-- AreaChart - 일일게시물, 댓글통계  -->
  	<select id="dayReply" resultType="string">
  	 <![CDATA[
  		 select count(*) from tbl_reply where regdate > CURDATE()

@@ -36,8 +36,7 @@ public class AdminController {
 	@RequestMapping(value="/userlist" , method= RequestMethod.GET)
 	public void userlist(Model model) throws Exception{
 		logger.info("userlist get...");
-		/**/model.addAttribute("userVO",service.listuser());
-		
+		model.addAttribute("userVO",service.listuser());
 	}
 	
 	@RequestMapping(value="/admLogPost" , method=RequestMethod.POST)
