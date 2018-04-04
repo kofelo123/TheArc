@@ -16,11 +16,22 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 		
+		<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+            	<value>/WEB-INF/spring/setting.properties</value>
+                <!-- <value>classpath:/egovframework/egovProps/globals.properties</value> -->
+                <!-- value>file:/product/jeus/egovProps/globals.properties</value-->
+            </list>
+        </property>
+    </bean>
+    
+		
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-			<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1/thearc"></property>
-			<property name="username" value="thearc"></property>
-			<property name="password" value="thearc"></property>
+			<property name="url" value="${Local.Url}"></property>
+			<property name="username" value="${Local.UserName}"></property>
+			<property name="password" value="${Local.Password}"></property>
 		</bean>
 		
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -42,7 +53,7 @@
 	</bean>	
 	
 	<bean id="ipAddress" class="java.lang.String">
-		<constructor-arg value="localhost">
+		<constructor-arg value="${Local.IpAddress}">
 		</constructor-arg>
 	</bean>
 	
