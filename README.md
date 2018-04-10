@@ -4,9 +4,9 @@
 
 주제: 대구 강정보 디아크 반응형 웹페이지
 
-URL:http://www.thearc.co.kr
+URL:http://www.jeongwon.me/thearc
 
-PPT:http//www.thearc.co.kr/resources/ppt/jw.html 
+PPT:http//www.jeongwon.me/thearc/resources/ppt/jw.html 
 
 -개발환경-
 
