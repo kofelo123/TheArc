@@ -252,7 +252,19 @@
  <artifactId>spring-mobile-device</artifactId>
  <version>1.1.0.RELEASE</version>
 </dependency>
-  
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-spring31</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
   
 	</dependencies>
     <build>

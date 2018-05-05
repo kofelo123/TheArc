@@ -32,6 +32,7 @@ public class AdminController {
 	 @Inject
 	 private BoardService boardservice;
 	
+	 
 	
 	@RequestMapping(value="/userlist" , method= RequestMethod.GET)
 	public void userlist(Model model) throws Exception{
