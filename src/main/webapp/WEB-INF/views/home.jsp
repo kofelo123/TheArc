@@ -133,31 +133,45 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 		
    
 	 </head>
+	 
+	 
 <body>
 
 
 
- 	<div class="main-container">
-		<div class="preloader"><i></i></div>		<div id="wrapper">
-<div id="visual">
-  <div id="video-bg">
-    <iframe src="https://www.youtube.com/embed/djH6aLcJDqw?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=2">
-    <!-- <iframe src="https://www.youtube.com/embed/GZKZKdVThTE?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=124"> -->
-     </iframe>
-  </div>
-  
-   <div id="visual-content">
-    <h1>Sketched by TheArc</h1>
-    <form action="sboard/main" method="get" id="nextpage">
-    <input type="hidden" name="a" value="a">	
-    
-   <button id="visual-btn" >입장하기</button>
-   </form>
+	<div class="main-container">
+		<div class="preloader">
+			<i></i>
+		</div>
+		<div id="wrapper">
+			<div id="visual">
+				<div id="video-bg">
+					<iframe
+						src="https://www.youtube.com/embed/djH6aLcJDqw?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=2" allow="autoplay; fullscreen">
+						<!-- <iframe src="https://www.youtube.com/embed/GZKZKdVThTE?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=124"> -->
+					</iframe>
+						 <script>
+						 /* 바뀐 크롬정책에 의하면 autoplay가 제한적으로 된다. 그 정책내용에서 autoplay=allow를 해주는 코드가 있는데,이유는 모르겠으나  refresh되는 상황일때만 자동재생이 되었다 그래서 아래의 1회 refresh하도록 js넣음  */
+				     if (self.name != 'reload') {
+				         self.name = 'reload';
+				         self.location.reload(true);
+				     }
+				     else self.name = ''; 
+					 </script>
+				</div>
 
-  </div>
-</div>
+				<div id="visual-content">
+					<h1>Sketched by TheArc</h1>
+					<form action="sboard/main" method="get" id="nextpage">
+						<input type="hidden" name="a" value="a">
 
-<script>
+						<button id="visual-btn">입장하기</button>
+					</form>
+
+				</div>
+			</div>
+
+<!-- 			<script>
 	$(document).ready(
 			function(){
 				
@@ -170,11 +184,11 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 
 			
 			
-</script>
+</script> -->
 
-</div>
-				</div>
-<div class="login-form-container">
+		</div>
+	</div>
+	<div class="login-form-container">
 			<form name="login-form" id="login-form" class="login-form" method="post" action="/thearc/admin/admLogPost">
 				<label for="">관리자 로그인</label>
 				<span class="licon user-icon">
