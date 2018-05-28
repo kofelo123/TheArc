@@ -203,6 +203,29 @@ $("#registerForm").submit(function(event){
 });
 
 
+//삭제
+
+$(".uploadedList").on("click",".delbtn",function(event){
+	
+	event.preventDefault();
+	
+	var that = $(this);
+	console.log("deleteFile:"+$(this).attr("href"));
+		
+		$.ajax({
+			url:'/thearc/deleteFile',
+			type:'post',
+			data:{fileName:$(this).attr('href')},
+			dataType:"text",
+			success:function(result){
+				if(result == 'deleted'){
+					that.parents("li").remove();
+				}
+			}
+		});
+	});
+
+
 
 </script>
 

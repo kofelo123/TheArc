@@ -151,7 +151,7 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 						<!-- <iframe src="https://www.youtube.com/embed/GZKZKdVThTE?autoplay=1&controls=0&showinfo=0&wmode=opaque&autohide=1&loop=1&start=124"> -->
 					</iframe>
 						 <script>
-						 /* 바뀐 크롬정책에 의하면 autoplay가 제한적으로 된다. 그 정책내용에서 autoplay=allow를 해주는 코드가 있는데,이유는 모르겠으나  refresh되는 상황일때만 자동재생이 되었다 그래서 아래의 1회 refresh하도록 js넣음  */
+						 /* 바뀐 크롬정책에 의하면 autoplay가 제한적으로 된다. 그 정책내용에서 autoplay=allow를 해주는 코드가 있는데,이유는 모르겠으나  refresh되는 상황일때만 자동재생이 되었다 그래서 아래의 1회 refresh하도록 js넣음  + allow="autoplay도 해줘야함" */
 				     if (self.name != 'reload') {
 				         self.name = 'reload';
 				         self.location.reload(true);

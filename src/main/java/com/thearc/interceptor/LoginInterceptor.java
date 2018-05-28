@@ -57,7 +57,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     	  session.removeAttribute(LOGIN);
    	   response.sendRedirect("/thearc/ban");
       }else//원래 아래 코드만 있었는데 sendredirect 두번 처리하는 에러떄문에 여기서 분기문을 둠.
-      response.sendRedirect(dest != null ? (String)dest : "/thearc/"); //로그인성공시 이부분 작동
+      response.sendRedirect(dest != null ? (String)dest : "/thearc/sboard/main"); //로그인성공시 이부분 작동
     }
   }
 
