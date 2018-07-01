@@ -2,33 +2,49 @@ package com.thearc.domain;
 
 import java.sql.Timestamp;
 
-public class UserVO {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+
+public class UserVO {
+	
+	
+	@Pattern(regexp="[[a-zA-Z]가-힣]{1,}", message="아이디를 입력해주세요.")
+	@Size(min=5 , max=20)
 	private String uid;
+	
+	/*@NotNull(message="비밀번호를 입력해야합니다.")*/
+	@Size(min=5, max=50)
 	private String upw;
+			 
+	/*@Pattern(regexp="[a-zA-Z가-힣]{1,}", message="이름을 입력해주세요.")*/
+	@NotNull
+	@NotBlank(message = "Last name is compulsory")
 	private String uname;
-	private int upoint;	
 	private String email;// 아이디@메일주소 하는과정에서 email과 email2로 나뉘지만 email의 getter에 email+email2가 되어 병합되어 저장된다.
 	private String email2;
 	private String email3;// 위의 나뉘어지는 상황떄문에 id/pw 찾기 과정에서 이메일 전체값이 필요해서 그냥 만들어서 전달용.. db는 없다.
+	//회원가입때 email, email2 합치는 용도
 	private String email4;
-	
-
 	private String roadAddrPart1;
 	private String addrDetail;
 	private String addr1;
 	private String phone;
-	private String phone2;
-	private String phone3;	
-	private String phone4;
-
-
 	private Timestamp indate;
 	private String encrypthash; // 해쉬코드값 저장용
 	private String authority;
 	
+//	private int upoint;	
+	/*	private String phone2;
+	private String phone3;	
+	private String phone4;
+*/
+	
 	public String getEmail4() {
-		return email+"@"+email2;
+		return email+"@"+email;
 	}
 
 	public void setEmail4(String email4) {
@@ -85,12 +101,12 @@ public class UserVO {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public int getUpoint() {
-		return upoint;
-	}
-	public void setUpoint(int upoint) {
-		this.upoint = upoint;
-	}
+//	public int getUpoint() {
+//		return upoint;
+//	}
+//	public void setUpoint(int upoint) {
+//		this.upoint = upoint;
+//	}
 	public String getEmail() {
 		return email;
 	}
@@ -116,7 +132,7 @@ public class UserVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getPhone2() {
+/*	public String getPhone2() {
 		return phone2;
 	}
 	public void setPhone2(String phone2) {
@@ -135,7 +151,7 @@ public class UserVO {
 
 	public void setPhone4(String phone4) {
 		this.phone4 = phone4;
-	}
+	}*/
 	
 	public Timestamp getIndate() {
 		return indate;
@@ -152,10 +168,10 @@ public class UserVO {
 
 	@Override
 	public String toString() {
-		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", upoint=" + upoint + ", email=" + email
-				+ ", email2=" + email2 + ", email3=" + email3 + ", roadAddrPart1=" + roadAddrPart1 + ", addrDetail="
-				+ addrDetail + ", addr1=" + addr1 + ", phone=" + phone + ", phone2=" + phone2 + ", phone3=" + phone3
-				+ ", indate=" + indate + ", encrypthash=" + encrypthash + ", authority=" + authority + "]";
+		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname +  ", email=" + email
+				+ ", email2=" + email2 + ", email3=" + email3 + ", email4=" + email4 + ", roadAddrPart1="
+				+ roadAddrPart1 + ", addrDetail=" + addrDetail + ", addr1=" + addr1 + ", phone=" + phone + ", indate="
+				+ indate + ", encrypthash=" + encrypthash + ", authority=" + authority + "]";
 	}
 	
 }

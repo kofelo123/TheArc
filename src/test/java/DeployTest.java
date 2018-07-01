@@ -18,7 +18,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/test-root-context.xml"})
+//@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/test-root-context.xml"})
+@ContextConfiguration(locations={"classpath:spring/test-root-context.xml"})
 
 /**
  * TestCode Practice
@@ -30,7 +31,7 @@ import static org.junit.Assert.assertThat;
  * <pre>
  * << 개정이력(Modification Information) >>
  *
- *   수정일      수정자           수정내용
+ *   수정일                수정자           수정내용
  *  -------    --------    ---------------------------
  *   2018.05.05  허정원          최초 생성
  *

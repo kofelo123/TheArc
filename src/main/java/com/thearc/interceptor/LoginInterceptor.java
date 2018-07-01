@@ -13,6 +13,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.thearc.domain.UserVO;
 
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
   private static final String LOGIN = "login";
@@ -62,7 +63,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
   }
 
 
-  @Override
+
+
+@Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 	  
     HttpSession session = request.getSession();

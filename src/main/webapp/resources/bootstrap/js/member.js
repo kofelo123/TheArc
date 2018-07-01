@@ -1,4 +1,4 @@
-function go_save() {
+/*function go_save() {
   if (document.form.uid.value == "") {
     alert("아이디를 입력하여 주세요.");
     document.form.uid.focus();
@@ -22,7 +22,7 @@ function go_save() {
     document.form.submit();
   }
 }
-
+*/
 function idcheck() {
   if (document.form.uid.value == "") {
     alert('아이디를 입력하여 주십시오.');

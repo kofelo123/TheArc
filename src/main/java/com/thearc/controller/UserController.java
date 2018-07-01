@@ -7,23 +7,41 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.thearc.domain.AddressVO;
-import com.thearc.domain.UserVO;
 import com.thearc.domain.LoginDTO;
+import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
 
+/**
+  *
+  * @author Jeongwon Heo
+  * since 
+  * <pre>
+  * << 개정이력(Modification Information) >>
+  *
+  *      수정일                   수정자                수정내용
+  *  -----------    --------    ---------------------------
+  *  2018. 6. 23.     허정원		 유효성검사(JSR - 303)적용 (회원가입)
+  *
+  * </pre>
+  */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -40,7 +58,9 @@ public class UserController {
 	}
 	
 	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	  public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	  public void loginPOST(LoginDTO dto , HttpSession session, Model model) throws Exception {
+		
+		  
 	    UserVO vo = service.login(dto);
 	    System.out.println("voTest:"+vo);
 	    model.addAttribute("userVO", vo);
@@ -84,14 +104,21 @@ public class UserController {
 
 		  return "user/logout";
 	  }
+	  
 	  //회원가입 만들것.
 	  @RequestMapping(value = "/join", method = RequestMethod.GET)
-	  public void join(@ModelAttribute("dto") UserVO dto) {
-		  
+	  public void join(Model model) {
+		  model.addAttribute("uvo",new UserVO());
 	  }
 	  
 	  @RequestMapping(value = "joinPost", method = RequestMethod.POST)
-	  public String joinPost(UserVO user, RedirectAttributes rttr) throws Exception{
+	  public String joinPost(@ModelAttribute("uvo") @Valid UserVO user,BindingResult result, RedirectAttributes rttr) throws Exception{
+		  
+			//유효성검사 
+			if(result.hasErrors()) {
+				System.out.println("유호성검사 에러");
+				return "/user/join";
+			}
 		  
 		  logger.info("joinPost post ...........");
 		  
@@ -118,6 +145,26 @@ public class UserController {
 		  model.addAttribute("answer",answer);
 		  System.out.println(user.getUid());
 		  
+	  }
+	  
+	  @ResponseBody
+	  @RequestMapping(value="/idcheck2", method=RequestMethod.POST)
+	  public ResponseEntity<String> ic_check2(String uid,Model model) throws Exception{
+		  
+		  ResponseEntity<String> entity= null;
+		  
+		  try {
+			  UserVO vo = new UserVO();
+			  vo.setUid(uid);
+			  UserVO user2=service.id_checkPost(vo);
+//			  System.out.println(user2.getUid());
+			  if(user2 != null)
+			  entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		  }catch(Exception e){
+			  e.printStackTrace();
+		  }
+		
+		return entity; 
 	  }
 	  
 	  @RequestMapping(value ="/findZipNum" , method=RequestMethod.GET)

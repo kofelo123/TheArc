@@ -45,6 +45,18 @@
 </div>
   <div class="form-group has-feedback">
     <input type="text" name="email3" class="form-control" placeholder="이메일을 입력해주세요"/>
+    <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ <input type="text"      name="email2" size="12">
+        	<select name="company" onclick="mailcheck()" style="margin-left:10px">
+   				<option value="직접입력" selected="selected">직접입력</option>
+    			<option value="naver.com">네이버</option>
+    			<option value="daum.net" >다음</option>
+    			<option value="nate.com" >네이트</option>
+    			<option value="hotmail.com" >핫메일</option>													
+    			<option value="yahoo.com" >야후</option>
+   				<option value="empas.com">엠파스</option>
+   				<option value="dreamwiz.com">드림위즈</option>
+   				<option value="gmail.com">지메일</option>
+			</select>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
   </div>
  <!--  <div class="form-group has-feedback">

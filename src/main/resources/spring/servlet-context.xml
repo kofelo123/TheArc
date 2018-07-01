@@ -27,7 +27,7 @@
 		<beans:constructor-arg ref="configurationEncryptor"/>
 		<beans:property name="locations">
 			<beans:list>
-				<beans:value>/WEB-INF/spring/setting.properties</beans:value>
+				<beans:value>classpath:spring/setting.properties</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
