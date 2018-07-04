@@ -3490,7 +3490,8 @@ table.text-center, table.text-center td, table.text-center th {
 	padding: 20px;
 	color: be8181;
 	border-top: 0;
-	color: #ce9797
+	color: #ce9797;
+	min-width:400px;
 }
 
 .login-box-body .form-control-feedback, .register-box-body .form-control-feedback

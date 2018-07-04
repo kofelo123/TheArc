@@ -63,28 +63,31 @@ function jusoCallBack(roadAddrPart1,addrDetail){
         <legend>기본정보</legend><br>
         
 <!--         <input type="text"      name="uid"  id="uid"      size="25"  placeholder="아이디" ><br> -->
+<!-- <input type="hidden"    name="reid" > -->
+        <!-- <input type="button"    value="중복 체크"   onclick="idcheck()" ><br> -->
+<!--         <input type="password"  name="upw" size="25" placeholder="비밀번호 " ><br> -->
+        
         <form:input path="uid" name="uid"  id="uid" size="25"  placeholder="아이디" />
         <form:errors path="uid" class="error" />
         <br>
-        <span id="successId" style="color:blue;display:none">멋진 아이디네요!<br/></span>	
-        <span id="failId" style="color:red;display:none">이미 사용중인 아이디입니다.<br/></span>	
-        <input type="hidden"    name="reid" >
-        <!-- <input type="button"    value="중복 체크"   onclick="idcheck()" ><br> -->
-         
-<!--         <input type="password"  name="upw" size="25" placeholder="비밀번호 " ><br> -->
-        <form:input path="upw" name="upw" size="25" placeholder="비밀번호" />
-        <form:errors path="upw" class="error" /> <br/>
-         
-        <input type="password"  name="upwCheck" size="25" placeholder="비밀번호 재확인" ><br>
+        <span id="successId" style="color:blue;display:none"></span>	
+        <span id="failId" style="color:red;display:none"></span>	
         
-        <span id="successUpw" style="color:blue;display:none;">비밀번호가 일치합니다.<br/></span>
-        <span id="failUpw" style="color:red;display:none;">비밀번호가 일치하지 않습니다.<br/></span>
+        <form:input path="upw" id="upw" name="upw" size="25" placeholder="비밀번호" />
+        <form:errors path="upw" class="error" /> <br/>
+         <span id="successFail" ></span>
+         
+        <!-- <span id="failUpw" style="color:red;display:none;"></span> -->
+        
+        <input type="password"  id="upwCheck" name="upwCheck" size="25" placeholder="비밀번호 재확인" ><br>
+        
+        <span id="successUpwCheck" style="color:blue;display:none;">비밀번호가 일치합니다.<br/></span>
+        <span id="failUpwCheck" style="color:red;display:none;">비밀번호가 일치하지 않습니다.<br/></span>
         
         <!-- <input type="text"      name="uname" size="25" placeholder="이름" ><br> -->
         <form:input path="uname" name="uname" size="25" placeholder="이름"  /><br>
         <form:errors path="uname" class="error" />
-        
-        
+ 
         <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ <input type="text"      name="email2" size="12">
         	<select name="company" onclick="mailcheck()" style="margin-left:10px">
    				<option value="직접입력" selected="selected">직접입력</option>
@@ -165,7 +168,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 						{
 							video : {
 								src: ['/thearc/resources/bootstrap/dew.webm'],
-								loop:true,
+								loop:false,
 								mute:true
 							}
 						}
@@ -173,7 +176,8 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 				});
 			});
 		</script>
-<!-- 	<script>
+		
+	<script>
 	$(function(){
 
 		$(".phone-number-check").on('keydown', function(e){
@@ -221,6 +225,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 		  }
 		});  
 		
+		//아이디 중복체크
 		$('#uid').on('blur', function(){
 			var uid= $(this).val();
 			
@@ -230,11 +235,16 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 				data:{uid:uid},
 				dataType:'text',
 				success:function(result){
-					
 					console.log("result: "+result);
-					if(result =='SUCCESS'){
+					// 중복 되거나 빈값을 넣었을떄 
+					if(result =='Duplicate'|| result == "Empty"){
 						$('#failId').css("display","inline");
 						$('#successId').css("display","none");
+						
+						if(result =="Empty")
+							$('#failId').html("아이디를 입력하세요<br/>")
+						else if(result=="Duplicate")
+							$('#failId').html("이미 사용중인 아이디입니다<br/>")
 					}else{
 						$('#successId').css("display","inline");
 						$('#failId').css("display","none");
@@ -243,19 +253,45 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 			})
 		});
 		
+/* 		$("#upw").on('blur',function(){
+			var upw = $(this).val();
+				
+			//비어있으면 에러처리
+			if(jQuery.isEmptyObject(upw))
+				$('#failUpw').css("display","inline");
+				$('#failUpw').html("비밀번호를 입력해주세요<br/>");
+		}); */
+		/* <span id="failUpw" style="color:red;display:none;"></span> */
+		
+		$("#upw").on('blur',function(){
+			var upw = $(this).val();
+			var tag = $(this).html("<span>비밀번호를 입력해주세요</span>")
+			console.log(upw);
+			console.log("this: "+$(this));
+			
+			//비어있으면 에러처리
+			if(jQuery.isEmptyObject(upw))
+				successFail($(this),"비밀번호를 입력해주세요","red");
+				
+		});
+		
+	/* 	function successFail(object,message,color){
+			object.html(message+"<br/>").css("color",color);
+		} */
+	
+		/* 
 		$('[name=upwCheck]').on('blur',function(){
-			console.log("testtesttest");
 			var upwCheck = $(this).val();
 			var upw = $('[name=upw]').val();
-			console.log("upwCheck"+upwCheck);
-			console.log("upw"+upw);
-			if(upw == upwCheck){
-				$('#successUpw').css("display","inline");
-				$('#failUpw').css("display","none");
+	
+			
+			if((upw == upwCheck) ){
+				$('#successUpwCheck').css("display","inline");
+				$('#failUpwCheck').css("display","none");
 			}else{
-				$('#failUpw').css("display","inline");
-				$('#successUpw').css("display","none");
+				$('#failUpwCheck').css("display","inline");
+				$('#successUpwCheck').css("display","none");
 			}
-		});b
+		}); */
 	});
-	</script> -->
+	</script>

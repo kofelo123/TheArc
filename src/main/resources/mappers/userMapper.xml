@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="join">
 		insert into tbl_user(uid, upw, uname, email,address,phone)
-		values(#{uid},#{upw},#{uname},#{email4},#{addr1},#{phone})
+		values(#{uid},#{upw},#{uname},#{email},#{addr1},#{phone})
 	
 	</insert>
 	
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- select * from address where dong like "%"#{dong}"%" -->
 
 	<select id="idfindofmail" resultType="UserVO">
-		select uid,upw,uname from tbl_user where email= #{email3}
+		select uid,upw,uname from tbl_user where email= #{email}
 	</select>
 	
 	<!-- <update id="encrypthash">

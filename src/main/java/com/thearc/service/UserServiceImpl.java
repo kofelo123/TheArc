@@ -117,7 +117,7 @@ public class UserServiceImpl implements UserService {
 		email.setFrom("hlw123@naver.com"); 
 		email.setSubject("[디아크]"+user2.getUname()+"님 문의하신 계정 정보입니다.");
 		email.setMsg("This is a test mail ... :-)");
-		email.addTo(user.getEmail3()) ;
+		email.addTo(user.getEmail()) ;
 		email.setCharset("utf-8");
 		email.setHtmlMsg(htmlEmailTemplate);
 		email.setTextMsg("Your email client does not support HTML messages");

@@ -38,14 +38,15 @@
       <div class="login-box-body">
         <p class="login-box-msg"></p>
 
-<form action="/thearc/user/idfindmail" method="get">
+<form name="form" action="/thearc/user/idfindmail" method="get">
 <div id='expression' style="padding-bottom:20px">
 <b>회원 가입시 입력하신 이메일 주소를 입력하시면,<br></b>
 <b>아이디 및 비밀번호 변경 링크를 보내드립니다.<br></b>
 </div>
   <div class="form-group has-feedback">
-    <input type="text" name="email3" class="form-control" placeholder="이메일을 입력해주세요"/>
-    <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ <input type="text"      name="email2" size="12">
+    <!-- <input type="text" name="email3" class="form-control" placeholder="이메일을 입력해주세요"/> -->
+    <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ 
+    <input type="text" name="email2" size="12">
         	<select name="company" onclick="mailcheck()" style="margin-left:10px">
    				<option value="직접입력" selected="selected">직접입력</option>
     			<option value="naver.com">네이버</option>
@@ -72,7 +73,6 @@
   </div>
 </form>
 
-
         
 
       </div><!-- /.login-box-body -->
@@ -98,7 +98,7 @@
   </body>
 </html>
 
-<script>
+	<script>
 			$(function(){
 				$('body').vegas({
 					slides:[
@@ -113,4 +113,16 @@
 					]
 				});
 			});
+			
+		
+function mailcheck(){
+	
+	if(document.form.company.value!="직접입력"){
+		document.form.email2.value=document.form.company.value;
+	}else if(document.form.company.value=="직접입력"){
+		document.form.email2.value="";
+	}
+	
+	
+}
 		</script>

@@ -157,9 +157,10 @@ public class UserController {
 			  UserVO vo = new UserVO();
 			  vo.setUid(uid);
 			  UserVO user2=service.id_checkPost(vo);
-//			  System.out.println(user2.getUid());
-			  if(user2 != null)
-			  entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+			  if(user2.getUid().isEmpty())
+				  entity = new ResponseEntity<String>("Empty", HttpStatus.OK);
+		      else if(user2 != null)
+				  entity = new ResponseEntity<String>("Duplicate",HttpStatus.OK);
 		  }catch(Exception e){
 			  e.printStackTrace();
 		  }
