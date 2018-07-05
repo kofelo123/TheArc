@@ -159,7 +159,7 @@ public class UserController {
 	  @ResponseBody
 	  @RequestMapping(value="/idcheck2", method=RequestMethod.POST)
 	  public ResponseEntity<String> id_check2(String uid) throws Exception{
-		  
+		  System.out.println("idcheck2Test");
 		  ResponseEntity<String> entity= null;
 		  
 		  try {

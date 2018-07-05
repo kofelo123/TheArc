@@ -82,8 +82,9 @@ function jusoCallBack(roadAddrPart1,addrDetail){
         
         <form:input path="uname" name="uname" size="25" placeholder="이름"  /><br>
         <form:errors path="uname" class="error" />
- 
-        <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ <input type="text"      name="email2" size="12">
+ 		<span id="successFail" ></span>
+ 		
+        <input type="text" id="email" name="email" size="12"  placeholder="이메일"  >&nbsp;@ <input type="text" name="email2" id="email2" size="12">
         	<select name="company" onclick="mailcheck()" style="margin-left:10px">
    				<option value="직접입력" selected="selected">직접입력</option>
     			<option value="naver.com">네이버</option>
@@ -95,7 +96,9 @@ function jusoCallBack(roadAddrPart1,addrDetail){
    				<option value="dreamwiz.com">드림위즈</option>
    				<option value="gmail.com">지메일</option>
 			</select>
-        <br><br><br>					
+		<br>
+ 		<span id="successFail" ></span>
+        <br><br>					
         
       </fieldset>
       <fieldset>
@@ -276,8 +279,31 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 				successFail($(this).attr("id"),"비밀번호가 일치합니다","blue");
 			}else if(upw != upwCheck){
 				successFail($(this).attr("id"),"비밀번호가 일치하지 않습니다","red");
+			}else if(upw == upwCheck && upw == ""){
+				successFail("upw","비밀번호를 입력해주세요","red");
 			}
 		}); 
-	});
+		
+		$("#uname").on('blur',function(){
+			var uname = $(this).val();
+			
+			if(uname == "")
+				successFail($(this).attr("id"),"이름을 입력해주세요","red");
+			else if($("#uname ~ #successFail:first").text()=="이름을 입력해주세요")
+				$("#uname ~ #successFail:first").text("");
+		});
+		
+		$("#email, #email2").on('blur',function(){
+			var email = $("#email").val();
+			var email2 = $("#email2").val();
+			
+			if(email == "" || email2 == "")
+				$("#email ~ #successFail:first").text("이메일을 입력해주세요").css("color","red");
+			else if($("#email ~ #successFail:first").text()=="이메일을 입력해주세요")
+				$("#email ~#successFail:first").text("");
+		});
+			
 	
+
+	}); 
 	</script>
