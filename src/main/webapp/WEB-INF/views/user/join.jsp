@@ -69,22 +69,17 @@ function jusoCallBack(roadAddrPart1,addrDetail){
         
         <form:input path="uid" name="uid"  id="uid" size="25"  placeholder="아이디" />
         <form:errors path="uid" class="error" />
-        <br>
-        <span id="successId" style="color:blue;display:none"></span>	
-        <span id="failId" style="color:red;display:none"></span>	
+        <br/>
+        <span id="successFail" ></span>
         
-        <form:input path="upw" id="upw" name="upw" size="25" placeholder="비밀번호" />
+        
+        <form:input path="upw" type="password" id="upw" name="upw" size="25" placeholder="비밀번호" />
         <form:errors path="upw" class="error" /> <br/>
          <span id="successFail" ></span>
-         
-        <!-- <span id="failUpw" style="color:red;display:none;"></span> -->
         
         <input type="password"  id="upwCheck" name="upwCheck" size="25" placeholder="비밀번호 재확인" ><br>
+        <span id="successFail" ></span>
         
-        <span id="successUpwCheck" style="color:blue;display:none;">비밀번호가 일치합니다.<br/></span>
-        <span id="failUpwCheck" style="color:red;display:none;">비밀번호가 일치하지 않습니다.<br/></span>
-        
-        <!-- <input type="text"      name="uname" size="25" placeholder="이름" ><br> -->
         <form:input path="uname" name="uname" size="25" placeholder="이름"  /><br>
         <form:errors path="uname" class="error" />
  
@@ -185,7 +180,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 		    var trans_num = $(this).val().replace(/-/gi,'');
 		var k = e.keyCode;
 		            //타이핑 제한          숫자 + 영어(영어는왜있는지..?) (한글자음,모음)               (스페이스)   (한글 가-힣)
-		if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+		if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 &&  k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
 		{   
 		      e.preventDefault();//타이핑 더이상 못받게
 		}
@@ -228,7 +223,8 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 		//아이디 중복체크
 		$('#uid').on('blur', function(){
 			var uid= $(this).val();
-			
+			var id = $(this).attr("id");
+
 			$.ajax({
 				url:'/thearc/user/idcheck2',
 				type:'post',
@@ -238,60 +234,50 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 					console.log("result: "+result);
 					// 중복 되거나 빈값을 넣었을떄 
 					if(result =='Duplicate'|| result == "Empty"){
-						$('#failId').css("display","inline");
-						$('#successId').css("display","none");
-						
-						if(result =="Empty")
-							$('#failId').html("아이디를 입력하세요<br/>")
-						else if(result=="Duplicate")
-							$('#failId').html("이미 사용중인 아이디입니다<br/>")
-					}else{
-						$('#successId').css("display","inline");
-						$('#failId').css("display","none");
+
+						if(result =="Empty"){
+							console.log(id);
+							successFail(id,"아이디를 입력하세요","red");
+						}else if(result=="Duplicate")
+							successFail(id,"중복된 아이디입니다.","red");
+						}else{
+							successFail(id,"사용가능한 아이디입니다.","blue");
 					}
 				}
 			})
 		});
 		
-/* 		$("#upw").on('blur',function(){
-			var upw = $(this).val();
-				
-			//비어있으면 에러처리
-			if(jQuery.isEmptyObject(upw))
-				$('#failUpw').css("display","inline");
-				$('#failUpw').html("비밀번호를 입력해주세요<br/>");
-		}); */
-		/* <span id="failUpw" style="color:red;display:none;"></span> */
-		
+        /* 비밀번호값 입력여부 유효성검사 */
 		$("#upw").on('blur',function(){
 			var upw = $(this).val();
-			var tag = $(this).html("<span>비밀번호를 입력해주세요</span>")
 			console.log(upw);
-			console.log("this: "+$(this));
-			
 			//비어있으면 에러처리
-			if(jQuery.isEmptyObject(upw))
-				successFail($(this),"비밀번호를 입력해주세요","red");
-				
+			if(jQuery.isEmptyObject(upw)){
+				successFail($(this).attr("id"),"비밀번호를 입력해주세요","red"); 
+			}else if($("#upw ~ #successFail:first").text()=="비밀번호를 입력해주세요"){
+        	 	$("#upw ~ #successFail:first").text("");
+			} 
 		});
 		
-	/* 	function successFail(object,message,color){
-			object.html(message+"<br/>").css("color",color);
-		} */
-	
-		/* 
-		$('[name=upwCheck]').on('blur',function(){
-			var upwCheck = $(this).val();
-			var upw = $('[name=upw]').val();
-	
+		/** 유효성검사 -html의 각 input 입렵값뒤에 span이 있는데 , 파라미터로 넘겨진 값으로 span을 컨트롤 
+		 *  id:해당 input id, message:유효성검사후 띄울메시지, color: true일때 blue, false 일때 red
+		*/
+	 	function successFail(id,message,color){
+	 		
+			$("#"+id).next().next().html(message+"<br/>").css("color",color);
 			
-			if((upw == upwCheck) ){
-				$('#successUpwCheck').css("display","inline");
-				$('#failUpwCheck').css("display","none");
-			}else{
-				$('#failUpwCheck').css("display","inline");
-				$('#successUpwCheck').css("display","none");
+		} 
+		
+		$('#upwCheck').on('blur',function(){
+			
+			var upwCheck = $(this).val();
+			var upw = $('#upw').val();
+			if(upw == upwCheck && upw != ""){
+				successFail($(this).attr("id"),"비밀번호가 일치합니다","blue");
+			}else if(upw != upwCheck){
+				successFail($(this).attr("id"),"비밀번호가 일치하지 않습니다","red");
 			}
-		}); */
+		}); 
 	});
+	
 	</script>

@@ -129,7 +129,8 @@ public class UserController {
 		  return "redirect:/user/login";
 	  }
 	  
-	  @RequestMapping(value = "/idcheck", method = RequestMethod.GET )
+    
+	@RequestMapping(value = "/idcheck", method = RequestMethod.GET )
 	  public void id_check(UserVO user,Model model) throws Exception{///여기서 userVO는 아이디값이 setter해서 넘어가는 것일것이다.
 		  
 		 int answer=0; ///flag같은것인데 boolean false로 디폴트로 해놓고 해도될듯
@@ -147,9 +148,17 @@ public class UserController {
 		  
 	  }
 	  
+	
+    /**
+	 * ajax 방식으로 중복확인 및 유효성검사 
+	 *@param uid 아이디값넘김
+	 *@return
+	 *@throws Exception
+	 */
+	
 	  @ResponseBody
 	  @RequestMapping(value="/idcheck2", method=RequestMethod.POST)
-	  public ResponseEntity<String> ic_check2(String uid,Model model) throws Exception{
+	  public ResponseEntity<String> id_check2(String uid) throws Exception{
 		  
 		  ResponseEntity<String> entity= null;
 		  
@@ -157,10 +166,14 @@ public class UserController {
 			  UserVO vo = new UserVO();
 			  vo.setUid(uid);
 			  UserVO user2=service.id_checkPost(vo);
-			  if(user2.getUid().isEmpty())
-				  entity = new ResponseEntity<String>("Empty", HttpStatus.OK);
-		      else if(user2 != null)
-				  entity = new ResponseEntity<String>("Duplicate",HttpStatus.OK);
+			  
+			  if(uid.isEmpty()) {
+				entity = new ResponseEntity<String>("Empty", HttpStatus.OK);  
+			  }else if(user2 != null) {
+				  entity = new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+			  }else {
+				  entity = new ResponseEntity<String>("Success", HttpStatus.OK);
+			  }
 		  }catch(Exception e){
 			  e.printStackTrace();
 		  }

@@ -13,17 +13,18 @@ public class UserVO {
 	
 	
 //	@Pattern(regexp="[[a-zA-Z]가-힣]{1,}", message="아이디를 입력해주세요.")
-	
-	@Size(min=5 , max=20)
+	@NotBlank(message ="아이디를 입력해야합니다.")
+	@Size(min=5 , max=20 , message="5~20 글자로 입력")
 	private String uid;
 	
 	@NotBlank(message ="비밀번호를 입력해야합니다.")
-	@Size(min=5, max=50)
+	@Size(min=5, max=50, message="5~50 글자로 입력")
 	private String upw;
 			 
 	/*@Pattern(regexp="[a-zA-Z가-힣]{1,}", message="이름을 입력해주세요.")*/
-	@NotNull
+	
 	@NotBlank(message = "이름을 입력해야합니다.")
+	@Size(min=2, max=20, message="5~20 글자로 입력")
 	private String uname;
 	
 
