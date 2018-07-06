@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.thearc.domain.Criteria;
 import com.thearc.domain.ReplyVO;
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
 
-  @Inject
+  @Autowired
   private SqlSession session;
 
   private static String namespace = "com.thearc.mapper.ReplyMapper";

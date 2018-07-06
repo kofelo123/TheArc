@@ -3,19 +3,14 @@ package com.thearc.service;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.mail.MailSender;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.ImageHtmlEmail;
+import org.apache.commons.mail.resolver.DataSourceUrlResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
@@ -25,23 +20,16 @@ import com.thearc.domain.UserVO;
 import com.thearc.persistence.UserDAO;
 import com.thearc.util.EncryptUtil;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.HtmlEmail;
-import org.apache.commons.mail.ImageHtmlEmail;
-import org.apache.commons.mail.SimpleEmail;
-import org.apache.commons.mail.resolver.DataSourceUrlResolver;
-
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Inject
+	@Autowired
 	private UserDAO dao;
 
 	@Resource(name = "ipAddress") // ip 가변적이라서 주입(local-server).
 	private String ipAddress;
 	
-	@Inject
+	@Autowired
 	private EncryptUtil encrypt;
 
 	@Override

@@ -2,9 +2,8 @@ package com.thearc.persistence;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.thearc.domain.BoardVO;
@@ -13,7 +12,7 @@ import com.thearc.domain.UserVO;
 @Repository
 public class AdminDAOImpl implements AdminDAO{
 
-	@Inject
+	@Autowired
 	private SqlSession session;
 	
 	private static String namespace = "com.thearc.mapper.AdminMapper";

@@ -372,19 +372,19 @@ xml에서 직접 빈을 명시해서 등록하게되고 이런 빈들 같은 경
 						<h2>주입</h2><br>
 						<pre><code class="hljs" data-trim contenteditable>
 							public class SearchBoardController {
-							 @Inject
+							 @Autowired
 							 private BoardService service; //인터페이스타입
 							 
 							 service.listSearchCriteria(cri,"free")
 							 
 						   public class BoardServiceImpl implements BoardService {
-							@Inject
+							@Autowired
 							private BoardDAO dao; //인터페이스타입
 							
 							dao.create(board);
 							
 						public class BoardDAOImpl implements BoardDAO {
-						  @Inject
+						  @Autowired
  						  private SqlSession session;
  						  
  						  session.insert(namespace + ".create", vo);
@@ -394,7 +394,7 @@ xml에서 직접 빈을 명시해서 등록하게되고 이런 빈들 같은 경
 					</div>
 						<aside class="notes">
 		그리고 스프링컨테이너에 등록된 빈을 실제로 주입하는것에 대해 설명하겠습니다.
-등록된 스프링 빈은 자바소스상에서 @Inject,@Autowired,@Resource 와 같은 어노테이션으로 주입이되며
+등록된 스프링 빈은 자바소스상에서 @Autowired,@Autowired,@Resource 와 같은 어노테이션으로 주입이되며
 인스턴스변수,메소드,생성자 등에 주입가능합니다.
 자바소스상에서 타입을 인터페이스로 두기떄문에 xml에서 원하는 모듈을 변경해도 자바소스상에서는 아무런 수정할 필요가 없어지므로 유지보수에 강점을 지니게 되며,종속적이지 않은,결합도가 느슨한 코드가 됩니다.				
 	</aside>

@@ -80,6 +80,8 @@ function jusoCallBack(roadAddrPart1,addrDetail){
         <input type="password"  id="upwCheck" name="upwCheck" size="25" placeholder="비밀번호 재확인" ><br>
         <span id="successFail" ></span>
         
+        <input type="text" id="test" name="test" size="12"  placeholder="test"><br/>
+         
         <form:input path="uname" name="uname" size="25" placeholder="이름"  /><br>
         <form:errors path="uname" class="error" />
  		<span id="successFail" ></span>
@@ -183,7 +185,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 		    var trans_num = $(this).val().replace(/-/gi,'');
 		var k = e.keyCode;
 		            //타이핑 제한          숫자 + 영어(영어는왜있는지..?) (한글자음,모음)               (스페이스)   (한글 가-힣)
-		if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 &&  k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+		if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
 		{   
 		      e.preventDefault();//타이핑 더이상 못받게
 		}
@@ -303,7 +305,5 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 				$("#email ~#successFail:first").text("");
 		});
 			
-	
-
 	}); 
 	</script>

@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.thearc.domain.MessageVO;
@@ -15,22 +14,17 @@ import com.thearc.domain.SearchCriteria;
 @Repository
 public class MessageDAOImpl implements MessageDAO {
 
-	@Inject
+	@Autowired
 	private SqlSession session;
 	
 	private static String namespace ="com.thearc.mapper.MessageMapper";	
 	
-
-
-
 	@Override
 	public void updateState(Integer mid) throws Exception {
 
 		session.update(namespace+".upldateState", mid);
 
 	}
-
-	
 	
 	@Override
 	public void addCountList() throws Exception {

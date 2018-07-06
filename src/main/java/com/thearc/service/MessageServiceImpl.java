@@ -2,8 +2,7 @@ package com.thearc.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thearc.domain.MessageVO;
@@ -13,7 +12,7 @@ import com.thearc.persistence.MessageDAO;
 @Service
 public class MessageServiceImpl implements MessageService {
 
-	@Inject
+	@Autowired
 	private MessageDAO messageDAO;
 
 	@Override

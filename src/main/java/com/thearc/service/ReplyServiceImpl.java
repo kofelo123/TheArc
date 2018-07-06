@@ -2,10 +2,10 @@ package com.thearc.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.thearc.domain.Criteria;
 import com.thearc.domain.ReplyVO;
 import com.thearc.persistence.BoardDAO;
@@ -14,10 +14,10 @@ import com.thearc.persistence.ReplyDAO;
 @Service
 public class ReplyServiceImpl implements ReplyService {
 
-	@Inject
+	@Autowired
 	private ReplyDAO replyDAO;
 
-	@Inject
+	@Autowired
 	private BoardDAO boardDAO;
 
 	@Transactional

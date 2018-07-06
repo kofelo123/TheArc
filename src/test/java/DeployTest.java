@@ -1,21 +1,22 @@
 
-import com.thearc.domain.LoginDTO;
-import com.thearc.domain.UserVO;
-import com.thearc.persistence.UserDAOImpl;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.inject.Inject;
-import javax.sql.DataSource;
-import java.sql.Connection;
-
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import com.thearc.domain.LoginDTO;
+import com.thearc.domain.UserVO;
+import com.thearc.persistence.UserDAOImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/test-root-context.xml"})
@@ -39,9 +40,9 @@ import static org.junit.Assert.assertThat;
  */
 public class DeployTest {
 
-    @Inject
+    @Autowired
     private DataSource ds;
-    @Inject
+    @Autowired
     private UserDAOImpl dao;
     private LoginDTO loginDTO;
 
@@ -73,3 +74,6 @@ public class DeployTest {
 
 
 }
+
+
+

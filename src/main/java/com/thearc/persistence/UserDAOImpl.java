@@ -5,19 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.thearc.domain.AddressVO;
-import com.thearc.domain.UserVO;
 import com.thearc.domain.LoginDTO;
+import com.thearc.domain.UserVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-	@Inject
+	@Autowired
 	private SqlSession session;
 
 	private static String namespace = "com.thearc.mapper.userMapper";
