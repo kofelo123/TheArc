@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +27,8 @@ public class MessageController {
   @Autowired
   private MessageService service;
   
-  @RequestMapping(value="/mail/listmail",method=RequestMethod.GET)
+  // @RequestMapping(value="/mail/listmail",method=RequestMethod.GET)
+  @GetMapping("/mail/listmail")
   public void listmail(@ModelAttribute("cri") SearchCriteria cri,@RequestParam("uid") String uid, Model model) throws Exception{
 	
 	 logger.info("uid테스트"+uid);
@@ -43,7 +46,8 @@ public class MessageController {
   }
 
   
-  @RequestMapping(value = "/mail/readmail", method = RequestMethod.GET)
+  // @RequestMapping(value = "/mail/readmail", method = RequestMethod.GET)
+  @GetMapping("/mail/readmail")
   public void readmail(@RequestParam("mid") int mid,@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
     logger.info("readmail get ...........");
@@ -51,13 +55,15 @@ public class MessageController {
     model.addAttribute(service.readMessage(mid));
   }
   
-  @RequestMapping(value = "/mail/registermail", method = RequestMethod.GET)
+  // @RequestMapping(value = "/mail/registermail", method = RequestMethod.GET)
+  @GetMapping("/mail/registermail")
   public void registermail() throws Exception {
 
     logger.info("registermail get ...........");
   }
   
-  @RequestMapping(value = "/mail/registermail", method = RequestMethod.POST)
+  // @RequestMapping(value = "/mail/registermail", method = RequestMethod.POST)
+  @PostMapping("/mail/registermail")
   public String registermailPost(MessageVO message, RedirectAttributes rttr) throws Exception {
 
     logger.info("registermail Post ...........");

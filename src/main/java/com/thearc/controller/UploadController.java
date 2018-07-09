@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,11 +36,13 @@ public class UploadController {
   @Resource(name = "uploadPath")
   private String uploadPath;
 
-  @RequestMapping(value = "/uploadForm", method = RequestMethod.GET)
+//  @RequestMapping(value = "/uploadForm", method = RequestMethod.GET)
+  @GetMapping("/uploadForm")
   public void uploadForm() {
   }
 
-  @RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
+//  @RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
+  @PostMapping("/uploadForm")
   public String uploadForm(MultipartFile file, Model model) throws Exception {
 
     logger.info("originalName: " + file.getOriginalFilename());
@@ -52,8 +56,10 @@ public class UploadController {
     return "uploadResult";
   }
 
-  @RequestMapping(value = "/uploadAjax", method = RequestMethod.GET)
+//  @RequestMapping(value = "/uploadAjax", method = RequestMethod.GET)
+  @GetMapping("/uploadAjax")
   public void uploadAjax() {
+	  
   }
 
   private String uploadFile(String originalName, byte[] fileData) throws Exception {
@@ -128,8 +134,9 @@ public class UploadController {
       return entity;    
   }
     
+//  @RequestMapping(value="/deleteFile", method=RequestMethod.POST)
   @ResponseBody
-  @RequestMapping(value="/deleteFile", method=RequestMethod.POST)
+  @PostMapping("/deleteFile")
   public ResponseEntity<String> deleteFile(String fileName){
     
     logger.info("delete file: "+ fileName);
@@ -151,8 +158,9 @@ public class UploadController {
     return new ResponseEntity<String>("deleted", HttpStatus.OK);
   }  
   
+//  @RequestMapping(value="/deleteAllFiles", method=RequestMethod.POST)
   @ResponseBody
-  @RequestMapping(value="/deleteAllFiles", method=RequestMethod.POST)
+  @PostMapping("/deleteFiles")
   public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files){
     
     logger.info("delete all files: "+ Arrays.toString(files));

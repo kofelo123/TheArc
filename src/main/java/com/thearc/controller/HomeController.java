@@ -14,6 +14,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,47 +26,48 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 * @throws Exception 
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	  public String home(HttpServletRequest request,HttpServletResponse response,Locale locale, Model model) throws Exception {
-		
+	
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping("/")
+	public String home(HttpServletRequest request,HttpServletResponse response,Locale locale, Model model) throws Exception {
+	
 		Device device = DeviceUtils.getCurrentDevice(request);
-	   
+   
 		if(device.isMobile()){
 			response.sendRedirect("/sboard/main");
 		}
-	    return "home";
-	  }
-	
-	@RequestMapping(value = "/error403", method = RequestMethod.GET)
+		return "home";
+	}
+
+//	@RequestMapping(value = "/error403", method = RequestMethod.GET)
+	@GetMapping("/error403")
 	public String error403() {
 		
 		return "error/error403";
 	}
-	@RequestMapping(value = "/error404", method = RequestMethod.GET)
+	
+//	@RequestMapping(value = "/error404", method = RequestMethod.GET)
+	@GetMapping("/error404")
 	public String error404() {
 		
 		return "error/error404";
 	}
-	@RequestMapping(value = "/error500", method = RequestMethod.GET)
+//	@RequestMapping(value = "/error500", method = RequestMethod.GET)
+	@GetMapping("/error500")
 	public String error500() {
 		
 		return "error/error500";
 	}
-	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+//	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	@GetMapping("/ban")
 	public String ban() {
 		
 		return "error/ban";
 	}
-	@RequestMapping(value = "/music", method = RequestMethod.GET)
+//	@RequestMapping(value = "/music", method = RequestMethod.GET)
+	@GetMapping("/music")
 	public void muiscPlayer() {
 		
 	}
-	
-	
-	
 	
 }
