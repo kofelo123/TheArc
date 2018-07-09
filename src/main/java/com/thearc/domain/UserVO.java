@@ -41,6 +41,9 @@ public class UserVO {
 
 	
 	public String getEmail() {
+		/** 기존:가입할떄 매핑시 자동으로 @ 붙여서 되게끔 처리했더니 -> userlist같은곳에서 이메일을 뽑을떄 id@email@email 이런식의 문제가생겨서 수정*/		
+		if(email.contains("@"))
+			return email;
 		return email+"@"+email2;
 	}
 	public void setEmail(String email) {

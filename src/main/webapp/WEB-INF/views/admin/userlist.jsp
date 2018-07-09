@@ -15,11 +15,6 @@
 		<div class="col-md-12" style="width:80%">
 			<!-- general form elements -->
 			<div class='box'>
-				
-
-
-				
-
 
 			<div class="box">
 				<div class="box-header with-border">
