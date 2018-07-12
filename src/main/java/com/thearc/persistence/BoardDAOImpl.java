@@ -161,13 +161,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 @Override
 public void addlike(int bno) throws Exception {
-	// TODO Auto-generated method stub
 	 session.update(namespace+".addlike",bno);
 }
 
 @Override
 public void sublike(int bno) throws Exception {
-	// TODO Auto-generated method stub
 	session.update(namespace+".sublike",bno);
 }
 
@@ -175,7 +173,6 @@ public void sublike(int bno) throws Exception {
 
 @Override
 public LikeVO checklike(String uid, int bno) throws Exception {
-	// TODO Auto-generated method stub
 	Map<String, Object> paramMap = new HashMap<String,Object>();
 	
 	paramMap.put("uid", uid);
@@ -185,7 +182,6 @@ public LikeVO checklike(String uid, int bno) throws Exception {
 
 @Override
 public void insertlikedefault(String uid, int bno) throws Exception {
-	// TODO Auto-generated method stub
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	
 	paramMap.put("uid", uid);
@@ -196,7 +192,6 @@ public void insertlikedefault(String uid, int bno) throws Exception {
 
 @Override
 public void updatelikey(String uid, int bno) throws Exception {
-	// TODO Auto-generated method stub
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	
 	paramMap.put("uid", uid);
@@ -209,7 +204,6 @@ public void updatelikey(String uid, int bno) throws Exception {
 
 @Override
 public void updateliken(String uid, int bno) throws Exception {
-	// TODO Auto-generated method stub
 	
 	Map<String,Object> paramMap = new HashMap<String,Object>();
 	
@@ -234,8 +228,6 @@ public void addAttach2(String fullName) throws Exception {
 public String getAttachOne(Integer bno) throws Exception {
 	
 	return session.selectOne(namespace + ".getAttachOne", bno);
-}
-
-
+	}
 
 }

@@ -17,7 +17,7 @@
     
  	<meta property="og:title"              content="${boardVO.title }" />
 	<%-- <meta property="og:description"        content="${boardVO.content }" />  이부분때문에 summernote 에러난다.--%>
-	<meta property="og:image"              content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFa8hrulJs73ktd-t_ST_Bgjqq9Hu3LIWUyEx0F2vQGmtX7ou" />
+	<meta property="og:image"              content="https://encrypt	ed-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFa8hrulJs73ktd-t_ST_Bgjqq9Hu3LIWUyEx0F2vQGmtX7ou" />
 </head>
 
   
@@ -38,6 +38,7 @@
                     
                     <c:if test="${empty login }">
                     <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="/* margin-right:% ;*/margin-top:10px">
+                    
                     <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
                       <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
                      </div>
@@ -142,7 +143,6 @@
                                  <li><a href="https://github.com/kofelo123/TheArc" target="_blank"><i class="fa fa-github "></i> <span>깃허브</span></a></li>
                             </ul>
                     	 </li>
-
                        
                     </ul>
                 </div>

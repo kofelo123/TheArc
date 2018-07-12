@@ -67,5 +67,4 @@ public class ReplyDAOImpl implements ReplyDAO {
     return session.selectOne(namespace + ".getBno", rno);
   }
   
-  
 }

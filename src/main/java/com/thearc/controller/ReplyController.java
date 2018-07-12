@@ -30,7 +30,6 @@ public class ReplyController {
   @Autowired
   private ReplyService service;
 
-  // @RequestMapping(value = "", method = RequestMethod.POST)
   @PostMapping("")
   public ResponseEntity<String> register(@RequestBody ReplyVO vo) { ///코드에서 예외대신에 Response Entity를 이용해서 사용자에게 정보를 전달한다.(HTTP상태코드+데이터 함께 전송가능)
 
@@ -45,7 +44,6 @@ public class ReplyController {
     return entity;
   }
 
-  // @RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
   ///특정게시물의 모든댓글  / {bno}는 메소드 파라미터에서 @PathVariable로 활용된다.
   @GetMapping("/all/{bno}")
   public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
@@ -62,7 +60,6 @@ public class ReplyController {
     return entity;
   }
 
-  // @RequestMapping(value = "/{rno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
   ///일반적으로 전체 데이터 수정시에 PUT, 일부데이터 수정시에 PATCH를 사용
   @PutMapping("/{rno}")
   @PatchMapping("/{rno}")
@@ -81,7 +78,6 @@ public class ReplyController {
     return entity;
   }
 
-  // @RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
   @DeleteMapping("/{rno}")
   public ResponseEntity<String> remove(@PathVariable("rno") Integer rno) {
 
@@ -96,7 +92,6 @@ public class ReplyController {
     return entity;
   }
 
-  // @RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
   ///페이징 처리를 위해  게시물번호/페이지번호
   @GetMapping("/{bno}/{page}")
   public ResponseEntity<Map<String, Object>> listPage(

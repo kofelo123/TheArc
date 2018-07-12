@@ -6,25 +6,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.thearc.mapper.AdminMapper">
 
 	<select id="listuser" resultType="UserVO">
-		select * from tbl_user
+		select * 
+		from tbl_user
 	</select>
  	
  	<select id="adminlogin" resultType="UserVO">
- 		select uid,upw from tbl_user where uid=#{uid} and upw=#{upw}
+ 		select uid,upw 
+ 		from tbl_user 
+ 		where uid=#{uid} and upw=#{upw}
  	</select>
  	
  	<update id="authmodify">
- 		update tbl_user set authority=#{authority} where uid=#{uid}
+ 		update tbl_user 
+ 		set authority=#{authority} 
+ 		where uid=#{uid}
  	</update>
  	
  	<delete id="userDropCheck">
- 		delete from tbl_check where uid=#{uid}
+ 		delete 
+ 		from tbl_check 
+ 		where uid=#{uid}
  	</delete>
  	<delete id="userDropMessage">
- 		delete from tbl_message where sender=#{uid}
+ 		delete 
+ 		from 
+ 		tbl_message 
+ 		where sender=#{uid}
  	</delete>
  	<delete id="userDropUser">
- 		delete from tbl_user where uid=#{uid}
+ 		delete 
+ 		from tbl_user 
+ 		where uid=#{uid}
  	</delete>
  	<!-- AreaChart - 일일게시물, 댓글통계  -->
  	<select id="dayBoard" resultType="string">
@@ -64,23 +76,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          ]]>
  	</select>
  	
- 	<select id="cateBoardview" resultType="string">
+     <select id="cateBoardview" resultType="string">
  	 <![CDATA[
- 		  select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='free'  
+ 		select COALESCE(sum(viewcnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='free'  
         union all
-        select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='photo'  
+        select COALESCE(sum(viewcnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='photo'  
         union all
-        select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='visit'
+        select COALESCE(sum(viewcnt),1)  from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='visit'
         union all
-        select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='qna'  
+        select COALESCE(sum(viewcnt),1)  from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='qna'  
         union all
-        select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='news'  
+        select COALESCE(sum(viewcnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='news'  
         union all	
-        select sum(viewcnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='thisweek';
-        
+        select COALESCE(sum(viewcnt),1)  from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='thisweek';
+ 
          ]]>
- 	</select>
- 	
+        </select> 
+        
  	<select id="weekcateBoard" resultType="string">
  	 <![CDATA[
  		select count(*) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='free'
@@ -101,31 +113,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  	<select id="weekReplyCount" resultType="string">
  	 <![CDATA[
- 		 select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='free'
+ 		    select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='free'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='photo'
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='photo'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='visit'
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='visit'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='qna'
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='qna'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='news'
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='news'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='thisweek'
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='thisweek'
          union all
-         select sum(replycnt) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='notice';
+         select COALESCE(sum(replycnt),1) from tbl_board where regdate between subdate(curdate(), interval 7 DAY)and now() and category='notice';
          ]]>
  	</select>
  	
  	<delete id="boardDrop1" >
- 		delete from tbl_reply where bno = #{bno}
+ 		delete 
+ 		from tbl_reply 
+ 		where bno = #{bno}
  	</delete>
  	<delete id="boardDrop2" >
- 		delete from tbl_attach where bno = #{bno}
+ 		delete 
+ 		from tbl_attach 
+ 		where bno = #{bno}
  	</delete>
  	<delete id="boardDrop3" >
- 		delete from tbl_board where bno = #{bno}
+ 		delete 
+ 		from 
+ 		tbl_board 
+ 		where bno = #{bno}
  	</delete>
- 	
  	
 </mapper>

@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -46,17 +48,15 @@ public class ValidTest {
 		logger.info("setup...");
 	}
 	
-	/*
-	@Test
+	
+	/*@Test
 	public void testDoA() throws Exception{
 		mockMvc.perform(MockMvcRequestBuilders.
 						 post("/user/idcheck2").
 						 );
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/user/idcheck2"));
-		
-
 					
-	}
-*/	
+	}*/
+	
 }

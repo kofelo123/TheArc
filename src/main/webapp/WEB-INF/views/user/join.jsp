@@ -8,52 +8,45 @@
     <title>회원가입</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 3.3.4 -->
     <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
     <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="/thearc/resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
-     <script src="/thearc/resources/bootstrap/js/member.js"></script>
 	
-    	<!-- ///배경관련  -->
+    	<!-- 배경관련  -->
 		<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
 		<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
 		<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
+    
     <!-- 아래부터 도로명주소   -->
     <link rel="stylesheet" href="/thearc/resources/bootstrap/css/addrlinkSample.css">
-<script language="javascript">
-// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-//document.domain = "abc.go.kr";
-
-function goPopup(){
-	// 주소검색을 수행할 팝업 페이지를 호출합니다.
-	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("/thearc/user/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	<script language="javascript">
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "abc.go.kr";
 	
-	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-}
-
-
-function jusoCallBack(roadAddrPart1,addrDetail){
-		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form.roadAddrPart1.value = roadAddrPart1;
-		document.form.addrDetail.value = addrDetail;
-}
-
-</script>
+	function goPopup(){
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("/thearc/user/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+	
+	function jusoCallBack(roadAddrPart1,addrDetail){
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			document.form.roadAddrPart1.value = roadAddrPart1;
+			document.form.addrDetail.value = addrDetail;
+	}
+	
+	</script>
   </head>
+  
   <body class="login-page">
     <div class="login-box2">
       <div class="login-logo">
         <a href="/thearc/user/login"><b>회원가입</b></a>
-      </div><!-- /.login-logo -->
+      </div>
       <div class="login-box-body">
         <p class="login-box-msg"></p>
-
 
     <div class="joinForm" >
   
@@ -62,16 +55,10 @@ function jusoCallBack(roadAddrPart1,addrDetail){
       <fieldset>
         <legend>기본정보</legend><br>
         
-<!--         <input type="text"      name="uid"  id="uid"      size="25"  placeholder="아이디" ><br> -->
-<!-- <input type="hidden"    name="reid" > -->
-        <!-- <input type="button"    value="중복 체크"   onclick="idcheck()" ><br> -->
-<!--         <input type="password"  name="upw" size="25" placeholder="비밀번호 " ><br> -->
-        
         <form:input path="uid" name="uid"  id="uid" size="25"  placeholder="아이디" />
         <form:errors path="uid" class="error" />
         <br/>
         <span id="successFail" ></span>
-        
         
         <form:input path="upw" type="password" id="upw" name="upw" size="25" placeholder="비밀번호" />
         <form:errors path="upw" class="error" /> <br/>
@@ -105,58 +92,22 @@ function jusoCallBack(roadAddrPart1,addrDetail){
       </fieldset>
       <fieldset>
         <legend>추가정보</legend><br>
-        <!-- <label>주소록</label> 						
-        <input type="text"       name="zipNum"   size="10" placeholder="--------------">  -->     
         <input type="button"     value="주소록"  onclick="goPopup();"> <br>
         <div id="callBackDiv">
-        <!-- <label>주소</label>  -->
         <input type="text"     id="roadAddrPart1"   name="roadAddrPart1"   size="30" placeholder="주소(주소록버튼을 눌러주세요.)"><br>
-        <!-- <label>상세주소</label> -->
         <input type="text"     id="addrDetail"   name="addrDetail"   size="30" placeholder="상세주소" > <br>
         </div>
-        <!-- <label>휴대전화</label> -->
         <input type="phone" name="phone" class="phone-number-check" size="30" placeholder="휴대전화"> 
-   <!--      <select name="phone">
-   				<option value="010" selected="selected">010</option>
-    			<option value="011">011</option>
-    			<option value="016" >016</option>
-    			<option value="017" >017</option>
-    			<option value="018" >018</option>
-    			<option value="019" >019</option>
-			</select>
-        -&nbsp;<input  type="text"       name="phone2" size="6">&nbsp;-&nbsp;<input  type="text"  name="phone3" size="6"><br><br> -->
       </fieldset>
-      <div class="clear"></div>
-    
  
-			<!--  onclick="go_save()" -->
+		<!--  onclick="go_save()" -->
         <input type="submit"    value="회원가입"   > 
-        <input type="reset"      value="취소" style="margin-left:10px"   >
-    
-          
-         
-        
-   
-   
-   
+        <input type="reset"      value="리셋" style="margin-left:10px"   >
     </form:form>
-   </article>
-  </div>
- <!--  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder=""/>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  </div> -->
-  
-  
-
-  </div>
+ 	 </div>
+  	</div>
   </div>
   
-
-
-
-        
-		
   </body>
 </html>
 
@@ -178,6 +129,7 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 		</script>
 		
 	<script>
+	
 	$(function(){
 
 		$(".phone-number-check").on('keydown', function(e){
@@ -304,6 +256,5 @@ function jusoCallBack(roadAddrPart1,addrDetail){
 			else if($("#email ~ #successFail:first").text()=="이메일을 입력해주세요")
 				$("#email ~#successFail:first").text("");
 		});
-			
 	}); 
 	</script>

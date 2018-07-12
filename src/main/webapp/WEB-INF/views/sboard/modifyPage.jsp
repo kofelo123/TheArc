@@ -3,29 +3,26 @@
 <%@include file="../include/header2.jsp"%>
 <%@include file="../include/header.jsp"%>
 
-<style>
-.fileDrop {
-  width: 70%;
-  height: 100px;
-  border: 1px dotted #ecb775;
-  /* background-color: #effecb; */
-  background-size: 100% 100px;
-  background-image: url(/thearc/resources/bootstrap/images/filedrop.png);
-  margin: auto;
-  
-}
-</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
     
-    
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-    
-    	
+  <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+<style>
+.fileDrop {
+  width: 70%;
+  height: 100px;
+  border: 1px dotted #ecb775;
+  background-size: 100% 100px;
+  background-image: url(/thearc/resources/bootstrap/images/filedrop.png);
+  margin: auto;
+}
+
+</style>
 
 <!-- Main content -->
 
@@ -44,35 +41,24 @@
 	<input type='hidden' name='searchType' value="${cri.searchType}">
 	<input type='hidden' name='keyword' value="${cri.keyword}">
 	
+	<form id='registerForm' role="form" method="post">
 	
-<form id='registerForm' role="form" method="post">
 	<div class="box-body">
 		<div class="form-group">
 							<label for="exampleInputEmail1">제목</label> <input type="text"
 								name='title' class="form-control" value="${boardVO.title}">
 						</div>
-		<!-- <div class="form-group"	>
-			<label for="exampleInputPassword1">Content</label>
-			<textarea class="form-control" name="content" rows="3"
-				placeholder="Enter ..."></textarea>
-		</div> -->	
-		
+						
 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요" >${boardVO.content}</textarea></div>
-  <script>
-  $('#summernote').summernote({
-	  height: 300,                 // set editor height
-	  minHeight: null,             // set minimum height of editor
-	  maxHeight: null,             // set maximum height of editor
-	  focus: true,                  // set focus to editable area after initializing summernote
-	  placeholder: '내용을 입력해 주세요'
-	});
- 
- 
-  </script>
-		
-		
-		
-		
+		  <script>
+			  $('#summernote').summernote({
+				  height: 300,                 // set editor height
+				  minHeight: null,             // set minimum height of editor
+				  maxHeight: null,             // set maximum height of editor
+				  focus: true,                  // set focus to editable area after initializing summernote
+				  placeholder: '내용을 입력해 주세요'
+				});
+		  </script>
 		
 		<div class="form-group">
 			<label for="exampleInputEmail1">작성자</label> 
@@ -85,34 +71,20 @@
 			<div class="fileDrop"></div>
 		</div>
 	</div>
-
 	<!-- /.box-body -->
-
 	<div class="box-footer">
 		<div>
 			<hr>
 		</div>
-
 		<ul class="mailbox-attachments clearfix uploadedList">
 		</ul>
 	 <button type="submit" class="btn btn-primary" onclick="isEmpty()">글 등록</button> 
     <button type="submit" class="btn btn-warning">취소</button>
-	
-		
-
 	</div>
 </form>
-
-
 			</div>
 			<!-- /.box -->
-		
 	</div>
-		</div>
-		<!--/.col (left) -->
-
-	</div>
-	<!-- /.row -->
 </section>
 
 <script type="text/javascript" src="/thearc/resources/js/upload.js"></script>
@@ -152,7 +124,6 @@ $(document).ready(function(){
 		that.get(0).submit();
 	});
 	
-	
 	$(".btn-warning").on("click", function(){
 	  self.location = "/thearc/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"+
 			  "&searchType=${cri.searchType}&keyword=${cri.keyword}";
@@ -160,16 +131,11 @@ $(document).ready(function(){
 	
 });
 
-
-
-
 var template = Handlebars.compile($("#template").html());
-
 
 $(".fileDrop").on("dragenter dragover", function(event){
 	event.preventDefault();
 });
-
 
 $(".fileDrop").on("drop", function(event){
 	event.preventDefault();
@@ -202,7 +168,6 @@ $(".fileDrop").on("drop", function(event){
 		});	
 });
 
-
 $(".uploadedList").on("click", ".delbtn", function(event){
 	
 	event.preventDefault();
@@ -221,7 +186,6 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 	   }
    });
 });
-
 
 var bno = ${boardVO.bno};
 var template = Handlebars.compile($("#template").html());
@@ -261,7 +225,6 @@ $("#popup_img").on("click", function(){
 	$(".popup").hide('slow');
 	
 });	
-
 
 </script>
 <%-- 

@@ -19,14 +19,6 @@ public class UploadFileUtils {
   private static final Logger logger = 
       LoggerFactory.getLogger(UploadFileUtils.class);
 
-//  public static String uploadFile(String uploadPath, 
-//      String originalName, 
-//      byte[] fileData)throws Exception{
-//    
-//    return null;
-//  }
-//  
-
   
   public static String uploadFile(String uploadPath, 
                               String originalName, 

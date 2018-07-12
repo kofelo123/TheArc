@@ -15,8 +15,6 @@ public interface UserDAO {
 
 	public UserVO checkUserWithSessionKey(String value);
 
-	// 회원가입처리
-
 	public void joinPost(UserVO user);
 
 	public UserVO confirmId(UserVO uid);
@@ -25,8 +23,6 @@ public interface UserDAO {
 
 	// 아아디 비밀번호 찾기 로직관련
 	public UserVO idfindofmail(UserVO user);
-
-//	public void encrypthash(String pwUriEnc, String userid);
 
 	public UserVO hashbyid(UserVO user);
 

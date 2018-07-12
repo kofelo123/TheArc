@@ -52,20 +52,17 @@ public class SearchBoardController {
 	   	 	
 	  }
 	 
-//	 @RequestMapping(value="/faq",method=RequestMethod.GET)
 	 @GetMapping("/faq")
 	 public void faq(Model model){
 		 
 	 }
 	 
-//	 @RequestMapping(value = "/list/{category}", method = RequestMethod.GET) 
 	  ///9/12 pathVariable을 통한 다중게시판 테스트
 	  @GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category) throws Exception {
 
 	    logger.info(cri.toString());
 
-	    // model.addAttribute("list", service.listCriteria(cri));
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
 	    
@@ -77,7 +74,6 @@ public class SearchBoardController {
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
 
-	    // pageMaker.setTotalCount(service.listCountCriteria(cri));
 	    pageMaker.setTotalCount(service.listSearchCount(cri,category));
 	    							//listSearchCount는 게시글갯수 카운트(cri(검색조건에맞는)) 그래서 totalcount를 setter해주는것
 	    model.addAttribute("pageMaker", pageMaker);
@@ -85,7 +81,6 @@ public class SearchBoardController {
 	    return "/sboard/list";
 	  }
 
-//	  @RequestMapping(value = "/readPage/{category}", method = RequestMethod.GET)
 	  @GetMapping("/readPage/{category}")
 	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid,@PathVariable("category")String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 	      throws Exception {
@@ -104,7 +99,6 @@ public class SearchBoardController {
 	    return "/sboard/readPage";
 	  }
 
-//	  @RequestMapping(value = "/removePage/{category}", method = RequestMethod.POST)
 	  @PostMapping("/removePage/{category}")
 	  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable("category")String category) throws Exception {
 
@@ -120,7 +114,6 @@ public class SearchBoardController {
 	    return "redirect:/sboard/list/"+category;
 	  }
 
-//	  @RequestMapping(value = "/modifyPage/{category}", method = RequestMethod.GET)
 	  ///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
 	  @GetMapping("/modifyPage/{category}")
 	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category) throws Exception {
@@ -130,7 +123,6 @@ public class SearchBoardController {
 	    return "/sboard/modifyPage";
 	  }
 
-//	  @RequestMapping(value = "/modifyPage/{category}", method = RequestMethod.POST)
 	  @PostMapping("/modifyPage/{category}")
 	  public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
@@ -149,7 +141,6 @@ public class SearchBoardController {
 	    return "redirect:/sboard/list/"+board.getCategory();
 	  }
 
-//	  @RequestMapping(value = "/register/{category}", method = RequestMethod.GET)
 	  @GetMapping("/register/{category}")
 	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
 		  model.addAttribute(category);
@@ -159,7 +150,6 @@ public class SearchBoardController {
 	    return "/sboard/register";
 	  }
 
-//	  @RequestMapping(value = "/register/{category}", method = RequestMethod.POST)
 	  @PostMapping("/register/{category}")
 	  public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
 		  
@@ -188,7 +178,6 @@ public class SearchBoardController {
 		  return service.getAttachOne(bno);
 	  }  
 	  
-//	  @RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	  @GetMapping("/calendar")
 	  public void calendar(Model model) throws Exception {
 
@@ -197,7 +186,6 @@ public class SearchBoardController {
 	    model.addAttribute("sboardNum", "calendar");
 	  }
 	
-//	  @RequestMapping(value = "/readPage/like", method = RequestMethod.GET)
 	  @GetMapping("/readPage/like")
 	  public String like(@RequestParam("bno") int bno,@RequestParam("uid") String uid,BoardVO board) throws Exception {
 		  System.out.println("BoardTest:"+board);
@@ -209,7 +197,6 @@ public class SearchBoardController {
 	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
 	    
 	  }
-//	  @RequestMapping(value = "/readPage/dislike", method = RequestMethod.GET)
 	  @GetMapping("/readPage/dislike")
 	  public String dislike(@RequestParam("bno") int bno,@RequestParam("uid") String uid,BoardVO board) throws Exception {
 
@@ -223,24 +210,20 @@ public class SearchBoardController {
 	  }
 	  
 	  
-//	  @RequestMapping(value="/fbshare", method = RequestMethod.GET)
 	  @GetMapping("/fbshare")
 	  public void fbshare(@RequestParam("bno") int bno)throws Exception{
 		  
 	  }
-//	  @RequestMapping(value="/location", method = RequestMethod.GET)
 	  @GetMapping("/location")
 	  public void location()throws Exception{
 		  
 	  }
 	  
-//	  @RequestMapping(value="/thearc", method = RequestMethod.GET)
 	  @GetMapping("/thearc")
 	  public void thearc()throws Exception{
 		  
 	  }
 	  
-//	  @RequestMapping(value="/exhibit", method = RequestMethod.GET)
 	  @GetMapping("/exhibit")
 	  public void exhibit()throws Exception{
 		  

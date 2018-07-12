@@ -107,11 +107,11 @@
 <!-- ChartJS 1.0.1 -->
 <script src="/thearc/resources/bootstrap/plugins/chartjs/Chart.min.js"></script>
 <!-- FastClick -->
-<script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
+<!-- <script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script> -->
 <!-- AdminLTE App -->
-<script src="/thearc/resources/bootstrap/dist/js/app.min.js"></script>
+<!-- <script src="/thearc/resources/bootstrap/dist/js/app.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
-<script src="/thearc/resources/bootstrap/js/demo.js"></script>
+<!-- <script src="/thearc/resources/bootstrap/js/demo.js"></script> -->
 <!-- page script -->
 <script>
 

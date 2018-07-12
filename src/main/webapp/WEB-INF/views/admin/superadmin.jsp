@@ -2,22 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <%@include file="../include/headeradmin.jsp"%>
 <%@ include file="../include/analytics.jsp"%>	
 
-
 <style>
-
-.list-sort{
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0 5px;
-  }
-.list-sort li{
- float:left;
- margin-right:15px;
+	.list-sort{
+	    list-style: none;
+	    padding: 0;
+	    margin: 10px 0 0 5px;
+	  }
+	.list-sort li{
+	 float:left;
+	 margin-right:15px;
 }
 </style>
 <!-- Main content -->
@@ -25,16 +21,9 @@
 	<div class="row">
 		<!-- left column -->
 
-
 		<div class="col-md-12" style="width:80%">
 			<!-- general form elements -->
 			<div class='box'>
-				
-
-
-				
-
-
 				<div class="box-header with-border">
 					<h3 class="box-title">게시물 관리</h3>
 					 <ul class="list-sort">
@@ -80,7 +69,6 @@
 				</div>
 				<!-- /.box-body -->
 
-
 					<div class="box-footer">
 				<!--  버튼 -->
  				<button id='newBtn' style="background-color:#8ecbff;color:white;outline:0;border:0">새 글 쓰기</button>
@@ -119,7 +107,6 @@
 </section>
 <!-- /.content -->
 
-
 <script>
 	var result = '${msg}';
 
@@ -150,8 +137,6 @@
 					self.location = "register";
 
 				});
-				
-				
 
 			});
 </script>

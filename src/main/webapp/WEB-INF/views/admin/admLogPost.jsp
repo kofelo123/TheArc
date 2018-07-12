@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${vo.uid != 'admin' }"> <!-- 쿼리로 부터 일반 로그인처럼 아이디 and 패스워드 일치하는 UserVO를 받아온다음 그것의 아이디가 admin인지 확인  -->
+
+ <!-- 쿼리로 부터 일반 로그인처럼 아이디 and 패스워드 일치하는 UserVO를 받아온다음 그것의 아이디가 admin인지 확인  -->
+	<c:if test="${vo.uid != 'admin' }">
 		<script type="text/javascript">
 		alert('아이디혹은 비밀번호가 일치하지 않습니다.');
 		self.location="/thearc/user/login";

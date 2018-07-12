@@ -27,7 +27,6 @@ public class MessageController {
   @Autowired
   private MessageService service;
   
-  // @RequestMapping(value="/mail/listmail",method=RequestMethod.GET)
   @GetMapping("/mail/listmail")
   public void listmail(@ModelAttribute("cri") SearchCriteria cri,@RequestParam("uid") String uid, Model model) throws Exception{
 	
@@ -46,7 +45,6 @@ public class MessageController {
   }
 
   
-  // @RequestMapping(value = "/mail/readmail", method = RequestMethod.GET)
   @GetMapping("/mail/readmail")
   public void readmail(@RequestParam("mid") int mid,@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
@@ -55,14 +53,12 @@ public class MessageController {
     model.addAttribute(service.readMessage(mid));
   }
   
-  // @RequestMapping(value = "/mail/registermail", method = RequestMethod.GET)
   @GetMapping("/mail/registermail")
   public void registermail() throws Exception {
 
     logger.info("registermail get ...........");
   }
   
-  // @RequestMapping(value = "/mail/registermail", method = RequestMethod.POST)
   @PostMapping("/mail/registermail")
   public String registermailPost(MessageVO message, RedirectAttributes rttr) throws Exception {
 

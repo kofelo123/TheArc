@@ -41,28 +41,12 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	//
-	// @Override
-	// public void regist(BoardVO board) throws Exception {
-	// dao.create(board);
-	// }
-
-	// @Override
-	// public BoardVO read(Integer bno) throws Exception {
-	// return dao.read(bno);
-	// }
-
 	@Transactional(isolation = Isolation.READ_COMMITTED)///격리레벨-커밋된  데이터에 대한 읽기허용 ->업데이트중인,커미소되지 않은 데이터에 접근불가,읽는 유저는 커밋이전만 볼수있다.
 	@Override
 	public BoardVO read(Integer bno) throws Exception {
 		dao.updateViewCnt(bno);
 		return dao.read(bno);
 	}
-
-	// @Override
-	// public void modify(BoardVO board) throws Exception {
-	// dao.update(board);
-	// }
 
 	@Transactional
 	@Override
@@ -83,11 +67,6 @@ public class BoardServiceImpl implements BoardService {
 			dao.replaceAttach(fileName, bno);
 		}
 	}
-
-	// @Override
-	// public void remove(Integer bno) throws Exception {
-	// dao.delete(bno);
-	// }
 
 	@Transactional
 	@Override
@@ -120,7 +99,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<String> listThumnail(SearchCriteria cri, String category) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.listThumnail(cri,category);
 	}
 
@@ -143,7 +121,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void addlike(int bno) throws Exception {
-		// TODO Auto-generated method stub
 		dao.addlike(bno);
 	}
 
@@ -154,40 +131,31 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public LikeVO checklike(String uid, int bno) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.checklike(uid, bno);
 	}
 
 	@Override
 	public void insertlikedefault(String uid, int bno) throws Exception {
-		// TODO Auto-generated method stub
 		dao.insertlikedefault(uid, bno);
 	}
 
 	@Override
 	public void updatelikey(String uid, int bno) throws Exception {
-		// TODO Auto-generated method stub
 		dao.updatelikey(uid, bno);
 	}
 
 	@Override
 	public void updateliken(String uid, int bno) throws Exception {
-		// TODO Auto-generated method stub
 		dao.updateliken(uid, bno);
 	}
 
 	@Override
 	public List<JsonVO> getWeather() throws Exception {
-		// TODO Auto-generated method stub
 		List<JsonVO> jlist = new ArrayList<>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String today=sdf.format(new Date());
         
         return new ApiExplorer().forecast(today);
 	}
-
-	
-
-	
 
 }

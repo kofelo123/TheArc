@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	
 <!DOCTYPE html>
 
-
-    <link href="/thearc/resources/bootstrap/css/fracti	onslider.css" rel="stylesheet" type="text/css">
+	<!-- 이미지 슬라이더  -->
+    <link href="/thearc/resources/bootstrap/css/fractionslider.css" rel="stylesheet" type="text/css">
     <link href="/thearc/resources/bootstrap/css/style-fraction.css" rel="stylesheet"  type="text/css">
 
 <%@include file="/WEB-INF/views/include/header2.jsp"%>
@@ -28,20 +30,16 @@
         	<img src="/thearc/resources/bootstrap/images/1-1.PNG" style="width:100%;height:100%;">
             <!-- <img src="images/fraction-slider/slider-girl.png" width="340" height="340" data-position="2,1150" data-in="fade" data-out="fade" data-delay="500" style="width:auto; height:auto"> -->
         </div>
-      
-        </div>
     </section>
-
-    </section> 
     <!--End Slider-->
-</div>
 <!--End Header-->
+
 <style>
 .row h3{
 	line-height:0px;
 }
 .promo_box .container{
-width:100%;
+	width:100%;
 }
 @font-face {
     font-family: 'Typo_DecoVariety';
@@ -58,14 +56,11 @@ width:100%;
         <div class="container">
             <div class="row">
 				<div class="col-sm-11 col-sm-offset-1 col-xs-12">	
-	<h4><fmt:formatDate value="${toDay}" pattern="yy년 MM월 dd일" /> 대구광역시 달성군 다사읍 기준</h4> 
-            		</div>
+				<h4><fmt:formatDate value="${toDay}" pattern="yy년 MM월 dd일" /> 대구광역시 달성군 다사읍 기준</h4> 
+            	</div>
             	<c:forEach items="${weather }" var="weatherObj" varStatus="status" begin="0" end="3">
             		<div class="col-sm-1 col-sm-offset-1 col-xs-6">
-            		
-            		
                 	<c:choose>
-                		
       					 <c:when test="${weatherObj.sky == '1'}">
      					    <img src="/thearc/resources/bootstrap/images/weather/sun.PNG" />
      					    <h3>맑음</h3>
@@ -207,9 +202,6 @@ width:100%;
       </div>
       <!-- 컨테이너(80%)  -->
     </section>
-     
-      
-      
     </section>
 <!--end wrapper-->
 	
@@ -229,6 +221,4 @@ width:100%;
                 'autoChange':           true
             });
         });
-    
     </script> 
-    

@@ -7,8 +7,6 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	
@@ -60,7 +58,6 @@
 		<beans:constructor-arg value="${Local.UploadPath}">
 		</beans:constructor-arg>
 	</beans:bean>
-	
 
 
 	<beans:bean id="sampleInterceptor" class="com.thearc.interceptor.SampleInterceptor"></beans:bean>
@@ -71,11 +68,10 @@
 
 	<interceptors>
 	
-		<interceptor>
-			<mapping path="/user/loginPost" />
-			<beans:ref bean="loginInterceptor" />
-		</interceptor>
-	
+	  <interceptor>
+		<mapping path="/user/loginPost" />
+		<beans:ref bean="loginInterceptor" />
+	  </interceptor>
 	  
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
 	    <mapping path="/sboard/register/*"/>
@@ -84,20 +80,14 @@
 	    <mapping path="/sboard/mail/listmail/*"/>
 	    <mapping path="/sboard/readPage/like*"/>	
 	    <mapping path="/sboard/list/supporter"/>	
-	        
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	
-	  		
 	</interceptors>
 	
-	
-	
 	<interceptors>
-  <beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
-</interceptors>
-	
-	
+  		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+	</interceptors>
+
 	<context:component-scan base-package="com.thearc.controller" />
-	
 
 </beans:beans>

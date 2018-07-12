@@ -3,15 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-
 <%@include file="../include/header2.jsp"%>
 <%@include file="../include/header.jsp"%>
 
 <!-- 썸네일게시판용 -->
 <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
 
 <style>
 @font-face {
@@ -72,22 +69,19 @@
 					</select> <input type="text" name='keyword' id="keywordInput"  style="background-color:#e8faf1;"
 						value='${cri.keyword }'>
 					<button id='searchBtn'  style="background-color:#e8faf1">검색</button>
-					
 
 				</div>
 			</div>
-			
 
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">
-				${category }
-					게시판</h3>
+						${category } 게시판
+					</h3>
 				</div>
 				<!--  게시판 리스트 본문 -->
 				<!--  썸네일게시판 -->
 				<c:choose>   
-				
 					<c:when test="${category eq 'thisweek' || category eq 'terarium'|| category eq 'leisure'|| category eq 'seastory'|| category eq 'academy'}"> 
 						<div class="row">
 					<div class="col-xs-12  col-sm-12 col-md-12 col-lg-12">
@@ -122,8 +116,6 @@
 									<%-- "${fn:substring(thumNail[status.index],0,12)}" --%>
 								</div>
 							</article>
-													
-						
 							
 						</div>
 					</tr>
@@ -139,10 +131,7 @@
                 <ul id="list" class="portfolio_list clearfix ">
                 <c:forEach items="${list}" var="boardVO" varStatus="status" begin="0" end="9">
                     <!--begin portfolio_list -->
-                    
-
                         <!--begin List Item -->
-
                         <li class="list_item col-lg-4 col-md-4 col-sm-4">
                             <div class="recent-item">
                                 <figure class="touching medium">
@@ -152,7 +141,6 @@
 										 </a>
                                     </div>
                                     <div class="skin-overlay"></div>
-                                    
                                    <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/><!-- 썸네일 ->원본이미지 띄우기   -->
                                    <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
 									
@@ -168,15 +156,11 @@
                             </div>
                         </li>
                         <!--end List Item -->
-
-          
                     <!--end portfolio_list -->
                     </c:forEach>
                        </ul>       
                 </div>
              </div><!-- 포토존게시판 -->
-             
-				
 				
 					</c:when>
 				
@@ -207,9 +191,7 @@
 								<%-- <td><span class="badge bg-aqua">${boardVO.viewcnt }</span></td> --%>
 								<td class="mailbox-subject" style="width:10%">${boardVO.writer} </td>
 							</tr>
-
 						</c:forEach>
-
 					</table>
 				</div>
 				</c:otherwise>
@@ -217,15 +199,11 @@
 				<!-- 게시판리스트 본문 end  -->
 				<!-- /.box-body -->
 
-
 				<div class="box-footer">
 				<!--  버튼 -->
  				<button id='newBtn' style="background-color:#8ecbff;color:white;outline:0;border:0">새 글 쓰기</button>
 					<div class="text-center">
-					
-						
 						<ul class="pagination">
-
 							<c:if test="${pageMaker.prev}">
 								<li><a
 									href="${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
@@ -261,8 +239,6 @@
 <%@include file="../include/footer.jsp"%>
 <%@include file="../include/footer2.jsp"%>
 
-
-
 <script>
 	var result = '${msg}';
 
@@ -291,17 +267,9 @@
 									+ "&keyword=" + $('#keywordInput').val();
 
 						});
-
 				$('#newBtn').on("click", function(evt) {
-					
 					self.location = "/thearc/sboard/register/${category}";
-
 				});
 				
-				
-				
-				
-				
-
 			});
 </script>

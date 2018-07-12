@@ -48,7 +48,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         loginCookie.setMaxAge(60 * 60 * 24 * 7);
         response.addCookie(loginCookie);
       }
-      // response.sendRedirect("/");
       Object dest = session.getAttribute("dest");
       System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
       

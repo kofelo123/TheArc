@@ -14,27 +14,25 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- fullCalendar 2.2.5-->
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.print.css" media="print">
+  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.min.css"> -->
+  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.print.css" media="print"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/css/skins/_all-skins.min.css">
+  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/css/skins/_all-skins.min.css"> -->
   <!-- iCheck -->
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/iCheck/flat/blue.css">
+  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/iCheck/flat/blue.css"> -->
   
  <!-- Main content -->
     <section class="content">
       <div class="row">
-                
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">쪽지 수신함</h3>
-
               <div class="box-tools pull-right">
                 <a href="/thearc#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
                 <a href="/thearc#" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
@@ -52,12 +50,9 @@
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
                	${messageVO.message}
-              
-                
               </div>
               <!-- /.mailbox-read-message -->
             </div>
-       
             <!-- /.box-footer -->
             <div class="box-footer">
               <div class="pull-right">
@@ -76,30 +71,23 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-    
     <!-- jQuery 2.2.3 -->
-<script src="/thearc/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- <script src="/thearc/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script> -->
 <!-- Bootstrap 3.3.6 -->
-<script src="/thearc/resources/bootstrap/js/bootstrap.min.js"></script>
-<!-- Slimscroll -->
+<!-- <script src="/thearc/resources/bootstrap/js/bootstrap.min.js"></script>
+Slimscroll
 <script src="/thearc/resources/bootstrap/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
+FastClick
 <script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
+AdminLTE App
 <script src="/thearc/resources/bootstrap/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/thearc/resources/bootstrap/js/demo.js"></script>
-
+AdminLTE for demo purposes
+<script src="/thearc/resources/bootstrap/js/demo.js"></script> -->
 
 <script>
-	$(document).ready(
-			function() {
-	
+	$(document).ready(function() {
 				$('#goListBtn').on("click", function() {
-
 					self.location = "listmail?uid=${login.uid }";
-
 				});
-
 			});
 </script>

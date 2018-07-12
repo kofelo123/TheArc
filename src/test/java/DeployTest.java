@@ -44,6 +44,7 @@ public class DeployTest {
     private DataSource ds;
     @Autowired
     private UserDAOImpl dao;
+    
     private LoginDTO loginDTO;
 
     private static Logger logger = LoggerFactory.getLogger(DeployTest.class);
@@ -71,9 +72,4 @@ public class DeployTest {
         logger.info("==Test Login==");
     }
 
-
-
 }
-
-
-

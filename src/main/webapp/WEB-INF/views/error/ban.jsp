@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-<img src="/thearc/resources/bootstrap/images/ban.PNG"style="margin-top:50px;" /><br/>
+<img src="/thearc/resources/bootstrap/images/ban.PNG" style="margin-top:50px;" /><br/>
  관리자에 의해서 사용중지된 계정입니다.
  </center>
 </body>

@@ -27,18 +27,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<delete id="delete">
-		delete from tbl_reply where rno =#{rno}
+		delete from 
+		tbl_reply 
+		where rno =#{rno}
 	</delete>
 
 
 	<select id="listPage" resultType="ReplyVO">
-		select
-		*
-		from
-		tbl_reply
-		where
-		bno =
-		#{bno}
+		select *
+		from tbl_reply
+		where bno =	#{bno}
 		order by rno desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
@@ -50,7 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="getBno" resultType="int">
-		select bno from tbl_reply where rno = #{rno}
+		select bno 
+		from tbl_reply 
+		where rno = #{rno}
 	</select>
 
 </mapper>

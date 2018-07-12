@@ -11,8 +11,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class UserVO {
 	
-	
-//	@Pattern(regexp="[[a-zA-Z]가-힣]{1,}", message="아이디를 입력해주세요.")
 	@NotBlank(message ="아이디를 입력해야합니다.")
 	@Size(min=5 , max=20 , message="5~20 글자로 입력")
 	private String uid;
@@ -21,13 +19,9 @@ public class UserVO {
 	@Size(min=5, max=50, message="5~50 글자로 입력")
 	private String upw;
 			 
-	/*@Pattern(regexp="[a-zA-Z가-힣]{1,}", message="이름을 입력해주세요.")*/
-	
 	@NotBlank(message = "이름을 입력해야합니다.")
 	@Size(min=2, max=20, message="5~20 글자로 입력")
 	private String uname;
-	
-
 	private String email;// 아이디@메일주소 하는과정에서 email과 email2로 나뉘지만 email의 getter에 email+email2가 되어 병합되어 저장된다.
 	private String email2;
 	private String roadAddrPart1;
@@ -38,7 +32,6 @@ public class UserVO {
 	private String encrypthash; // 해쉬코드값 저장용
 	private String authority;
 	
-
 	
 	public String getEmail() {
 		/** 기존:가입할떄 매핑시 자동으로 @ 붙여서 되게끔 처리했더니 -> userlist같은곳에서 이메일을 뽑을떄 id@email@email 이런식의 문제가생겨서 수정*/		

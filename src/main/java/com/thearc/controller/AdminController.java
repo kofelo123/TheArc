@@ -31,26 +31,19 @@ public class AdminController {
 	 @Autowired
 	 private BoardService boardservice;
 	
-	 
-	
-//	@RequestMapping(value="/userlist" , method= RequestMethod.GET)
 	@GetMapping("/userlist")
 	public void userlist(Model model) throws Exception{
 		logger.info("userlist get...");
 		model.addAttribute("userVO",service.listuser());
 	}
 	
-//	@RequestMapping(value="/admLogPost" , method=RequestMethod.POST)
 	@PostMapping("/admLogPost")
 	public void admLogPost(UserVO user,Model model) throws Exception{
 		logger.info("Admin Login Post..");
 		UserVO vo=service.adminlogin(user);
 		model.addAttribute("vo", vo);
-		
-		
 	}
 	
-//	@RequestMapping(value="/chartpage" , method=RequestMethod.GET)
 	@GetMapping("/chartpage")
 	public void charts(Model model)throws Exception{
 		logger.info("charts by admin get ..");
@@ -61,21 +54,20 @@ public class AdminController {
 		model.addAttribute("chart5",service.weekReplyCount());
 	}
 	
-//	@RequestMapping(value="/authmodify" , method=RequestMethod.GET)
 	@GetMapping("/authmodify")
 	public String charts(Model model,UserVO user)throws Exception{
 		service.authmodify(user);
 		model.addAttribute("userVO",service.listuser());
 		return "/admin/userlist";
 	}
-//	@RequestMapping(value="/userDrop" , method=RequestMethod.GET)
+	
 	@GetMapping("/userDrop")
 	public String userDrop(Model model,UserVO user)throws Exception{
 		service.userDrop(user);
 		model.addAttribute("userVO",service.listuser());
 		return "/admin/userlist";
 	}
-//	@RequestMapping(value="/superadmin/{category}" , method=RequestMethod.GET)
+	
 	@GetMapping("/superadmin/{category}")
 	public String superAdmin(@ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category)throws Exception{
 		model.addAttribute("list", boardservice.listSearchCriteria(cri,category));
@@ -86,7 +78,6 @@ public class AdminController {
 		  return "/admin/superadmin";
 	}
 	
-//	@RequestMapping(value="/boardDrop" , method=RequestMethod.GET)
 	@GetMapping("/boardDrop")
 	public String boardDrop(Model model,BoardVO board)throws Exception{
 		service.boardDrop(board);

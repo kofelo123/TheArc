@@ -7,22 +7,15 @@
     <title>로그인</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 3.3.4 -->
+    
     <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- Theme style -->
     <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="/thearc/resources/bootstrap/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/thearc/resources/bootstrap/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" /> -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
     <!-- ///배경관련  -->
 		<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
 		<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
@@ -33,51 +26,37 @@
     <div class="login-box">
       <div class="login-logo">
         <a href="/thearc/sboard/list"><b>The Arc</b></a>
-      </div><!-- /.login-logo -->
+      </div>
       <div class="login-box-body">
         <p class="login-box-msg"></p>
-
-
-<form action="/thearc/user/modifypw" method="POST" name="formm">
-<div id='expression' style="padding-bottom:20px">
-<b>${user.uid }님 변경하실 비밀번호를 입력해 주세요.<br></b>
-<input type="hidden" name="uid" value="${user.uid }">
-
-</div>
-  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder="비밀번호"/>
-    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  </div>
-  <div class="form-group has-feedback">
-    <input type="password" name="upwcheck" class="form-control" placeholder="비밀번호 확인"/>
-    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  </div>
+	
+	<form action="/thearc/user/modifypw" method="POST" name="formm">
+		<div id='expression' style="padding-bottom:20px">
+			<b>${user.uid }님 변경하실 비밀번호를 입력해 주세요.<br></b>
+	<input type="hidden" name="uid" value="${user.uid }">
+	
+	</div>
+	  <div class="form-group has-feedback">
+	    <input type="password" name="upw" class="form-control" placeholder="비밀번호"/>
+	    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+	  </div>
+	  <div class="form-group has-feedback">
+	    <input type="password" name="upwcheck" class="form-control" placeholder="비밀번호 확인"/>
+	    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+	  </div>
   
- <!--  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder=""/>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  </div> -->
   <div class="row" style="padding-bottom:10px">
     
-    <center><div class="col-xs-5">
-      <input type="button" class="btn btn-primary btn-block btn-flat" onclick="go_save()" value="비밀번호 변경"></button>
+    <div class="col-xs-5">
+      <input type="button" class="btn btn-primary btn-block btn-flat" onclick="go_save()" value="비밀번호 변경" style="margin-left:75%">
       
       
-    </div><!-- /.col --></center>
+    </div>
   </div>
 </form>
- <!--  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder=""/>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  </div> -->
-  
-</form>
 
-
-        
-
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+      </div>
+    </div>
 <!-- 
     jQuery 2.1.4
     <script src="/thearc/resources/bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -112,7 +91,6 @@
   </body>
 </html>
 
-
 	<script>
 			$(function(){
 				$('body').vegas({
@@ -121,7 +99,7 @@
 						{
 							video : {
 								src: ['/thearc/resources/bootstrap/dew.webm'],
-								loop:true,
+								loop:false,
 								mute:true
 							}
 						}

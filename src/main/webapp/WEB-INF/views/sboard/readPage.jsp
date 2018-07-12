@@ -11,12 +11,9 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
  <!--   댓글테스트<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->  
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-  
-    
     
 <script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
 
 <!-- Main content -->
     <style type="text/css">
@@ -50,7 +47,6 @@
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
     </div>
-     
 
 <section class="content">
 	<div class="row" style="margin-left:20%">
@@ -126,18 +122,14 @@
 					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
 					 <div class="mailbox-read-message">
                	${boardVO.content}
-              
-                
-              </div>
-				</div>
+		              </div>
+					</div>
 					
 				</div>
 				<!-- /.box-body -->
 				
   <div class="box-footer">
     <div class="row">
- 
-
     <ul class="mailbox-attachments clearfix uploadedList">
     </ul>	
     <div class="col-sm-4 col-xs-8">
@@ -148,33 +140,25 @@
     <button type="submit" class="btn btn-primary" id="goListBtn">목록</button>
     	</div>
     	<div class="col-sm-1 col-sm-offset-6 col-xs-3 ">
-    	<div class="fbshare" style="font-size:35px;">
-			<a href="/#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fthearc%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
-         </div>
+	    	<div class="fbshare" style="font-size:35px;">
+				<a href="/#" onClick="window.open('http://www.facebook.com/dialog/share?app_id=966242223397117&display=popup&href=http%3A%2F%2Fwww.thearc.co.kr%2Fthearc%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-facebook-official" data-toggle="tooltip" data-placement="left" title="페이스북 공유"></i></a>
+        	 </div>
 		</div>			
 		<div class="twitter" style="font-size:35px;">
 			<a href="/#" onClick="window.open('https://twitter.com/intent/tweet?text=디아크 - ${boardVO.title }&url=http%3A%2F%2Fwww.thearc.co.kr%2Fthearc%2Fsboard%2FreadPage%2F${boardVO.category }%3Fbno%3D${boardVO.bno}%26uid%3D', '', 'width=475, height=310,left=1000, top=100'); return false;"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="left" title="트위터 공유"></i></a>
         </div>
-                         
-						
-						
-			</div><!-- row  -->
-			
- 		 </div>
-
-			</div>
+		</div><!-- row  -->
+ 	    </div>
+		</div>
 			<!-- /.box -->
 		
 		<!--/.col (left) -->
-
-
 	<!-- /.row -->
 
 <div class="box box-success">
   <div class="box-header">
     <h3 class="box-title">새 댓글달기</h3>
   </div>
-
 
   <c:if test="${not empty login}">  
   <div class="box-body">
@@ -199,7 +183,6 @@
     </div>
   </c:if>				                 
 </div>            
-
 		<!-- The time line -->
 		<ul class="timeline">
 		  <!-- timeline time label -->
@@ -246,11 +229,8 @@
 	
 </section>
 <!-- /.content -->
-
-
 <%@include file="../include/footer.jsp"%>
 <%@include file="../include/footer2.jsp"%>
-
 
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
@@ -566,8 +546,6 @@ $(document).ready(function(){
 		
 	});	
 	
-		
-	
 });
 
 
@@ -576,6 +554,3 @@ function goLogin(){
 }
 
 </script>
-
-
-

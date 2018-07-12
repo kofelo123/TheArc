@@ -54,13 +54,11 @@ public class UserController {
 	private UserService service;
 	
 	
-//	@RequestMapping(value = "/login", method=RequestMethod.GET)
 	@GetMapping("/login")
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto){
 		
 	}
 	
-//	  @RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	  @PostMapping("/loginPost")
 	  public void loginPOST(LoginDTO dto , HttpSession session, Model model) throws Exception {
 		
@@ -80,7 +78,6 @@ public class UserController {
 
 	  }
 
-//	  @RequestMapping(value = "/logout", method = RequestMethod.GET)
 	  @GetMapping("/logout")
 	  public String logout(HttpServletRequest request, 
 	      HttpServletResponse response, HttpSession session) throws Exception {
@@ -110,14 +107,12 @@ public class UserController {
 		  return "user/logout";
 	  }
 	  
-//	  @RequestMapping(value = "/join", method = RequestMethod.GET)
 	  //회원가입 만들것.
 	  @GetMapping("/join")
 	  public void join(Model model) {
 		  model.addAttribute("uvo",new UserVO());
 	  }
 	  
-//	  @RequestMapping(value = "joinPost", method = RequestMethod.POST)
 	  @PostMapping("joinPost")
 	  public String joinPost(@ModelAttribute("uvo") @Valid UserVO user,BindingResult result, RedirectAttributes rttr) throws Exception{
 		  
@@ -137,7 +132,6 @@ public class UserController {
 	  }
 	  
     
-//	@RequestMapping(value = "/idcheck", method = RequestMethod.GET )
 	  @GetMapping("/idcheck")
 	  public void id_check(UserVO user,Model model) throws Exception{///여기서 userVO는 아이디값이 setter해서 넘어가는 것일것이다.
 		  
@@ -164,7 +158,6 @@ public class UserController {
 	 *@throws Exception
 	 */
 	
-//	  @RequestMapping(value="/idcheck2", method=RequestMethod.POST)
 	  @ResponseBody
 	  @PostMapping("/idcheck2")
 	  public ResponseEntity<String> id_check2(String uid) throws Exception{
@@ -190,14 +183,11 @@ public class UserController {
 		return entity; 
 	  }
 	  
-//	  @RequestMapping(value ="/findZipNum" , method=RequestMethod.GET)
 	  @GetMapping("/findZipNum")
 	  public void findZipNum(Model model,AddressVO address) throws Exception{
 		  
-		 
 	  }
 
-//	  @RequestMapping(value ="/findZipNum" , method=RequestMethod.POST)
 	  @PostMapping("/findZipNum")
 	  public void findZipNumPost(Model model,AddressVO address) throws Exception{
 		  									///AddressVO 필드 중 dong을 넘김.
@@ -208,13 +198,11 @@ public class UserController {
 		  System.out.println("returnTest:"+service.findzipnum(address));
 	  }
 	  
-//	  @RequestMapping(value = "/idfind", method = RequestMethod.GET)
 	  @GetMapping("/idfind")
 	  public void idfind() {
 
 	  }
 	  
-//	  @RequestMapping(value="/idfindmail", method = RequestMethod.GET)
 	  @GetMapping("/idfindmail")
 		public void idfindmail(UserVO user,HttpServletRequest request, ModelMap mo) throws Exception{
 		  ///HttpServletRequest Modelmap 왜가는지?..
@@ -222,7 +210,6 @@ public class UserController {
 	  }
 	  
 	  
-//	 @RequestMapping(value="/mailhashcheck", method = RequestMethod.GET)
 	  @GetMapping("/mailhashcheck")
 	  public void mailhashcheck(UserVO user,Model model) throws Exception{
 		  
@@ -237,37 +224,29 @@ public class UserController {
 		  
 	  }
 	  
-//	  @RequestMapping(value="/modifypw" ,method=RequestMethod.POST)
 	  @PostMapping("/modifypw")
 	 public String modifypw(UserVO user)throws Exception{
-		  System.out.println("콘솔파라미터테스트");
 		  System.out.println(user.getUid());//input type=hidden으로 가져옴
 		  System.out.println(user.getUpw());
 		  
 		  service.modifypw(user);
 		  
-		  
-		  return "redirect:/user/login";	/* */
+		  return "redirect:/user/login";	
 		 
 	 }
-//	  @RequestMapping(value = "/logintest", method = RequestMethod.GET)
 	  @GetMapping("/logintest")
 	  public void logintest() {
 		  
 	  }
 	  
-//	  @RequestMapping(value = "/jusoPopup", method = RequestMethod.GET)
 	  @GetMapping("/jusoPopup")
 	  public void jusoPopup() {
 		  
 	  }
 	  
-//	  @RequestMapping(value = "/jusoPopup", method = RequestMethod.POST)
 	  @PostMapping("/jusoPopup")
 	  public void jusoPopupPost() {
 		  
 	  }
 	  
-	  
-	
 }

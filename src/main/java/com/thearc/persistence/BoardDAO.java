@@ -28,8 +28,6 @@ public interface BoardDAO {
   
   public int countPaging(Criteria cri) throws Exception;
   
-  //use for dynamic sql
-  
   public List<BoardVO> listSearch(SearchCriteria cri,String category)throws Exception;
   
   public List<String> listThumnail(SearchCriteria cri,String category) throws Exception;

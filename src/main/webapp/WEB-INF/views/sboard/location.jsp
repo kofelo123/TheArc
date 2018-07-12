@@ -60,7 +60,6 @@
         font-size: 13px;
         font-weight: 300;
       }
-
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -73,16 +72,12 @@
                 <div class="col-sm-9" >
                     <div class="subcontent" style="color:white;margin-top:10px;">
                     <span class="home" ><a href="/thearc/sboard/main" style="color:white;">Home </a>  < </span> <span>디아크소개  < </span> <strong><a href="/thearc/sboard/location" style="color:white;">오시는길</a></strong>
-                    
                         <h2 style="color:white">찾아 오시는 길</h2>
                     </div>
                 </div>
-              
             </div>
         </div>
    		 </section>
-
-    
    	 </div>
     
   		<div class="row">
@@ -90,11 +85,8 @@
 		<div class="col-sm-8 col-sm-offset-2 col-xs-12">
     <input id="origin-input" class="controls" type="text"
         placeholder="출발지를 입력해주세요!">
-
-     
 <!--     <input id="desti" class="controls" type="text" value="대한민국 대구광역시 달성군 다사읍 죽곡리 디아크"
         placeholder="도착지를 입력"> -->
-        
       <!-- <input type="radio" name="type" id="changemode-walking" >
       <label for="changemode-walking">Walking</label> -->
 <!-- <div id="mode-selector" class="controls"> </div> -->
@@ -104,26 +96,19 @@
       <input type="radio" name="type" id="changemode-driving">
       <label for="changemode-driving">Driving</label> -->
    
-
     <div id="map"></div>
-
 		</div>
 	</div>
     <script>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-    
-      
-      
       function initMap() {//map실행
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
           center: {lat: 35.838544, lng: 128.468405},
           zoom: 15
         });
-        
         var contentString = '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
@@ -151,15 +136,9 @@
       map: map,
       title: '디아크 (강 문화관)'
     });
-
- 
       infowindow.open(map, marker);
- 
         new AutocompleteDirectionsHandler(map);
-        
-        
       }
-
        /**
         * @constructor
        */
@@ -215,11 +194,8 @@
             me.destinationPlaceId = 'ChIJ0ZzjKTzwZTURQs1B8rhkTJI';
             me.travleMode='TRANSIT';
           } 
-            
-        		 
           me.route();
         });
-
       };
 
       AutocompleteDirectionsHandler.prototype.route = function() {
@@ -240,14 +216,9 @@
           }
         });
       };
-
-      ///
-      
     </script>
-  
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSnMW4kIIlD48ao8_Rf7pm9qs51WeCyIk&libraries=places&callback=initMap"
         async defer></script>
-      
      <div class="row">
      	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
   <img src="/thearc/resources/bootstrap/images/location2.PNG" style="margin-top:50px;margin-left:-10px; width:100%"/>
@@ -257,5 +228,5 @@
       </div>
   </body>
 </html> 
- <%----%> <%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
-    <%@include file="/WEB-INF/views/include/footer2.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.--> 
+<%@include file="/WEB-INF/views/include/footer.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.-->
+<%@include file="/WEB-INF/views/include/footer2.jsp"%><!-- 이자리에 있어야 아래 slider관련 동작한다.--> 

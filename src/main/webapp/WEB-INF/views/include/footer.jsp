@@ -6,9 +6,9 @@
             <div class="row">
             	<br/><br/>
                 <div class="col-md-6">
-                    <p class="copyright">&copy; Copyright 2017 한국IT교육원 | Powered by  <a href="http://www.github.com/kofelo123/TheArc/"> 허정원</a></p>
+                    <p class="copyright">&copy; Copyright 2017 | Powered by  <a href="http://www.github.com/kofelo123/TheArc/"> 허정원</a></p>
                 </div>
-
+<!-- 
                 <div class="col-md-6">
                     <div class="footer_social">
                         <ul class="footbot_social">
@@ -19,26 +19,32 @@
                             <li><a class="rss" href="#." data-placement="top" data-toggle="tooltip" title="RSS"><i class="fa fa-rss"></i></a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
-<!-- end footer  --> 
-<!--댓글테스트용-->    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
+	<!-- end footer  --> 
+	
+	<!--댓글테스트용-->    
+	<script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
     <script src="/thearc/resources/bootstrap/js/bootstrap.js"></script>
-    <script src="/thearc/resources/bootstrap/js/jquery.easing.1.3.js"></script>
-    <!-- <script src="/thearc/resources/bootstrap/js/retina-1.1.0.min.js"></script> -->
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.cookie.js"></script>  
+    <!-- <script src="/thearc/resources/bootstrap/js/jquery.easing.1.3.js"></script> -->
+    <!-- <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.cookie.js"></script>   -->
+
+	<!-- main - 포토존  -->
     <script src="/thearc/resources/bootstrap/js/jquery.smartmenus.min.js"></script> 
+    <!-- 네이게이터바 - 선  -->
     <script src="/thearc/resources/bootstrap/js/jquery.smartmenus.bootstrap.min.js"></script>
   
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.jcarousel.js"></script>
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jflickrfeed.js"></script> 
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="/thearc/resources/bootstrap/js/swipe.js"></script>
-     <script src="/thearc/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script>
+   <!-- <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.jcarousel.js"></script> --> 
+    <!-- <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.isotope.min.js"></script> -->
+  <!-- 아래들 사이드메뉴바에 검은 바탕 생기는거땜에  -->
+    <script type="text/javascript" src="/thearc/resources/bootstrap/js/jflickrfeed.js"></script>  
+   <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery.magnific-popup.min.js"></script>
+     <script type="text/javascript" src="/thearc/resources/bootstrap/js/swipe.js"></script> 
+    <script src="/thearc/resources/bootstrap/js/jquery-scrolltofixed-min.js"></script> 
    
+   <!-- main - 포토존  -->
     <script src="/thearc/resources/bootstrap/js/main.js"></script>
     
     <style>
@@ -90,15 +96,13 @@
 		})
 		/* 로그인,회원가입 버튼  */
 		$('#loginbutton').on("click", function(evt) {
-
 			self.location = "/thearc/user/login";
-
 		});
+	
     	$('#joinbutton').on("click", function(evt) {
-
 			self.location = "/thearc/user/join";
-
 		});
+    	
     	$('#logout').on("click", function(evt){
 			self.location = "/thearc/user/logout";    		
     	});

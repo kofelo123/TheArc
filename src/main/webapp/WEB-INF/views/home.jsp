@@ -6,25 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 	<title>TheArc</title>
 
- <link rel="icon" type="image/png"  href="/thearc/resources/bootstrap/image/lodingthearc3.png"/>
+	<!-- <link rel="icon" type="image/png"  href="/thearc/resources/bootstrap/image/lodingthearc3.png"/> -->
 <style>
-@CHARSET "UTF-8";
-html, body { margin: 0;
+ 
+/* @CHARSET "UTF-8"; */
+/* html, body { margin: 0;
 
  }
+ */
+ 
 
-#visual {
-/**/ /*  */  position: relative;
-  height:110%; 
-/*   position:absolute;
-  width:100%;
-  height:100%; */
-  
-  text-align: center;
-  overflow: hidden;
-}
-
-#video-bg {
+/* #video-bg {
     position: absolute;
   top: 50%;
   left: 50%;
@@ -33,7 +25,9 @@ html, body { margin: 0;
   width: 100%;
   height: 10%;
 }
-
+ */
+ 
+ /* 영상화면  */
 #video-bg {
   height: 100%;
   width:100%;
@@ -41,31 +35,34 @@ html, body { margin: 0;
   background-size: cover;
   z-index: -100;
 }
-
 #video-bg iframe {
   border: none;
   width: 100%;
   height: 100%;
 }
 
+ /* 버튼() ,문구(sketched by thearc) 위치  */
+#visual {
+  position: relative;
+  height:110%; 
+  text-align: center;
+  overflow: hidden;
+}
+/* 문구,버튼 */
 #visual-content {
 position: absolute;
   top: 60%;
   left: 40%;
   z-index: 100;
 }
-
+/* 문구체  */ 
 h1 {
-/* position: absolute;
-  top: 10%;
-  left: 50%; */
-
   font-size: 42px;
   font-weight: normal;
     color: #fff;
   margin-bottom: 60px;
-}
-
+} 
+/* 버튼관련  */
 #visual-btn {
   color: #fff;
   font-size: 20px;
@@ -75,10 +72,10 @@ h1 {
   cursor: pointer;
   background-color:rgba(0,0,0,0);
 }
-
 </style>
+	<!-- 위까지 동영상 배경입히기  -->
 	 
-<script>
+<!-- <script>
 
 if ($(window).width()>500) {
 	  $('#video-bg iframe').css('display','block');
@@ -87,31 +84,66 @@ if ($(window).width()>500) {
 	else $('#video-bg iframe').css('display','none');
 
 
-</script>
-	<!-- 위까지 동영상 배경입히기  -->
+</script> -->
 	
-    <meta name="description" content="Just another WordPress site"/>
-	<meta property="og:title" content="11st.com"/>
-	<meta property="og:type" content="Maintenance"/>
-	<meta property="og:url" content="http://11st.com"/>
-	<meta property="og:description" content="Just another WordPress site"/>
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="pingback" href="http://11st.com/xmlrpc.php" />
-	<link rel='stylesheet' id='_custom_fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%2C300italic%2C400italic%2C600italic%2C700italic%2C800italic&#038;subset=devanagari&#038;ver=4.6.1' type='text/css' media='all' />
-<!-- <link rel='stylesheet' id='_iconstyle-css'  href='http://11st.com/wp-content/plugins/maintenance/load/images/fonts-icon/icons.style.css?ver=4.6.1' type='text/css' media='all' /> -->
+    <!-- <meta name="description" content="Just another WordPress site"/> -->
+	<!-- <meta property="og:title" content="11st.com"/> -->
+	<!-- <meta property="og:type" content="Maintenance"/> -->
+	<!-- <meta property="og:url" content="http://11st.com"/> -->
+	<!-- <meta property="og:description" content="Just another WordPress site"/> -->
+	<!-- <link rel="profile" href="http://gmpg.org/xfn/11" /> -->
+	<!-- <link rel="pingback" href="http://11st.com/xmlrpc.php" /> -->
+	<!-- <link rel='stylesheet' id='_custom_fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%2C300italic%2C400italic%2C600italic%2C700italic%2C800italic&#038;subset=devanagari&#038;ver=4.6.1' type='text/css' media='all' /> -->
+	
+<!-- admin 연결 관련  -->
 <link href="/thearc/resources/bootstrap/css/11st.css" rel="stylesheet" type="text/css" media='all' />
-<!-- <link rel='stylesheet' id='_style-css'  href='http://11st.com/wp-content/plugins/maintenance/load/style.css?ver=4.6.1' type='text/css' media='all' /> -->
 <link href="/thearc/resources/bootstrap/css/11st2.css" rel="stylesheet" type="text/css" media='all' />
+
 <style id='_style-inline-css' type='text/css'>
-body {background-color: #111111}.preloader {background-color: #111111}body {font-family: Open Sans; }.site-title, .preloader i, .login-form, .login-form a.lost-pass, .btn-open-login-form, .site-content, .user-content-wrapper, .user-content, footer, .maintenance a {color: #ffffff;} .ie7 .login-form input[type="text"], .ie7 .login-form input[type="password"], .ie7 .login-form input[type="submit"]  {color: #ffffff} a.close-user-content, #mailchimp-box form input[type="submit"], .login-form input#submit.button  {border-color:#ffffff} .ie7 .company-name {color: #ffffff} 
+/* 하단 흰바탕 메움  */
+body {
+	background-color: #111111
+}
+/* 로딩로고 흰바탕 메움  */
+.preloader {
+	background-color: #111111
+}
+
+ /* admin연결 - 글자색  */
+.site-title, .preloader i, .login-form, .login-form a.lost-pass,
+	.btn-open-login-form, .site-content, .user-content-wrapper,
+	.user-content, footer, .maintenance a {
+	color: #ffffff;
+}
+/* body {
+	font-family: Open Sans;
+} */
+/*
+.ie7 .login-form input[type="text"], .ie7 .login-form input[type="password"],
+	.ie7 .login-form input[type="submit"] {
+	color: #ffffff
+}
+*/
+
+/* a.close-user-content, #mailchimp-box form input[type="submit"],
+	.login-form input#submit.button {
+	border-color: #ffffff
+} */
+/*
+.ie7 .company-name {
+	color: #ffffff
+} */
 </style>
+<!-- 기본 -->
 <script type='text/javascript' src='http://11st.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
 <script type='text/javascript' src='http://11st.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
- <script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.placeholder.js?ver=4.6.1'></script>
-<script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.backstretch.min.js?ver=4.6.1'></script>
-<script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.blur.min.js?ver=4.6.1'></script>
 <script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.frontend.min.js?ver=4.6.1'></script>
- 		<script type="text/javascript">
+
+<!--  <script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.placeholder.js?ver=4.6.1'></script> -->
+<!-- <script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.backstretch.min.js?ver=4.6.1'></script> -->
+<!-- <script type='text/javascript' src='http://11st.com/wp-content/plugins/maintenance/load/js/jquery.blur.min.js?ver=4.6.1'></script> -->
+ 	
+ 		<!-- <script type="text/javascript">
 jQuery(document).ready(function() { 
 if (jQuery(window).height() < 768) {
 jQuery("body").backstretch("http://11st.com/wp-content/uploads/2016/06/mt-sample-background.jpg");
@@ -131,7 +163,7 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 			})();
 		</script>
 		
-   
+    -->
 	 </head>
 	 
 	 

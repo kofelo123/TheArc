@@ -28,13 +28,11 @@ public class MessageDAOImpl implements MessageDAO {
 	
 	@Override
 	public void addCountList() throws Exception {
-		// TODO Auto-generated method stub
 		session.update(namespace+".addCountList");
 	}
 
 	@Override
 	public List<MessageVO> listmail(MessageVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		return session.selectList(namespace+".listmail",vo);
 	}
 
@@ -54,22 +52,17 @@ public class MessageDAOImpl implements MessageDAO {
 
 	    return session.selectOne(namespace + ".listSearchCount", cri);
 	  }
-
 	  
-	  //읽기
 	@Override
 	public MessageVO readMessage(Integer mid) throws Exception {
 
 		return session.selectOne(namespace+".readMessage", mid);
 	}
-		
 	  
 	@Override
 	public void updateReadCheck(Integer mid) throws Exception {
-		// TODO Auto-generated method stub
 		session.update(namespace+".updateReadCheck", mid);
 	}
-
 	
 	@Override
 	public void create(MessageVO message) throws Exception {
@@ -77,10 +70,4 @@ public class MessageDAOImpl implements MessageDAO {
 		session.insert(namespace+".create", message);
 	}
 
-	
-	
-	  
-	  
 }
-
-

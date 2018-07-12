@@ -3,19 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <%@include file="../include/headeradmin.jsp"%>
 <%@ include file="../include/analytics.jsp"%>	
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
 		<!-- left column -->
-
-
 		<div class="col-md-12" style="width:80%">
 			<!-- general form elements -->
 			<div class='box'>
-
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">사용자 명단</h3>
@@ -55,12 +52,9 @@
 				</div>
 				<!-- /.box-body -->
 
-
 				<div class="box-footer">
-				
 					<div class="text-center">
 						<ul class="pagination">
-
 							<c:if test="${pageMaker.prev}">
 								<li><a
 									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
@@ -78,21 +72,17 @@
 								<li><a
 									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
-
 						</ul>
 					</div>
-
 				</div>
 				<!-- /.box-footer-->
 			</div>
 		</div>
 		<!--/.col (left) -->
-
 	</div>
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-
 
 <script>
 	var result = '${msg}';
@@ -124,10 +114,6 @@
 					self.location = "register";
 
 				});
-				
-				
-
 			});
 </script>
-
 <%@include file="../include/adminfooter.jsp"%>
