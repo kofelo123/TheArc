@@ -21,6 +21,10 @@
         </beans:property>
     </beans:bean>
 -->
+	
+	
+	
+	<!-- spring context에 사용할 보안필요한 값 암호화를 위한 프로퍼티  -->
 	<beans:bean id="propertyConfigurator" class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
 		<beans:constructor-arg ref="configurationEncryptor"/>
 		<beans:property name="locations">
@@ -29,15 +33,25 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-
+	
 	<beans:bean id="environmentVariablesConfiguration" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
 		<beans:property name="algorithm" value="PBEWithMD5AndDES"  />
 		<beans:property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
 	</beans:bean>
-
 	<beans:bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
 		<beans:property name="config" ref="environmentVariablesConfiguration"/>
 		<beans:property name="password" value="rktwlsrud" />
+	</beans:bean>
+	
+	
+	<!-- 유효성검사 message  properties -->
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
+		<beans:property name="basenames">
+		<beans:list>
+			<beans:value>classpath:i18n/hr</beans:value>
+		</beans:list>
+		</beans:property>
 	</beans:bean>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -84,6 +98,7 @@
 	  </interceptor>	
 	</interceptors>
 	
+	<!--  spring mobile - 모바일인식을위한 -->
 	<interceptors>
   		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
 	</interceptors>

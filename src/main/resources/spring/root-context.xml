@@ -75,6 +75,11 @@
 		<constructor-arg value="${Local.IpAddress}">
 		</constructor-arg>
 	</bean>
+	<bean id="mailPw" class="java.lang.String">
+		<constructor-arg value="${MailPw}">
+		</constructor-arg>
+	</bean>
+	
 	
 	<bean id="encrypt" class="com.thearc.util.EncryptUtil">
 	</bean>
@@ -85,13 +90,6 @@
 	<aop:config>
 	</aop:config>
 	
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="defaultEncoding" value="UTF-8"></property>
-		<property name="basenames">
-			<list>
-				<value>classpath:i18n/hr</value>
-			</list>
-		</property>
-	</bean>
+
 	
 </beans>

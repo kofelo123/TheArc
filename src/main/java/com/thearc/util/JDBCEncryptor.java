@@ -7,6 +7,7 @@ public class JDBCEncryptor {
         StandardPBEStringEncryptor enc = new StandardPBEStringEncryptor();
         enc.setPassword("rktwlsrud");
         System.out.println(enc.encrypt("C:\\zzz\\upload"));
+        System.out.println(enc.encrypt("ekflrktmaajfl"));
 //        System.out.println(enc.encrypt(""));
     }
 }

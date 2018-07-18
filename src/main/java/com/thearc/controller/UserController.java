@@ -59,194 +59,188 @@ public class UserController {
 		
 	}
 	
-	  @PostMapping("/loginPost")
-	  public void loginPOST(LoginDTO dto , HttpSession session, Model model) throws Exception {
-		
-		  
-	    UserVO vo = service.login(dto);
-	    System.out.println("voTest:"+vo);
-	    model.addAttribute("userVO", vo);
+	@PostMapping("/loginPost")
+	public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
 
-	    if (dto.isUseCookie()) { ///로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
+		UserVO vo = service.login(dto);
+		model.addAttribute("userVO", vo);
 
-	      int amount = 60 * 60 * 24 * 7;
-
-	      Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
-
-	      service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
-	    }
-
+		if (dto.isUseCookie()) { /// 로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
+			int amount = 60 * 60 * 24 * 7;
+			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
+			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
+		}
 	  }
 
-	  @GetMapping("/logout")
-	  public String logout(HttpServletRequest request, 
-	      HttpServletResponse response, HttpSession session) throws Exception {
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws Exception {
 
-		  logger.info("logout.................................1");
+		logger.info("logout.................................1");
 
-		  Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute("login");
 
-		  if (obj != null) {
-		  UserVO vo = (UserVO) obj;
-		  session.removeAttribute("login");
-		  session.invalidate();
+		if (obj != null) {
+			UserVO vo = (UserVO) obj;
+			session.removeAttribute("login");
+			session.invalidate();
 
-		  logger.info("logout.................................3");
-		  Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			logger.info("logout.................................3");
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 
-
-		  if (loginCookie != null) {
-		  logger.info("logout.................................4");
-		  loginCookie.setPath("/");
-		  loginCookie.setMaxAge(0);
-		  response.addCookie(loginCookie);
-		  service.keepLogin(vo.getUid(), session.getId(), new Date());///아마 현재시간으로 기한을 맞춰서 없애는것일것이다.
-		  }
-		  } 
-
-		  return "user/logout";
-	  }
-	  
-	  //회원가입 만들것.
-	  @GetMapping("/join")
-	  public void join(Model model) {
-		  model.addAttribute("uvo",new UserVO());
-	  }
-	  
-	  @PostMapping("joinPost")
-	  public String joinPost(@ModelAttribute("uvo") @Valid UserVO user,BindingResult result, RedirectAttributes rttr) throws Exception{
-		  
-			//유효성검사 
-			if(result.hasErrors()) {
-				System.out.println("유호성검사 에러");
-				return "/user/join";
+			if (loginCookie != null) {
+				logger.info("logout.................................4");
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				service.keepLogin(vo.getUid(), session.getId(), new Date());/// 아마 현재시간으로 기한을 맞춰서 없애는것일것이다.
 			}
-		  
-		  logger.info("joinPost post ...........");
-		  
-		  service.joinPost(user);
-		  
-		  rttr.addFlashAttribute("msg", "SUCCESS");
-		  
-		  return "redirect:/user/login";
-	  }
-	  
-    
-	  @GetMapping("/idcheck")
-	  public void id_check(UserVO user,Model model) throws Exception{///여기서 userVO는 아이디값이 setter해서 넘어가는 것일것이다.
-		  
-		 int answer=0; ///flag같은것인데 boolean false로 디폴트로 해놓고 해도될듯
-		  UserVO user2 = service.id_checkPost(user);/* */
-		  if(user2 == null){
-			 System.out.println(user2);
-			 answer=1;
-		  }else{
-			  answer=-1;
-		  }
-		  
-		  model.addAttribute("user", user);
-		  model.addAttribute("answer",answer);
-		  System.out.println(user.getUid());
-		  
-	  }
-	  
-	
-    /**
-	 * ajax 방식으로 중복확인 및 유효성검사 
-	 *@param uid 아이디값넘김
-	 *@return
-	 *@throws Exception
+		}
+
+		return "user/logout";
+	}
+
+	// 회원가입 만들것.
+	@GetMapping("/join")
+	public void join(Model model) {
+		model.addAttribute("uvo", new UserVO());
+	}
+
+	@PostMapping("joinPost")
+	public String joinPost(@ModelAttribute("uvo") @Valid UserVO user, BindingResult result, RedirectAttributes rttr)
+			throws Exception {
+
+		// 유효성검사
+		if (result.hasErrors()) {
+			System.out.println("유호성검사 에러");
+			return "/user/join";
+		}
+
+		logger.info("joinPost post ...........");
+
+		service.joinPost(user);
+
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		return "redirect:/user/login";
+	}
+
+	@GetMapping("/idcheck")
+	public void id_check(UserVO user, Model model) throws Exception {/// 여기서 userVO는 아이디값이 setter해서 넘어가는 것일것이다.
+
+		int answer = 0; /// flag같은것인데 boolean false로 디폴트로 해놓고 해도될듯
+		UserVO user2 = service.id_checkPost(user);/* */
+		if (user2 == null) {
+			System.out.println(user2);
+			answer = 1;
+		} else {
+			answer = -1;
+		}
+
+		model.addAttribute("user", user);
+		model.addAttribute("answer", answer);
+		System.out.println(user.getUid());
+
+	}
+
+	/**
+	 * ajax 방식으로 중복확인 및 유효성검사
+	 * @param uid 아이디값넘김
+	 * @return
+	 * @throws Exception
 	 */
-	
-	  @ResponseBody
-	  @PostMapping("/idcheck2")
-	  public ResponseEntity<String> id_check2(String uid) throws Exception{
-		  System.out.println("idcheck2Test");
-		  ResponseEntity<String> entity= null;
-		  
-		  try {
-			  UserVO vo = new UserVO();
-			  vo.setUid(uid);
-			  UserVO user2=service.id_checkPost(vo);
-			  
-			  if(uid.isEmpty()) {
-				entity = new ResponseEntity<String>("Empty", HttpStatus.OK);  
-			  }else if(user2 != null) {
-				  entity = new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-			  }else {
-				  entity = new ResponseEntity<String>("Success", HttpStatus.OK);
-			  }
-		  }catch(Exception e){
-			  e.printStackTrace();
-		  }
-		
-		return entity; 
-	  }
-	  
-	  @GetMapping("/findZipNum")
-	  public void findZipNum(Model model,AddressVO address) throws Exception{
-		  
-	  }
 
-	  @PostMapping("/findZipNum")
-	  public void findZipNumPost(Model model,AddressVO address) throws Exception{
-		  									///AddressVO 필드 중 dong을 넘김.
-		  System.out.println("findzipnum ...userController");
-		  System.out.println(address);
-		  
-		  model.addAttribute("addressList",service.findzipnum(address));
-		  System.out.println("returnTest:"+service.findzipnum(address));
-	  }
-	  
-	  @GetMapping("/idfind")
-	  public void idfind() {
+	@ResponseBody
+	@PostMapping("/idcheck2")
+	public ResponseEntity<String> id_check2(String uid) throws Exception {
+		System.out.println("idcheck2Test");
+		ResponseEntity<String> entity = null;
 
-	  }
-	  
-	  @GetMapping("/idfindmail")
-		public void idfindmail(UserVO user,HttpServletRequest request, ModelMap mo) throws Exception{
-		  ///HttpServletRequest Modelmap 왜가는지?..
-		  service.idfindmail(request,mo,user);
-	  }
-	  
-	  
-	  @GetMapping("/mailhashcheck")
-	  public void mailhashcheck(UserVO user,Model model) throws Exception{
-		  
-		  UserVO user2 =service.hashbyid(user);
-		  if(user2.getUid()!=null)
-			  model.addAttribute("user", user2);
-		  
-		  //로직을 어떻게 할지..
-		  //1.해쉬코드 검사하는 로직(아이디로 찾아야 될지 동적 sql을 써야할지?) 2.view에 전달 해쉬코드 일치하면 비밀번호 변경폼, 일치x시에 실패 메세지
-		  //3.비밀번호 변경하는 로직->(update) 4.처리결과 처리 (간단하게 alert해도 될듯) -> 메인페이지로 redirect
-		  
-		  
-	  }
-	  
-	  @PostMapping("/modifypw")
-	 public String modifypw(UserVO user)throws Exception{
-		  System.out.println(user.getUid());//input type=hidden으로 가져옴
-		  System.out.println(user.getUpw());
-		  
-		  service.modifypw(user);
-		  
-		  return "redirect:/user/login";	
-		 
-	 }
-	  @GetMapping("/logintest")
-	  public void logintest() {
-		  
-	  }
-	  
-	  @GetMapping("/jusoPopup")
-	  public void jusoPopup() {
-		  
-	  }
-	  
-	  @PostMapping("/jusoPopup")
-	  public void jusoPopupPost() {
-		  
-	  }
-	  
+		try {
+			UserVO vo = new UserVO();
+			vo.setUid(uid);
+			UserVO user2 = service.id_checkPost(vo);
+
+			if (uid.isEmpty()) {
+				entity = new ResponseEntity<String>("Empty", HttpStatus.OK);
+			} else if (user2 != null) {
+				entity = new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+			} else {
+				entity = new ResponseEntity<String>("Success", HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return entity;
+	}
+
+	@GetMapping("/findZipNum")
+	public void findZipNum(Model model, AddressVO address) throws Exception {
+
+	}
+
+	@PostMapping("/findZipNum")
+	public void findZipNumPost(Model model, AddressVO address) throws Exception {
+		/// AddressVO 필드 중 dong을 넘김.
+		System.out.println("findzipnum ...userController");
+		System.out.println(address);
+
+		model.addAttribute("addressList", service.findzipnum(address));
+		System.out.println("returnTest:" + service.findzipnum(address));
+	}
+
+	@GetMapping("/idfind")
+	public void idfind() {
+
+	}
+
+	@GetMapping("/idfindmail")
+	public void idfindmail(UserVO user, HttpServletRequest request, ModelMap mo) throws Exception {
+		/// HttpServletRequest Modelmap 왜가는지?..
+		service.idfindmail(request, mo, user);
+	}
+
+	@GetMapping("/mailhashcheck")
+	public void mailhashcheck(UserVO user, Model model) throws Exception {
+
+		UserVO user2 = service.hashbyid(user);
+		if (user2.getUid() != null)
+			model.addAttribute("user", user2);
+
+		// 로직을 어떻게 할지..
+		// 1.해쉬코드 검사하는 로직(아이디로 찾아야 될지 동적 sql을 써야할지?) 2.view에 전달 해쉬코드 일치하면 비밀번호 변경폼,
+		// 일치x시에 실패 메세지
+		// 3.비밀번호 변경하는 로직->(update) 4.처리결과 처리 (간단하게 alert해도 될듯) -> 메인페이지로 redirect
+
+	}
+
+	@PostMapping("/modifypw")
+	public String modifypw(UserVO user) throws Exception {
+		System.out.println(user.getUid());// input type=hidden으로 가져옴
+		System.out.println(user.getUpw());
+
+		service.modifypw(user);
+
+		return "redirect:/user/login";
+
+	}
+
+	@GetMapping("/logintest")
+	public void logintest() {
+
+	}
+
+	@GetMapping("/jusoPopup")
+	public void jusoPopup() {
+
+	}
+
+	@PostMapping("/jusoPopup")
+	public void jusoPopupPost() {
+
+	}
+
 }
+
+

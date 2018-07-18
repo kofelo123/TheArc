@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	@Resource(name = "ipAddress") // ip 가변적이라서 주입(local-server).
 	private String ipAddress;
 	
+	//mail에 필요한 pw - 암호화처리함
+	@Resource(name = "mailPw")
+	private String mailPw;
+	
+	
 	@Autowired
 	private EncryptUtil encrypt;
 
@@ -79,7 +84,7 @@ public class UserServiceImpl implements UserService {
 		 email.setDataSourceResolver(new DataSourceUrlResolver(url));
 		email.setHostName("smtp.naver.com");
 		email.setSmtpPort(587);
-		email.setAuthenticator(new DefaultAuthenticator("hlw123", "ekflrktmaajfl"));
+		email.setAuthenticator(new DefaultAuthenticator("hlw123", mailPw));
 		email.setStartTLSRequired(true);
 		
 		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.

@@ -11,16 +11,16 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class UserVO {
 	
-	@NotBlank(message ="아이디를 입력해야합니다.")
-	@Size(min=5 , max=20 , message="5~20 글자로 입력")
+	@NotBlank
+	@Size(min=5 , max=20)
 	private String uid;
 	
-	@NotBlank(message ="비밀번호를 입력해야합니다.")
-	@Size(min=5, max=50, message="5~50 글자로 입력")
+	@NotBlank
+	@Size(min=5, max=50)
 	private String upw;
 			 
-	@NotBlank(message = "이름을 입력해야합니다.")
-	@Size(min=2, max=20, message="5~20 글자로 입력")
+	@NotBlank
+	@Size(min=2, max=20)
 	private String uname;
 	private String email;// 아이디@메일주소 하는과정에서 email과 email2로 나뉘지만 email의 getter에 email+email2가 되어 병합되어 저장된다.
 	private String email2;
