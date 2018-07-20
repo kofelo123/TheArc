@@ -89,7 +89,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    	if(vo.getAuthority().equals("user")){
 	    		response.sendRedirect("/thearc/error403");
 	    	}
-	    		
 	    }
 	    
 	    pathName=url[url.length-2]+"/"+url[url.length-1];
