@@ -1,5 +1,7 @@
 package com.thearc.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,19 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.thearc.domain.UserVO;
 
 
+/**
+  *
+  * @author Jeongwon Heo
+  * since 2017. 
+  * <pre>
+  * << 개정이력(Modification Information) >>
+  *
+  *      수정일                   수정자                수정내용
+  *  -----------    --------    ---------------------------
+  *  2018. 7. 19.     허정원               로그인실패 - 인터셉터처리
+  *
+  * </pre>
+  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
   private static final String LOGIN = "login";
@@ -31,15 +46,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     ModelMap modelMap = modelAndView.getModelMap();  
     Object userVO = modelMap.get("userVO");
-  
 	   
     if (userVO != null) {
     	
       logger.info("new login success");
-      System.out.println(userVO);
+      
       session.setAttribute(LOGIN, userVO);
      
-           
       if (request.getParameter("useCookie") != null) {
 
         logger.info("remember me................");
@@ -58,6 +71,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
    	   response.sendRedirect("/thearc/ban");
       }else//원래 아래 코드만 있었는데 sendredirect 두번 처리하는 에러떄문에 여기서 분기문을 둠.
       response.sendRedirect(dest != null ? (String)dest : "/thearc/sboard/main"); //로그인성공시 이부분 작동
+    
+    //로그인 실패시
+    }else if(userVO == null){
+    	System.out.println("login fail - user is not exist");
+    	response.setContentType("text/html; charset=UTF-8");
+    	PrintWriter out = response.getWriter();
+    	out.print("<script>alert('해당 아이디의 비밀번호가 일치하지 않습니다.');location.href='/thearc/user/login';</script>");
+    	out.flush();
+//    	response.sendRedirect("/thearc/user/login");
     }
   }
 

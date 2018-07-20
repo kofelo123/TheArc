@@ -1,5 +1,10 @@
 package com.thearc.controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.thearc.domain.BoardVO;
 import com.thearc.domain.PageMaker;
@@ -38,10 +42,24 @@ public class AdminController {
 	}
 	
 	@PostMapping("/admLogPost")
-	public void admLogPost(UserVO user,Model model) throws Exception{
+	public String admLogPost(UserVO user,HttpServletResponse response,HttpSession session) throws Exception{
+		
 		logger.info("Admin Login Post..");
 		UserVO vo=service.adminlogin(user);
-		model.addAttribute("vo", vo);
+		
+		if(vo != null && vo.getUid().equals("admin")) {
+			
+			session.setAttribute("adminlogin", user);
+			
+			return "redirect:/admin/userlist";
+			
+		}else if(vo == null || !vo.getUid().equals("admin")){
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("<script>alert('관리자 아이디혹은 비밀번호가 일치하지 않습니다.');location.href='/thearc/user/login';</script>");
+		out.flush();
+		}
+		return null;
 	}
 	
 	@GetMapping("/chartpage")

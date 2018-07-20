@@ -80,6 +80,8 @@
 
 	<beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
 
+	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>
+	
 	<interceptors>
 	
 	  <interceptor>
@@ -96,6 +98,13 @@
 	    <mapping path="/sboard/list/supporter"/>	
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	
+	  
+	  <interceptor>
+	  	<mapping path="/admin/userlist"/>
+	  	<mapping path="/admin/chartpage"/>
+	  	<mapping path="/admin/superadmin/*"/>
+	  	<beans:ref bean="adminAuthInterceptor"/>
+	  </interceptor>
 	</interceptors>
 	
 	<!--  spring mobile - 모바일인식을위한 -->

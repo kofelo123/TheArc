@@ -87,7 +87,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    if(pathName.equals("supporter")){
 	    	UserVO vo = (UserVO) session.getAttribute("login");
 	    	if(vo.getAuthority().equals("user")){
-	    		response.sendRedirect("/error403");
+	    		response.sendRedirect("/thearc/error403");
 	    	}
 	    		
 	    }
@@ -96,7 +96,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    if(pathName.equals("register/notice")){
 	    	UserVO vo = (UserVO) session.getAttribute("login");
 	    	if(vo.getAuthority().equals("user")||vo.getAuthority().equals("supporter")){
-	    		response.sendRedirect("/error403");
+	    		response.sendRedirect("/thearc/error403");
 	    	}
 	    		
 	    }

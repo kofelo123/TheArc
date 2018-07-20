@@ -122,7 +122,6 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 		alert("가입완료 되었습니다.로그인해주세요");
 </script>
 
-
 </head>
 <body class="login-page">
 	<div class="main-container">
@@ -130,7 +129,6 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 			<i></i>
 		</div>
 		<div id="wrapper">
-
 			<div class="login-box">
 				<div class="login-logo">
 					<a href="/thearc/user/login"><b>The Arc</b></a>
@@ -204,4 +202,4 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 					]
 				});
 			});
-		</script>
+	</script>

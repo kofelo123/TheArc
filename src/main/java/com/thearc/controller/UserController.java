@@ -41,7 +41,7 @@ import com.thearc.service.UserService;
   *      수정일                   수정자                수정내용
   *  -----------    --------    ---------------------------
   *  2018. 6. 23.     허정원		 유효성검사(JSR - 303)적용 (회원가입)
-  *
+  *  2018. 7. 20.     허정원		 관리자페이지 인터셉터처리 관련 수정 
   * </pre>
   */
 @Controller
@@ -60,9 +60,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/loginPost")
-	public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	public String loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
 
 		UserVO vo = service.login(dto);
+		System.out.println("loginTest:"+vo);
+		
 		model.addAttribute("userVO", vo);
 
 		if (dto.isUseCookie()) { /// 로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
@@ -70,13 +72,15 @@ public class UserController {
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
 		}
+		
+		//인터셉터의 후처리로 인해 일단 컨트롤러가 반환할 view가 필요해서 그냥 login으로 지정해놓은것(의미는없음) , (후처리라 return null은 안됨)
+		return "/user/login";
 	  }
 
 	@GetMapping("/logout")
-	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws Exception {
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
 
-		logger.info("logout.................................1");
+		logger.info("logout.................................");
 
 		Object obj = session.getAttribute("login");
 
@@ -85,19 +89,16 @@ public class UserController {
 			session.removeAttribute("login");
 			session.invalidate();
 
-			logger.info("logout.................................3");
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 
 			if (loginCookie != null) {
-				logger.info("logout.................................4");
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
 				service.keepLogin(vo.getUid(), session.getId(), new Date());/// 아마 현재시간으로 기한을 맞춰서 없애는것일것이다.
 			}
 		}
-
-		return "user/logout";
+		return "redirect:/sboard/main";
 	}
 
 	// 회원가입 만들것.
@@ -107,8 +108,7 @@ public class UserController {
 	}
 
 	@PostMapping("joinPost")
-	public String joinPost(@ModelAttribute("uvo") @Valid UserVO user, BindingResult result, RedirectAttributes rttr)
-			throws Exception {
+	public String joinPost(@ModelAttribute("uvo") @Valid UserVO user, BindingResult result, RedirectAttributes rttr)throws Exception {
 
 		// 유효성검사
 		if (result.hasErrors()) {
