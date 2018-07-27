@@ -53,7 +53,7 @@ public class BoardController {
 	  }
 	 
 	 @GetMapping("/faq")
-	 public void faq(Model model){
+	 public void faq(Model model){	
 		 
 	 }
 	 
@@ -99,8 +99,9 @@ public class BoardController {
 	  }
 
 	  @PostMapping("/removePage/{category}")
-	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable("category") String category) throws Exception {
-
+	  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable("category")String category) throws Exception {
+		  
+		System.out.println("bno Test:"+bno);
 	    service.remove(bno);
 
 	    rttr.addAttribute("page", cri.getPage());///addFlashAttribute와 달리 URL 파라미터에 붙여주는 방식이다. 그래서 list페이지로 redirect될때 파라미터로 받아낼수있게 cri 넘긴다.
