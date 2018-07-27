@@ -46,7 +46,7 @@ public class ReplyController {
 
   ///특정게시물의 모든댓글  / {bno}는 메소드 파라미터에서 @PathVariable로 활용된다.
   @GetMapping("/all/{bno}")
-  public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
+  public ResponseEntity<List<ReplyVO>> list(@PathVariable Integer bno) {
 
     ResponseEntity<List<ReplyVO>> entity = null;
     try {
@@ -63,7 +63,7 @@ public class ReplyController {
   ///일반적으로 전체 데이터 수정시에 PUT, 일부데이터 수정시에 PATCH를 사용
   @PutMapping("/{rno}")
   @PatchMapping("/{rno}")
-  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {///@RequestBody 는 데이터 전송방식을 JSON 포맷이므로 이를 객체로 처리하기위함
+  public ResponseEntity<String> update(@PathVariable Integer rno, @RequestBody ReplyVO vo) {///@RequestBody 는 데이터 전송방식을 JSON 포맷이므로 이를 객체로 처리하기위함
 
     ResponseEntity<String> entity = null;
     try {
@@ -79,7 +79,7 @@ public class ReplyController {
   }
 
   @DeleteMapping("/{rno}")
-  public ResponseEntity<String> remove(@PathVariable("rno") Integer rno) {
+  public ResponseEntity<String> remove(@PathVariable Integer rno) {
 
     ResponseEntity<String> entity = null;
     try {
@@ -95,8 +95,8 @@ public class ReplyController {
   ///페이징 처리를 위해  게시물번호/페이지번호
   @GetMapping("/{bno}/{page}")
   public ResponseEntity<Map<String, Object>> listPage(
-      @PathVariable("bno") Integer bno,
-      @PathVariable("page") Integer page) {
+      @PathVariable Integer bno,
+      @PathVariable Integer page) {
 
     ResponseEntity<Map<String, Object>> entity = null;
     

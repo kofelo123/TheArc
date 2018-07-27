@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
@@ -55,13 +54,18 @@ public class UserController {
 	
 	
 	@GetMapping("/login")
-	public void loginGET(@ModelAttribute("dto") LoginDTO dto){
-		
+	public void loginGET(Model model){
+		model.addAttribute("dto", new LoginDTO());
 	}
 	
 	@PostMapping("/loginPost")
-	public String loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	public String loginPOST(@ModelAttribute ("dto")@Valid LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {
 
+		if(result.hasErrors()) {
+			System.out.println("유효성검사 에러");
+			return "/user/login";
+		}
+						
 		UserVO vo = service.login(dto);
 		System.out.println("loginTest:"+vo);
 		

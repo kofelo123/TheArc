@@ -81,7 +81,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-
 	<sql id="search">
 		<if test="cri.searchType != null">
 			<if test="cri.searchType == 't'.toString()">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,16 +138,20 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 				<div class="login-box-body">
 					<p class="login-box-msg"></p>
 
-					<form action="/thearc/user/loginPost" method="post">
+					<form:form action="/thearc/user/loginPost" method="post" modelAttribute="dto">
 						<div class="form-group has-feedback">
-							<input type="text" name="uid" class="form-control"
-								placeholder="아이디입력" /> <span
-								class="glyphicon glyphicon-envelope form-control-feedback"></span>
+							<!-- <input type="text" id="uid" name="uid" class="form-control"	placeholder="아이디입력" /> --> 
+							<form:input path="uid" name="uid" id="uid" class="form-control" placeholder="아이디입력" />
+							<form:errors path="uid" class="error" />
+							<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+							<span id="successFail"></span>
 						</div>
 						<div class="form-group has-feedback">
-							<input type="password" name="upw" class="form-control"
-								placeholder="패스워드입력" /> <span
-								class="glyphicon glyphicon-lock form-control-feedback"></span>
+							<!-- <input type="password" id="upw" name="upw" class="form-control"	placeholder="패스워드입력" /> -->
+							<form:input path="upw" type="password" id="upw" name="upw" class="form-control" placeholder="패스워드입력" />  
+							<form:errors path="upw" class="error" />
+							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+							<span id="successFail"></span>
 						</div>
 						<div class="row">
 							<div class="col-xs-8">
@@ -160,7 +165,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 								<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
 							</div>
 						</div>
-					</form>
+					</form:form>
 					<a href="/thearc/user/idfind">아이디-비밀번호 찾기</a><br> 
 					<a href="/thearc/user/join" class="text-center">회원가입</a>
 				</div>
@@ -201,5 +206,42 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 						}
 					]
 				});
+			});
+			
+			$(function(){
+				
+				$("#uid").on('blur',function(){
+					var uid=$(this).val();
+					var id=$(this).attr("id");
+					
+					$.ajax({
+						url:'/thearc/user/idcheck2',
+						type:'post',
+						data:{uid:uid},
+						dataType:'text',
+						success:function(result){
+							console.log("result: "+result);
+							// 중복되거나 빈값을 넣었을떄
+							if(result=="Empty"){
+								successFail(id,"아이디를 입력하세요","red");
+							}else if(result=="Success"){
+								successFail(id,"해당 아이디는 존재하지 않습니다","red");
+							}else if(result="Duplicate"){
+								successFail(id,"존재하는 아이디입니다","blue");
+							}
+						}
+					});
+				});
+				
+				
+				/** 유효성검사 -html의 각 input 입렵값뒤에 span이 있는데 , 파라미터로 넘겨진 값으로 span을 컨트롤 
+				 *  id:해당 input id, message:유효성검사후 띄울메시지, color: true일때 blue, false 일때 red
+				*/
+			 	function successFail(id,message,color){
+			 		
+					$("#"+id).next().next().html(message).css("color",color);
+					
+				} 
+				
 			});
 	</script>

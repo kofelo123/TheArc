@@ -1,8 +1,15 @@
 package com.thearc.domain;
 
+import javax.validation.constraints.Size;
+
 public class LoginDTO {
+	
+	@Size(min=1, max=20)
 	private String uid;
+	
+	@Size(min=1, max=50)
 	private String upw;
+	
 	private boolean useCookie;
 	
 	private String authority;
@@ -13,7 +20,6 @@ public class LoginDTO {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-
 	
 	public String getUid() {
 		return uid;

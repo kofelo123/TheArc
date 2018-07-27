@@ -3,10 +3,16 @@ package com.thearc.domain;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class BoardVO {
 	
 	private Integer bno;
+	
+	@Size(min=1, max=35)
 	private String title;
+	
+	@Size(min=1)
 	private String content;
 	private String writer;
 	private Date regdate;
