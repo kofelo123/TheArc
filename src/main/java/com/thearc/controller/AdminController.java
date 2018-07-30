@@ -87,7 +87,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/superadmin/{category}")
-	public String superAdmin(@ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable("category")String category)throws Exception{
+	public String superAdmin(@ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category)throws Exception{
 		model.addAttribute("list", boardservice.listSearchCriteria(cri,category));
 		 PageMaker pageMaker = new PageMaker();
 		    pageMaker.setCri(cri);

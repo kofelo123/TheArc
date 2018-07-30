@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,18 +138,14 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 				<div class="login-box-body">
 					<p class="login-box-msg"></p>
 
-					<form:form action="/thearc/user/loginPost" method="post" modelAttribute="dto">
+					<form action="/thearc/user/loginPost" method="post">
 						<div class="form-group has-feedback">
-							<!-- <input type="text" id="uid" name="uid" class="form-control"	placeholder="아이디입력" /> --> 
-							<form:input path="uid" name="uid" id="uid" class="form-control" placeholder="아이디입력" />
-							<form:errors path="uid" class="error" />
+							<input type="text" id="uid" name="uid" class="form-control"	placeholder="아이디입력" /> 
 							<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 							<span id="successFail"></span>
 						</div>
 						<div class="form-group has-feedback">
-							<!-- <input type="password" id="upw" name="upw" class="form-control"	placeholder="패스워드입력" /> -->
-							<form:input path="upw" type="password" id="upw" name="upw" class="form-control" placeholder="패스워드입력" />  
-							<form:errors path="upw" class="error" />
+							<input type="password" id="upw" name="upw" class="form-control"	placeholder="패스워드입력" />
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 							<span id="successFail"></span>
 						</div>
@@ -165,7 +161,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 								<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
 							</div>
 						</div>
-					</form:form>
+					</form>
 					<a href="/thearc/user/idfind">아이디-비밀번호 찾기</a><br> 
 					<a href="/thearc/user/join" class="text-center">회원가입</a>
 				</div>

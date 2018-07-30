@@ -1,8 +1,5 @@
 package com.thearc.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +12,6 @@ import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -34,6 +29,11 @@ public class HomeController {
 		}
 		return "home";
 	}
+	
+	@GetMapping("/error400")
+	public String error400(){
+		return "error/error400";
+	}
 
 	@GetMapping("/error403")
 	public String error403() {
@@ -46,6 +46,12 @@ public class HomeController {
 		
 		return "error/error404";
 	}
+	
+	@GetMapping("/error405")
+	public String error405() {
+		return "error/error405";
+	}
+	
 	@GetMapping("/error500")
 	public String error500() {
 		

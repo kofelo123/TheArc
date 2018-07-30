@@ -67,7 +67,6 @@
         <input type="password"  id="upwCheck" name="upwCheck" size="25" placeholder="비밀번호 재확인" ><br>
         <span id="successFail" ></span>
         
-        
          
         <form:input path="uname" name="uname" size="25" placeholder="이름"  /><br>
         <form:errors path="uname" class="error" />

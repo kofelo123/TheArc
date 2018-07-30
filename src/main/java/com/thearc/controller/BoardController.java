@@ -3,13 +3,13 @@ package com.thearc.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +59,7 @@ public class BoardController {
 	 
 	  ///9/12 pathVariable을 통한 다중게시판 테스트
 	  @GetMapping("/list/{category}")
-	  public String listPage(@ModelAttribute SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
+	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    logger.info(cri.toString());
 
@@ -83,7 +83,7 @@ public class BoardController {
 //	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 
 	  @GetMapping("/readPage/{category}")
-	  public String read(@RequestParam int bno, @ModelAttribute SearchCriteria cri, Model model,@RequestParam String uid,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
+	  public String read(@RequestParam int bno, @ModelAttribute ("cri") SearchCriteria cri, Model model,@RequestParam String uid,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 	      throws Exception {
 
 		model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
@@ -99,7 +99,7 @@ public class BoardController {
 	  }
 
 	  @PostMapping("/removePage/{category}")
-	  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable("category")String category) throws Exception {
+	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
 		  
 		System.out.println("bno Test:"+bno);
 	    service.remove(bno);
@@ -116,7 +116,7 @@ public class BoardController {
 
 	  ///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
 	  @GetMapping("/modifyPage/{category}")
-	  public String modifyPagingGET(int bno, @ModelAttribute SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
+	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute(service.read(bno)); ///BoardVO return = category 포함.
 	    
@@ -143,16 +143,21 @@ public class BoardController {
 
 //	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
 	  @GetMapping("/register/{category}")
-	  public String registGET(@PathVariable String category,Model model) throws Exception {
-		 
+	  public String registGET(@PathVariable String category, Model model) throws Exception {
 	    logger.info("regist get ...........");
 	    
+	    model.addAttribute("bvo",new BoardVO());
 	    
 	    return "/sboard/register";
 	  }
 
 	  @PostMapping("/register/{category}")
-	  public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
+	  public String registPOST(@ModelAttribute("bvo") BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
+		  
+		if(result.hasErrors()) {
+			System.out.println("유효성검사 에러");
+			return "/sboard/register";	
+		}
 		  
 	    logger.info("regist post ...........");
 	    logger.info(board.toString());

@@ -54,12 +54,11 @@ public class UserController {
 	
 	
 	@GetMapping("/login")
-	public void loginGET(Model model){
-		model.addAttribute("dto", new LoginDTO());
+	public void loginGET(){
 	}
 	
 	@PostMapping("/loginPost")
-	public String loginPOST(@ModelAttribute ("dto")@Valid LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {
+	public String loginPOST(LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {
 
 		if(result.hasErrors()) {
 			System.out.println("유효성검사 에러");

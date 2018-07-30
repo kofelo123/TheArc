@@ -464,12 +464,12 @@ $(document).ready(function(){
 
 	
 	$("#removeBtn").on("click", function(){
-		
-		var replyCnt =  $("#replycntSmall").html();
-		
+		/* replyCnt의 값이 [ 1 ] 이런식이라서 substring  */
+		var replyCnt =  $("#replycntSmall").html().substring(3,4);
+	
 		if(replyCnt > 0 ){
 			alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
-			return;
+			return;	
 		}	
 		
 		var arr = [];
@@ -479,7 +479,7 @@ $(document).ready(function(){
 		
 		console.log(arr);
 	 	if(arr.length > 0){
-			$.post("/thearc/deleteAllFiles",{files:arr}, function(){
+			$.post("/thearc/deleteFiles",{files:arr}, function(){
 				
 				formObj.attr("action", "/thearc/sboard/removePage/${category}");
 				formObj.submit();

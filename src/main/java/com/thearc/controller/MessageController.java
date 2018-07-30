@@ -28,7 +28,7 @@ public class MessageController {
   private MessageService service;
   
   @GetMapping("/mail/listmail")
-  public void listmail(@ModelAttribute SearchCriteria cri,@RequestParam String uid, Model model) throws Exception{
+  public void listmail(@ModelAttribute ("cri") SearchCriteria cri, @RequestParam String uid, Model model) throws Exception{
 	
 	 logger.info("uid테스트"+uid);
 	logger.info("listmail..");
@@ -46,7 +46,7 @@ public class MessageController {
 
   
   @GetMapping("/mail/readmail")
-  public void readmail(@RequestParam int mid,@ModelAttribute SearchCriteria cri, Model model) throws Exception {
+  public void readmail(@RequestParam int mid,@ModelAttribute ("cri") SearchCriteria cri, Model model) throws Exception {
 
     logger.info("readmail get ...........");
     

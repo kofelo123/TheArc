@@ -194,8 +194,7 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 
 				<div id="visual-content">
 					<h1>Sketched by TheArc</h1>
-					<form action="sboard/main" method="get" id="nextpage">
-						<input type="hidden" name="a" value="a">
+					<form action="sboard/main" method="get">
 
 						<button id="visual-btn">입장하기</button>
 					</form>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@include file="../include/header2.jsp"%>
 <%@include file="../include/header.jsp"%>
@@ -44,15 +45,21 @@
 						<h3 class="box-title">글 작성</h3>
 				</div>
 				
-<form id='registerForm' role="form" method="post">
+<form:form id='registerForm' role="form" method="post" modelAttribute="bvo">
 	<div class="box-body">
 		<div class="form-group">
 			<label for="exampleInputEmail1">제목</label> 
-			<input type="text" name='title' class="form-control" placeholder="제목을 입력해주세요">
+			
+			<!-- <input type="text" name='title' class="form-control" placeholder="제목을 입력해주세요"> -->
+			<form:input type="text" path="title" name="title" class="form-control" placeholder="제목을 입력해주세요" />
+			<form:errors path="title" class="error"/>
+			
 			<input type="hidden" name='category' value="${category}">
 		</div>
 		
-		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요"></textarea>
+<!-- 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요"></textarea> -->
+		<textarea div id="summernote" path="content" name="content"  placeholder="내용을 입력하세요" ></textarea>
+		<%-- <form:errors path="content" class="error" /> --%>
 	</div>
 		  <script>
 			  $('#summernote').summernote({
@@ -82,7 +89,7 @@
 		</ul>
 		<button type="submit" class="btn btn-primary" onclick="isEmpty()">글 등록</button>
 	</div>
-</form>
+</form:form>
 		</div>
 	</div>
 </section>
