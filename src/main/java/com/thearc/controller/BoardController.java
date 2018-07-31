@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -152,7 +156,7 @@ public class BoardController {
 	  }
 
 	  @PostMapping("/register/{category}")
-	  public String registPOST(@ModelAttribute("bvo") BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
+	  public String registPOST(@ModelAttribute("bvo") @Valid BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
 		  
 		if(result.hasErrors()) {
 			System.out.println("유효성검사 에러");
@@ -194,10 +198,7 @@ public class BoardController {
 	
 	  @GetMapping("/readPage/like")
 	  public String like(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
-		  System.out.println("BoardTest:"+board);
 	    logger.info("like add ...........");
-	    System.out.println("bno 테스트:"+bno);
-	    System.out.println("uid 테스트"+uid);
 	    service.addlike(bno);
 	    service.updatelikey(uid,bno);
 	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
@@ -207,12 +208,27 @@ public class BoardController {
 	  public String dislike(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
 
 	    logger.info("like substraction ...........");
-	    System.out.println("bno 테스트:"+bno);
-	    System.out.println("uid 테스트"+uid);
 	    service.sublike(bno);	
 	    service.updateliken(uid,bno);
 	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
 	    
+	  }
+	  
+	  @ResponseBody
+	  @GetMapping("/readPage/like2")
+	  public ResponseEntity<String> like2(int bno,String uid,String category){
+		  
+		  ResponseEntity<String> entity = null;
+		  
+		  try {
+			  service.addlike(bno);
+			  service.updatelikey(uid, bno);
+			  entity = new ResponseEntity<String>("Success",HttpStatus.OK);
+		  }catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		  
+		  return entity;
 	  }
 	  
 	  @GetMapping("/fbshare")

@@ -82,37 +82,22 @@
 					<c:if test="${not empty login }">
 						<c:choose>
 							<c:when test="${likeVO.likecheck == null }">
-								<div class="iconlike">
+								<div class="iconlike" id="likenull">
 									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'n' }">
-								<div class="iconlike">
-									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+								<div class="iconlike" id="liken">
+									<a href="#"  style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
+<%-- 									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a> --%>
 								</div>
 							</c:when>
 							<c:when test="${likeVO.likecheck == 'y' }">
-								<div class="iconlike">
+								<div class="iconlike" id="likey">
 									<a href="/thearc/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
 								</div>
 							</c:when>
-							<%-- <c:if test="${likeVO.likecheck=='n' }">
-							<div class="iconlike">
-								<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
-							</div>
-						</c:if> --%>
-						
-				<%-- 		<c:if test="${likeVO.likecheck==null }">
-							<div class="iconlike">
-								<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
-							</div>
-						</c:if>
-						 --%>
-					<%-- 	<c:if test="${likeVO.likecheck=='y' }">
-							<div class="iconlike">
-								<a href="/thearc/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
-							</div>
-						</c:if> --%>
+							
 						</c:choose>
 					</c:if>
 					</div>	
@@ -226,12 +211,40 @@
   </div>
 </div>      
 	
-	
 </section>
 <!-- /.content -->
 <%@include file="../include/footer.jsp"%>
 <%@include file="../include/footer2.jsp"%>
 
+<script src="/thearc/resources/bootstrap/js/jquery.session.js"></script>
+<script>
+								$(function(){
+									
+									$("#liken").on('click',function(){
+										var bno = '${boardVO.bno}';
+										/* var sessionUid = $("#newReplyWriter").val();//(세션으로 부터 값이 안가져와 져서..) */
+										var loginUid = '${login.uid}';
+										var category = '${boardVO.category}'; 
+										console.log("testbno:"+bno+" testloginUid:"+loginUid+" testcategory:"+category);
+										$.ajax({
+											url:'/thearc/sboard/readPage/like2',
+											type:'get',
+											data:{bno:bno
+												 ,uid:loginUid
+												 ,category:category},
+											dataType:'text',
+											success:function(result){
+												console.log("result:"+result);
+												$("#liken a").css("color","64a3f3");
+												$("#liken i").addClass("fa fa-thumbs-up");
+												$("#countvote").html(parseInt($("#countvote").html())+1);
+											}
+										});
+									});				
+								});
+							
+							</script>
+							
 <script id="templateAttach" type="text/x-handlebars-template">
 <li data-src='{{fullName}}'>
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>

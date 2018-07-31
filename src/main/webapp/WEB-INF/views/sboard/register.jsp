@@ -34,6 +34,8 @@
 .content .row{
 	margin-left:0% !important;	
 }
+
+
 </style>
 
 <!-- Main content -->
@@ -52,13 +54,13 @@
 			
 			<!-- <input type="text" name='title' class="form-control" placeholder="제목을 입력해주세요"> -->
 			<form:input type="text" path="title" name="title" class="form-control" placeholder="제목을 입력해주세요" />
-			<form:errors path="title" class="error"/>
+			<form:errors path="title" class="error" style="color:red;"/>
 			
 			<input type="hidden" name='category' value="${category}">
 		</div>
 		
 <!-- 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요"></textarea> -->
-		<textarea div id="summernote" path="content" name="content"  placeholder="내용을 입력하세요" ></textarea>
+		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요" ></textarea>
 		<%-- <form:errors path="content" class="error" /> --%>
 	</div>
 		  <script>

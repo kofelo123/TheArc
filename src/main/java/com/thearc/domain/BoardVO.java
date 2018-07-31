@@ -12,7 +12,6 @@ public class BoardVO {
 	@Size(min=1, max=35)
 	private String title;
 	
-	@Size(min=1)
 	private String content;
 	private String writer;
 	private Date regdate;

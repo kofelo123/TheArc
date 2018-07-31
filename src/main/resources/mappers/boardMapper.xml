@@ -6,13 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.thearc.mapper.BoardMapper">
 
 	<insert id="create">
-		insert into tbl_board (title, content, writer,category)
-		values(#{title},#{content}, #{writer},#{category})
+		INSERT INTO TBL_BOARD (TITLE, CONTENT, WRITER,CATEGORY)
+		VALUES(#{title},#{content}, #{writer},#{category})
 	</insert>
-	<insert id="create2">
+	
+	<!-- <insert id="create2">
 		insert into tbl_board2 (title, content, writer)
 		values(#{title},#{content}, #{writer})
-	</insert>
+	</insert> -->
 
 	<select id="read" resultType="com.thearc.domain.BoardVO">
 		select
@@ -152,10 +153,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="search"></include>
 
 	</select>
-	
-	
-	
-	
 	 
 	<update id="updateReplyCnt">
 	  update tbl_board 
