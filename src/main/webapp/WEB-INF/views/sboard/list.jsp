@@ -7,7 +7,7 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- 썸네일게시판용 -->
-<script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script> 
+<script type="text/javascript" src="/thearc/resources/bootstrap/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <style>
@@ -16,17 +16,17 @@
     src: url(/thearc/resources/bootstrap/fonts/HoonWhitecatR.ttf) format('truetype');
 }
 .content{
-	
+
 	 background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
 }
 @media only screen and (max-width: 768px){
 	.content .row{
-		margin-left:0% !important;	
+		margin-left:0% !important;
 	}
-	
+
 	 .box-body #keywordInput{
 		width:130px;
-	} 
+	}
 
 }
 </style>
@@ -47,7 +47,7 @@
 				<div class='box-body'>
 
 					<select name="searchType"  style="background-color:#e8faf1">
-							
+
 						<option value="t"
 							<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
 							제목</option>
@@ -65,7 +65,7 @@
 							내용+작성자</option>
 						<option value="tcw"
 							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
-							제목+내용+작성자</option> 
+							제목+내용+작성자</option>
 					</select> <input type="text" name='keyword' id="keywordInput"  style="background-color:#e8faf1;"
 						value='${cri.keyword }'>
 					<button id='searchBtn'  style="background-color:#e8faf1">검색</button>
@@ -81,8 +81,8 @@
 				</div>
 				<!--  게시판 리스트 본문 -->
 				<!--  썸네일게시판 -->
-				<c:choose>   
-					<c:when test="${category eq 'thisweek' || category eq 'terarium'|| category eq 'leisure'|| category eq 'seastory'|| category eq 'academy'}"> 
+				<c:choose>
+					<c:when test="${category eq 'thisweek' || category eq 'terarium'|| category eq 'leisure'|| category eq 'seastory'|| category eq 'academy'}">
 						<div class="row">
 					<div class="col-xs-12  col-sm-12 col-md-12 col-lg-12">
 					<tr>
@@ -116,14 +116,14 @@
 									<%-- "${fn:substring(thumNail[status.index],0,12)}" --%>
 								</div>
 							</article>
-							
+
 						</div>
 					</tr>
 					</c:forEach>
 					</div>
 				</div><!-- /row끝, 썸네일게시판  -->
 				</c:when>
-					 
+
 					 <c:when test="${category eq 'photo' }"> <!-- 포토존게시판 -->
 					 <div class="row">
             <!--begin isotope -->
@@ -143,7 +143,7 @@
                                     <div class="skin-overlay"></div>
                                    <c:set value="${fn:substring(thumNail[status.index],0,12)}" var="front"/><!-- 썸네일 ->원본이미지 띄우기   -->
                                    <c:set value="${fn:substring(thumNail[status.index],14, fn:length(thumNail[status.index]))}" var="end"/>
-									
+
                                     <a href="/thearc/thearc/displayFile?fileName=${front }${end}" class="hover-zoom mfp-image" ><i class="fa fa-search"></i></a>
                                     <a href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' class="hover-link">
                                         <i class="fa fa-link"></i>
@@ -158,17 +158,17 @@
                         <!--end List Item -->
                     <!--end portfolio_list -->
                     </c:forEach>
-                       </ul>       
+                       </ul>
                 </div>
              </div><!-- 포토존게시판 -->
-				
+
 					</c:when>
-				
+
 				<c:otherwise>
- 								
+
 				<div class="box-body" >
 					<table class="table table-hover table-striped" >
-					
+
 						<c:forEach items="${list}" var="boardVO">
 
 							<tr style="font-family:Typo_DecoVariety; font-size:20px">
@@ -180,7 +180,7 @@
 								<td class="responsive" style="width:7%">
 									<i class="fa fa-comment-o"  title="댓글">&nbsp;&nbsp;&nbsp;&nbsp;${boardVO.replycnt}</i>
 								</td>
-								<td class="responsive" style="width:7%">								
+								<td class="responsive" style="width:7%">
 									<i class="fa fa-thumbs-o-up" title="좋아요" >&nbsp;&nbsp;&nbsp;&nbsp;${boardVO.countlike }</i>
 								</td>
 								<td class="responsive" style="width:25%">
@@ -223,7 +223,7 @@
 							</c:if>
 
 						</ul>
-						
+
 					</div>
 
 				</div>
@@ -250,7 +250,7 @@
 
 <script id="templateAttach" type="text/x-handlebars-template">
 	<img src="{{imgsrc}}" alt="Attachment"></span>
-</script>  
+</script>
 
 <script>
 	$(document).ready(
@@ -270,6 +270,6 @@
 				$('#newBtn').on("click", function(evt) {
 					self.location = "/thearc/sboard/register/${category}";
 				});
-				
+
 			});
 </script>

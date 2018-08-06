@@ -29,6 +29,11 @@ public class HomeController {
 		}
 		return "home";
 	}
+
+	@GetMapping("/test")
+	public String test(){
+		return "test";
+	}
 	
 	@GetMapping("/error400")
 	public String error400(){

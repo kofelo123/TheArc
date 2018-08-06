@@ -1,11 +1,10 @@
 package com.thearc.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.validation.Valid;
-
+import com.thearc.domain.BoardVO;
+import com.thearc.domain.LikeVO;
+import com.thearc.domain.PageMaker;
+import com.thearc.domain.SearchCriteria;
+import com.thearc.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.thearc.domain.BoardVO;
-import com.thearc.domain.LikeVO;
-import com.thearc.domain.PageMaker;
-import com.thearc.domain.SearchCriteria;
-import com.thearc.service.BoardService;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -230,6 +221,21 @@ public class BoardController {
 		  
 		  return entity;
 	  }
+	  @ResponseBody
+      @GetMapping("/readPage/dislike2")
+      public ResponseEntity<String> dislike2(int bno, String uid, String category){
+
+	     ResponseEntity<String> entity = null;
+
+        try{
+            service.sublike(bno);
+            service.updateliken(uid,bno);
+            entity = new ResponseEntity<String>("Success",HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+	     return entity;
+      }
 	  
 	  @GetMapping("/fbshare")
 	  public void fbshare(@RequestParam int bno)throws Exception{
