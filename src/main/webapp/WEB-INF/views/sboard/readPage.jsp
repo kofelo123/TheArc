@@ -231,7 +231,15 @@
                 });
             };
 
-        $(".iconlike").on('click',".fa-thumbs-o-up",function(){
+            $(document).on('click','#notLogin',function(){
+                var check = confirm("로그인이 필요한 기능입니다. 로그인 하시겠습니까?");
+
+                if(check){
+                    $(location).attr("href","/thearc/user/login");
+                }
+            });
+
+        $(document).on('click',"#ntoy, #default",function(){
 
             $.ajax({
               url:'/thearc/sboard/readPage/addLike'
@@ -248,7 +256,7 @@
             });
         });
 
-        $(".iconlike").on('click','.fa-thumbs-up', function(){
+        $(document).on('click','#yton', function(){
 
             $.ajax({
                 url:'/thearc/sboard/readPage/subLike'
@@ -266,13 +274,7 @@
         });
 
 
-        $(document).on('click','#notLogin',function(){
-            var check = confirm("로그인이 필요한 기능입니다. 로그인 하시겠습니까?");
 
-            if(check){
-                $(location).attr("href","/thearc/user/login");
-            }
-        });
 
         $(document).on('click','#liken',function(){
             var bno = '${boardVO.bno}';
