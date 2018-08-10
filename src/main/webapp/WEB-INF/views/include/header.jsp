@@ -36,9 +36,9 @@
                     </div>
                 </div>
 
-                ${pageContext.request.requestURI}
+
                        <%-- 개발시 로그인 편하게 하기위해--%>
-                <c:if test="${empty login}">
+                <c:if test="${empty login && pageContext.request.getServerName() eq 'localhost'}" >
                 <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
                  <script></script>
                 <button id="devlogin" style="width:40px;height:30px; margin-top:10px;"></button>
@@ -47,15 +47,13 @@
                             $("#devlogin").click(function(){
 
                                 var form = $('<form></form>');
-                                form.attr("action","/thearc/user/loginPost");
-                                form.attr("method","post");
+
+                                form.attr({action:"/thearc/user/loginPost" , method:"post"});
                                 form.appendTo('body');
 
-                                $("<input></input>").attr({type:"hidden",name:"uid",value:"kofelo12"}).appendTo(form);
-                                $("<input></input>").attr({type:"hidden",name:"upw",value:"gj0123"}).appendTo(form);
+                                $("<input></input>").attr({type:"hidden",name:"uid",value:"admin"}).appendTo(form);
+                                $("<input></input>").attr({type:"hidden",name:"upw",value:"admin"}).appendTo(form);
                                 form.submit();
-
-
 
                             });
                         })

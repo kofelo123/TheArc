@@ -17,24 +17,22 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 @Controller
 @RequestMapping("/sboard/*")
 public class BoardController {
-	
+
 	 @Autowired
 	 private BoardService service;
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	
+
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
 	  public void main(Locale locale, Model model, SearchCriteria cri) throws Exception {
 	   	  model.addAttribute("weather",service.getWeather());
-	   	 
+
 	   	 cri.setPerPageNum(5);
 	   	 List<List<BoardVO>> minBoard = new ArrayList<List<BoardVO>>();//미니게시판 - 4개 리스트를 담는 2중forEach사용
 	   	 minBoard.add(service.listSearchCriteria(cri,"free"));
@@ -44,14 +42,14 @@ public class BoardController {
 	   	 model.addAttribute("minBoard", minBoard);
 	   	model.addAttribute("photo", service.listSearchCriteria(cri,"photo"));
 	   	model.addAttribute("thumNail",service.listThumnail(cri,"photo"));
-	   	 	
+	   		
 	  }
-	 
+
 	 @GetMapping("/faq")
-	 public void faq(Model model){	
-		 
+	 public void faq(Model model){
+
 	 }
-	 
+
 	  ///9/12 pathVariable을 통한 다중게시판 테스트
 	  @GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
@@ -59,20 +57,20 @@ public class BoardController {
 	    logger.info(cri.toString());
 
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
-	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음 
-	    
+	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음
+
 	    //썸네일게시판용	+포토존
 	    if(category.equals("thisweek")||category.equals("photo")||category.equals("terarium")||category.equals("leisure")||category.equals("seastory")||category.equals("academy"))
 	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
 	    //
-	    
+
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
 
 	    pageMaker.setTotalCount(service.listSearchCount(cri,category));
 	    							//listSearchCount는 게시글갯수 카운트(cri(검색조건에맞는)) 그래서 totalcount를 setter해주는것
 	    model.addAttribute("pageMaker", pageMaker);
-	    
+
 	    return "/sboard/list";
 	  }
 //	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
@@ -80,22 +78,22 @@ public class BoardController {
 	  @GetMapping("/readPage/{category}")
 	  public String read(@RequestParam int bno, @ModelAttribute ("cri") SearchCriteria cri, Model model,@RequestParam String uid,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 	      throws Exception {
-
+			  System.out.println("BoardController.read3");
 		model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
-	    
-	    LikeVO likevo = service.checklike(uid,bno); 
-	  
+
+/*	    LikeVO likevo = service.checklike(uid,bno);
+
 	    if(uid.length()>0){///로그인일때/(기존 로직과 다른데, tbl_check의 칼럼을 fk로 바꾸면서 비로그인시에 문제가 생기기 때문에 넣어준것.(uid 없으면 fk참조무결성?에 의해 select로 안가져오서 model에 null이 찍힘)
-	    	if(likevo==null) // null일경우 넣기위한 로직이다( 왜냐하면 null 인상태로 model.addAttribute가 에러가 났었다. 모델에 객체내용없이 뷰에 전달이 안된다. 
+	    	if(likevo==null) // null일경우 넣기위한 로직이다( 왜냐하면 null 인상태로 model.addAttribute가 에러가 났었다. 모델에 객체내용없이 뷰에 전달이 안된다.
 	    	service.insertlikedefault(uid, bno); // uid,bno만 넣어주기 떄문에 'n'상태가 된다.      ///근데 굳이 이렇게 안해도 더 간결하게 false를 default로두고  하는 방법도 있지않을까..
 	    model.addAttribute(service.checklike(uid,bno));//추천여부체크 ///위에코드랑좀 겹치는데..
-	    }
+	    }*/
 	    return "/sboard/readPage";
 	  }
 
 	  @PostMapping("/removePage/{category}")
 	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
-		  
+
 		System.out.println("bno Test:"+bno);
 	    service.remove(bno);
 
@@ -114,7 +112,7 @@ public class BoardController {
 	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute(service.read(bno)); ///BoardVO return = category 포함.
-	    
+
 	    return "/sboard/modifyPage";
 	  }
 
@@ -140,20 +138,20 @@ public class BoardController {
 	  @GetMapping("/register/{category}")
 	  public String registGET(@PathVariable String category, Model model) throws Exception {
 	    logger.info("regist get ...........");
-	    
+
 	    model.addAttribute("bvo",new BoardVO());
-	    
+
 	    return "/sboard/register";
 	  }
 
 	  @PostMapping("/register/{category}")
 	  public String registPOST(@ModelAttribute("bvo") @Valid BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
-		  
+
 		if(result.hasErrors()) {
 			System.out.println("유효성검사 에러");
-			return "/sboard/register";	
+			return "/sboard/register";
 		}
-		  
+
 	    logger.info("regist post ...........");
 	    logger.info(board.toString());
 
@@ -163,48 +161,50 @@ public class BoardController {
 
 	    return "redirect:/sboard/list/"+board.getCategory();
 	  }
-	  
-	  	
+
+
 	  @RequestMapping("/getAttach/{bno}")
 	  @ResponseBody
 	  public List<String> getAttach(@PathVariable Integer bno)throws Exception{
-	    
 	    return service.getAttach(bno);
-	  }  
-	  
+	  }
+
 	  @RequestMapping("/getAttachOne/{bno}")//썸네일 게시판용
 	  @ResponseBody
 	  public String getAttachOne(@PathVariable Integer bno)throws Exception{
-		  
+
 		  return service.getAttachOne(bno);
-	  }  
-	  
+	  }
+
 	  @GetMapping("/calendar")
 	  public void calendar(Model model) throws Exception {
 
 	    logger.info("calendar get ...........");
-	    
+
 	    model.addAttribute("sboardNum", "calendar");
 	  }
 	
+
+/*
 	  @GetMapping("/readPage/like")
 	  public String like(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
 	    logger.info("like add ...........");
 	    service.addlike(bno);
 	    service.updatelikey(uid,bno);
 	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
-	    
+
 	  }
 	  @GetMapping("/readPage/dislike")
 	  public String dislike(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
 
 	    logger.info("like substraction ...........");
-	    service.sublike(bno);	
+	    service.sublike(bno);
 	    service.updateliken(uid,bno);
 	    return "redirect:/sboard/readPage/"+board.getCategory()+"?bno="+bno+"&uid="+uid; // 리턴이 되어도 uri 자체가 바뀌진 않는다 그래서 애초에 요청이었던 /sboard/readPage/like?bno=~~~ 이런식으로 된다. -> scm 플레이어에 의한 redirect 충돌에 의한것이었음.
-	    
+
 	  }
-	  
+*/
+	 /*
 	  @ResponseBody
 	  @GetMapping("/readPage/like2")
 	  public ResponseEntity<String> like2(int bno,String uid,String category){
@@ -235,25 +235,95 @@ public class BoardController {
             e.printStackTrace();
         }
 	     return entity;
-      }
-	  
+      }*/
+
+      @ResponseBody
+	  @GetMapping("/readPage/likeCheck")
+	  public ResponseEntity<Map<String,Object>> likeCheck(int bno, String uid)throws Exception{
+
+      	ResponseEntity<Map<String,Object>> entity = null;
+      	BoardVO boardVO = service.read(bno);
+		LikeVO likeVO = service.checklike(uid,bno);
+
+		Map<String,Object> map = new HashMap<>();
+		map.put("countLike",boardVO.getCountlike());
+
+      	try{
+			if(uid.isEmpty()) {
+			    map.put("message","notLogin");
+				entity = new ResponseEntity<>(map, HttpStatus.OK);
+			}else if(likeVO == null){
+				service.insertlikedefault(uid,bno);
+				map.put("message","default");
+				entity = new ResponseEntity<>(map,HttpStatus.OK);
+			}else if(likeVO.getLikecheck().equals("n")){
+				map.put("message","ntoy");
+				entity = new ResponseEntity<>(map,HttpStatus.OK);
+			}else if(likeVO.getLikecheck().equals("y")){
+				map.put("message","yton");
+				entity = new ResponseEntity<>(map,HttpStatus.OK);
+			}
+		}catch (Exception e){
+      		e.printStackTrace();
+		}
+		return entity;
+	  }
+
+	@ResponseBody
+	@GetMapping("/readPage/addLike")
+	public ResponseEntity<String> addLike(@RequestParam int bno,@RequestParam String uid) throws Exception {
+		logger.info("like add ...........");
+
+		ResponseEntity<String> entity = null;
+
+		try{
+            service.addlike(bno);
+            service.updatelikey(uid,bno);
+            entity = new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+		return entity;
+	}
+
+	@ResponseBody
+	@GetMapping("/readPage/subLike")
+	public ResponseEntity<String> subLike(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
+
+		logger.info("like substraction ...........");
+
+		ResponseEntity<String> entity = null;
+
+		try{
+			service.sublike(bno);
+			service.updateliken(uid,bno);
+			entity = new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return entity;
+	}
+
+
 	  @GetMapping("/fbshare")
 	  public void fbshare(@RequestParam int bno)throws Exception{
-		  
+
 	  }
 	  @GetMapping("/location")
 	  public void location()throws Exception{
-		  
+
 	  }
-	  
+
 	  @GetMapping("/thearc")
 	  public void thearc()throws Exception{
-		  
+
 	  }
-	  
+
 	  @GetMapping("/exhibit")
 	  public void exhibit()throws Exception{
-		  
+
 	  }
-	  
+
 }

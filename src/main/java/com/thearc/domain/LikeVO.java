@@ -5,11 +5,8 @@ public class LikeVO {
 	private int bno;
 	private String uid;
 	private String likecheck;
-	
-	
-	public int getBno() {
-		return bno;
-	}
+
+	public int getBno() {return bno;}
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
@@ -25,6 +22,7 @@ public class LikeVO {
 	public void setLikecheck(String likecheck) {
 		this.likecheck = likecheck;
 	}
+
 	@Override
 	public String toString() {
 		return "LikeVO [bno=" + bno + ", uid=" + uid + ", likecheck="

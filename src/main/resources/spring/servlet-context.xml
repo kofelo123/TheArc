@@ -88,14 +88,14 @@
 		<mapping path="/user/loginPost" />
 		<beans:ref bean="loginInterceptor" />
 	  </interceptor>
-	  
+
+		<!--<mapping path="/sboard/readPage/like*"/>	-->
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
 	    <mapping path="/sboard/register/*"/>
 	    <mapping path="/sboard/modifyPage/*"/>
 	    <mapping path="/sboard/removePage/*"/>
 	    <mapping path="/sboard/mail/listmail/*"/>
-	    <mapping path="/sboard/readPage/like*"/>	
-	    <mapping path="/sboard/list/supporter"/>	
+	    <mapping path="/sboard/list/supporter"/>
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	
 	  

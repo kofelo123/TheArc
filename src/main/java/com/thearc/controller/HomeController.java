@@ -1,10 +1,5 @@
 package com.thearc.controller;
 
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mobile.device.Device;
@@ -12,6 +7,10 @@ import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Locale;
 
 @Controller
 public class HomeController {
@@ -30,11 +29,6 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping("/test")
-	public String test(){
-		return "test";
-	}
-	
 	@GetMapping("/error400")
 	public String error400(){
 		return "error/error400";

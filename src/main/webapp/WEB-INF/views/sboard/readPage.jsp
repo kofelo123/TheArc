@@ -75,34 +75,20 @@
                         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-10">
                             <h3>작성자:${boardVO.writer}</h3>
                             <h4 style="margin-top:-15px;"><fmt:formatDate pattern="MM-dd HH:mm" value="${boardVO.regdate}" /></h4>
-
                         </div>
                         <div class="col-sm-1 col-md-1 col-lg-1">
-                            <c:if test="${not empty login }">
-                                <c:choose>
-                                    <c:when test="${likeVO.likecheck == null }">
-                                        <div class="iconlike" id="likenull">
-                                            <a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
-                                        </div>
-                                    </c:when>
-                                    <c:when test="${likeVO.likecheck == 'n' }">
-                                        <div class="iconlike" id="likeTest">
-                                            <a href="#"  style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a>
-                                                <%-- 									<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray"><i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요"><div id="countvote" class="content-count" >${boardVO.countlike }</div></i></a> --%>
-                                        </div>
-                                    </c:when>
-                                    <c:when test="${likeVO.likecheck == 'y' }">
-                                        <div class="iconlike" id="likey">
-                                            <a href="#" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>
-                                            <%--<a href="/thearc/sboard/readPage/dislike?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:#64a3f3"><i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="left" title="좋아요 취소"><div id="countvote" class="content-count">${boardVO.countlike }</div></i></a>--%>
-                                        </div>
-                                    </c:when>
+                            <div class="iconlike">
+                                <%--<a href="/thearc/sboard/readPage/like?bno=${boardVO.bno}&uid=${login.uid}&category=${boardVO.category}" style="color:gray">--%>
+                                    <i class="fa fa-thumbs-o-up" data-toggle="tooltip" data-placement="left" title="좋아요">
+                                        <div id="countvote" class="content-count" ></div>
+                                    </i>
+                                </a>
+                            </div>
 
-                                </c:choose>
-                            </c:if>
                         </div>
 
                     </div>
+
                     <div><hr></div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                         <div class="mailbox-read-message">
@@ -219,8 +205,76 @@
 <script>
 
         $(function(){
+            var bno = $("[name=bno]").val();
+            var uid = '${login.uid}';
 
-        $("#liken").on('click',function(){
+            likeCheck();
+
+             function likeCheck() {
+                $.getJSON('/thearc/sboard/readPage/likeCheck?bno=' + bno + '&uid=' + uid, function (data) {
+
+                    var message = data.message;
+                    console.log("message=" + message);
+
+                    $("#countvote").html(data.countLike);
+                    $(".iconlike").attr("id", message);
+                    if (message == "notLogin") {
+                    } else if (message == "default") {
+                    } else if (message == "ntoy") {
+                        $(".fa-thumbs-up").attr("class", "fa fa-thumbs-o-up");
+                        $(".fa-thumbs-o-up").css("color", "gray");
+                    } else if (message == "yton") {
+                        $(".fa-thumbs-o-up").attr("class", "fa fa-thumbs-up");
+                        $(".fa-thumbs-up").css("color", "#64a3f3");
+                    }
+
+                });
+            };
+
+        $(".iconlike").on('click',".fa-thumbs-o-up",function(){
+
+            $.ajax({
+              url:'/thearc/sboard/readPage/addLike'
+             ,type:'get'
+             ,data:{bno:bno
+                   ,uid:uid}
+             ,dataType:'text'
+             ,success:function(result){
+                  if(result=="SUCCESS"){
+                    console.log("SUCCESS~");
+                    likeCheck();
+                  }
+                }
+            });
+        });
+
+        $(".iconlike").on('click','.fa-thumbs-up', function(){
+
+            $.ajax({
+                url:'/thearc/sboard/readPage/subLike'
+               ,type:'get'
+               ,data:{bno:bno
+                     ,uid:uid}
+               ,dataType:'text'
+               ,success:function(result){
+                    if(result == "SUCCESS") {
+                        console.log("success~~");
+                        likeCheck();
+                    }
+                }
+            });
+        });
+
+
+        $(document).on('click','#notLogin',function(){
+            var check = confirm("로그인이 필요한 기능입니다. 로그인 하시겠습니까?");
+
+            if(check){
+                $(location).attr("href","/thearc/user/login");
+            }
+        });
+
+        $(document).on('click','#liken',function(){
             var bno = '${boardVO.bno}';
             var loginUid = '${login.uid}';
             var category = '${boardVO.category}';
@@ -247,19 +301,11 @@
 
         /*$(document).on('click', '. everdevel', function(){*/
             /*$(document).on('click','#likely', function(){*/
-        $("#likey").on('click',function(){
+        $(document).on('click','#likey',function(){
             var bno = '${boardVO.bno}';
                 var loginUid = '${login.uid}';
                 var category = '${boardVO.category}';
-                var flag="true";
-                if(flag == "true") {
-                    flag = "false";
-                }else{
-                    flag="true";
-                }
 
-                console.log("flag:"+flag);
-                console.log("testbno:"+bno+" testloginUid:"+loginUid+" testcategory:"+category);
                 $.ajax({
                     url:'/thearc/sboard/readPage/dislike2',
                     type:'get',
@@ -283,15 +329,6 @@
         });
 
 
-        $('#likeTest').click(function(){
-            var flag="true";
-            if(flag == "true") {
-                flag = "false";
-            }else{
-                flag="true";
-            }
-            console.log(flag);
-        })
 
 </script>
 

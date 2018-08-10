@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   count(bno) 
 		 from 
 		   tbl_board 
-		 where 
+		 where
 		   bno > 0 
 		 ]]>
 	</select>
@@ -219,7 +219,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  </update>
 	 
 	 <select id="checklike" resultType="LikeVO">
-	 	select * from tbl_check where uid=#{uid} and bno=#{bno}
+	 	SELECT *
+	 	FROM TBL_CHECK
+	 	WHERE UID=#{uid}
+	 	AND BNO=#{bno}
 	 </select>
 	 
 	 <insert id="insertlikedefault">
