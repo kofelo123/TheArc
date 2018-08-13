@@ -36,7 +36,7 @@
 				</div>
 				<div class="box-body" >
 					<table class="table table-hover table-striped" >
-					
+
 						<c:forEach items="${list}" var="boardVO">
 
 							<tr style="font-family:Typo_DecoVariety; font-size:20px">
@@ -59,7 +59,8 @@
 								<%-- <td><span class="badge bg-aqua">${boardVO.viewcnt }</span></td> --%>
 								<td class="mailbox-subject" style="width:10%">${boardVO.writer} </td>
 								<td>
-									<button id="userDrop" name="delete" style="width:80px;" onClick="location.href='/admin/boardDrop?bno=${boardVO.bno}&category=${boardVO.category }'">삭제</button>
+									<%--<button id="userDrop" name="delete" style="width:80px;" onClick="location.href='/admin/boardDrop?bno=${boardVO.bno}&category=${boardVO.category }'">삭제</button>--%>
+									<button id="userDrop" name="delete" style="width:80px;" value="${boardVO.bno}">삭제</button>
 								</td>
 							</tr>
 
@@ -71,7 +72,7 @@
 
 					<div class="box-footer">
 				<!--  버튼 -->
- 				<button id='newBtn' style="background-color:#8ecbff;color:white;outline:0;border:0">새 글 쓰기</button>
+ 				<%--<button id='newBtn' style="background-color:#8ecbff;color:white;outline:0;border:0">새 글 쓰기</button>--%>
 					<div class="text-center">
 						<ul class="pagination">
 
@@ -84,7 +85,7 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="/thearc${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 
@@ -107,6 +108,7 @@
 </section>
 <!-- /.content -->
 
+<script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
 <script>
 	var result = '${msg}';
 
@@ -117,28 +119,15 @@
 </script>
 
 <script>
-	$(document).ready(
-			function() {
+	$(function(){
 
-				$('#searchBtn').on(
-						"click",
-						function(event) {
+				$(document).on("click","#userDrop", function(){
 
-							self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
-
-						});
-
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
+				    $(location).attr("href"	,"/thearc/admin/boardDrop?bno="	+ $(this).val()+"&category="+'${list[0].category}');
 
 				});
 
-			});
+            });
 </script>
 
 <%@include file="../include/adminfooter.jsp"%>
