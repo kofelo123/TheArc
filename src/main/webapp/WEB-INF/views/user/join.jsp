@@ -178,7 +178,7 @@
 		
 		//아이디 중복체크
 		$('#uid').on('blur', function(){
-			var uid= $(this).val();
+			var uid= $(this).val().trim();
 			var id = $(this).attr("id");
 
 			$.ajax({
@@ -205,7 +205,7 @@
 		
         /* 비밀번호값 입력여부 유효성검사 */
 		$("#upw").on('blur',function(){
-			var upw = $(this).val();
+			var upw = $(this).val().trim();
 			console.log(upw);
 			//비어있으면 에러처리
 			if(jQuery.isEmptyObject(upw)){

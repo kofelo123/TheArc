@@ -207,7 +207,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 			$(function(){
 				
 				$("#uid").on('blur',function(){
-					var uid=$(this).val();
+					var uid=$(this).val().trim();
 					var id=$(this).attr("id");
 					
 					$.ajax({
@@ -223,7 +223,7 @@ a.close-user-content, #mailchimp-box form input[type="submit"],
 							}else if(result=="Success"){
 								successFail(id,"해당 아이디는 존재하지 않습니다","red");
 							}else if(result="Duplicate"){
-								successFail(id,"존재하는 아이디입니다","blue");
+								successFail(id,"아이디가 존재합니다.","blue");
 							}
 						}
 					});

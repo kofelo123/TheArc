@@ -55,7 +55,7 @@
 			<!-- <input type="text" name='title' class="form-control" placeholder="제목을 입력해주세요"> -->
 			<form:input type="text" path="title" name="title" class="form-control" placeholder="제목을 입력해주세요" />
 			<form:errors path="title" class="error" style="color:red;"/>
-			
+
 			<input type="hidden" name='category' value="${category}">
 		</div>
 		
@@ -89,7 +89,7 @@
 	<div class="box-footer">
 		<ul class="mailbox-attachments clearfix uploadedList">
 		</ul>
-		<button type="submit" class="btn btn-primary" onclick="isEmpty()">글 등록</button>
+		<button class="btn btn-primary" >글 등록</button>
 	</div>
 </form:form>
 		</div>
@@ -158,9 +158,18 @@ $(".fileDrop").on("drop", function(event){
 
 $("#registerForm").submit(function(event){
 	event.preventDefault();
-	
+
+	//공백으로 글 제목이 들어가서 제목이 없는현상 방지
+	$("[name=title]").val($("[name=title]").val().trim());
+
+	//글 내용 부분이 testarea라서 그런지 잘 안되서 유효성검사를 못하고있는데(실제로 원래 안되는건지 확인필요), client쪽에서 empty인지 한번 걸러준다.
+	if($("[name=content]").val().length == 0){
+	    alert("내용을 입력해주세요");
+	    return;
+	};
+
 	var that = $(this);
-	
+
 	var str ="";
 	$(".uploadedList .delbtn").each(function(index){
 		 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
@@ -193,6 +202,7 @@ $(".uploadedList").on("click",".delbtn",function(event){
 			}
 		});
 	});
+
 
 </script>
 

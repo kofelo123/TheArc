@@ -104,7 +104,9 @@ public class UserController {
 	// 회원가입 만들것.
 	@GetMapping("/join")
 	public void join(Model model) {
+
 		model.addAttribute("uvo", new UserVO());
+
 	}
 
 	@PostMapping("joinPost")
@@ -124,12 +126,12 @@ public class UserController {
 
 		return "redirect:/user/login";
 	}
-
+/*
 	@GetMapping("/idcheck")
 	public void id_check(UserVO user, Model model) throws Exception {/// 여기서 userVO는 아이디값이 setter해서 넘어가는 것일것이다.
 
 		int answer = 0; /// flag같은것인데 boolean false로 디폴트로 해놓고 해도될듯
-		UserVO user2 = service.id_checkPost(user);/* */
+		UserVO user2 = service.id_checkPost(user);*//* *//*
 		if (user2 == null) {
 			System.out.println(user2);
 			answer = 1;
@@ -141,7 +143,7 @@ public class UserController {
 		model.addAttribute("answer", answer);
 		System.out.println(user.getUid());
 
-	}
+	}*/
 
 	/**
 	 * ajax 방식으로 중복확인 및 유효성검사
