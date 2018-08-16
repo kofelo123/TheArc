@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.thearc.mapper.MessageMapper">
+<mapper namespace="messageMapper">
 
 	<update id="updateState">
 		update tbl_message 

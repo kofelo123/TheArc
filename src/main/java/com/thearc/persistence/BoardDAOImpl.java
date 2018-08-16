@@ -1,17 +1,16 @@
 package com.thearc.persistence;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.thearc.domain.BoardVO;
 import com.thearc.domain.Criteria;
 import com.thearc.domain.LikeVO;
 import com.thearc.domain.SearchCriteria;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -19,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO {
   @Autowired
   private SqlSession session;
 
-  private static String namespace = "com.thearc.mapper.BoardMapper";
+  private static String namespace = "boardMapper";
 
   @Override
   public void create(BoardVO vo) throws Exception {

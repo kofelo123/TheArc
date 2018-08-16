@@ -30,11 +30,11 @@
 	 background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
 }
 
-@media only screen and (max-width: 768px){
-.content .row{
-	margin-left:0% !important;	
+@media only screen and (max-width: 768px) {
+	.content .row {
+		margin-left: 0% !important;
+	}
 }
-
 
 </style>
 
@@ -50,11 +50,12 @@
 <form:form id='registerForm' role="form" method="post" modelAttribute="bvo">
 	<div class="box-body">
 		<div class="form-group">
-			<label for="exampleInputEmail1">제목</label> 
+			<label for="title">제목</label>
 			
 			<!-- <input type="text" name='title' class="form-control" placeholder="제목을 입력해주세요"> -->
 			<form:input type="text" path="title" name="title" class="form-control" placeholder="제목을 입력해주세요" />
 			<form:errors path="title" class="error" style="color:red;"/>
+
 
 			<input type="hidden" name='category' value="${category}">
 		</div>
@@ -74,13 +75,13 @@
 		  </script>
 		
 		<div class="form-group">
-			<label for="exampleInputEmail1">작성자 </label> 
+			<label>작성자 </label>
 			<input type="text" name="writer" 
 			  class="form-control"  value="${login.uid }" readonly>
 		</div>
 
 		<div class="form-group">
-			<label for="exampleInputEmail1">업로드할 파일을 아래에 드래그&드롭 해주세요</label>
+			<label>업로드할 파일을 아래에 드래그&드롭 해주세요</label>
 			<div class="fileDrop"></div>
 		</div>
 		</div>

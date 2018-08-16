@@ -1,15 +1,14 @@
 package com.thearc.persistence;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.thearc.domain.Criteria;
+import com.thearc.domain.ReplyVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.thearc.domain.Criteria;
-import com.thearc.domain.ReplyVO;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
@@ -17,7 +16,7 @@ public class ReplyDAOImpl implements ReplyDAO {
   @Autowired
   private SqlSession session;
 
-  private static String namespace = "com.thearc.mapper.ReplyMapper";
+  private static String namespace = "replyMapper";
 
   @Override
   public List<ReplyVO> list(Integer bno) throws Exception {

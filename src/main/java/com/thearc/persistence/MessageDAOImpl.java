@@ -1,15 +1,14 @@
 package com.thearc.persistence;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.thearc.domain.MessageVO;
+import com.thearc.domain.SearchCriteria;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.thearc.domain.MessageVO;
-import com.thearc.domain.SearchCriteria;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class MessageDAOImpl implements MessageDAO {
@@ -17,7 +16,7 @@ public class MessageDAOImpl implements MessageDAO {
 	@Autowired
 	private SqlSession session;
 	
-	private static String namespace ="com.thearc.mapper.MessageMapper";	
+	private static String namespace ="messageMapper";
 	
 	@Override
 	public void updateState(Integer mid) throws Exception {

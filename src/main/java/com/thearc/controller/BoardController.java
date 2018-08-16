@@ -45,6 +45,7 @@ public class BoardController {
 	   		
 	  }
 
+
 	 @GetMapping("/faq")
 	 public void faq(Model model){
 
