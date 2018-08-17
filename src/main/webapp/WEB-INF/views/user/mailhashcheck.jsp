@@ -48,7 +48,7 @@
   <div class="row" style="padding-bottom:10px">
     
     <div class="col-xs-5">
-      <input type="button" class="btn btn-primary btn-block btn-flat" onclick="go_save()" value="비밀번호 변경" style="margin-left:75%">
+      <input type="button" class="btn btn-primary btn-block btn-flat" id="modifyPw" value="비밀번호 변경" style="margin-left:75%">
       
       
     </div>
@@ -57,36 +57,26 @@
 
       </div>
     </div>
-<!-- 
-    jQuery 2.1.4
-    <script src="/thearc/resources/bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    Bootstrap 3.3.2 JS
-    <script src="/thearc/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    iCheck
-    <script src="/thearc/resources/bootstrap/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script> -->
-    <script>
-    function go_save() {
- if (document.formm.upw.value == "") {
-    alert("비밀번호를 입력해 주세요.");
-    document.formm.upw.focus();
-  } else if ((document.formm.upw.value != document.formm.upwcheck.value)) {
-    alert("비밀번호가 일치하지 않습니다.");
-    document.formm.upw.focus();
-  } else{
-	  document.formm.action = "/thearc/user/modifypw";
-	  document.formm.submit();
-  }
-}
-    </script>
+
+<script>
+
+    $("#modifyPw").click(function(){
+        var upw = $("[name=upw]");
+        var upwCheck = $("[name=upwcheck");
+
+        if(upw.val() == ""){
+            alert("비밀번호를 입력해 주세요.");
+            upw.focus();
+        }else if(upw.val() != upwCheck.val()){
+            alert("비밀번호가 일치하지 않습니다.");
+            upw.focus();
+        }else{
+            $("[name=formm]").attr("action","/thearc/user/modifypw");
+            $("[name=formm]").submit();
+        }
+    });
+
+</script>
 				
   </body>
 </html>

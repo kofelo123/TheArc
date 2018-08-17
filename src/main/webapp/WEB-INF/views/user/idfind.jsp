@@ -34,7 +34,7 @@
 
     <input type="text"      name="email" size="12"  placeholder="이메일"  >&nbsp;@ 
     <input type="text" name="email2" size="12" >
-        	<select name="company" onclick="mailcheck()" style="margin-left:10px">
+        	<select name="company" style="margin-left:10px">
    				<option value="직접입력" selected="selected">직접입력</option>
     			<option value="naver.com">네이버</option>
     			<option value="daum.net" >다음</option>
@@ -65,11 +65,17 @@
 
 <script>
 
-	function mailcheck(){
-		if(document.form.company.value!="직접입력"){
-			document.form.email2.value=document.form.company.value;
-		}else if(document.form.company.value=="직접입력"){
-			document.form.email2.value="";
-		}
-	}
+
+	$("[name=company]").on("click", function(){
+
+	    var selected = $(this);
+        var email = $("[name=email2]");
+
+	    if(selected.val() == "직접입력"){
+	        email.val("");
+        }else{
+            email.val(selected.val());
+        }
+    });
+
 </script>
