@@ -3464,9 +3464,11 @@ table.text-center, table.text-center td, table.text-center th {
 	background: #d2d6de
 }
 
+/*
 .login-page {
 	background-image: url(../img/11.jpg)
 }
+*/
 
 .login-box, .register-box {
 	width: 360px;

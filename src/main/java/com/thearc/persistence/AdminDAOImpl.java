@@ -13,7 +13,7 @@ public class AdminDAOImpl implements AdminDAO{
 
 	@Autowired
 	private SqlSession session;
-	
+
 	private static String namespace = "adminMapper";
 
 	@Override

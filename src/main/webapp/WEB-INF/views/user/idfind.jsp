@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%-- 배경 --%>
+<%@ include file="/WEB-INF/views/include/userbackground.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,13 +13,8 @@
 
     <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="/thearc/resources/bootstrap/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" /> -->
 
-    <!-- ///배경관련  -->
-	<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
-	<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
-	<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
+
   </head>
 
   <body class="login-page">
@@ -66,20 +64,7 @@
 </html>
 
 <script>
-		$(function(){
-			$('body').vegas({
-				slides:[
-					{
-						video : {
-							src: ['/thearc/resources/bootstrap/dew.webm'],
-							loop:false,
-							mute:true
-						}
-					}
-				]
-			});
-		});
-		
+
 	function mailcheck(){
 		if(document.form.company.value!="직접입력"){
 			document.form.email2.value=document.form.company.value;

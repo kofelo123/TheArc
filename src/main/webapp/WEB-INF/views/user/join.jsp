@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%-- 배경 --%>
+<%@ include file="/WEB-INF/views/include/userbackground.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,12 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-	
-    	<!-- 배경관련  -->
-		<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
-		<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
-		<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
-    
+
+
+
     <!-- 아래부터 도로명주소   -->
     <link rel="stylesheet" href="/thearc/resources/bootstrap/css/addrlinkSample.css">
 	<script language="javascript">
@@ -110,23 +110,6 @@
   </body>
 </html>
 
-	<script>
-			$(function(){
-				$('body').vegas({
-					slides:[
-
-						{
-							video : {
-								src: ['/thearc/resources/bootstrap/dew.webm'],
-								loop:false,
-								mute:true
-							}
-						}
-					]
-				});
-			});
-		</script>
-		
 	<script>
 	
 	$(function(){

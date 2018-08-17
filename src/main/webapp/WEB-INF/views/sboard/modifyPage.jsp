@@ -22,6 +22,10 @@
   margin: auto;
 }
 
+.content{
+
+	background-image: url(/thearc/resources/bootstrap/images/bg2.jpg);
+}
 </style>
 
 <!-- Main content -->
@@ -45,10 +49,10 @@
 	
 	<div class="box-body">
 		<div class="form-group">
-							<label for="exampleInputEmail1">제목</label> <input type="text"
-								name='title' class="form-control" value="${boardVO.title}">
-						</div>
-						
+			<label>제목</label> <input type="text"
+				name='title' class="form-control" value="${boardVO.title}">
+		</div>
+
 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요" >${boardVO.content}</textarea></div>
 		  <script>
 			  $('#summernote').summernote({
@@ -61,16 +65,16 @@
 		  </script>
 		
 		<div class="form-group">
-			<label for="exampleInputEmail1">작성자</label> 
+			<label>작성자</label>
 			<input type="text" name="writer" 
 			  class="form-control"  value="${login.uid }" readonly>
 		</div>
 
 		<div class="form-group">
-			<label for="exampleInputEmail1">업로드할 파일을 아래에 드래그&드롭 해주세요</label>
+			<label>업로드할 파일을 아래에 드래그&드롭 해주세요</label>
 			<div class="fileDrop"></div>
 		</div>
-	</div>
+
 	<!-- /.box-body -->
 	<div class="box-footer">
 		<div>
@@ -82,6 +86,7 @@
     <button type="submit" class="btn btn-warning">취소</button>
 	</div>
 </form>
+			</div>
 			</div>
 			<!-- /.box -->
 	</div>

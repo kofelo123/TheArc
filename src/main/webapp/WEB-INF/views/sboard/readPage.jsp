@@ -139,7 +139,7 @@
 
                         </div>
                         <input type="hidden" id="newReplyWriter" value="${login.uid }">
-                        <label for="exampleInputEmail1">내용입력</label>
+                        <label>내용입력</label>
                         <input class="form-control"  placeholder="내용을 입력하세요" id="newReplyText">
                     </div>
 

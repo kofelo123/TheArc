@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%-- 배경 --%>
+<%@ include file="/WEB-INF/views/include/userbackground.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,11 +14,6 @@
     <link href="/thearc/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/thearc/resources/bootstrap/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- ///배경관련  -->
-	<link rel="stylesheet" href="/thearc/resources/bootstrap/css/vegas.min.css">
-	<script src="/thearc/resources/bootstrap/js/jquery-2.1.3.min.js"></script>
-	<script src="/thearc/resources/bootstrap/js/vegas.min.js"></script>
-		
   </head>
   <body class="login-page">
     <div class="login-box">
@@ -42,19 +40,3 @@
 
   </body>
 </html>
-
-<script>
-	$(function(){
-		$('body').vegas({
-			slides:[
-				{
-					video : {
-						src: ['/thearc/resources/bootstrap/dew.webm'],
-						loop:false,
-						mute:true
-					}
-				}
-			]
-		});
-	});
-</script>
