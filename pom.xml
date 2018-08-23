@@ -102,12 +102,7 @@
 		</dependency>
 		
 				
-		<!-- AspectJ -->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj-version}</version>
-		</dependency>	
+
 		
 		<!-- Logging -->
 		<dependency>
@@ -193,21 +188,22 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- AspectJ -->
 		<dependency>
-			<groupId>aspectj</groupId>
+			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.5.4</version>
+			<version>${org.aspectj-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 		<dependency>
-			<groupId>aspectj</groupId>
+			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.4</version>
+			<version>1.8.8</version>
 		</dependency>
-		
-		 
-  
-<dependency>
+
+
+		<dependency>
     <groupId>javax.websocket</groupId>
     <artifactId>javax.websocket-api</artifactId>
     <version>1.1</version>

@@ -55,8 +55,6 @@ public class BoardController {
 	  @GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
-	    logger.info(cri.toString());
-
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음
 
@@ -120,7 +118,6 @@ public class BoardController {
 	  @PostMapping("/modifyPage/{category}")
 	  public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
-	    logger.info(cri.toString());
 	    service.modify(board);
 
 	    rttr.addAttribute("page", cri.getPage());
@@ -130,7 +127,6 @@ public class BoardController {
 
 	    rttr.addFlashAttribute("msg", "SUCCESS");
 
-	    logger.info(rttr.toString());
 
 	    return "redirect:/sboard/list/"+board.getCategory();
 	  }
@@ -138,7 +134,6 @@ public class BoardController {
 //	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
 	  @GetMapping("/register/{category}")
 	  public String registGET(@PathVariable String category, Model model) throws Exception {
-	    logger.info("regist get ...........");
 
 	    model.addAttribute("bvo",new BoardVO());
 
@@ -153,8 +148,6 @@ public class BoardController {
 			return "/sboard/register";
 		}
 
-	    logger.info("regist post ...........");
-	    logger.info(board.toString());
 
 	    service.regist(board);
 
@@ -180,7 +173,6 @@ public class BoardController {
 	  @GetMapping("/calendar")
 	  public void calendar(Model model) throws Exception {
 
-	    logger.info("calendar get ...........");
 
 	    model.addAttribute("sboardNum", "calendar");
 	  }
@@ -273,7 +265,6 @@ public class BoardController {
 	@ResponseBody
 	@GetMapping("/readPage/addLike")
 	public ResponseEntity<String> addLike(@RequestParam int bno,@RequestParam String uid) throws Exception {
-		logger.info("like add ...........");
 
 		ResponseEntity<String> entity = null;
 
@@ -292,7 +283,6 @@ public class BoardController {
 	@GetMapping("/readPage/subLike")
 	public ResponseEntity<String> subLike(@RequestParam int bno,@RequestParam String uid,BoardVO board) throws Exception {
 
-		logger.info("like substraction ...........");
 
 		ResponseEntity<String> entity = null;
 

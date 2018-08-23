@@ -80,8 +80,6 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
 
-		logger.info("logout.................................");
-
 		Object obj = session.getAttribute("login");
 
 		if (obj != null) {
@@ -117,8 +115,6 @@ public class UserController {
 			System.out.println("유호성검사 에러");
 			return "/user/join";
 		}
-
-		logger.info("joinPost post ...........");
 
 		service.joinPost(user);
 

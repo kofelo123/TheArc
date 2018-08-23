@@ -31,14 +31,13 @@ public class AdminController {
 	
 	@GetMapping("/userlist")
 	public void userlist(Model model) throws Exception{
-		logger.info("userlist get...");
+
 		model.addAttribute("userVO",service.listuser());
 	}
 	
 	@PostMapping("/admLogPost")
 	public String admLogPost(UserVO user,HttpServletResponse response,HttpSession session) throws Exception{
 		
-		logger.info("Admin Login Post..");
 		UserVO vo=service.adminlogin(user);
 		
 		if(vo != null && vo.getUid().equals("admin")) {
@@ -58,7 +57,7 @@ public class AdminController {
 	
 	@GetMapping("/chartpage")
 	public void charts(Model model)throws Exception{
-		logger.info("charts by admin get ..");
+
 		model.addAttribute("chart1",service.dayBoard());
 		model.addAttribute("chart2",service.dayReply());///chart2까지 1번그래프
 		model.addAttribute("chart3",service.cateBoardview());///chart3까지 2번그래프

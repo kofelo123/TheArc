@@ -14,6 +14,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
 	<!--
 		<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		       <property name="locations">
@@ -89,7 +90,15 @@
 	 <context:component-scan base-package="com.thearc.aop"></context:component-scan>
 	<aop:config>
 	</aop:config>
-	
 
+	<!--<bean id="aopLogTest" class="com.thearc.util.AOPTest"></bean>-->
+
+<!--	<aop:config>
+		<aop:pointcut id="allPointcut" expression="execution(* com.thearc.service.*.*(..))"/>
+
+		<aop:aspect ref="aopLogTest" >
+			<aop:before pointcut-ref="allPointcut" method="printLog" />
+		</aop:aspect>
+	</aop:config>-->
 	
 </beans>
