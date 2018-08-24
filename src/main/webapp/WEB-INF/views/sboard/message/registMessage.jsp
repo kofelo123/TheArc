@@ -3,34 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="../../include/analytics.jsp"%>	
+<%@ include file="/WEB-INF/views/include/analytics.jsp"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
  <link rel="stylesheet" href="/thearc/resources/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
-  <!-- fullCalendar 2.2.5-->
-  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.min.css"> -->
-  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/fullcalendar/fullcalendar.print.css" media="print"> -->
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/css/skins/_all-skins.min.css"> -->
-  <!-- iCheck -->
-  <!-- <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/iCheck/flat/blue.css"> -->
-  <link rel="stylesheet" href="../../../../thearc/resources/bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="/thearc/resources/bootstrap/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/thearc/resources/bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 
 <!-- Main content -->
     <section class="content">
       <div class="row">
       
-        <!-- /.col -->
-       
         <div class="col-md-9">
           
           <div class="box box-primary">
@@ -59,7 +46,7 @@
               <div class="pull-right">
                   <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> 보내기</button>
                 </form> 
-                <button  class="btn btn-default" id="goListBtn"><i class="glyphicon glyphicon-arrow-left"></i> 취소</button>
+                <button type="button" class="btn btn-default" id="goListBtn"><i class="glyphicon glyphicon-arrow-left"></i> 취소</button>
             
               </div>
               <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> 리셋</button>
@@ -80,17 +67,7 @@
 <script src="/thearc/resources/bootstrap/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/thearc/resources/bootstrap/js/bootstrap.min.js"></script>
-<!-- Slimscroll -->
-<!-- <script src="/thearc/resources/bootstrap/plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
-<!-- FastClick -->
-<!-- <script src="/thearc/resources/bootstrap/plugins/fastclick/fastclick.js"></script> -->
-<!-- AdminLTE App -->
-<!-- <script src="/thearc/resources/bootstrap/js/app.min.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="/thearc/resources/bootstrap/js/demo.js"></script> -->
-<!-- iCheck -->
-<!-- <script src="/thearc/resources/bootstrap/plugins/iCheck/icheck.min.js"></script> -->
-<!-- Bootstrap WYSIHTML5 -->
+
 <script src="/thearc/resources/bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Page Script -->
 <script>
@@ -99,15 +76,15 @@
     $("#compose-textarea").wysihtml5();
   });
 </script>
+
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 	
 				$('#goListBtn').on("click", function() {
-
-					self.location = history.back(); 
-
+				    console.log("goListBtntest");
+                    $(location).attr("href","listMessage?uid=${login.uid }");
 				});
-
 			});
 </script>
+
+

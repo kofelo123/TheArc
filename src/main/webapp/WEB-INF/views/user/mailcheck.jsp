@@ -48,7 +48,7 @@
   <div class="row" style="padding-bottom:10px">
     
     <div class="col-xs-5">
-      <input type="button" class="btn btn-primary btn-block btn-flat" id="modifyPw" value="비밀번호 변경" style="margin-left:75%">
+        <button type="submit" class="btn btn-primary btn-block btn-flat" id="modifyPw" style="margin-left:75%">비밀번호 변경</button>
       
       
     </div>
@@ -60,7 +60,7 @@
 
 <script>
 
-    $("#modifyPw").click(function(){
+    $("#modifyPw").on("click ",function(){
         var upw = $("[name=upw]");
         var upwCheck = $("[name=upwcheck");
 

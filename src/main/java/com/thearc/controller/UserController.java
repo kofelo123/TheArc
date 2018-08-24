@@ -199,7 +199,7 @@ public class UserController {
 		service.idfindmail(request, mo, user);
 	}
 
-	@GetMapping("/mailhashcheck")
+	@GetMapping("/mailcheck")
 	public void mailhashcheck(UserVO user, Model model) throws Exception {
 
 		UserVO user2 = service.hashbyid(user);

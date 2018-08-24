@@ -52,7 +52,7 @@ public class BoardController {
 	 }
 
 	  ///9/12 pathVariable을 통한 다중게시판 테스트
-	  @GetMapping("/list/{category}")
+	@GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
@@ -72,12 +72,15 @@ public class BoardController {
 
 	    return "/sboard/list";
 	  }
-//	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 
-	  @GetMapping("/readPage/{category}")
-	  public String read(@RequestParam int bno, @ModelAttribute ("cri") SearchCriteria cri, Model model,@RequestParam String uid,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
-	      throws Exception {
-			  System.out.println("BoardController.read3");
+
+	/*public String read(@RequestParam int bno,@RequestParam String uid, @ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지*/
+	@GetMapping("/readPage/{category}")
+	public String read(@RequestParam Map<String,String> map, @ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
+			throws Exception {
+
+		int bno  = Integer.parseInt(map.get("bno"));
+
 		model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
 
 /*	    LikeVO likevo = service.checklike(uid,bno);
@@ -87,13 +90,14 @@ public class BoardController {
 	    	service.insertlikedefault(uid, bno); // uid,bno만 넣어주기 떄문에 'n'상태가 된다.      ///근데 굳이 이렇게 안해도 더 간결하게 false를 default로두고  하는 방법도 있지않을까..
 	    model.addAttribute(service.checklike(uid,bno));//추천여부체크 ///위에코드랑좀 겹치는데..
 	    }*/
-	    return "/sboard/readPage";
-	  }
+		return "/sboard/readPage";
+	}
+//	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 
 	  @PostMapping("/removePage/{category}")
 	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
 
-		System.out.println("bno Test:"+bno);
+		logger.info("bno Test:"+bno);
 	    service.remove(bno);
 
 	    rttr.addAttribute("page", cri.getPage());///addFlashAttribute와 달리 URL 파라미터에 붙여주는 방식이다. 그래서 list페이지로 redirect될때 파라미터로 받아낼수있게 cri 넘긴다.

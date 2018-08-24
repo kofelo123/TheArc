@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/sboard/*")
+@RequestMapping("/sboard/message/")
 public class MessageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
@@ -21,8 +21,8 @@ public class MessageController {
   @Autowired
   private MessageService service;
   
-  @GetMapping("/mail/listmail")
-  public void listmail(@ModelAttribute ("cri") SearchCriteria cri, @RequestParam String uid, Model model) throws Exception{
+  @GetMapping("listMessage")
+  public void listMessage(@ModelAttribute ("cri") SearchCriteria cri, @RequestParam String uid, Model model) throws Exception{
 	
 	String targetid=uid;
 	model.addAttribute("list", service.listSearchCriteria(cri,targetid));//정보다가져온다.
@@ -37,26 +37,26 @@ public class MessageController {
   }
 
   
-  @GetMapping("/mail/readmail")
-  public void readmail(@RequestParam int mid,@ModelAttribute ("cri") SearchCriteria cri, Model model) throws Exception {
+  @GetMapping("readMessage")
+  public void readMessage(@RequestParam int mid,@ModelAttribute ("cri") SearchCriteria cri, Model model) throws Exception {
 
 
     model.addAttribute(service.readMessage(mid));
   }
-  
-  @GetMapping("/mail/registermail")
-  public void registermail() throws Exception {
+
+  @GetMapping("registMessage")
+  public void registMessage() throws Exception {
 
   }
-  
-  @PostMapping("/mail/registermail")
-  public String registermailPost(MessageVO message, RedirectAttributes rttr) throws Exception {
+
+  @PostMapping("registMessage")
+  public String registMessagePost(MessageVO message, RedirectAttributes rttr) throws Exception {
 
     service.regist(message);
-    
+
     rttr.addFlashAttribute("msg", "SUCCESS");
-    
-    return "redirect:/sboard/mail/listmail?uid="+message.getSender();
+
+    return "redirect:/sboard/message/listMessage?uid="+message.getSender();
   }
   
 }

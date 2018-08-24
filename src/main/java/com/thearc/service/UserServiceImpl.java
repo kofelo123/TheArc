@@ -1,12 +1,10 @@
 package com.thearc.service;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
+import com.thearc.domain.AddressVO;
+import com.thearc.domain.LoginDTO;
+import com.thearc.domain.UserVO;
+import com.thearc.persistence.UserDAO;
+import com.thearc.util.EncryptUtil;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
@@ -14,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
-import com.thearc.domain.AddressVO;
-import com.thearc.domain.LoginDTO;
-import com.thearc.domain.UserVO;
-import com.thearc.persistence.UserDAO;
-import com.thearc.util.EncryptUtil;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.net.URL;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -89,7 +87,7 @@ public class UserServiceImpl implements UserService {
 		
 		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
 		
-		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/thearc/user/mailhashcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
+		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/thearc/user/mailcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
 						+user2.getUname() +  " 님의 아이디는 " + user2.getUid() + " 입니다.<br/>"
 						+" 위의 이미지링크를 클릭하시면 비밀번호를 변하실수 있습니다.";
 						

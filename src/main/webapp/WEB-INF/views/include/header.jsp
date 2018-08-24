@@ -86,7 +86,7 @@
                     	</c:choose>
                     </div>
                     <div class="col-sm-1">
-                    	<button type="button" id="message" onClick="window.open('/thearc/sboard/mail/listmail?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-15px;">메세지함</button>
+                    	<button type="button" id="message" onClick="window.open('/thearc/sboard/message/listMessage?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-15px;">메세지함</button>
                     </div>
                     <div class="col-sm-1">
                     	<button type="button" id="logout" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-60%;">로그아웃</button>

@@ -78,7 +78,6 @@
 	</beans:bean>
 
 
-	<beans:bean id="sampleInterceptor" class="com.thearc.interceptor.SampleInterceptor"></beans:bean>
 
 	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
 
