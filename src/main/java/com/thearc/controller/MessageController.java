@@ -17,10 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MessageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
-
+//
   @Autowired
   private MessageService service;
-  
+
   @GetMapping("listMessage")
   public void listMessage(@ModelAttribute ("cri") SearchCriteria cri, @RequestParam String uid, Model model) throws Exception{
 	
