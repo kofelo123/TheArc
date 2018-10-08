@@ -1,14 +1,12 @@
 package com.thearc.domain;
 
-import java.sql.Timestamp;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
+import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 
+@Data
 public class UserVO {
 	
 	@NotBlank
@@ -39,7 +37,7 @@ public class UserVO {
 			return email;
 		return email+"@"+email2;
 	}
-	public void setEmail(String email) {
+/*	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getEmail2() {
@@ -47,13 +45,13 @@ public class UserVO {
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
-	}
+	}*/
 	
 	public String getAddr1() {
 		return roadAddrPart1 +" "+ addrDetail;
 	}
 
-	public void setAddr1(String addr1) {
+/*	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
 
@@ -126,6 +124,6 @@ public class UserVO {
 				+ ", email2=" + email2 +", roadAddrPart1="
 				+ roadAddrPart1 + ", addrDetail=" + addrDetail + ", addr1=" + addr1 + ", phone=" + phone + ", indate="
 				+ indate + ", encrypthash=" + encrypthash + ", authority=" + authority + "]";
-	}
+	}*/
 	
 }

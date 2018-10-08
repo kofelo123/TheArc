@@ -1,9 +1,10 @@
 package com.thearc.domain;
 
+import lombok.ToString;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
+@ToString
 public class PageMaker {
 
 	private int totalCount;
@@ -97,6 +98,7 @@ public class PageMaker {
 		return uriComponents.toUriString();
 	}	
 	
+/*
 	@Override
 	public String toString() {
 		return "PageMaker [totalCount=" + totalCount + ", startPage="
@@ -104,6 +106,7 @@ public class PageMaker {
 				+ ", next=" + next + ", displayPageNum=" + displayPageNum
 				+ ", cri=" + cri + "]";
 	}
-	
+*/
+
 	
 }

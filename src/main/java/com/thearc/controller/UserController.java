@@ -1,6 +1,6 @@
 package com.thearc.controller;
 
-import com.thearc.domain.AddressVO;
+//import com.thearc.domain.AddressVO;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
@@ -173,20 +173,20 @@ public class UserController {
 		return entity;
 	}
 
-	@GetMapping("/findZipNum")
-	public void findZipNum(Model model, AddressVO address) throws Exception {
+//	@GetMapping("/findZipNum")
+//	public void findZipNum(Model model, AddressVO address) throws Exception {
+//
+//	}
 
-	}
-
-	@PostMapping("/findZipNum")
-	public void findZipNumPost(Model model, AddressVO address) throws Exception {
-		/// AddressVO 필드 중 dong을 넘김.
-		System.out.println("findzipnum ...userController");
-		System.out.println(address);
-
-		model.addAttribute("addressList", service.findzipnum(address));
-		System.out.println("returnTest:" + service.findzipnum(address));
-	}
+//	@PostMapping("/findZipNum")
+//	public void findZipNumPost(Model model, AddressVO address) throws Exception {
+//		/// AddressVO 필드 중 dong을 넘김.
+//		System.out.println("findzipnum ...userController");
+//		System.out.println(address);
+//
+//		model.addAttribute("addressList", service.findzipnum(address));
+//		System.out.println("returnTest:" + service.findzipnum(address));
+//	}
 
 	@GetMapping("/idfind")
 	public void idfind() {

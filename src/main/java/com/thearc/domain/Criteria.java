@@ -1,5 +1,8 @@
 package com.thearc.domain;
 
+import lombok.ToString;
+
+@ToString
 public class Criteria {
 
 	private int page;	
@@ -46,10 +49,10 @@ public class Criteria {
 		return this.perPageNum;
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
-	}
+	}*/
 }
 
 

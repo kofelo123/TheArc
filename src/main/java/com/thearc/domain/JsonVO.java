@@ -1,5 +1,9 @@
 package com.thearc.domain;
 
+
+import lombok.Data;
+
+@Data
 public class JsonVO { //객체 하나는 한타임 - 9시,12시,15시,18시
 	
 	private String time;//기상예보 타겟시간(9,12,15,18시 식별용)
@@ -8,7 +12,7 @@ public class JsonVO { //객체 하나는 한타임 - 9시,12시,15시,18시
 	private String sky;// 하늘상태(SKY) 코드 : 맑음(1), 구름조금(2), 구름많음(3), 흐림(4)
 	private String t3h;//3시간동안의 기온
 	
-	public String getTime() {
+	/*public String getTime() {
 		return time;
 	}
 	public void setTime(String time) {
@@ -42,7 +46,7 @@ public class JsonVO { //객체 하나는 한타임 - 9시,12시,15시,18시
 	public String toString() {
 		return "JsonVO [time=" + time + ", pop=" + pop + ", reh=" + reh + ", sky=" + sky + ", t3h=" + t3h + "]";
 	}
-	
+	*/
 	
 	
 }

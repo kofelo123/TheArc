@@ -1,12 +1,15 @@
 package com.thearc.domain;
 
+import lombok.Data;
+
+@Data
 public class LikeVO {
 
 	private int bno;
 	private String uid;
 	private String likecheck;
 
-	public int getBno() {return bno;}
+	/*public int getBno() {return bno;}
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
@@ -29,5 +32,5 @@ public class LikeVO {
 				+ likecheck
 					+ "]";
 	}
-	
+	*/
 }

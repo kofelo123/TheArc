@@ -1,6 +1,5 @@
 package com.thearc.persistence;
 
-import com.thearc.domain.AddressVO;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import org.apache.ibatis.session.SqlSession;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -55,12 +53,12 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace + ".confirmId", uid);
 	}
 
-	@Override
-	public List<AddressVO> findzipnum(AddressVO address) {
-		System.out.println("userDaoImpl 전달받은 AddressVO:"+address);
-		System.out.println("userDaoImpl 리턴할 AddressVO:"+session.selectList(namespace + ".findzipnum", address));
-		return session.selectList(namespace + ".findzipnum", address);
-	}
+//	@Override
+//	public List<AddressVO> findzipnum(AddressVO address) {
+//		System.out.println("userDaoImpl 전달받은 AddressVO:"+address);
+//		System.out.println("userDaoImpl 리턴할 AddressVO:"+session.selectList(namespace + ".findzipnum", address));
+//		return session.selectList(namespace + ".findzipnum", address);
+//	}
 
 	@Override
 	public UserVO idfindofmail(UserVO user) {

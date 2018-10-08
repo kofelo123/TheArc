@@ -1,6 +1,6 @@
 package com.thearc.service;
 
-import com.thearc.domain.AddressVO;
+
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.persistence.UserDAO;
@@ -16,7 +16,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URL;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -68,11 +67,11 @@ public class UserServiceImpl implements UserService {
 		return dao.confirmId(uid);
 	}
 
-	@Override
-	public List<AddressVO> findzipnum(AddressVO address) throws Exception {
-		System.out.println("리턴할 UserServiceImpl의 address" + dao.findzipnum(address));
-		return dao.findzipnum(address);
-	}
+//	@Override
+//	public List<AddressVO> findzipnum(AddressVO address) throws Exception {
+//		System.out.println("리턴할 UserServiceImpl의 address" + dao.findzipnum(address));
+//		return dao.findzipnum(address);
+//	}
 
 	@Override
 	public void idfindmail(HttpServletRequest request, ModelMap mo, UserVO user) throws Exception {

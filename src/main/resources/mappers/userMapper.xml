@@ -39,11 +39,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	 
-	<select id="findzipnum" resultType="AddressVO">		
+<!--	<select id="findzipnum" resultType="AddressVO">
 		select * 
 		from address 
 		where dong LIKE CONCAT('%',#{dong},'%')
-	</select>
+	</select>-->
 
 	<select id="idfindofmail" resultType="UserVO">
 		select uid,upw,uname 

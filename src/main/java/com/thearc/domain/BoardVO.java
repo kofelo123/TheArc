@@ -1,10 +1,11 @@
 package com.thearc.domain;
 
-import java.util.Arrays;
-import java.util.Date;
+import lombok.Data;
 
 import javax.validation.constraints.Size;
+import java.util.Date;
 
+@Data
 public class BoardVO {
 	
 	private Integer bno;
@@ -21,7 +22,7 @@ public class BoardVO {
 	private String[] files;
 	private String category;///다중게시판을 위해 만들었는데. 기능적으로 VO에 넣을 필요는 없어보인다 but view에서 식별(제목등)할떄 필요할 수 있을것으로보여서 만듬.
 	
-	public String getCategory() {
+	/*public String getCategory() {
 		return category;
 	}
 	public void setCategory(String category) {
@@ -89,6 +90,6 @@ public class BoardVO {
 				+ regdate + ", viewcnt=" + viewcnt + ", replycnt=" + replycnt + ", countlike=" + countlike + ", files="
 				+ Arrays.toString(files) + ", category=" + category + "]";
 	}
-	
+	*/
 	
 }

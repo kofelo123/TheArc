@@ -1,11 +1,14 @@
 package com.thearc.domain;
 
+import lombok.Data;
+
+@Data
 public class SearchCriteria extends Criteria{
 
 	private String searchType;
 	private String keyword;
 	
-	public String getSearchType() {
+/*	public String getSearchType() {
 		return searchType;
 	}
 	public void setSearchType(String searchType) {
@@ -21,7 +24,7 @@ public class SearchCriteria extends Criteria{
 	public String toString() {
 		return super.toString() + " SearchCriteria [searchType=" + searchType + ", keyword="
 				+ keyword + "]";
-	}
+	}*/
 }
 
 

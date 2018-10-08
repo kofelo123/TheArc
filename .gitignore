@@ -69,3 +69,6 @@ target/
 
 
 # End of https://www.gitignore.io/api/eclipse,java-web
+
+# 내기록
+.todo
