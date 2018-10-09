@@ -4,8 +4,6 @@ package com.thearc.controller;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +41,6 @@ import java.util.Date;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService service;

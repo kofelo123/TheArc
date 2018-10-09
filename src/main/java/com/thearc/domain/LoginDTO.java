@@ -1,10 +1,8 @@
 package com.thearc.domain;
 
-import lombok.Data;
-
 import javax.validation.constraints.Size;
 
-@Data
+
 public class LoginDTO {
 	
 	@Size(min=1, max=20)
@@ -17,7 +15,7 @@ public class LoginDTO {
 	
 	private String authority;
 	
-/*	public String getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
 	public void setAuthority(String authority) {
@@ -45,7 +43,7 @@ public class LoginDTO {
 	@Override
 	public String toString() {
 		return "LoginDTO [uid=" + uid + ", upw=" + upw + ", useCookie=" + useCookie + ", authority=" + authority + "]";
-	}*/
+	}
 	
 	
 	

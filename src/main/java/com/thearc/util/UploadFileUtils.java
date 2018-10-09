@@ -1,25 +1,22 @@
 package com.thearc.util;
 
+import lombok.extern.slf4j.Slf4j;
+import org.imgscalr.Scalr;
+import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
-
-import org.imgscalr.Scalr;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-import org.springframework.util.FileCopyUtils;
+@Slf4j
 @Component
 public class UploadFileUtils {
 
-  private static final Logger logger = 
-      LoggerFactory.getLogger(UploadFileUtils.class);
 
-  
   public static String uploadFile(String uploadPath, 
                               String originalName, 
                               byte[] fileData)throws Exception{
@@ -103,7 +100,7 @@ public class UploadFileUtils {
     
     makeDir(uploadPath, yearPath,monthPath,datePath);
     
-    logger.info(datePath);
+    log.info(datePath);
     
     return datePath;
   }

@@ -1,8 +1,7 @@
 package com.thearc.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author 허정원
@@ -16,14 +15,13 @@ import org.slf4j.LoggerFactory;
  *
  * </pre>
  */
+@Slf4j
 public class AOPTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(AOPTest.class);
 
     public void printLog(JoinPoint jp){
         String method = jp.getSignature().getName();
         String className = jp.getSignature().getDeclaringTypeName();
-        logger.info("[메소드 호출]: " + className + "."+ method );
+        log.info("[메소드 호출]: " + className + "."+ method );
     }
 
 }

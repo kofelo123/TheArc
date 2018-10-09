@@ -1,23 +1,20 @@
 package com.thearc.interceptor;
 
+import com.thearc.domain.UserVO;
+import com.thearc.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.util.WebUtils;
-
-import com.thearc.domain.UserVO;
-import com.thearc.service.UserService;
-
+@Slf4j
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
-  private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
-  
   @Autowired
   private UserService service;
   
@@ -29,7 +26,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
   
     if(session.getAttribute("login") == null){
     
-      logger.info("current user is not logined");
+      log.info("current user is not logined");
       
       saveDest(request);
       
@@ -39,7 +36,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         
         UserVO userVO = service.checkLoginBefore(loginCookie.getValue());
         
-        logger.info("USERVO: " + userVO);
+        log.info("USERVO: " + userVO);
         
         if(userVO != null){
           session.setAttribute("login", userVO);
@@ -72,7 +69,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     }
 
     if (req.getMethod().equals("GET")) {
-      logger.info("dest: " + (uri + query));
+      log.info("dest: " + (uri + query));
       req.getSession().setAttribute("dest", uri + query);
     }
   }

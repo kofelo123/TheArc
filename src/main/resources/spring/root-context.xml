@@ -47,12 +47,23 @@
 	</bean>
 
 
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+			<property name="jdbcUrl" value="${Local.Url}"></property>
+			<property name="username" value="${Local.UserName}"></property>
+			<property name="password" value="${Local.Password}"></property>
+		</bean>
+	<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="url" value="${Local.Url}"></property>
 			<property name="username" value="${Local.UserName}"></property>
 			<property name="password" value="${Local.Password}"></property>
+		</bean>-->
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+			<constructor-arg ref="hikariConfig" />
 		</bean>
+
+
 		
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

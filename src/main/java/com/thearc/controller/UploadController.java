@@ -1,16 +1,9 @@
 package com.thearc.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.UUID;
-
-import javax.annotation.Resource;
-
+import com.thearc.util.MediaUtils;
+import com.thearc.util.UploadFileUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,20 +11,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.thearc.util.MediaUtils;
-import com.thearc.util.UploadFileUtils;
 
+import javax.annotation.Resource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.UUID;
+
+@Slf4j
 @Controller
 public class UploadController {
-
-  private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
   @Resource(name = "uploadPath")
   private String uploadPath;
@@ -43,9 +35,9 @@ public class UploadController {
   @PostMapping("/uploadForm")
   public String uploadForm(MultipartFile file, Model model) throws Exception {
 
-    logger.info("originalName: " + file.getOriginalFilename());
-    logger.info("size: " + file.getSize());
-    logger.info("contentType: " + file.getContentType());
+    log.info("originalName: " + file.getOriginalFilename());
+    log.info("size: " + file.getSize());
+    log.info("contentType: " + file.getContentType());
 
     String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 
@@ -78,7 +70,7 @@ public class UploadController {
                   produces = "text/plain;charset=UTF-8")
   public ResponseEntity<String> uploadAjax(MultipartFile file)throws Exception{
     
-    logger.info("originalName: " + file.getOriginalFilename());
+    log.info("originalName: " + file.getOriginalFilename());
     
    
     return 
@@ -97,7 +89,7 @@ public class UploadController {
     InputStream in = null; 
     ResponseEntity<byte[]> entity = null;
     
-    logger.info("FILE NAME: " + fileName);
+    log.info("FILE NAME: " + fileName);
     
     try{
       
@@ -135,7 +127,7 @@ public class UploadController {
   @PostMapping("/deleteFile")
   public ResponseEntity<String> deleteFile(String fileName){
     
-    logger.info("delete file: "+ fileName);
+    log.info("delete file: "+ fileName);
     
     String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
     
@@ -158,7 +150,7 @@ public class UploadController {
   @PostMapping("/deleteFiles")
   public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files){
     
-    logger.info("delete all files: "+ Arrays.toString(files));
+    log.info("delete all files: "+ Arrays.toString(files));
     
     if(files == null || files.length == 0) {
       return new ResponseEntity<String>("deleted", HttpStatus.OK);

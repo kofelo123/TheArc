@@ -5,8 +5,7 @@ import com.thearc.domain.LikeVO;
 import com.thearc.domain.PageMaker;
 import com.thearc.domain.SearchCriteria;
 import com.thearc.service.BoardService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.*;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/sboard/*")
 public class BoardController {
@@ -27,7 +26,7 @@ public class BoardController {
 	 @Autowired
 	 private BoardService service;
 
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
 	  public void main(Locale locale, Model model, SearchCriteria cri) throws Exception {
@@ -79,6 +78,10 @@ public class BoardController {
 	public String read(@RequestParam Map<String,String> map, @ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 			throws Exception {
 
+		log.info("로거테스트");
+
+
+
 		int bno  = Integer.parseInt(map.get("bno"));
 
 		model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
@@ -97,7 +100,7 @@ public class BoardController {
 	  @PostMapping("/removePage/{category}")
 	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
 
-		logger.info("bno Test:"+bno);
+		log.info("bno Test:"+bno);
 	    service.remove(bno);
 
 	    rttr.addAttribute("page", cri.getPage());///addFlashAttribute와 달리 URL 파라미터에 붙여주는 방식이다. 그래서 list페이지로 redirect될때 파라미터로 받아낼수있게 cri 넘긴다.
