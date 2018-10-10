@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="userMapper">
+<mapper namespace="com.thearc.mapper.UserMapper">
 	
-	<select id="login" resultType="UserVO">
+<!--	<select id="login" resultType="UserVO">
 		select uid, upw, uname,authority 
 		from tbl_user 
 		where uid = #{uid} 
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_user 
 		where uid= #{uid}	
 	</select>
-	
+	-->
 	 
 <!--	<select id="findzipnum" resultType="AddressVO">
 		select * 
@@ -45,24 +45,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where dong LIKE CONCAT('%',#{dong},'%')
 	</select>-->
 
-	<select id="idfindofmail" resultType="UserVO">
-		select uid,upw,uname 
-		from tbl_user 
-		where email= #{email}
-	</select>
-	
-	<select id="hashbyid" resultType="UserVO">
-		select uid 
-		from tbl_user 
-		where upw = #{upw} 
-		and uid = #{uid}
-	</select>
-	
-	<update id="modifypw">
-		update tbl_user 
-		set upw = #{upw} 
-		where uid = #{uid}
-	</update>
-	
+	<!--
+        <select id="idfindofmail" resultType="UserVO">
+            select uid,upw,uname
+            from tbl_user
+            where email= #{email}
+        </select>
+
+        <select id="hashbyid" resultType="UserVO">
+            select uid
+            from tbl_user
+            where upw = #{upw}
+            and uid = #{uid}
+        </select>
+
+        <update id="modifypw">
+            update tbl_user
+            set upw = #{upw}
+            where uid = #{uid}
+        </update>
+        -->
 
 </mapper>

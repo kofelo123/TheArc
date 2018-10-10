@@ -50,25 +50,21 @@ public class BoardController {
 
 	 }
 
-	  ///9/12 pathVariable을 통한 다중게시판 테스트
+	  ///9/12 pathVariable을 통한 다중게시판
 	@GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음
-
 	    //썸네일게시판용	+포토존
 	    if(category.equals("thisweek")||category.equals("photo")||category.equals("terarium")||category.equals("leisure")||category.equals("seastory")||category.equals("academy"))
 	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
 	    //
-
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
-
 	    pageMaker.setTotalCount(service.listSearchCount(cri,category));
 	    							//listSearchCount는 게시글갯수 카운트(cri(검색조건에맞는)) 그래서 totalcount를 setter해주는것
 	    model.addAttribute("pageMaker", pageMaker);
-
 	    return "/sboard/list";
 	  }
 

@@ -3,7 +3,7 @@ package com.thearc.service;
 
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
-import com.thearc.persistence.UserDAO;
+import com.thearc.mapper.UserMapper;
 import com.thearc.util.EncryptUtil;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
@@ -21,7 +21,7 @@ import java.util.Date;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDAO dao;
+	private UserMapper mapper;
 
 	@Resource(name = "ipAddress") // ip 가변적이라서 주입(local-server).
 	private String ipAddress;
@@ -29,42 +29,38 @@ public class UserServiceImpl implements UserService {
 	//mail에 필요한 pw - 암호화처리함
 	@Resource(name = "mailPw")
 	private String mailPw;
-	
-	
+
 	@Autowired
 	private EncryptUtil encrypt;
 
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
 		dto.setUpw(encrypt.getSHA256(dto.getUpw()));
-		return dao.login(dto);
+		return mapper.login(dto);
 	}
 
 	@Override
 	public void keepLogin(String uid, String sessionId, Date next) throws Exception {
-
-		dao.keepLogin(uid, sessionId, next);
-
+		mapper.keepLogin(uid, sessionId, next);
 	}
 
 	@Override
 	public UserVO checkLoginBefore(String value) {
-
-		return dao.checkUserWithSessionKey(value);
+		return mapper.checkUserWithSessionKey(value);
 	}
 
 	@Override
 	public void joinPost(UserVO user) throws Exception {
 		user.setUpw(encrypt.getSHA256(user.getUpw()));
 		
-		dao.joinPost(user);
+		mapper.joinPost(user);
 
 	}
 
 	@Override
 	public UserVO id_checkPost(UserVO uid) throws Exception {
 
-		return dao.confirmId(uid);
+		return mapper.confirmId(uid);
 	}
 
 //	@Override
@@ -84,7 +80,7 @@ public class UserServiceImpl implements UserService {
 		email.setAuthenticator(new DefaultAuthenticator("hlw123", mailPw));
 		email.setStartTLSRequired(true);
 		
-		UserVO user2 = dao.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
+		UserVO user2 = mapper.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
 		
 		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/thearc/user/mailcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
 						+user2.getUname() +  " 님의 아이디는 " + user2.getUid() + " 입니다.<br/>"
@@ -101,12 +97,12 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public UserVO hashbyid(UserVO user) throws Exception {
-		return dao.hashbyid(user);
+		return mapper.hashbyid(user);
 	}
 
 	@Override
 	public void modifypw(UserVO user) throws Exception {
 		user.setUpw(encrypt.getSHA256(user.getUpw()));
-		dao.modifypw(user);
+		mapper.modifypw(user);
 	}
 }

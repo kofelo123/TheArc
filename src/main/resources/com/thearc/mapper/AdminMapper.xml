@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="adminMapper">
+<mapper namespace="com.thearc.mapper.AdminMapper">
 
-	<select id="listuser" resultType="UserVO">
+	<!--<select id="listuser" resultType="UserVO">
 		select *
 		from tbl_user
 	</select>
@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		update tbl_user
  		set authority=#{authority}
  		where uid=#{uid}
- 	</update>
-
+ 	</update>-->
+<!--
  	<delete id="userDropCheck">
  		delete
  		from tbl_check
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete
  		from tbl_user
  		where uid=#{uid}
- 	</delete>
+ 	</delete>-->
  	<!-- AreaChart - 일일게시물, 댓글통계  -->
  	<select id="dayBoard" resultType="string">
  	 <![CDATA[
@@ -129,7 +129,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          ]]>
  	</select>
 
- 	<delete id="boardDrop1" >
+ <!--	<delete id="boardDrop1" >
  		delete
  		from tbl_reply
  		where bno = #{bno}
@@ -144,6 +144,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from
  		tbl_board
  		where bno = #{bno}
- 	</delete>
+ 	</delete>-->
  	
 </mapper>

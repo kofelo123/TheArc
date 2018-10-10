@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="messageMapper">
+<mapper namespace="com.thearc.mapper.MessageMapper">
 
-	<update id="updateState">
+<!--	<update id="updateState">
 		update tbl_message 
 		set opendate = now() 
 		where mid= #{mid}
@@ -16,36 +16,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update chat set countlist = countlist+1 where
 		countname='count';
 	</update>
+-->
 
 	<sql id="search">
-		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">
-				and title like CONCAT('%', #{keyword}, '%')
+		<if test="cri.searchType != null">
+			<if test="cri.searchType == 't'.toString()">
+				and title like CONCAT('%', #{cri.keyword}, '%')
 			</if>
-			<if test="searchType == 'c'.toString()">
-				and message like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'c'.toString()">
+				and message like CONCAT('%', #{cri.keyword}, '%')
 			</if>
-			<if test="searchType == 'w'.toString()">
-				and sender like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'w'.toString()">
+				and sender like CONCAT('%', #{cri.keyword}, '%')
 			</if>
-			<if test="searchType == 'tc'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%') OR message
+			<if test="cri.searchType == 'tc'.toString()">
+				and ( title like CONCAT('%', #{cri.keyword}, '%') OR message
 				like
-				CONCAT('%', #{keyword}, '%'))
+				CONCAT('%', #{cri.keyword}, '%'))
 			</if>
-			<if test="searchType == 'cw'.toString()">
-				and ( message like CONCAT('%', #{keyword}, '%') OR sender
+			<if test="cri.searchType == 'cw'.toString()">
+				and ( message like CONCAT('%', #{cri.keyword}, '%') OR sender
 				like
-				CONCAT('%', #{keyword}, '%'))
+				CONCAT('%', #{cri.keyword}, '%'))
 			</if>
-			<if test="searchType == 'tcw'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%')
+			<if test="cri.searchType == 'tcw'.toString()">
+				and ( title like CONCAT('%', #{cri.keyword}, '%')
 				OR
 				message
-				like CONCAT('%', #{keyword}, '%')
+				like CONCAT('%', #{cri.keyword}, '%')
 				OR
 				sender like CONCAT('%',
-				#{keyword}, '%'))
+				#{cri.keyword}, '%'))
 			</if>
 		</if>
 	</sql>
@@ -64,8 +65,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   limit #{cri.pageStart}, #{cri.perPageNum}
 ]]>
 	</select>
-	<!-- 기존의 파라미터 하나로 접근시에 그냥 cri넘겨주고 pageStart이렇게 바로 접근했는데, map형식으로 접근할떄는 cri.pagestart이런식으로 
-		소속을 명시해줘야 하는것 같다. -->
+
+	<!-- 기존의 파라미터 하나로 접근시에 그냥 cri넘겨주고 pageStart이렇게 바로 접근했는데, map형식으로 접근할떄는 cri.pagestart이런식으로
+		소속을 명시해줘야 하는것 같다.-->
 
 
 	<select id="listSearchCount" resultType="int">
@@ -78,8 +80,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
-	<!--쪽지 read 관련 -->
-	<select id="readMessage" resultType="MessageVO">
+
+<!--	쪽지 read 관련 -->
+
+<!--	<select id="readMessage" resultType="MessageVO">
 		select * from tbl_message
 		where mid = #{mid}
 	</select>
@@ -94,6 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(sender,targetid,title,message)
 		values(#{sender},#{targetid},#{title},#{message})
 	</insert>
+   -->
 
 </mapper>
 

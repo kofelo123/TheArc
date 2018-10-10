@@ -1,57 +1,56 @@
 package com.thearc.service;
 
-import java.util.List;
-
+import com.thearc.domain.MessageVO;
+import com.thearc.domain.SearchCriteria;
+import com.thearc.mapper.MessageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.thearc.domain.MessageVO;
-import com.thearc.domain.SearchCriteria;
-import com.thearc.persistence.MessageDAO;
+import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService {
 
 	@Autowired
-	private MessageDAO messageDAO;
+	private MessageMapper mapper;
 
 	@Override
+	public void regist(MessageVO message) throws Exception {
+		mapper.create(message);
+	}
+
+	/*@Override
 	public void addMessage(MessageVO vo) throws Exception {
 
-		messageDAO.create(vo);
-	}
+		mapper.create(vo);
+	}*/
 
 	@Override
 	public MessageVO readMessage(String uid, Integer mid) throws Exception {
 
-		messageDAO.updateState(mid);
+		mapper.updateState(mid);
 
-		return messageDAO.readMessage(mid);
+		return mapper.readMessage(mid);
 	}
 
-	@Override
+/*	@Override
 	public List<MessageVO> listmail(MessageVO vo) throws Exception {
-		return messageDAO.listmail(vo);
-	}
+		return mapper.listmail(vo);
+	}*/
 
 	@Override
 	public List<MessageVO> listSearchCriteria(SearchCriteria cri, String targetid) throws Exception {
-		return messageDAO.listSearch(cri, targetid);
+		return mapper.listSearch(cri, targetid);
 	}
 
 	@Override
 	public int listSearchCount(SearchCriteria cri) throws Exception {
-		return messageDAO.listSearchCount(cri);
+		return mapper.listSearchCount(cri);
 	}
 
 	@Override
 	public MessageVO readMessage(Integer mid) throws Exception {
-		messageDAO.updateReadCheck(mid);
-		return messageDAO.readMessage(mid);
-	}
-
-	@Override
-	public void regist(MessageVO message) throws Exception {
-		messageDAO.create(message);
+		mapper.updateReadCheck(mid);
+		return mapper.readMessage(mid);
 	}
 }

@@ -63,7 +63,7 @@
 	$(document).ready(function() {
 				$('#goListBtn').on("click", function() {
 				    $(location).attr("href","listMessage?uid=${login.uid }");
-					/*self.location = "listMessage?uid=${login.uid }";*/
+					 <%--self.location = "listMessage?uid= ${login.uid }"; --%>
 				});
 			});
 </script>

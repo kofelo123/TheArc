@@ -25,7 +25,7 @@
               <h3 class="box-title">쪽지 보내기</h3>
             </div>
             <!-- /.box-header -->
-           <form id='mailregister' role='form' action="/thearc/sboard/mail/registermail" method="post">
+           <form id='mailregister' role='form' action="/thearc/sboard/message/registMessage" method="post">
             <div class="box-body">
             <input type=hidden name='sender' value='${login.uid }'>
               <div class="form-group">

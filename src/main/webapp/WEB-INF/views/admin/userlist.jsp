@@ -39,10 +39,10 @@
 								<td>${userlist.email }</td>
 								<td>${userlist.authority }</td>
 								<td>
-									<button id="authoritymodify" name="modify" onClick="window.location.href='/admin/authmodify?uid=${userlist.uid}&authority=${userlist.authority}'">변경</button>
+									<button id="authoritymodify" name="modify" onClick="window.location.href='/thearc/admin/authmodify?uid=${userlist.uid}&authority=${userlist.authority}'">변경</button>
 								</td>
 								<td>
-									<button id="userDrop" name="delete" onClick="window.location.href='/admin/userDrop?uid=${userlist.uid}&authority=${userlist.authority}'">삭제</button>
+									<button id="userDrop" name="delete" onClick="window.location.href='/thearc/admin/userDrop?uid=${userlist.uid}&authority=${userlist.authority}'">삭제</button>
 								</td>
 							</tr>
 

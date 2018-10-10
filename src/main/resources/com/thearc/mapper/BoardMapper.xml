@@ -3,20 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="boardMapper">
+<mapper namespace="com.thearc.mapper.BoardMapper">
 
-	<insert id="create">
+<!--	<insert id="create">
 		INSERT INTO TBL_BOARD (TITLE, CONTENT, WRITER,CATEGORY)
 		VALUES(#{title},#{content}, #{writer},#{category})
 	</insert>
-	
-	<select id="read" resultType="BoardVO">
+	-->
+<!--	<select id="read" resultType="BoardVO">
 		select
 		bno, title, content, writer, regdate, viewcnt , replycnt,countlike,category
 		from
 		tbl_board
 		where bno = #{bno}
-	</select>
+	</select>-->
+<!--
 
 	<select id="listAll" resultType="BoardVO">
 		 <![CDATA[
@@ -28,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 order by bno desc, regdate desc
 		 ]]>
 	</select>
+-->
 
 	<select id="listPage" resultType="BoardVO">
 		 <![CDATA[
@@ -41,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 ]]>	
 	</select>
 
+<!--
 	<select id="listCriteria" resultType="BoardVO">
 		 <![CDATA[
 		 select 
@@ -52,16 +55,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 limit #{pageStart}, #{perPageNum}
 		 ]]>
 	</select>
+-->
 
 
-	<update id="update">
+	<!--<update id="update">
 		update tbl_board set title =#{title}, content =#{content}
 		where bno = #{bno}
 	</update>
-
-	<delete id="delete">
+-->
+<!--	<delete id="delete">
 		delete from tbl_board where bno = #{bno}
-	</delete>
+	</delete>-->
 
 
 	<select id="countPaging" resultType="int">
@@ -129,10 +133,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and bno IN (select bno from tbl_board where category=#{category})
 			
 			]]>
-
-	
-  
-			<![CDATA[    
+			<![CDATA[
 			  order by bno desc
 			  limit #{cri.pageStart}, #{cri.perPageNum}
 			]]>
@@ -154,82 +155,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where bno = #{bno}
 	</update>
 	
-	
+	<!--
 	<update id="updateViewCnt">
 	  update tbl_board 
 	  set viewcnt = viewcnt +1 
 	  where bno = #{bno}
-	</update>
+	</update>-->
 	
-	<select id="countImgNum" resultType="int">
+<!--	<select id="countImgNum" resultType="int">
 		select count(fullName) 
 		from tbl_attach 
 		where bno= LAST_INSERT_ID();
-	</select>
+	</select>-->
 	
-	 <update id="updateImgNum">
+<!--	 <update id="updateImgNum">
 		update tbl_attach 
 		set imgnum = #{count} 
 		where fullName=#{fullName};
-	</update>
+	</update>-->
 	
-	<insert id="addAttach">
+<!--	<insert id="addAttach">
 		insert into tbl_attach(fullname, bno) 
 		values (#{fullName}, LAST_INSERT_ID())
 	</insert> 
-	
+	-->
 	<insert id="addAttach2">
 		insert into tbl_attach2(fullname, bno) 
 		values (#{fullName}, LAST_INSERT_ID())
 	</insert> 
-	
+<!--
 	<select id="getAttach" resultType="String">
 		select fullname 
 		from tbl_attach 
 		where bno = #{bno} order by regdate
-	</select>
+	</select>-->
 	 
-	<select id="getAttachOne" resultType="String">
+	<!--<select id="getAttachOne" resultType="String">
 		select fullname 
 		from tbl_attach 
 		where bno = #{bno} 
 		order by regdate limit 1
-	</select> 
+	</select> -->
 	 
-	<delete id="deleteAttach">
+	<!--<delete id="deleteAttach">
 	delete from tbl_attach where bno = #{bno}
-	</delete>
+	</delete>-->
 	
-	<insert id="replaceAttach">
+<!--	<insert id="replaceAttach">
 	insert into tbl_attach(fullname, bno) values (#{fullName}, #{bno})
-	</insert>
+	</insert>-->
 	  
-	  <update id="addlike">
+<!--	  <update id="addlike">
 	  	update tbl_board set countlike = countlike + 1 where bno = #{bno}
 	  </update>
 	 	
 	  <update id="sublike">
 	  	update tbl_board set countlike = countlike - 1 where bno = #{bno}
-	  </update>
-	 
+	  </update>-->
+	<!--
 	 <select id="checklike" resultType="LikeVO">
 	 	SELECT *
 	 	FROM TBL_CHECK
 	 	WHERE UID=#{uid}
 	 	AND BNO=#{bno}
-	 </select>
+	 </select>-->
 	 
-	 <insert id="insertlikedefault">
+<!--	 <insert id="insertlikedefault">
 	 	insert into tbl_check(uid,bno) values (#{uid}, #{bno})
-	 </insert>
+	 </insert>-->
 	 
-	 <update id="updatelikey">
+	 <!--<update id="updatelikey">
 	 	update tbl_check set likecheck='y' where uid=#{uid} and bno=#{bno}
-	 </update>
+	 </update>-->
 	 
-	 <update id="updateliken">
+	<!-- <update id="updateliken">
 	 	update tbl_check set likecheck='n' where uid=#{uid} and bno=#{bno}
-	 </update>
+	 </update>-->
 	 
 	 
 </mapper>
