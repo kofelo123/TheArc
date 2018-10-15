@@ -116,17 +116,18 @@
 	</interceptors>
 
 	<context:component-scan base-package="com.thearc.controller" />
+	<context:component-scan base-package="com.thearc.util" />
 
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-	<beans:bean id="aopLogTest" class="com.thearc.util.AOPTest"></beans:bean>
+	<!--<beans:bean id="aopLogTest" class="com.thearc.util.AOPMethodLog"></beans:bean>
 
-	<aop:config>
-		<aop:pointcut id="allPointcut" expression="execution(* com.thearc.controller.*.*(..))"/>
+        <aop:config>
+            <aop:pointcut id="allPointcut" expression="execution(* com.thearc.controller.*.*(..))"/>
 
-		<aop:aspect ref="aopLogTest">
-			<aop:before pointcut-ref="allPointcut" method="printLog"/>
-		</aop:aspect>
-	</aop:config>
+            <aop:aspect ref="aopLogTest">
+                <aop:before pointcut-ref="allPointcut" method="printLog"/>
+            </aop:aspect>
+        </aop:config>-->
 </beans:beans>

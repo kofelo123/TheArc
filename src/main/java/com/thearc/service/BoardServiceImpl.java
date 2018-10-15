@@ -34,6 +34,7 @@ public class BoardServiceImpl implements BoardService {
 		for (String fileName : files) {
 			addAttach(fileName); //board없었는데 썸네일 필요로 인해서 넣음
 		}
+
 	}
 
 	public void addAttach(String fullName) throws Exception {

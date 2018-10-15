@@ -2,6 +2,9 @@ package com.thearc.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
  * @author 허정원
@@ -15,8 +18,24 @@ import org.aspectj.lang.JoinPoint;
  *
  * </pre>
  */
+
 @Slf4j
-public class AOPTest {
+@Component
+@Aspect
+public class AOPMethodLog {
+
+    @Before("execution(* com.thearc.controller.*.*(..))")
+    public void printLog(JoinPoint jp){
+        String method = jp.getSignature().getName();
+        String className = jp.getSignature().getDeclaringTypeName();
+        log.info("[메소드 호출]: " + className + "."+ method );
+    }
+
+}
+/*
+
+@Slf4j
+public class AOPMethodLog {
 
     public void printLog(JoinPoint jp){
         String method = jp.getSignature().getName();
@@ -25,3 +44,4 @@ public class AOPTest {
     }
 
 }
+*/

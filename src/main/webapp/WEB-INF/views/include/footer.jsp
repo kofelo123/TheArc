@@ -49,7 +49,7 @@
     
     <style>
 	/*퀵메뉴*/
-		#quick_nav {position:absolute; width:50px; height:100%; right:0; top:12%; border-left:1px solid #d7d7d7; margin:100px 0 0 0;overflow:hidden; background:url(../images/common/bg_quick.jpg) no-repeat scroll 100% 0 transparent; background-color:#373737; z-index:1;  }
+		#quick_nav {position:absolute; width:50px; height:100%; right:0; top:12%; border-left:1px solid #d7d7d7; margin:100px 0 0 0;overflow:hidden;  background-color:#373737; z-index:1;  }
 		#quick_nav ul {height:100%; margin:0; padding:0; position:fixed;}
 		#quick_nav ul li {padding:0; text-align:center; line-height:1;}
 		#quick_nav ul li a:hover{ opacity:0.7}
