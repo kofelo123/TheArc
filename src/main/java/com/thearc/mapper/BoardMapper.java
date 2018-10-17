@@ -1,9 +1,6 @@
 package com.thearc.mapper;
 
-import com.thearc.domain.BoardVO;
-import com.thearc.domain.Criteria;
-import com.thearc.domain.LikeVO;
-import com.thearc.domain.SearchCriteria;
+import com.thearc.domain.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -132,4 +129,8 @@ public interface BoardMapper {
             "AND bno = #{bno}")
     public void updateliken(@Param("uid") String uid, @Param("bno") int bno)throws Exception;
 
+    @Select("SELECT * FROM " +
+            "tbl_attach " +
+            "WHERE DATE_FORMAT(regdate,'%y-%m-%d') = DATE_FORMAT(CURDATE() - INTERVAL 1 DAY,'%y-%m-%d')")
+    public List<BoardAttachVO> getOldFiles();
 }

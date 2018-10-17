@@ -134,9 +134,8 @@ $(".fileDrop").on("drop", function(event){
 
 	var formData = new FormData();
 	
-	formData.append("file", file);	
-	
-	
+	formData.append("file", file);
+
 	$.ajax({
 		  url: '/thearc/uploadAjax',
 		  data: formData,
@@ -147,8 +146,7 @@ $(".fileDrop").on("drop", function(event){
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
-			  console.log("testtest"+fileInfo);
-			  
+
 			  var html = template(fileInfo);
 			  
 			  $(".uploadedList").append(html);
