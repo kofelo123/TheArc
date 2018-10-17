@@ -64,7 +64,7 @@ public class FileCheckTask {
         //파일리스트 in DB
         List<BoardAttachVO> fileList = mapper.getOldFiles();
 
-        //썸네일이 아닌 파일?
+        //썸네일이 아닌 파일
         List<Path> fileListPaths = fileList.stream()
                                     .map(vo -> Paths.get("C:\\zzz\\upload"
                                                             ,vo.getFullName())).collect(Collectors.toList());
@@ -79,12 +79,12 @@ public class FileCheckTask {
 
             log.warn("=================================");
 
-            fileListPaths.forEach(p -> log.warn(p));
+            fileListPaths.forEach(p -> log.warn(p)); //DB에 등록된파일
 
-            //파일 어제
+            //어제날짜경로의 업로드된 모든파일(DB등록 안된것까지모두)
             File targetDir = Paths.get("C:\\zzz\\upload",getFolderYesterDay()).toFile();
 
-            File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false); //DB에 없는 파일의 목록
+            File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false); //모든파일 - DB에 있는 파일 = 지워야할 파일
 
             log.warn("------------------");
             for(File file : removeFiles ){
