@@ -60,22 +60,27 @@
 				<div class="login-box-body">
 					<p class="login-box-msg"></p>
 
-					<form action="/thearc/user/loginPost" method="post">
+					<form action="/thearc/login" method="post">
 						<div class="form-group has-feedback">
-							<input type="text" id="uid" name="uid" class="form-control"	placeholder="아이디입력" /> 
+							<input type="text" id="uid" name="username" class="form-control"	placeholder="아이디입력" />
 							<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 							<span id="successFail"></span>
 						</div>
 						<div class="form-group has-feedback">
-							<input type="password" id="upw" name="upw" class="form-control"	placeholder="패스워드입력" />
+							<input type="password" id="upw" name="password" class="form-control"	placeholder="패스워드입력" />
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 							<span id="successFail"></span>
 						</div>
 						<div class="row">
 							<div class="col-xs-8">
 								<div class="checkbox icheck">
-									<label id="useCookie"> <input type="checkbox" name="useCookie">
+									<%--<label id="useCookie"> <input type="checkbox" name="useCookie">
 										로그인 상태 유지
+									</label>--%>
+								</div>
+								<div class="checkbox">
+									<label> <input name="remember-me" type="checkbox">Remember
+										Me
 									</label>
 								</div>
 							</div>
@@ -83,6 +88,9 @@
 								<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
 							</div>
 						</div>
+						<input type="hidden" name="${_csrf.parameterName}"
+							   value="${_csrf.token}" />
+
 					</form>
 					<a href="/thearc/user/idfind">아이디-비밀번호 찾기</a><br> 
 					<a href="/thearc/user/join" class="text-center">회원가입</a>

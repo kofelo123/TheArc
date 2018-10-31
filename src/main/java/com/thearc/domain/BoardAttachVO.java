@@ -17,6 +17,7 @@ import java.util.Date;
  * </pre>
  */
 
+//불필요한 파일 삭제 - task 작업때 파일들 불러오기 위해서 생성
 @Data
 public class BoardAttachVO {
 

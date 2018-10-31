@@ -4,27 +4,30 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
     xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
 
 
-<!--
-	<beans:bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <beans:property name="locations">
-            <beans:list>
-            	<beans:value>/WEB-INF/spring/setting.properties</beans:value>
-                &lt;!&ndash; <value>classpath:/egovframework/egovProps/globals.properties</value> &ndash;&gt;
-                &lt;!&ndash; value>file:/product/jeus/egovProps/globals.properties</value&ndash;&gt;
-            </beans:list>
-        </beans:property>
-    </beans:bean>
--->
+
+	<!--
+        <beans:bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <beans:property name="locations">
+                <beans:list>
+                    <beans:value>/WEB-INF/spring/setting.properties</beans:value>
+                    &lt;!&ndash; <value>classpath:/egovframework/egovProps/globals.properties</value> &ndash;&gt;
+                    &lt;!&ndash; value>file:/product/jeus/egovProps/globals.properties</value&ndash;&gt;
+                </beans:list>
+            </beans:property>
+        </beans:bean>
+    -->
 	
 	
 	
@@ -94,7 +97,7 @@
 
 		<!--<mapping path="/sboard/readPage/like*"/>	-->
  	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
-	    <mapping path="/sboard/register/*"/>
+	    <!--<mapping path="/sboard/register/*"/>-->
 	    <mapping path="/sboard/modifyPage/*"/>
 	    <mapping path="/sboard/removePage/*"/>
 	    <mapping path="/sboard/mail/listmail/*"/>
@@ -130,4 +133,10 @@
                 <aop:before pointcut-ref="allPointcut" method="printLog"/>
             </aop:aspect>
         </aop:config>-->
+
+
+	<security:global-method-security
+			pre-post-annotations="enabled" secured-annotations="enabled" />
+
+
 </beans:beans>

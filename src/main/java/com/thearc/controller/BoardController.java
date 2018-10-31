@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -135,7 +136,9 @@ public class BoardController {
 	  }
 
 //	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
+
 	  @GetMapping("/register/{category}")
+	  @PreAuthorize("isAuthenticated()")
 	  public String registGET(@PathVariable String category, Model model) throws Exception {
 
 	    model.addAttribute("bvo",new BoardVO());
@@ -143,7 +146,9 @@ public class BoardController {
 	    return "/sboard/register";
 	  }
 
+
 	  @PostMapping("/register/{category}")
+	  @PreAuthorize("isAuthenticated()")
 	  public String registPOST(@ModelAttribute("bvo") @Valid BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
 
 		if(result.hasErrors()) {

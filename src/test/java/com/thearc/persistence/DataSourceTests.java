@@ -1,4 +1,4 @@
-package org.thearc.persistence;
+package com.thearc.persistence;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;

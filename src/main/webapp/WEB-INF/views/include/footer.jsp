@@ -104,7 +104,19 @@
 		});
     	
     	$('#logout').on("click", function(evt){
-			self.location = "/thearc/user/logout";    		
-    	});
+
+
+			// self.location = "/customLogout";
+            // $(location).attr("method","POST");
+            // $(location).attr("href","/thearc/customLogout");
+
+            var form = $('<form></form>');
+
+            form.attr({action:"/thearc/customLogout", method:"post"});
+            form.appendTo('body');
+
+            $("<input></input>").attr({type:"hidden",name:"${_csrf.parameterName}",value: "${_csrf.token}"}).appendTo(form);
+            form.submit();
+        });
     	
 </script>

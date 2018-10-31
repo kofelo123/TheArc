@@ -56,4 +56,6 @@ public interface UserMapper {
             "WHERE uid = #{uid}")
     public void modifypw(UserVO user);
 
+    public UserVO read(String uid);
+
 }

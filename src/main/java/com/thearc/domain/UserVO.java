@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 public class UserVO {
@@ -29,6 +30,8 @@ public class UserVO {
 	private Timestamp indate;
 	private String encrypthash; // 해쉬코드값 저장용
 	private String authority;
+
+	private List<AuthVO> authList;
 	
 
 	public String getEmail() {

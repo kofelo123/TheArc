@@ -66,4 +66,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </update>
         -->
 
+
+    <resultMap type="com.thearc.domain.UserVO" id="memberMap">
+        <id property="uid" column="uid"/>
+        <result property="uid" column="uid"/>
+        <result property="upw" column="upw"/>
+        <result property="uname" column="uname"/>
+        <result property="indate" column="indate"/>
+        <!--<result property="updateDate" column="updatedate"/>-->
+        <!-- authList는 UserVO의 속성값이고, authMap은 아래 resultMap의 id-->
+        <collection property="authList" resultMap="authMap">
+        </collection>
+    </resultMap>
+
+    <resultMap type="com.thearc.domain.AuthVO" id="authMap">
+        <result property="uid" column="uid"/>
+        <result property="authority" column="authority"/>
+    </resultMap>
+
+    <select id="read" resultMap="memberMap">
+SELECT
+  user.uid,  upw, uname, indate, auth.authority
+FROM
+  tbl_user user LEFT OUTER JOIN tbl_user_auth auth on user.uid = auth.uid
+WHERE user.uid = #{uid}
+  </select>
+
 </mapper>

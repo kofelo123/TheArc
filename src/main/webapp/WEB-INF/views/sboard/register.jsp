@@ -58,6 +58,7 @@
 
 
 			<input type="hidden" name='category' value="${category}">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</div>
 		
 <!-- 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요"></textarea> -->
@@ -77,7 +78,7 @@
 		<div class="form-group">
 			<label>작성자 </label>
 			<input type="text" name="writer" 
-			  class="form-control"  value="${login.uid }" readonly>
+			  class="form-control"  value="<sec:authentication property='principal.username'/>" readonly>
 		</div>
 
 		<div class="form-group">
