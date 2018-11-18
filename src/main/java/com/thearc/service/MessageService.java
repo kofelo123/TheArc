@@ -19,7 +19,7 @@ public interface MessageService {
 
 	public List<MessageVO> listSearchCriteria(SearchCriteria cri, String targetid) throws Exception;
 
-	public int listSearchCount(SearchCriteria cri) throws Exception;
+	public int listSearchCount(SearchCriteria cri,String targetid) throws Exception;
 
 	public MessageVO readMessage(Integer mid) throws Exception;
 }

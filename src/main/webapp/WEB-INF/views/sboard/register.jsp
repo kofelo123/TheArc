@@ -121,6 +121,9 @@ function goLogin(){
 
 var template = Handlebars.compile($("#template").html());
 
+var csrfHeaderName = "${_csrf.headerName}";
+var csrfTokenValue="${_csrf.token}";
+
 $(".fileDrop").on("dragenter dragover", function(event){
 	event.preventDefault();
 });
@@ -144,6 +147,9 @@ $(".fileDrop").on("drop", function(event){
 		  processData: false,
 		  contentType: false,
 		  type: 'POST',
+		  beforeSend: function(xhr){
+			  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		  },
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
@@ -195,6 +201,9 @@ $(".uploadedList").on("click",".delbtn",function(event){
 			type:'post',
 			data:{fileName:$(this).attr('href')},
 			dataType:"text",
+			beforeSend: function(xhr){
+				xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+			},
 			success:function(result){
 				if(result == 'deleted'){
 					that.parents("li").remove();

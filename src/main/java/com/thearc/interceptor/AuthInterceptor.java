@@ -81,7 +81,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    System.out.println("Test:"+pathName); //마지막 path값 얻어오기 -> 이걸로 권한 체크할것..
 	    HttpSession session = request.getSession();
 	    
-	    if(pathName.equals("supporter")){
+/*	    if(pathName.equals("supporter")){
 	    	UserVO vo = (UserVO) session.getAttribute("login");
 	    	if(vo.getAuthority().equals("user")){
 	    		response.sendRedirect("/thearc/error403");
@@ -95,33 +95,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    		response.sendRedirect("/thearc/error403");
 	    	}
 	    		
-	    }
+	    }*/
 	    
 	  
 	  
   }
 
-//  @Override
-//  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//
-//    HttpSession session = request.getSession();
-//
-//    if (session.getAttribute("login") == null) {
-//
-//      logger.info("current user is not logined");
-//
-//      saveDest(request);
-//      
-//      response.sendRedirect("/user/login");
-//      return false;
-//    }
-//    return true;
-//  }
 }
 
-// if(session.getAttribute("login") == null){
-//
-// logger.info("current user is not logined");
-// response.sendRedirect("/user/login");
-// return false;
-// }

@@ -21,15 +21,18 @@ public class UserVO {
 	@NotBlank
 	@Size(min=2, max=20)
 	private String uname;
-	private String email;// 아이디@메일주소 하는과정에서 email과 email2로 나뉘지만 email의 getter에 email+email2가 되어 병합되어 저장된다.
+
+	private String email;// 아이디@메일주소 하는과정에서 email과 email2로 나뉘지만 email의 getter에 email+email2가 되어 병합되어 저장된다.(그로인해서 validation에 문제가 생기기도함)
+
 	private String email2;
+
 	private String roadAddrPart1;
 	private String addrDetail;
 	private String addr1;
 	private String phone;
 	private Timestamp indate;
 	private String encrypthash; // 해쉬코드값 저장용
-	private String authority;
+//	private String authority;
 
 	private List<AuthVO> authList;
 	
@@ -47,7 +50,7 @@ public class UserVO {
 		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname +  ", email=" + email
 				+ ", email2=" + email2 +", roadAddrPart1="
 				+ roadAddrPart1 + ", addrDetail=" + addrDetail + ", addr1=" + addr1 + ", phone=" + phone + ", indate="
-				+ indate + ", encrypthash=" + encrypthash + ", authority=" + authority + "]";
+				+ indate + ", encrypthash=" + encrypthash + ", authority=" + /*authority +*/ "]";
 	}
 
 /*	public void setEmail(String email) {
@@ -58,10 +61,10 @@ public class UserVO {
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
-	}
+	}*/
 	public String getAddr1() {
 		return roadAddrPart1 +" "+ addrDetail;
-	}*/
+	}
 
 
 /*

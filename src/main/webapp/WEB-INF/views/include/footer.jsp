@@ -102,6 +102,7 @@
     	$('#joinbutton').on("click", function(evt) {
 			self.location = "/thearc/user/join";
 		});
+
     	
     	$('#logout').on("click", function(evt){
 
@@ -118,5 +119,7 @@
             $("<input></input>").attr({type:"hidden",name:"${_csrf.parameterName}",value: "${_csrf.token}"}).appendTo(form);
             form.submit();
         });
-    	
+$(function(){
+
+})
 </script>

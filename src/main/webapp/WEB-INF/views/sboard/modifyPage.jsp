@@ -44,7 +44,8 @@
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 	<input type='hidden' name='searchType' value="${cri.searchType}">
 	<input type='hidden' name='keyword' value="${cri.keyword}">
-	
+
+
 	<form id='registerForm' role="form" method="post">
 	
 	<div class="box-body">
@@ -67,7 +68,7 @@
 		<div class="form-group">
 			<label>작성자</label>
 			<input type="text" name="writer" 
-			  class="form-control"  value="${login.uid }" readonly>
+			  class="form-control"  value="<sec:authentication property='principal.member.uid'/>" readonly>
 		</div>
 
 		<div class="form-group">
@@ -82,6 +83,8 @@
 		</div>
 		<ul class="mailbox-attachments clearfix uploadedList">
 		</ul>
+
+
 	 <button type="submit" class="btn btn-primary" onclick="isEmpty()">글 등록</button> 
     <button type="submit" class="btn btn-warning">취소</button>
 	</div>
@@ -138,6 +141,9 @@ $(document).ready(function(){
 
 var template = Handlebars.compile($("#template").html());
 
+var csrfHeaderName = "${_csrf.headerName}";
+var csrfTokenValue = "${_csrf.token}";
+
 $(".fileDrop").on("dragenter dragover", function(event){
 	event.preventDefault();
 });
@@ -162,6 +168,10 @@ $(".fileDrop").on("drop", function(event){
 		  processData: false,
 		  contentType: false,
 		  type: 'POST',
+          beforeSend : function(xhr){
+            xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+          },
+
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
@@ -184,6 +194,9 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 	   type:"post",
 	   data: {fileName:$(this).attr("href")},
 	   dataType:"text",
+       beforeSend : function(xhr){
+	       xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+       },
 	   success:function(result){
 		   if(result == 'deleted'){
 			   that.closest("li").remove();

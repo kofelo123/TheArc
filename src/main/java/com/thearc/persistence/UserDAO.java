@@ -25,4 +25,5 @@ public interface UserDAO {
 	public UserVO hashbyid(UserVO user);
 
 	public void modifypw(UserVO user);
+
 }

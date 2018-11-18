@@ -1,3 +1,4 @@
+/*
 package com.thearc.interceptor;
 
 import com.thearc.domain.UserVO;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 
 
+*/
 /**
   *
   * @author Jeongwon Heo
@@ -25,7 +27,8 @@ import java.io.PrintWriter;
   *  2018. 7. 19.     허정원               로그인실패 - 인터셉터처리
   *
   * </pre>
-  */
+  *//*
+
 @Slf4j
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
@@ -60,7 +63,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       Object dest = session.getAttribute("dest");
       System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
       
-      /*아래 ban체크용 */
+      */
+/*아래 ban체크용 *//*
+
       UserVO uvo=(UserVO) userVO;
       if(uvo.getAuthority().equals("ban")){
     	  session.removeAttribute(LOGIN);
@@ -95,3 +100,4 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     return true;
   }
 }
+*/

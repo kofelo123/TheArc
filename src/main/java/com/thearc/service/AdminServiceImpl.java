@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -20,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper mapper;
 
 	@Override
-	public List<UserVO> listuser() throws Exception {
+	public List<Map<String,String>> listuser() throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.listuser();
 	}
@@ -33,17 +34,23 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void authmodify(UserVO user) throws Exception {
+	public void authmodify(Map uidAuthority) throws Exception {
 
-		if(user.getAuthority().equals("user")){
-			user.setAuthority("supporter");
-		}else if(user.getAuthority().equals("supporter")){
-			user.setAuthority("ban");
+		if (uidAuthority.get("authority").equals("ROLE_MEMBER")) {
+			uidAuthority.remove("authority"); /*("ROLE_SUPPORTER");*/
+			uidAuthority.put("authority", "ROLE_MEMBER");
+		} else if (uidAuthority.get("authority").equals("ROLE_SUPPORTER")) {
+			uidAuthority.remove("authority");
+			uidAuthority.put("authority", "ROLE_SUPPORTER");
+		} else if (uidAuthority.get("authority").equals("ROLE_BAN")){
+			uidAuthority.remove("authority");
+			uidAuthority.put("authority","ROLE_BAN");
 		}else{
-			user.setAuthority("user");
+		    uidAuthority.remove("authority");
+		    uidAuthority.put("authority","ROLE_ADMIN");
 		}
 
-		mapper.authmodify(user);
+		mapper.authmodify(uidAuthority);
 	}
 
 	@Override

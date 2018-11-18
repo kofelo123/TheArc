@@ -1,6 +1,7 @@
 package com.thearc.controller;
 
 //import com.thearc.domain.AddressVO;
+
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
@@ -169,6 +170,28 @@ public class UserController {
 		return entity;
 	}
 
+	@ResponseBody
+    @PostMapping("/unameCheck")
+    public ResponseEntity<String> unameCheck(String uname) throws Exception{
+
+	    ResponseEntity<String> entity = null;
+
+	    try{
+	        String userName = "";
+	        userName = service.unameCheck(uname);
+
+	        if(userName == null){
+	            entity = new ResponseEntity<>("Success",HttpStatus.OK);
+            }else{
+	            entity = new ResponseEntity<>("Duplicate",HttpStatus.OK);
+            }
+        }catch(Exception e){
+	        e.printStackTrace();
+        }
+
+        return entity;
+    }
+
 //	@GetMapping("/findZipNum")
 //	public void findZipNum(Model model, AddressVO address) throws Exception {
 //
@@ -190,9 +213,19 @@ public class UserController {
 	}
 
 	@GetMapping("/idfindmail")
-	public void idfindmail(UserVO user, HttpServletRequest request, ModelMap mo) throws Exception {
+	public String idfindmail(UserVO user, HttpServletRequest request, ModelMap mo,RedirectAttributes rttr) throws Exception {
+
+		//메일 존재여부체크 - 실패시 idfind 페이지로 이동, alert띄움.
+		if(service.mailCheck(user) == null) {
+			System.out.println("Test:");
+			rttr.addFlashAttribute("msg","FAIL");
+			return "redirect:/user/idfind";
+		}
+
 		/// HttpServletRequest Modelmap 왜가는지?..
 		service.idfindmail(request, mo, user);
+
+		return "/user/idfindmail";
 	}
 
 	@GetMapping("/mailcheck")
@@ -208,6 +241,30 @@ public class UserController {
 		// 3.비밀번호 변경하는 로직->(update) 4.처리결과 처리 (간단하게 alert해도 될듯) -> 메인페이지로 redirect
 
 	}
+
+	@ResponseBody
+    @PostMapping("/joinMailCheck")
+    public ResponseEntity<String> joinMailCheck(UserVO userVO)throws Exception{
+
+        System.out.println("TestUserVO:"+userVO);
+
+	    ResponseEntity<String> entity = null;
+
+	    try{
+            if(service.mailCheck(userVO) == null){
+                System.out.println("Test1:success");
+                entity = new ResponseEntity<>("Success",HttpStatus.OK);
+            }else{
+                System.out.println("Test1:duplicate");
+                entity = new ResponseEntity<>("Duplicate",HttpStatus.OK);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
 
 	@PostMapping("/modifypw")
 	public String modifypw(UserVO user) throws Exception {

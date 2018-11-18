@@ -82,36 +82,37 @@
 
 
 
-	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
+<!--	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
 
 	<beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
 
-	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>
+	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>-->
 	
-	<interceptors>
+	<!--<interceptors>-->
 	
-	  <interceptor>
+	 <!-- <interceptor>
 		<mapping path="/user/loginPost" />
 		<beans:ref bean="loginInterceptor" />
-	  </interceptor>
+	  </interceptor>-->
 
-		<!--<mapping path="/sboard/readPage/like*"/>	-->
- 	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
-	    <!--<mapping path="/sboard/register/*"/>-->
+        <!--<mapping path="/sboard/readPage/like*"/>-->
+ 	  <!--<interceptor>  //로그인해야 접근할수있게
+
+	    <mapping path="/sboard/register/*"/>
 	    <mapping path="/sboard/modifyPage/*"/>
 	    <mapping path="/sboard/removePage/*"/>
 	    <mapping path="/sboard/mail/listmail/*"/>
 	    <mapping path="/sboard/list/supporter"/>
 	    <beans:ref bean="authInterceptor"/>
-	  </interceptor>	
+	  </interceptor>-->
 	  
-	  <interceptor>
+	  <!--<interceptor>
 	  	<mapping path="/admin/userlist"/>
 	  	<mapping path="/admin/chartpage"/>
 	  	<mapping path="/admin/superadmin/*"/>
 	  	<beans:ref bean="adminAuthInterceptor"/>
-	  </interceptor>
-	</interceptors>
+	  </interceptor>-->
+	<!--</interceptors>-->
 	
 	<!--  spring mobile - 모바일인식을위한 -->
 	<interceptors>

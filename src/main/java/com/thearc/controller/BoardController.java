@@ -75,10 +75,6 @@ public class BoardController {
 	public String read(@RequestParam Map<String,String> map, @ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 			throws Exception {
 
-		log.info("로거테스트");
-
-
-
 		int bno  = Integer.parseInt(map.get("bno"));
 
 		model.addAttribute(service.read(bno)); //model.addAttribute의 파라미터 하나있는거라서 view에서 전달시 boardVO가 된다.
@@ -95,9 +91,11 @@ public class BoardController {
 //	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 
 	  @PostMapping("/removePage/{category}")
-	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
+      @PreAuthorize("principal.member.uid == #uid")
+	  public String remove(String uid,@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
 
 		log.info("bno Test:"+bno);
+//		log.info("uid Test:"+uid);
 	    service.remove(bno);
 
 	    rttr.addAttribute("page", cri.getPage());///addFlashAttribute와 달리 URL 파라미터에 붙여주는 방식이다. 그래서 list페이지로 redirect될때 파라미터로 받아낼수있게 cri 넘긴다.
@@ -112,7 +110,8 @@ public class BoardController {
 
 	  ///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
 	  @GetMapping("/modifyPage/{category}")
-	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
+      @PreAuthorize("principal.username == #uid")
+	  public String modifyPagingGET(int bno,String uid, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute(service.read(bno)); ///BoardVO return = category 포함.
 
@@ -120,6 +119,8 @@ public class BoardController {
 	  }
 
 	  @PostMapping("/modifyPage/{category}")
+	  @PreAuthorize("principal.username == #board.writer")
+//      @PreAuthorize("isAuthenticated()")
 	  public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
 	    service.modify(board);

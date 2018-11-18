@@ -74,4 +74,5 @@ public class UserDAOImpl implements UserDAO {
 	public void modifypw(UserVO user) {
 		session.update(namespace + ".modifypw", user);
 	}
+
 }

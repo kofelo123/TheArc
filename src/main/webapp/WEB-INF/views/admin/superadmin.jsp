@@ -42,7 +42,7 @@
 							<tr style="font-family:Typo_DecoVariety; font-size:20px">
 								<%-- <td>${boardVO.bno}</td> --%>
 								<td style="width: 40%;padding-left:20px;"><a
-									href='/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' style="color:#337ab7">
+									href='/thearc/sboard/readPage/${category}${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}&uid=${login.uid}' style="color:#337ab7">
 										${boardVO.title} <%-- <strong>[${boardVO.replycnt}  ]</strong> --%>
 								</a></td>
 								<td class="responsive" style="width:7%">

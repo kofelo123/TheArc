@@ -9,6 +9,7 @@ import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
@@ -33,6 +34,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private EncryptUtil encrypt;
 
+	@Autowired
+	private PasswordEncoder pwencoder;
+
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
 		dto.setUpw(encrypt.getSHA256(dto.getUpw()));
@@ -51,9 +55,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void joinPost(UserVO user) throws Exception {
-		user.setUpw(encrypt.getSHA256(user.getUpw()));
-		
+//		user.setUpw(encrypt.getSHA256(user.getUpw()));
+
+		user.setUpw(pwencoder.encode(user.getUpw()));
+
 		mapper.joinPost(user);
+
+		mapper.insertAuth(user);
 
 	}
 
@@ -104,5 +112,21 @@ public class UserServiceImpl implements UserService {
 	public void modifypw(UserVO user) throws Exception {
 		user.setUpw(encrypt.getSHA256(user.getUpw()));
 		mapper.modifypw(user);
+	}
+
+	@Override
+	public UserVO mailCheck(UserVO user) throws Exception {
+
+		UserVO userVO = mapper.mailCheck(user);
+
+		return userVO;
+	}
+
+	@Override
+	public String unameCheck(String uname) throws Exception {
+
+
+
+		return mapper.unameCheck(uname);
 	}
 }

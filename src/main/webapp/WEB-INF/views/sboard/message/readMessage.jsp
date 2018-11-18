@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ include file="../../include/analytics.jsp"%>	
 
@@ -60,9 +61,10 @@
 
 <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
 <script>
+    
 	$(document).ready(function() {
 				$('#goListBtn').on("click", function() {
-				    $(location).attr("href","listMessage?uid=${login.uid }");
+				    $(location).attr("href","listMessage?uid="+<sec:authentication property="principal.member.uid"/>);
 					 <%--self.location = "listMessage?uid= ${login.uid }"; --%>
 				});
 			});

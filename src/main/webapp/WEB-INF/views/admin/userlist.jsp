@@ -33,13 +33,46 @@
 						<c:forEach items="${userVO}" var="userlist">
 							
 							<tr>
-								<td>${userlist.uid}</td>
+								<td class="uid">${userlist.uid}</td>
 								<td>${userlist.uname}</td>
 								<td>${userlist.phone}</td>
 								<td>${userlist.email }</td>
-								<td>${userlist.authority }</td>
+
+                                    <td>
+                                        <select class="authoritySelect">
+
+                                            <option value="${userlist.authority}" selected>
+
+
+                                               <c:choose>
+                                                   <c:when test="${userlist.authority eq 'ROLE_MEMBER'}">
+                                                       일반회원
+                                                   </c:when>
+                                                   <c:when test="${userlist.authority eq 'ROLE_SUPPORTER'}">
+                                                       서포터즈
+                                                   </c:when>
+                                                   <c:when test="${userlist.authority eq 'ROLE_BAN'}">
+                                                       정지회원
+                                                   </c:when>
+                                                   <c:when test="${userlist.authority eq 'ROLE_ADMIN'}">
+                                                       관리자
+                                                   </c:when>
+                                               </c:choose>
+
+
+                                            </option>
+                                            <option value="">-------------</option>
+                                            <option value="ROLE_MEMBER" > 일반회원 </option>
+                                            <option value="ROLE_SUPPORTER" >서포터즈 </option>
+                                            <option value="ROLE_BAN" > 정지회원 </option>
+                                            <option value="ROLE_ADMIN" > 관리자 </option>
+
+                                        </select>
+                                    </td>
+
+
 								<td>
-									<button id="authoritymodify" name="modify" onClick="window.location.href='/thearc/admin/authmodify?uid=${userlist.uid}&authority=${userlist.authority}'">변경</button>
+									<button class="authoritymodify" name="modify">변경</button>
 								</td>
 								<td>
 									<button id="userDrop" name="delete" onClick="window.location.href='/thearc/admin/userDrop?uid=${userlist.uid}&authority=${userlist.authority}'">삭제</button>
@@ -81,9 +114,10 @@
 		<!--/.col (left) -->
 	</div>
 	<!-- /.row -->
+	</div>
 </section>
 <!-- /.content -->
-
+<script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
 <script>
 	var result = '${msg}';
 
@@ -91,29 +125,23 @@
 		alert("처리가 완료되었습니다.");
 		location.replace(self.location);
 	}
+
+	$(function(){
+	    $(".authoritymodify").click(function(){
+	        var tdUid = $(this).parent().parent().children().eq(0).text();
+	        var tdAuthority = $(this).parent().parent().children().eq(4).find("option:selected").val();
+
+            $(location).attr("href","/thearc/admin/authmodify?uid="+tdUid+"&authority="+tdAuthority);
+		});
+
+        <%--$("#userDrop").click(function(){--%>
+                 <%--$(location).attr("href","/thearc/admin/userDrop?uid=${userlist.uid}&authority="+$("#authoritySelect").val());--%>
+		<%--});--%>
+
+	})
 </script>
 
 <script>
-	$(document).ready(
-			function() {
 
-				$('#searchBtn').on(
-						"click",
-						function(event) {
-
-							self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
-
-						});
-
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
-
-				});
-			});
 </script>
 <%@include file="../include/adminfooter.jsp"%>

@@ -44,8 +44,8 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public int listSearchCount(SearchCriteria cri) throws Exception {
-		return mapper.listSearchCount(cri);
+	public int listSearchCount(SearchCriteria cri ,String targetid) throws Exception {
+		return mapper.listSearchCount(cri,targetid);
 	}
 
 	@Override

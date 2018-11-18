@@ -27,7 +27,7 @@ public interface MessageMapper {
 
     public List<MessageVO> listSearch(@Param("cri") SearchCriteria cri, @Param("targetid") String targetid) throws Exception;
 
-    public int listSearchCount(@Param("cri") SearchCriteria cri) throws Exception;
+    public int listSearchCount(@Param("cri") SearchCriteria cri,@Param("targetid") String targetid) throws Exception;
 
     @Select("SELECT * FROM tbl_message " +
             "WHERE mid = #{mid}")

@@ -20,11 +20,17 @@ public interface UserService {
 	  public UserVO id_checkPost(UserVO uid) throws Exception;
 	  
 //	  public List<AddressVO> findzipnum(AddressVO address)throws Exception;
-	  
+
+
+
 	  public void idfindmail(HttpServletRequest request, ModelMap mo,UserVO user)throws Exception;
 	  
 	  public UserVO hashbyid(UserVO user)throws Exception;
 	  
 	  public void modifypw(UserVO user)throws Exception;
+
+	  public UserVO mailCheck(UserVO user)throws Exception;
+
+	  public String unameCheck(String uname)throws Exception;
 	
 }

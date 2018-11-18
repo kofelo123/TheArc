@@ -74,7 +74,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <![CDATA[  
   select count(mid) 
   from tbl_message 
-  where mid > 0 
+  where mid > 0
+  AND targetid= #{targetid}
 ]]>
 		<include refid="search"></include>
 

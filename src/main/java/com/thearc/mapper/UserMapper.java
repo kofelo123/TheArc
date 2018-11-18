@@ -32,6 +32,9 @@ public interface UserMapper {
             "VALUES(#{uid},#{upw},#{uname},#{email},#{addr1},#{phone})")
     public void joinPost(UserVO user);
 
+    @Insert("INSERT INTO tbl_user_auth(uid,authority) VALUES (#{uid},'ROLE_MEMBER')")
+    public void insertAuth(UserVO user);
+
     @Select("SELECT *  " +
             "FROM tbl_user  " +
             "WHERE uid= #{uid} ")
@@ -57,5 +60,16 @@ public interface UserMapper {
     public void modifypw(UserVO user);
 
     public UserVO read(String uid);
+
+    @Select("SELECT * " +
+            "FROM tbl_user " +
+            "WHERE email=#{email}")
+    public UserVO mailCheck(UserVO userVO);
+
+    @Select("SELECT uname " +
+            "FROM tbl_user " +
+            "WHERE uname=#{uname}")
+    public String unameCheck(String uname);
+
 
 }

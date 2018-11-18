@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 허정원
@@ -24,9 +25,10 @@ import java.util.List;
 
 public interface AdminMapper {
 
-    @Select("SELECT * " +
-            "FROM tbl_user")
-    public List<UserVO> listuser()throws Exception;
+    @Select("SELECT user.uid, user.uname, user.phone, user.email, user.indate , auth.authority " +
+            "FROM tbl_user user, tbl_user_auth auth " +
+            "WHERE user.uid = auth.uid")
+    public List<Map<String,String>> listuser()throws Exception;
 
     @Select("SELECT uid,upw " +
             "FROM tbl_user " +
@@ -34,10 +36,10 @@ public interface AdminMapper {
             "AND upw=#{upw}")
     public UserVO adminlogin(UserVO user) throws Exception;
 
-    @Update("UPDATE tbl_user " +
+    @Update("UPDATE tbl_user_auth " +
             "SET authority = #{authority} " +
             "WHERE uid = #{uid}")
-    public void authmodify(UserVO user) throws Exception;
+    public void authmodify(Map uidAuthority) throws Exception;
 
 
     @Delete("DELETE FROM tbl_check " +

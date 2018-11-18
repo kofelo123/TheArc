@@ -58,9 +58,12 @@
 
                 <form role="form" action="modifyPage" method="post">
 
-                    <input type='hidden' name='bno' value="${boardVO.bno}"> <input
-                        type='hidden' name='page' value="${cri.page}"> <input
-                        type='hidden' name='perPageNum' value="${cri.perPageNum}">
+                    <input type='hidden' name='bno' value="${boardVO.bno}">
+                    <input type='hidden' name='uid' value="${boardVO.writer}"><%--시큐리티 권한체크에 필요해서 넣음(수정) --%>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><%--시큐리티 권한체크에 필요해서 넣음(수정) --%>
+
+                    <input type='hidden' name='page' value="${cri.page}">
+                    <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
                     <input type='hidden' name='searchType' value="${cri.searchType}">
                     <input type='hidden' name='keyword' value="${cri.keyword}">
 
@@ -213,7 +216,7 @@
 <%@include file="../include/footer2.jsp"%>
 
 <script>
-    var uid = null;
+    var uid = '';
     <sec:authorize access="isAuthenticated()">
     uid = '<sec:authentication property="principal.member.uid" />';
     </sec:authorize>
@@ -382,7 +385,7 @@
 
 <script>
 
-    var uid = null;
+    var uid = '';
     <sec:authorize access="isAuthenticated()">
     uid = '<sec:authentication property="principal.member.uid" />';
     </sec:authorize>
@@ -501,6 +504,9 @@
                 replytext : replytext
             }),
             dataType : 'text',
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+            },
             success : function(result) {
                 console.log("result: " + result);
                 if (result == 'SUCCESS') {
@@ -521,6 +527,9 @@
                 "X-HTTP-Method-Override" : "DELETE"
             },
             dataType : 'text',
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+            },
             success : function(result) {
                 console.log("result: " + result);
                 if (result == 'SUCCESS') {
@@ -530,10 +539,10 @@
             }
         });
     });
-</script>
+
 
 <!-- <form role="form" -->
-<script>
+
     $(document).ready(function(){
 
         var formObj = $("form[role='form']");

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/userbackground.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,7 @@
 	background-color: #111111
 }
 
-.site-title, .preloader i, .login-form, .login-form a.lost-pass,
-	.btn-open-login-form, .site-content, .user-content-wrapper,
-	.user-content, footer, .maintenance a {
-	color: #ffffff;
-}
+
 
 /* 로그인상태유지 체크박스  */
 #useCookie{
@@ -54,7 +51,7 @@
 		<div id="wrapper">
 			<div class="login-box">
 				<div class="login-logo">
-					<a href="/thearc/user/login"><b>The Arc</b></a>
+					<a href="/thearc/sboard/main"><b>The Arc</b></a>
 				</div>
 				<!-- /.login-logo -->
 				<div class="login-box-body">
@@ -64,12 +61,12 @@
 						<div class="form-group has-feedback">
 							<input type="text" id="uid" name="username" class="form-control"	placeholder="아이디입력" />
 							<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-							<span id="successFail"></span>
+							<span class="successFail"></span>
 						</div>
 						<div class="form-group has-feedback">
 							<input type="password" id="upw" name="password" class="form-control"	placeholder="패스워드입력" />
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-							<span id="successFail"></span>
+							<span class="successFail"></span>
 						</div>
 						<div class="row">
 							<div class="col-xs-8">
@@ -79,8 +76,7 @@
 									</label>--%>
 								</div>
 								<div class="checkbox">
-									<label> <input name="remember-me" type="checkbox">Remember
-										Me
+									<label> <input name="remember-me" type="checkbox">자동로그인
 									</label>
 								</div>
 							</div>
@@ -111,9 +107,8 @@
 				<input type="submit" class="button" name="submit" id="submit" value="로그인" tabindex="4" />
 				<input type="hidden" name="is_custom_login" value="1" />
 		</form>
-		<div id="btn-open-login-form" class="btn-open-login-form">
-			<i class="foundicon-lock"></i>
-		</div>
+
+
 	</div>
 </body>
 </html>
@@ -151,7 +146,7 @@
 				*/
 			 	function successFail(id,message,color){
 			 		
-					$("#"+id).next().next().html(message).css("color",color);
+					$("#"+id).nextAll(".successFail").first().html(message).css("color",color);
 					
 				} 
 				
