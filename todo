@@ -116,4 +116,6 @@ ROLE 이 여러개 적용 가능하니까.. 그에 맞춰서 userlist도 변해�
 
 branch security -> dev 통합 -> origin 통합
 
+jenkins -> aws 배포
+
 

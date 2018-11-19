@@ -122,20 +122,22 @@ public class MemberTests {
   @Test
   public void testInsertCustom(){
 
-//    String sql ="insert into tbl_user(uid,upw,uname)values(?,?,?)";
-    String sql2 = "insert into tbl_user_auth (uid, authority) values (?,?)";
+    String sql ="insert into tbl_user(uid,upw,uname,email)values(?,?,?,?)";
+//    String sql2 = "insert into tbl_user_auth (uid, authority) values (?,?)";
     Connection con = null;
     PreparedStatement pstmt = null;
 
     try{
       con = ds.getConnection();
-      pstmt = con.prepareStatement(sql2);
+      pstmt = con.prepareStatement(sql);
 
-//      pstmt.setString(1,"admin2");
-//      pstmt.setString(2,pwencoder.encode("admin2"));
-//      pstmt.setString(3,"관리자2");
-      pstmt.setString(1, "admin2");
-      pstmt.setString(2,"ROLE_ADMIN");
+      pstmt.setString(1,"test_thearc");
+      pstmt.setString(2,pwencoder.encode("test_thearc"));
+      pstmt.setString(3,"test_thearc");
+      pstmt.setString(4,"test_thearc@naver.com");
+
+//      pstmt.setString(1, "admin2");
+//      pstmt.setString(2,"ROLE_ADMIN");
 
 
       pstmt.executeUpdate();

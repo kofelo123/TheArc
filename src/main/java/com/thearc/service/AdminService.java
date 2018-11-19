@@ -10,7 +10,7 @@ public interface AdminService {
 	
 	public List<Map<String,String>> listuser() throws Exception;
 
-	public UserVO adminlogin(UserVO user)throws Exception;
+//	public UserVO adminlogin(UserVO user)throws Exception;
 	
 	public void authmodify(Map uidAuthority) throws Exception;
 	

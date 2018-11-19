@@ -12,9 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.PrintWriter;
 import java.util.Map;
 
 @Controller
@@ -35,7 +32,7 @@ public class AdminController {
 	}
 
 
-	@PostMapping("/admLogPost")
+	/*@PostMapping("/admLogPost")
 	public String admLogPost(UserVO user,HttpServletResponse response,HttpSession session) throws Exception{
 		
 		UserVO vo=service.adminlogin(user);
@@ -53,7 +50,7 @@ public class AdminController {
 		out.flush();
 		}
 		return null;
-	}
+	}*/
 	
 	@GetMapping("/chartpage")
 	public void charts(Model model)throws Exception{
