@@ -72,3 +72,6 @@ target/
 
 # 내기록
 .todo
+
+# 커밋변경떄마다 아래 수정때문에 체크아웃 충돌남.
+.idea/workspace.xml
