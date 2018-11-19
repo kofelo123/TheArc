@@ -68,4 +68,6 @@ local.properties
 target/
 
 
+.idea/workspace.xml
+
 # End of https://www.gitignore.io/api/eclipse,java-web
