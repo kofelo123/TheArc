@@ -1,11 +1,10 @@
 package com.thearc.controller;
 
-import com.thearc.domain.AddressVO;
+//import com.thearc.domain.AddressVO;
+
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +42,6 @@ import java.util.Date;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService service;
@@ -173,20 +170,42 @@ public class UserController {
 		return entity;
 	}
 
-	@GetMapping("/findZipNum")
-	public void findZipNum(Model model, AddressVO address) throws Exception {
+	@ResponseBody
+    @PostMapping("/unameCheck")
+    public ResponseEntity<String> unameCheck(String uname) throws Exception{
 
-	}
+	    ResponseEntity<String> entity = null;
 
-	@PostMapping("/findZipNum")
-	public void findZipNumPost(Model model, AddressVO address) throws Exception {
-		/// AddressVO 필드 중 dong을 넘김.
-		System.out.println("findzipnum ...userController");
-		System.out.println(address);
+	    try{
+	        String userName = "";
+	        userName = service.unameCheck(uname);
 
-		model.addAttribute("addressList", service.findzipnum(address));
-		System.out.println("returnTest:" + service.findzipnum(address));
-	}
+	        if(userName == null){
+	            entity = new ResponseEntity<>("Success",HttpStatus.OK);
+            }else{
+	            entity = new ResponseEntity<>("Duplicate",HttpStatus.OK);
+            }
+        }catch(Exception e){
+	        e.printStackTrace();
+        }
+
+        return entity;
+    }
+
+//	@GetMapping("/findZipNum")
+//	public void findZipNum(Model model, AddressVO address) throws Exception {
+//
+//	}
+
+//	@PostMapping("/findZipNum")
+//	public void findZipNumPost(Model model, AddressVO address) throws Exception {
+//		/// AddressVO 필드 중 dong을 넘김.
+//		System.out.println("findzipnum ...userController");
+//		System.out.println(address);
+//
+//		model.addAttribute("addressList", service.findzipnum(address));
+//		System.out.println("returnTest:" + service.findzipnum(address));
+//	}
 
 	@GetMapping("/idfind")
 	public void idfind() {
@@ -194,9 +213,19 @@ public class UserController {
 	}
 
 	@GetMapping("/idfindmail")
-	public void idfindmail(UserVO user, HttpServletRequest request, ModelMap mo) throws Exception {
+	public String idfindmail(UserVO user, HttpServletRequest request, ModelMap mo,RedirectAttributes rttr) throws Exception {
+
+		//메일 존재여부체크 - 실패시 idfind 페이지로 이동, alert띄움.
+		if(service.mailCheck(user) == null) {
+			System.out.println("Test:");
+			rttr.addFlashAttribute("msg","FAIL");
+			return "redirect:/user/idfind";
+		}
+
 		/// HttpServletRequest Modelmap 왜가는지?..
 		service.idfindmail(request, mo, user);
+
+		return "/user/idfindmail";
 	}
 
 	@GetMapping("/mailcheck")
@@ -212,6 +241,30 @@ public class UserController {
 		// 3.비밀번호 변경하는 로직->(update) 4.처리결과 처리 (간단하게 alert해도 될듯) -> 메인페이지로 redirect
 
 	}
+
+	@ResponseBody
+    @PostMapping("/joinMailCheck")
+    public ResponseEntity<String> joinMailCheck(UserVO userVO)throws Exception{
+
+        System.out.println("TestUserVO:"+userVO);
+
+	    ResponseEntity<String> entity = null;
+
+	    try{
+            if(service.mailCheck(userVO) == null){
+                System.out.println("Test1:success");
+                entity = new ResponseEntity<>("Success",HttpStatus.OK);
+            }else{
+                System.out.println("Test1:duplicate");
+                entity = new ResponseEntity<>("Duplicate",HttpStatus.OK);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
 
 	@PostMapping("/modifypw")
 	public String modifypw(UserVO user) throws Exception {

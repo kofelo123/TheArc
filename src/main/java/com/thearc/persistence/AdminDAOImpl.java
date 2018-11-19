@@ -1,3 +1,4 @@
+/*
 package com.thearc.persistence;
 
 import com.thearc.domain.BoardVO;
@@ -86,3 +87,4 @@ public class AdminDAOImpl implements AdminDAO{
 	
 	
 }
+*/

@@ -17,32 +17,38 @@ public class MessageDAOImpl implements MessageDAO {
 	private SqlSession session;
 	
 	private static String namespace ="messageMapper";
-	
+
+	@Override
+	public void create(MessageVO message) throws Exception {
+
+		session.insert(namespace+".create", message);
+	}
+
 	@Override
 	public void updateState(Integer mid) throws Exception {
 
-		session.update(namespace+".upldateState", mid);
+		session.update(namespace+".updateState", mid);
 
 	}
-	
+
 	@Override
 	public void addCountList() throws Exception {
 		session.update(namespace+".addCountList");
 	}
 
-	@Override
+/*	@Override
 	public List<MessageVO> listmail(MessageVO vo) throws Exception {
 		return session.selectList(namespace+".listmail",vo);
-	}
+	}*/
 
-	
+
 	  @Override
 	  public List<MessageVO> listSearch(SearchCriteria cri,String targetid) throws Exception {
 
 		  Map<String ,Object> paramMap = new HashMap<String, Object>();
 		  paramMap.put("targetid",targetid);
 		  paramMap.put("cri", cri);
-		  
+
 	    return session.selectList(namespace + ".listSearch", paramMap);
 	  }
 
@@ -51,22 +57,16 @@ public class MessageDAOImpl implements MessageDAO {
 
 	    return session.selectOne(namespace + ".listSearchCount", cri);
 	  }
-	  
+
 	@Override
 	public MessageVO readMessage(Integer mid) throws Exception {
 
 		return session.selectOne(namespace+".readMessage", mid);
 	}
-	  
+
 	@Override
 	public void updateReadCheck(Integer mid) throws Exception {
 		session.update(namespace+".updateReadCheck", mid);
-	}
-	
-	@Override
-	public void create(MessageVO message) throws Exception {
-		
-		session.insert(namespace+".create", message);
 	}
 
 }

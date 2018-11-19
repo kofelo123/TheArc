@@ -1,9 +1,9 @@
 package com.thearc.persistence;
 
-import java.util.List;
-
 import com.thearc.domain.MessageVO;
 import com.thearc.domain.SearchCriteria;
+
+import java.util.List;
 
 public interface MessageDAO {
 
@@ -11,7 +11,7 @@ public interface MessageDAO {
 
 	public void addCountList() throws Exception;
 
-	public List<MessageVO> listmail(MessageVO vo) throws Exception;
+//	public List<MessageVO> listmail(MessageVO vo) throws Exception;
 
 	public List<MessageVO> listSearch(SearchCriteria cri, String targetid) throws Exception;
 

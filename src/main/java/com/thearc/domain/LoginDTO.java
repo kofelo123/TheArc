@@ -2,6 +2,7 @@ package com.thearc.domain;
 
 import javax.validation.constraints.Size;
 
+
 public class LoginDTO {
 	
 	@Size(min=1, max=20)

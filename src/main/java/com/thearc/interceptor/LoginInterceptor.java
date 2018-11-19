@@ -1,21 +1,20 @@
+/*
 package com.thearc.interceptor;
 
-import java.io.PrintWriter;
+import com.thearc.domain.UserVO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import com.thearc.domain.UserVO;
+import java.io.PrintWriter;
 
 
+*/
 /**
   *
   * @author Jeongwon Heo
@@ -28,12 +27,12 @@ import com.thearc.domain.UserVO;
   *  2018. 7. 19.     허정원               로그인실패 - 인터셉터처리
   *
   * </pre>
-  */
+  *//*
+
+@Slf4j
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
   private static final String LOGIN = "login";
-  private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
-
 
  
  //로그인시 이곳에서 인터셉트
@@ -49,13 +48,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	   
     if (userVO != null) {
     	
-      logger.info("new login success");
+      log.info("new login success");
       
       session.setAttribute(LOGIN, userVO);
      
       if (request.getParameter("useCookie") != null) {
 
-        logger.info("remember me................");
+        log.info("remember me................");
         Cookie loginCookie = new Cookie("loginCookie", session.getId());
         loginCookie.setPath("/");
         loginCookie.setMaxAge(60 * 60 * 24 * 7);
@@ -64,7 +63,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
       Object dest = session.getAttribute("dest");
       System.out.println("destTest:"+dest);///원래 가려고 했던 경로 (AuthInterceptoer로 부터 세션저장됨.)
       
-      /*아래 ban체크용 */
+      */
+/*아래 ban체크용 *//*
+
       UserVO uvo=(UserVO) userVO;
       if(uvo.getAuthority().equals("ban")){
     	  session.removeAttribute(LOGIN);
@@ -92,10 +93,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     HttpSession session = request.getSession();
 
     if (session.getAttribute(LOGIN) != null) {
-      logger.info("clear login data before");
+      log.info("clear login data before");
       session.removeAttribute(LOGIN);
     }
 
     return true;
   }
 }
+*/

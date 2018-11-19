@@ -78,4 +78,10 @@
         }
     });
 
+	var result = '${msg}';
+
+    if(result == 'FAIL'){
+        alert("존재하지 않는 메일입니다.");
+    }
+
 </script>

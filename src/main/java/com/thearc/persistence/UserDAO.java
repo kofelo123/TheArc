@@ -1,11 +1,9 @@
 package com.thearc.persistence;
 
-import java.util.Date;
-import java.util.List;
-
-import com.thearc.domain.AddressVO;
-import com.thearc.domain.UserVO;
 import com.thearc.domain.LoginDTO;
+import com.thearc.domain.UserVO;
+
+import java.util.Date;
 
 public interface UserDAO {
 
@@ -19,7 +17,7 @@ public interface UserDAO {
 
 	public UserVO confirmId(UserVO uid);
 
-	public List<AddressVO> findzipnum(AddressVO address);
+//	public List<AddressVO> findzipnum(AddressVO address);
 
 	// 아아디 비밀번호 찾기 로직관련
 	public UserVO idfindofmail(UserVO user);
@@ -27,4 +25,5 @@ public interface UserDAO {
 	public UserVO hashbyid(UserVO user);
 
 	public void modifypw(UserVO user);
+
 }

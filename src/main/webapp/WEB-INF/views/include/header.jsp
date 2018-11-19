@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 	<!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -18,6 +19,8 @@
  	<meta property="og:title"              content="${boardVO.title }" />
 	<%-- <meta property="og:description"        content="${boardVO.content }" />  이부분때문에 summernote 에러난다.--%>
 	<meta property="og:image"              content="https://encrypt	ed-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFa8hrulJs73ktd-t_ST_Bgjqq9Hu3LIWUyEx0F2vQGmtX7ou" />
+
+
 </head>
 
   
@@ -30,49 +33,84 @@
             <!-- Logo / Mobile Menu -->
             <div id="logo-bar">
                 <!-- <div id="logo" > -->
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-1 col-sm-6 ">
-                	<div class="mainlogo">
+                <div class="col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-1 col-sm-6 ">
+                	<div class="mainlogo" >
                     	<h1><a href="/thearc/sboard/main"><img src="/thearc/resources/bootstrap/images/mainlogo.png" alt="theark" /></a></h1>
                     </div>
                 </div>
 
 
                        <%-- 개발시 로그인 편하게 하기위해--%>
-                <c:if test="${empty login && pageContext.request.getServerName() eq 'localhost'}" >
-                <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
-                 <script></script>
-                <button id="devlogin" style="width:40px;height:30px; margin-top:10px;"></button>
-                    <script>
-                        $(function(){
-                            $("#devlogin").click(function(){
+                <sec:authorize access="isAnonymous()">
+                    <c:if test="${pageContext.request.getServerName() eq 'localhost'}">
+                        <script type="text/javascript" src="/thearc/resources/bootstrap/js/jquery-1.10.2.min.js"></script>
+                        <script></script>
+                        <button id="devlogin" style="width:40px;height:30px; margin-top:10px;"></button>
+                        <script>
+                            $(function(){
+                                $("#devlogin").click(function(){
 
-                                var form = $('<form></form>');
+                                    var form = $('<form></form>');
 
-                                form.attr({action:"/thearc/user/loginPost" , method:"post"});
-                                form.appendTo('body');
+                                    form.attr({action:"/thearc/login" , method:"post"});
+                                    form.appendTo('body');
 
-                                $("<input></input>").attr({type:"hidden",name:"uid",value:"admin"}).appendTo(form);
-                                $("<input></input>").attr({type:"hidden",name:"upw",value:"admin"}).appendTo(form);
-                                form.submit();
+                                    $("<input></input>").attr({type:"hidden",name:"username",value:"admin2"}).appendTo(form);
+                                    $("<input></input>").attr({type:"hidden",name:"password",value:"admin2"}).appendTo(form);
+                                    $("<input></input>").attr({type:"hidden",name:"${_csrf.parameterName}",value: "${_csrf.token}"}).appendTo(form);
+                                    form.submit();
 
-                            });
-                        })
+                                });
+                            })
 
-                    </script>
-                </c:if>
-
-                    <c:if test="${empty login }">
-                    <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="/* margin-right:% ;*/margin-top:10px">
-                    
-                    <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
-                      <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
-                     </div>
-              		<div class="col-md-2 col-lg-1 col-sm-2" style="margin-top:10px">
-                      <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
-                     </div>
+                        </script>
                     </c:if>
-                    <c:if test="${not empty login }">
-                    <div class="col-lg-1 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2">
+                </sec:authorize>
+
+
+                <sec:authentication property="principal" var="pinfo"/>
+
+                    <sec:authorize access="isAuthenticated()">
+
+                        <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2">
+
+                            <sec:authorize access="hasRole('ADMIN')">
+                                <img src="/thearc/resources/bootstrap/img/king.jpg"  style="width:25px;height:25px;float:left;margin-top:9px;margin-left:50%;"/><h3 style="line-height:0px">&nbsp;&nbsp;${pinfo.member.uid}</h3><h4>&nbsp;&nbsp;(관리자)</h4>
+                            </sec:authorize>
+
+                            <sec:authorize access="hasRole('SUPPORTER')">
+                                <img src="/thearc/resources/bootstrap/img/supporter.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-left:50%"/><h3 style="line-height:0px;">&nbsp;&nbsp;${pinfo.member.uid}</h3><h4>&nbsp;&nbsp;(서포터즈)</h4>
+                            </sec:authorize>
+
+                            <sec:authorize access="hasRole('MEMBER')">
+                                <img src="/thearc/resources/bootstrap/img/user.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-left:50%"/><h3 style="line-height:0px">&nbsp;&nbsp;${pinfo.member.uid}</h3><h4>&nbsp;&nbsp;(일반회원)</h4>
+                            </sec:authorize>
+
+                        </div>
+
+
+                        <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
+                        <div class="col-sm-1">
+                            <button type="button" id="message" onClick="window.open('/thearc/sboard/message/listMessage?uid=${pinfo.member.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-15px;">메세지함</button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" id="logout" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-60%;">로그아웃</button>
+                        <sec:authorize access="hasRole('ADMIN')">
+
+                            <a href="#"><img src="/thearc/resources/bootstrap/image/lock3.png" style="width:40px; height:40px; margin-top:10px; float:right" onclick="adminLogin()"></a>
+
+                        </sec:authorize>
+                        </div>
+
+                    </sec:authorize>
+
+
+
+
+
+
+              <%--      <c:if test="${not empty login }">
+                  <div class="col-lg-1 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2">
                     	<c:choose>
                     		<c:when test="${login.authority=='user' }">
                     	<img src="/thearc/resources/bootstrap/img/user.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(일반회원)</h4>
@@ -91,7 +129,30 @@
                     <div class="col-sm-1">
                     	<button type="button" id="logout" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-60%;">로그아웃</button>
                     </div>
-                    </c:if>
+                    </c:if>--%>
+                <sec:authorize access="isAnonymous()">
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="margin-top:10px">
+
+                        <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
+                        <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
+                    </div>
+                    <div class="col-md-2 col-lg-1 col-sm-2" style=" margin-top:10px">
+                        <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
+                    </div>
+                </sec:authorize>
+<%--
+                <c:if test="${empty login }">
+                    <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="/* margin-right:% ;*/margin-top:10px">
+
+                        <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
+                        <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
+                    </div>
+                    <div class="col-md-2 col-lg-1 col-sm-2" style="margin-top:10px">
+                        <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
+                    </div>
+                </c:if>--%>
               
             </div>
         </div>
@@ -176,4 +237,51 @@
         <!-- Container / End -->
     </header>
     
-    <%@ include file="analytics.jsp"%>	
+    <%@ include file="analytics.jsp"%>
+
+
+
+
+
+
+
+
+<%--
+
+<c:if test="${empty login }">
+    <div class="col-md-2 col-md-offset-1 col-lg-1 col-lg-offset-0 col-sm-2 col-sm-offset-2" style="/* margin-right:% ;*/margin-top:10px">
+
+        <!--  아래 버튼들의 id를 이용해서 js컨틀로하는부분은 footer에 있다 -->
+        <button type="button" id="loginbutton" class="btn btn-success btn-block" >로그인</button>
+    </div>
+    <div class="col-md-2 col-lg-1 col-sm-2" style="margin-top:10px">
+        <button type="button" id="joinbutton" class="btn btn-success btn-block">회원가입</button>
+    </div>
+</c:if>
+
+<c:if test="${not empty login }">
+    <div class="col-lg-1 col-lg-offset-0 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2">
+        <c:choose>
+            <c:when test="${login.authority=='user' }">
+                <img src="/thearc/resources/bootstrap/img/user.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(일반회원)</h4>
+            </c:when>
+            <c:when test="${login.authority=='supporter' }">
+                <img src="/thearc/resources/bootstrap/img/supporter.png" style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(서포터즈)</h4>
+            </c:when>
+            <c:when test="${login.authority=='admin' }">
+                <img src="/thearc/resources/bootstrap/img/king.jpg"  style="width:25px;height:25px;float:left;margin-top:9px;margin-right:5px;"/><h3 style="line-height:0px">&nbsp;&nbsp;${login.uid}</h3><h4>&nbsp;&nbsp;(관리자)</h4>
+            </c:when>
+        </c:choose>
+    </div>
+    <div class="col-sm-1">
+        <button type="button" id="message" onClick="window.open('/thearc/sboard/message/listMessage?uid=${login.uid }', '', 'width=475, height=490,left=1000, top=100'); return false;" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-15px;">메세지함</button>
+    </div>
+    <div class="col-sm-1">
+        <button type="button" id="logout" class="btn btn-success btn-blok" style="margin-top:10px;margin-left:-60%;">로그아웃</button>
+    </div>
+</c:if>--%>
+<script>
+    function adminLogin(){
+        $(location).attr("href","/thearc/admin/userlist");
+    }
+</script>

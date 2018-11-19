@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TheArc" />
         <module name="TheArc3" />
-        <module name="web" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,7 +15,6 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="TheArc" options="-Xlint:all" />
       <module name="TheArc3" options="-Xlint:all" />
-      <module name="web" options="-Xlint:all" />
     </option>
   </component>
 </project>

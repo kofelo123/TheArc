@@ -5,11 +5,11 @@ import com.thearc.domain.LikeVO;
 import com.thearc.domain.PageMaker;
 import com.thearc.domain.SearchCriteria;
 import com.thearc.service.BoardService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.*;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/sboard/*")
 public class BoardController {
@@ -27,7 +27,7 @@ public class BoardController {
 	 @Autowired
 	 private BoardService service;
 
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
 	  public void main(Locale locale, Model model, SearchCriteria cri) throws Exception {
@@ -51,25 +51,21 @@ public class BoardController {
 
 	 }
 
-	  ///9/12 pathVariable을 통한 다중게시판 테스트
+	  ///9/12 pathVariable을 통한 다중게시판
 	@GetMapping("/list/{category}")
 	  public String listPage(@ModelAttribute ("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute("list", service.listSearchCriteria(cri,category));//페이지시작과 끝의 리스트정보를가져온다(if검색정보있을때는 정보에맞게) ///<잘못생각, 검색에 맞게 db에서 게시글들 모두긁어온다.
 	//  SearchCritera cri = 검색타입,키워드 속성 가짐. // xml= listsearch - pageStart, pageNum +search에 맞는 모든 리스트데이터 받음
-
 	    //썸네일게시판용	+포토존
 	    if(category.equals("thisweek")||category.equals("photo")||category.equals("terarium")||category.equals("leisure")||category.equals("seastory")||category.equals("academy"))
 	    	model.addAttribute("thumNail",service.listThumnail(cri,category));
 	    //
-
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
-
 	    pageMaker.setTotalCount(service.listSearchCount(cri,category));
 	    							//listSearchCount는 게시글갯수 카운트(cri(검색조건에맞는)) 그래서 totalcount를 setter해주는것
 	    model.addAttribute("pageMaker", pageMaker);
-
 	    return "/sboard/list";
 	  }
 
@@ -95,9 +91,11 @@ public class BoardController {
 //	  public String read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@RequestParam("uid") String uid)///readpage의 url에 파라미터로 붙는 uid cri가 requestParam으로 오는건지
 
 	  @PostMapping("/removePage/{category}")
-	  public String remove(@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
+      @PreAuthorize("principal.member.uid == #uid")
+	  public String remove(String uid,@RequestParam int bno, SearchCriteria cri, RedirectAttributes rttr,@PathVariable String category) throws Exception {
 
-		logger.info("bno Test:"+bno);
+		log.info("bno Test:"+bno);
+//		log.info("uid Test:"+uid);
 	    service.remove(bno);
 
 	    rttr.addAttribute("page", cri.getPage());///addFlashAttribute와 달리 URL 파라미터에 붙여주는 방식이다. 그래서 list페이지로 redirect될때 파라미터로 받아낼수있게 cri 넘긴다.
@@ -112,7 +110,8 @@ public class BoardController {
 
 	  ///modify에 굳이 category필요없긴한데(bno로 식별가능),되돌아갈 방법이 없다. 수정후 돌아가기 위해서 게시판정보가 필요함.다른방법도 있긴할거같은데..
 	  @GetMapping("/modifyPage/{category}")
-	  public String modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
+      @PreAuthorize("principal.username == #uid")
+	  public String modifyPagingGET(int bno,String uid, @ModelAttribute("cri") SearchCriteria cri, Model model,@PathVariable String category) throws Exception {
 
 	    model.addAttribute(service.read(bno)); ///BoardVO return = category 포함.
 
@@ -120,6 +119,8 @@ public class BoardController {
 	  }
 
 	  @PostMapping("/modifyPage/{category}")
+	  @PreAuthorize("principal.username == #board.writer")
+//      @PreAuthorize("isAuthenticated()")
 	  public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
 	    service.modify(board);
@@ -136,7 +137,9 @@ public class BoardController {
 	  }
 
 //	  public String registGET(@PathVariable("category")String category,Model model) throws Exception {
+
 	  @GetMapping("/register/{category}")
+	  @PreAuthorize("isAuthenticated()")
 	  public String registGET(@PathVariable String category, Model model) throws Exception {
 
 	    model.addAttribute("bvo",new BoardVO());
@@ -144,7 +147,9 @@ public class BoardController {
 	    return "/sboard/register";
 	  }
 
+
 	  @PostMapping("/register/{category}")
+	  @PreAuthorize("isAuthenticated()")
 	  public String registPOST(@ModelAttribute("bvo") @Valid BoardVO board,BindingResult result, RedirectAttributes rttr) throws Exception {
 
 		if(result.hasErrors()) {

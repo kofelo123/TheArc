@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ include file="../../include/analytics.jsp"%>	
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
               <div class="box-tools pull-right">
                 <div class="has-feedback">
                   <input type="text" class="form-control input-sm" placeholder="검색">
-                  <span button id='searchBtn' class="glyphicon glyphicon-search form-control-feedback"></button></span>
+                  <span button id='searchBtn' class="glyphicon glyphicon-search form-control-feedback" />
                 </div>
               </div>
               <!-- /.box-tools -->
@@ -82,22 +82,24 @@
                <div class="text-center">
                  	<ul class="pagination">
 
+                        <sec:authentication property="principal" var="pinfo"/>
+
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="/thearc/listMessage${pageMaker.makeSearch(pageMaker.startPage - 1) }&uid=${login.uid }">&laquo;</a></li>
+									href="/thearc/listMessage${pageMaker.makeSearch(pageMaker.startPage - 1) }&uid=${pinfo.member.uid }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="/thearc/listMessage${pageMaker.makeSearch(idx)}&uid=${login.uid }">${idx}</a>
+									<a href="/thearc/listMessage${pageMaker.makeSearch(idx)}&uid=${pinfo.member.uid }">${idx}</a>
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="/thearc/listMessage${pageMaker.makeSearch(pageMaker.endPage +1) }&uid=${login.uid }">&raquo;</a></li>
+									href="/thearc/listMessage${pageMaker.makeSearch(pageMaker.endPage +1) }&uid=${pinfo.member.uid }">&raquo;</a></li>
 							</c:if>
 						</ul>
 					</div>

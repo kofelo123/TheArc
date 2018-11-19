@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thearc.mapper.UserMapper">
+	
+<!--	<select id="login" resultType="UserVO">
+		select uid, upw, uname,authority 
+		from tbl_user 
+		where uid = #{uid} 
+		and upw = #{upw}
+	</select>
+
+	
+	  <update id="keepLogin" >
+		  update tbl_user 
+		  set sessionKey = #{sessionId}, sessionLimit = #{next} 
+		  where uid = #{uid}
+	  </update>
+
+	<select id="checkUserWithSessionKey" resultType="UserVO">
+		select * 
+		from tbl_user 
+		where sessionKey = #{value}  
+		and sessionlimit > now()
+	</select>	
+
+	<insert id="join">
+		insert into tbl_user(uid, upw, uname, email,address,phone)
+		values(#{uid},#{upw},#{uname},#{email},#{addr1},#{phone})
+	
+	</insert>
+	
+	<select id="confirmId" resultType="UserVO">
+		select * 
+		from tbl_user 
+		where uid= #{uid}	
+	</select>
+	-->
+	 
+<!--	<select id="findzipnum" resultType="AddressVO">
+		select * 
+		from address 
+		where dong LIKE CONCAT('%',#{dong},'%')
+	</select>-->
+
+	<!--
+        <select id="idfindofmail" resultType="UserVO">
+            select uid,upw,uname
+            from tbl_user
+            where email= #{email}
+        </select>
+
+        <select id="hashbyid" resultType="UserVO">
+            select uid
+            from tbl_user
+            where upw = #{upw}
+            and uid = #{uid}
+        </select>
+
+        <update id="modifypw">
+            update tbl_user
+            set upw = #{upw}
+            where uid = #{uid}
+        </update>
+        -->
+
+
+    <resultMap type="com.thearc.domain.UserVO" id="memberMap">
+        <id property="uid" column="uid"/>
+        <result property="uid" column="uid"/>
+        <result property="upw" column="upw"/>
+        <result property="uname" column="uname"/>
+        <result property="indate" column="indate"/>
+        <!--<result property="updateDate" column="updatedate"/>-->
+        <!-- authList는 UserVO의 속성값이고, authMap은 아래 resultMap의 id-->
+        <collection property="authList" resultMap="authMap">
+        </collection>
+    </resultMap>
+
+    <resultMap type="com.thearc.domain.AuthVO" id="authMap">
+        <result property="uid" column="uid"/>
+        <result property="authority" column="authority"/>
+    </resultMap>
+
+    <select id="read" resultMap="memberMap">
+SELECT
+  user.uid,  upw, uname, indate, auth.authority
+FROM
+  tbl_user user LEFT OUTER JOIN tbl_user_auth auth on user.uid = auth.uid
+WHERE user.uid = #{uid}
+  </select>
+
+</mapper>

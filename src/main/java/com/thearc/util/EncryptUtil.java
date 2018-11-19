@@ -1,24 +1,26 @@
 package com.thearc.util;
+
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.logging.Logger;
 
+@Slf4j
 public class EncryptUtil {
     
     //Logger java.util.logging.Logger.getLogger(String name)
-    private static final Logger logger = Logger.getLogger(EncryptUtil.class.getName());
-    
+
     //Type1
     
   //MD5
     public static String getMD5(String str){
         
         String rtnMD5 = "";
-        logger.info("str:"+str);
-        logger.info("str.getBytes():"+Arrays.toString(str.getBytes()));
+        log.info("str:"+str);
+        log.info("str.getBytes():"+Arrays.toString(str.getBytes()));
         
         try {
             //MessageDigest 인스턴스 생성
@@ -28,7 +30,7 @@ public class EncryptUtil {
             //해쉬값(다이제스트) 얻기
             byte byteData[] = md.digest();
 
-            logger.info("byteData[]:"+Arrays.toString(byteData));
+            log.info("byteData[]:"+Arrays.toString(byteData));
             
             StringBuffer sb = new StringBuffer();
             
@@ -92,7 +94,7 @@ public class EncryptUtil {
 //            md.update(a_origin.getBytes());
             md.update(a_origin.getBytes(), 0, a_origin.getBytes().length);            
             byte byteData[] = md.digest();
-            logger.info("byteData[]:"+(Arrays.toString(byteData)));
+            log.info("byteData[]:"+(Arrays.toString(byteData)));
             encryptedMD5 = new BigInteger(1, byteData).toString(16); 
             
         } catch (NoSuchAlgorithmException e) {

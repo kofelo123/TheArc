@@ -6,9 +6,8 @@ import com.thearc.domain.SearchCriteria;
 import com.thearc.domain.UserVO;
 import com.thearc.service.AdminService;
 import com.thearc.service.BoardService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
+@PreAuthorize("hasRole('ADMIN')") //ROLE_ADMIN 권한일때만 접근가능.
 public class AdminController {
 
-	private static Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
 	@Autowired
 	private AdminService service;
 	
@@ -34,7 +33,8 @@ public class AdminController {
 
 		model.addAttribute("userVO",service.listuser());
 	}
-	
+
+
 	@PostMapping("/admLogPost")
 	public String admLogPost(UserVO user,HttpServletResponse response,HttpSession session) throws Exception{
 		
@@ -66,8 +66,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("/authmodify")
-	public String charts(Model model,UserVO user)throws Exception{
-		service.authmodify(user);
+	public String charts(Model model, @RequestParam Map<String,String> uidAuthority)throws Exception{
+
+		service.authmodify(uidAuthority);
 		model.addAttribute("userVO",service.listuser());
 		return "/admin/userlist";
 	}

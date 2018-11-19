@@ -6,12 +6,14 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
 	
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
@@ -47,17 +49,28 @@
 	</bean>
 
 
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+			<property name="jdbcUrl" value="${Local.Url}"></property>
+			<property name="username" value="${Local.UserName}"></property>
+			<property name="password" value="${Local.Password}"></property>
+		</bean>
+	<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="url" value="${Local.Url}"></property>
 			<property name="username" value="${Local.UserName}"></property>
 			<property name="password" value="${Local.Password}"></property>
+		</bean>-->
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+			<constructor-arg ref="hikariConfig" />
 		</bean>
+
+
 		
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:com/thearc/mapper/**/*Mapper.xml"></property>
 	</bean>
 	
 	<bean id="transactionManager"
@@ -88,6 +101,8 @@
 	<context:component-scan base-package="com.thearc.persistence"></context:component-scan>
 	 <context:component-scan base-package="com.thearc.service"></context:component-scan>
 	 <context:component-scan base-package="com.thearc.aop"></context:component-scan>
+
+    <mybatis-spring:scan base-package="com.thearc.mapper"></mybatis-spring:scan>
 	<aop:config>
 	</aop:config>
 
@@ -100,5 +115,9 @@
 			<aop:before pointcut-ref="allPointcut" method="printLog" />
 		</aop:aspect>
 	</aop:config>-->
+
+	<task:annotation-driven/>
+
+	<context:component-scan base-package="com.thearc.task"></context:component-scan>
 	
 </beans>

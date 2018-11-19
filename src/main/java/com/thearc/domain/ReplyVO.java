@@ -1,7 +1,10 @@
 package com.thearc.domain;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class ReplyVO {
 
   private Integer rno;
@@ -12,7 +15,7 @@ public class ReplyVO {
   private Date regdate;
   private Date updatedate;
 
-  public Integer getRno() {
+  /*public Integer getRno() {
     return rno;
   }
 
@@ -64,5 +67,5 @@ public class ReplyVO {
   public String toString() {
     return "ReplyVO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", replyer=" + replyer + ", regdate="
         + regdate + ", updatedate=" + updatedate + "]";
-  }
+  }*/
 }

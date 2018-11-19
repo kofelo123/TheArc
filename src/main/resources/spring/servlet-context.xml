@@ -4,27 +4,30 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
     xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
 
 
-<!--
-	<beans:bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <beans:property name="locations">
-            <beans:list>
-            	<beans:value>/WEB-INF/spring/setting.properties</beans:value>
-                &lt;!&ndash; <value>classpath:/egovframework/egovProps/globals.properties</value> &ndash;&gt;
-                &lt;!&ndash; value>file:/product/jeus/egovProps/globals.properties</value&ndash;&gt;
-            </beans:list>
-        </beans:property>
-    </beans:bean>
--->
+
+	<!--
+        <beans:bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <beans:property name="locations">
+                <beans:list>
+                    <beans:value>/WEB-INF/spring/setting.properties</beans:value>
+                    &lt;!&ndash; <value>classpath:/egovframework/egovProps/globals.properties</value> &ndash;&gt;
+                    &lt;!&ndash; value>file:/product/jeus/egovProps/globals.properties</value&ndash;&gt;
+                </beans:list>
+            </beans:property>
+        </beans:bean>
+    -->
 	
 	
 	
@@ -79,36 +82,37 @@
 
 
 
-	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
+<!--	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
 
 	<beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
 
-	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>
+	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>-->
 	
-	<interceptors>
+	<!--<interceptors>-->
 	
-	  <interceptor>
+	 <!-- <interceptor>
 		<mapping path="/user/loginPost" />
 		<beans:ref bean="loginInterceptor" />
-	  </interceptor>
+	  </interceptor>-->
 
-		<!--<mapping path="/sboard/readPage/like*"/>	-->
- 	  <interceptor>  <!-- 로그인해야 접근할수있게   -->
+        <!--<mapping path="/sboard/readPage/like*"/>-->
+ 	  <!--<interceptor>  //로그인해야 접근할수있게
+
 	    <mapping path="/sboard/register/*"/>
 	    <mapping path="/sboard/modifyPage/*"/>
 	    <mapping path="/sboard/removePage/*"/>
 	    <mapping path="/sboard/mail/listmail/*"/>
 	    <mapping path="/sboard/list/supporter"/>
 	    <beans:ref bean="authInterceptor"/>
-	  </interceptor>	
+	  </interceptor>-->
 	  
-	  <interceptor>
+	  <!--<interceptor>
 	  	<mapping path="/admin/userlist"/>
 	  	<mapping path="/admin/chartpage"/>
 	  	<mapping path="/admin/superadmin/*"/>
 	  	<beans:ref bean="adminAuthInterceptor"/>
-	  </interceptor>
-	</interceptors>
+	  </interceptor>-->
+	<!--</interceptors>-->
 	
 	<!--  spring mobile - 모바일인식을위한 -->
 	<interceptors>
@@ -116,17 +120,24 @@
 	</interceptors>
 
 	<context:component-scan base-package="com.thearc.controller" />
+	<context:component-scan base-package="com.thearc.util" />
 
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-	<beans:bean id="aopLogTest" class="com.thearc.util.AOPTest"></beans:bean>
+	<!--<beans:bean id="aopLogTest" class="com.thearc.util.AOPMethodLog"></beans:bean>
 
-	<aop:config>
-		<aop:pointcut id="allPointcut" expression="execution(* com.thearc.controller.*.*(..))"/>
+        <aop:config>
+            <aop:pointcut id="allPointcut" expression="execution(* com.thearc.controller.*.*(..))"/>
 
-		<aop:aspect ref="aopLogTest">
-			<aop:before pointcut-ref="allPointcut" method="printLog"/>
-		</aop:aspect>
-	</aop:config>
+            <aop:aspect ref="aopLogTest">
+                <aop:before pointcut-ref="allPointcut" method="printLog"/>
+            </aop:aspect>
+        </aop:config>-->
+
+
+	<security:global-method-security
+			pre-post-annotations="enabled" secured-annotations="enabled" />
+
+
 </beans:beans>

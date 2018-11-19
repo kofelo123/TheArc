@@ -58,9 +58,12 @@
 
                 <form role="form" action="modifyPage" method="post">
 
-                    <input type='hidden' name='bno' value="${boardVO.bno}"> <input
-                        type='hidden' name='page' value="${cri.page}"> <input
-                        type='hidden' name='perPageNum' value="${cri.perPageNum}">
+                    <input type='hidden' name='bno' value="${boardVO.bno}">
+                    <input type='hidden' name='uid' value="${boardVO.writer}"><%--시큐리티 권한체크에 필요해서 넣음(수정) --%>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><%--시큐리티 권한체크에 필요해서 넣음(수정) --%>
+
+                    <input type='hidden' name='page' value="${cri.page}">
+                    <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
                     <input type='hidden' name='searchType' value="${cri.searchType}">
                     <input type='hidden' name='keyword' value="${cri.keyword}">
 
@@ -104,10 +107,21 @@
                         <ul class="mailbox-attachments clearfix uploadedList">
                         </ul>
                         <div class="col-sm-4 col-xs-8">
+                            <sec:authentication property="principal" var="pinfo"/>
+
+                            <sec:authorize access="isAuthenticated()">
+                                  <c:if test="${pinfo.member.uid eq boardVO.writer}">
+                                      <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
+                                      <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
+                                 </c:if>
+                            </sec:authorize>
+
+<%--
                             <c:if test="${login.uid == boardVO.writer}">
                                 <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
                                 <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
                             </c:if>
+--%>
                             <button type="submit" class="btn btn-primary" id="goListBtn">목록</button>
                         </div>
                         <div class="col-sm-1 col-sm-offset-6 col-xs-3 ">
@@ -130,15 +144,14 @@
                 <div class="box-header">
                     <h3 class="box-title">새 댓글달기</h3>
                 </div>
-
-                <c:if test="${not empty login}">
+                <sec:authorize access="isAuthenticated()">
                     <div class="box-body">
                         <div class="user-panel">  <!-- user패널좀 수정해야할듯  -->
 
-                            <h4>&nbsp;&nbsp;${login.uid}</h4>
+                            <h4>&nbsp;&nbsp;${pinfo.member.uid}</h4>
 
                         </div>
-                        <input type="hidden" id="newReplyWriter" value="${login.uid }">
+                        <input type="hidden" id="newReplyWriter" value="${pinfo.member.uid }">
                         <label>내용입력</label>
                         <input class="form-control"  placeholder="내용을 입력하세요" id="newReplyText">
                     </div>
@@ -146,13 +159,13 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary" id="replyAddBtn">댓글 등록</button>
                     </div>
-                </c:if>
+                </sec:authorize>
 
-                <c:if test="${empty login}">
+                <sec:authorize access="isAnonymous()">
                     <div class="box-body">
                         <div><a href="javascript:goLogin();" >로그인 해주세요</a></div>
                     </div>
-                </c:if>
+                </sec:authorize>
             </div>
             <!-- The time line -->
             <ul class="timeline">
@@ -203,10 +216,13 @@
 <%@include file="../include/footer2.jsp"%>
 
 <script>
+    var uid = '';
+    <sec:authorize access="isAuthenticated()">
+    uid = '<sec:authentication property="principal.member.uid" />';
+    </sec:authorize>
 
         $(function(){
             var bno = $("[name=bno]").val();
-            var uid = '${login.uid}';
 
             likeCheck();
 
@@ -278,14 +294,14 @@
 
         $(document).on('click','#liken',function(){
             var bno = '${boardVO.bno}';
-            var loginUid = '${login.uid}';
+            <%--var loginUid = '${login.uid}';--%>
             var category = '${boardVO.category}';
             console.log("testbno:"+bno+" testloginUid:"+loginUid+" testcategory:"+category);
             $.ajax({
                 url:'/thearc/sboard/readPage/like2',
                 type:'get',
                 data:{bno:bno
-                    ,uid:loginUid
+                    ,uid:uid
                     ,category:category},
                 dataType:'text',
                 success:function(result){
@@ -305,14 +321,14 @@
             /*$(document).on('click','#likely', function(){*/
         $(document).on('click','#likey',function(){
             var bno = '${boardVO.bno}';
-                var loginUid = '${login.uid}';
+                <%--var loginUid = '${login.uid}';--%>
                 var category = '${boardVO.category}';
 
                 $.ajax({
                     url:'/thearc/sboard/readPage/dislike2',
                     type:'get',
                     data:{bno:bno
-                        ,uid:loginUid
+                        ,uid:uid
                         ,category:category},
                     dataType:'text',
                     success:function(result){
@@ -369,9 +385,17 @@
 
 <script>
 
+    var uid = '';
+    <sec:authorize access="isAuthenticated()">
+    uid = '<sec:authentication property="principal.member.uid" />';
+    </sec:authorize>
+
+    var csrfHeaderName = "${_csrf.headerName}";
+    var csrfTokenValue="${_csrf.token}";
+
     Handlebars.registerHelper("eqReplyer", function(replyer, block) {
         var accum = '';
-        if (replyer == '${login.uid}') {
+        if (replyer == uid) {
             accum += block.fn();
         }
         return accum;
@@ -426,6 +450,8 @@
         replyPage = $(this).attr("href");
         getPage("/thearc/replies/" + bno + "/" + replyPage);
     });
+
+    //댓글등록버튼
     $("#replyAddBtn").on("click", function() {
         var replyerObj = $("#newReplyWriter");
         var replytextObj = $("#newReplyText");
@@ -444,6 +470,9 @@
                 replyer : replyer,
                 replytext : replytext
             }),
+            beforeSend: function(xhr){
+              xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+            },
             success : function(result) {
                 console.log("result: " + result);
                 if (result == 'SUCCESS') {
@@ -475,6 +504,9 @@
                 replytext : replytext
             }),
             dataType : 'text',
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+            },
             success : function(result) {
                 console.log("result: " + result);
                 if (result == 'SUCCESS') {
@@ -495,6 +527,9 @@
                 "X-HTTP-Method-Override" : "DELETE"
             },
             dataType : 'text',
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+            },
             success : function(result) {
                 console.log("result: " + result);
                 if (result == 'SUCCESS') {
@@ -504,10 +539,10 @@
             }
         });
     });
-</script>
+
 
 <!-- <form role="form" -->
-<script>
+
     $(document).ready(function(){
 
         var formObj = $("form[role='form']");

@@ -58,6 +58,7 @@
 
 
 			<input type="hidden" name='category' value="${category}">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</div>
 		
 <!-- 		<textarea div id="summernote" name="content"  placeholder="내용을 입력하세요"></textarea> -->
@@ -77,7 +78,7 @@
 		<div class="form-group">
 			<label>작성자 </label>
 			<input type="text" name="writer" 
-			  class="form-control"  value="${login.uid }" readonly>
+			  class="form-control"  value="<sec:authentication property='principal.username'/>" readonly>
 		</div>
 
 		<div class="form-group">
@@ -120,6 +121,9 @@ function goLogin(){
 
 var template = Handlebars.compile($("#template").html());
 
+var csrfHeaderName = "${_csrf.headerName}";
+var csrfTokenValue="${_csrf.token}";
+
 $(".fileDrop").on("dragenter dragover", function(event){
 	event.preventDefault();
 });
@@ -134,9 +138,8 @@ $(".fileDrop").on("drop", function(event){
 
 	var formData = new FormData();
 	
-	formData.append("file", file);	
-	
-	
+	formData.append("file", file);
+
 	$.ajax({
 		  url: '/thearc/uploadAjax',
 		  data: formData,
@@ -144,11 +147,13 @@ $(".fileDrop").on("drop", function(event){
 		  processData: false,
 		  contentType: false,
 		  type: 'POST',
+		  beforeSend: function(xhr){
+			  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		  },
 		  success: function(data){
 			  
 			  var fileInfo = getFileInfo(data);
-			  console.log("testtest"+fileInfo);
-			  
+
 			  var html = template(fileInfo);
 			  
 			  $(".uploadedList").append(html);
@@ -196,6 +201,9 @@ $(".uploadedList").on("click",".delbtn",function(event){
 			type:'post',
 			data:{fileName:$(this).attr('href')},
 			dataType:"text",
+			beforeSend: function(xhr){
+				xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+			},
 			success:function(result){
 				if(result == 'deleted'){
 					that.parents("li").remove();

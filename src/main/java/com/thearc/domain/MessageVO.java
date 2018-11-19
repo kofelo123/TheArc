@@ -1,7 +1,10 @@
 package com.thearc.domain;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class MessageVO {
 
 	private Integer mid;
@@ -13,7 +16,7 @@ public class MessageVO {
 	private Date sendate; // db에 실수로 sendate라고 만들떄 만들었는데 다시 바꾸는거보다 VO고치는게 나을거같아서 바꿈
 	private String readcheck;
 	
-	public String getReadcheck() {
+/*	public String getReadcheck() {
 		return readcheck;
 	}
 	public void setReadcheck(String readcheck) {
@@ -69,7 +72,7 @@ public class MessageVO {
 		return "MessageVO [mid=" + mid + ", targetid=" + targetid + ", sender="
 				+ sender + ", message=" + message + ", opendate=" + opendate
 				+ ", sendate=" + sendate + "]";
-	}
+	}*/
 }
 
 

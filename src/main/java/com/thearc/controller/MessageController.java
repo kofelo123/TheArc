@@ -4,9 +4,8 @@ import com.thearc.domain.MessageVO;
 import com.thearc.domain.PageMaker;
 import com.thearc.domain.SearchCriteria;
 import com.thearc.service.MessageService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +13,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/sboard/message/")
+@PreAuthorize("isAuthenticated()")
 public class MessageController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
-//
   @Autowired
   private MessageService service;
-
+  
   @GetMapping("listMessage")
   public void listMessage(@ModelAttribute ("cri") SearchCriteria cri, @RequestParam String uid, Model model) throws Exception{
 	
@@ -30,7 +28,7 @@ public class MessageController {
     PageMaker pageMaker = new PageMaker();
     pageMaker.setCri(cri);
 
-    pageMaker.setTotalCount(service.listSearchCount(cri));
+    pageMaker.setTotalCount(service.listSearchCount(cri,targetid));
 
     model.addAttribute("pageMaker", pageMaker);
 	

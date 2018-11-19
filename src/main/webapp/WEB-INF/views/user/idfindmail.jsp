@@ -26,8 +26,8 @@
 
 		<div id='expression' style="padding-bottom:20px">
 			<b>입력하신 메일로 요청하신 계정정보를 보냈습니다.<br></b>
-			<b>해당 이메일을 확인 하시고, 비밀번호 변경이<br></b>
-			<b>필요하신 경우 해당 이메일을 통해 변경 가능합니다.<br></b>
+			<b>발송된 메일을 확인 하시고, 비밀번호 변경이<br></b>
+			<b>필요하신 경우 메일의 링크를 통해 변경 가능합니다.<br></b>
 		</div>
 	
 		  <div class="row" style="padding-bottom:10px">
@@ -40,3 +40,6 @@
 
   </body>
 </html>
+<script>
+
+</script>
