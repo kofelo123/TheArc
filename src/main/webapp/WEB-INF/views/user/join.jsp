@@ -221,6 +221,7 @@
 
             if (upw == upwCheck && upw != "") {
                 successFail($(this).attr("id"), "비밀번호가 일치합니다", "blue");
+                $("#upw").nextAll(".successFail").first().css("color","blue");
             } else if (upw == upwCheck && upw == "") {
                 successFail("upw", "비밀번호를 입력해주세요", "red");
             }else if (upw != upwCheck) {

@@ -30,11 +30,11 @@ public interface AdminMapper {
             "WHERE user.uid = auth.uid")
     public List<Map<String,String>> listuser()throws Exception;
 
-    @Select("SELECT uid,upw " +
+/*    @Select("SELECT uid,upw " +
             "FROM tbl_user " +
             "WHERE uid=#{uid} " +
             "AND upw=#{upw}")
-    public UserVO adminlogin(UserVO user) throws Exception;
+    public UserVO adminlogin(UserVO user) throws Exception;*/
 
     @Update("UPDATE tbl_user_auth " +
             "SET authority = #{authority} " +

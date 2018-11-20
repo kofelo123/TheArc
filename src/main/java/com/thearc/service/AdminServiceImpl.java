@@ -14,8 +14,8 @@ import java.util.Map;
 public class AdminServiceImpl implements AdminService {
 	
 
-	@Autowired
-	private EncryptUtil encrypt;
+/*	@Autowired
+	private EncryptUtil encrypt;*/
 	
 	@Autowired
 	private AdminMapper mapper;
@@ -26,12 +26,14 @@ public class AdminServiceImpl implements AdminService {
 		return mapper.listuser();
 	}
 
+/*
 	@Override
 	public UserVO adminlogin(UserVO user) throws Exception {
 		// TODO Auto-generated method stub
 		user.setUpw(encrypt.getSHA256(user.getUpw()));
 		return mapper.adminlogin(user);
 	}
+*/
 
 	@Override
 	public void authmodify(Map uidAuthority) throws Exception {

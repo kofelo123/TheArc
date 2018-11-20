@@ -11,7 +11,7 @@ import java.util.Date;
 
 public interface UserMapper {
 
-    @Select("SELECT uid, upw, uname,authority  " +
+    @Select("SELECT uid, upw, uname  " +
             "FROM tbl_user  " +
             "WHERE uid = #{uid}  " +
             "AND upw = #{upw}")

@@ -4,7 +4,6 @@ package com.thearc.service;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.mapper.UserMapper;
-import com.thearc.util.EncryptUtil;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
@@ -31,15 +30,17 @@ public class UserServiceImpl implements UserService {
 	@Resource(name = "mailPw")
 	private String mailPw;
 
-	@Autowired
-	private EncryptUtil encrypt;
+/*	@Autowired
+	private EncryptUtil encrypt;*/
 
 	@Autowired
 	private PasswordEncoder pwencoder;
 
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
-		dto.setUpw(encrypt.getSHA256(dto.getUpw()));
+		if(dto.getUid() != "test_thearc") {
+			dto.setUpw(pwencoder.encode(dto.getUpw()));
+		}
 		return mapper.login(dto);
 	}
 
@@ -110,7 +111,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifypw(UserVO user) throws Exception {
-		user.setUpw(encrypt.getSHA256(user.getUpw()));
+		user.setUpw(pwencoder.encode(user.getUpw()));
 		mapper.modifypw(user);
 	}
 
