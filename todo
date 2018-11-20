@@ -119,3 +119,14 @@ branch security -> dev 통합 -> origin 통합
 jenkins -> aws 배포
 
 
+181120
+
+깃 rebase로 커밋 통합하기
+
+db맞추기
+
+successFail에 문제있음 ->
+
+혹시 비밀번호 수정은 시큐리티 에서 쉽게되는게 아닌건지?(pwencoder는 계속 가변이긴한데)
+-> 그게 아니라.. auth없어서.
+
