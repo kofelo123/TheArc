@@ -14,14 +14,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.util.WebUtils;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Date;
 
 /**
   *
@@ -63,13 +60,13 @@ public class UserController {
 		System.out.println("loginTest:"+vo);
 		
 		model.addAttribute("userVO", vo);
-
+/*
 		if (dto.isUseCookie()) { /// 로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
 			int amount = 60 * 60 * 24 * 7;
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
 		}
-		
+		*/
 		//인터셉터의 후처리로 인해 일단 컨트롤러가 반환할 view가 필요해서 그냥 login으로 지정해놓은것(의미는없음) , (후처리라 return null은 안됨)
 		return "/user/login";
 	  }
@@ -77,7 +74,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
 
-		Object obj = session.getAttribute("login");
+		/*Object obj = session.getAttribute("login");
 
 		if (obj != null) {
 			UserVO vo = (UserVO) obj;
@@ -92,7 +89,7 @@ public class UserController {
 				response.addCookie(loginCookie);
 				service.keepLogin(vo.getUid(), session.getId(), new Date());/// 아마 현재시간으로 기한을 맞춰서 없애는것일것이다.
 			}
-		}
+		}*/
 		return "redirect:/sboard/main";
 	}
 
