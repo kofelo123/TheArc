@@ -210,6 +210,7 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 
 	</div>
 </div>
+<%--
 <div class="login-form-container">
 	<form name="login-form" id="login-form" class="login-form" method="post" action="/thearc/admin/admLogPost">
 		<label for="">관리자 로그인</label>
@@ -224,6 +225,7 @@ jQuery(".main-container").backstretch("http://11st.com/wp-content/uploads/2016/0
 		<i class="foundicon-lock"></i>
 	</div>
 </div>
+--%>
 
 </body>
 </html>
