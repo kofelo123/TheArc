@@ -8,6 +8,16 @@ import com.thearc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.google.api.Google;
+import org.springframework.social.google.api.impl.GoogleTemplate;
+import org.springframework.social.google.api.plus.Person;
+import org.springframework.social.google.api.plus.PlusOperations;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.AccessGrant;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +29,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
   *
@@ -46,8 +60,11 @@ public class UserController {
 	
 	@GetMapping("/login")
 	public void loginGET(){
+
+		
 	}
 	
+/*  기존의 로그인post였는데, 시큐리티 도입후 사용x
 	@PostMapping("/loginPost")
 	public String loginPOST(LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {
 
@@ -60,16 +77,19 @@ public class UserController {
 		System.out.println("loginTest:"+vo);
 		
 		model.addAttribute("userVO", vo);
+*/
 /*
 		if (dto.isUseCookie()) { /// 로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
 			int amount = 60 * 60 * 24 * 7;
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
 		}
-		*/
+		*//*
+
 		//인터셉터의 후처리로 인해 일단 컨트롤러가 반환할 view가 필요해서 그냥 login으로 지정해놓은것(의미는없음) , (후처리라 return null은 안됨)
 		return "/user/login";
 	  }
+*/
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
@@ -288,6 +308,10 @@ public class UserController {
 	public void jusoPopupPost() {
 
 	}
+
+
+
+
 
 }
 

@@ -91,12 +91,16 @@
 					<a href="/thearc/user/idfind">아이디-비밀번호 찾기</a><br> 
 					<a href="/thearc/user/join" class="text-center">회원가입</a>
 				</div>
+
+                <a href="/thearc/naverlogin2"><img src="/thearc/resources/bootstrap/image/네이버 아이디로 로그인_완성형_Green.PNG" style="width:250px;height:50px;display:block;margin-left:auto;margin-right:auto;text-align:center;"/></a>
+                <%--<img src="/thearc/resources/bootstrap/image/네이버 아이디로 로그인_축약형_Green.PNG" style="width:110px;height:50px;"/>--%>
+
 			</div>
 		</div>
 	</div>
 	
 	<!--  로그인폼  -->
-	<div class="login-form-container">
+<%--	<div class="login-form-container">
 		<form name="login-form" id="login-form" class="login-form" method="post" action="/thearc/admin/admLogPost">
 			<label>관리자 로그인</label>
 			<span class="licon user-icon">
@@ -106,10 +110,12 @@
 				<input type="password" name="upw" id="login_password" value="" size="20" class="input password"	placeholder="관리자비밀번호" /></span><a class="lost-pass" href="#">관리자 외 접근금지</a>
 				<input type="submit" class="button" name="submit" id="submit" value="로그인" tabindex="4" />
 				<input type="hidden" name="is_custom_login" value="1" />
-		</form>
+		</form>--%>
 
 
 	</div>
+
+
 </body>
 </html>
 
@@ -148,7 +154,25 @@
 			 		
 					$("#"+id).nextAll(".successFail").first().html(message).css("color",color);
 					
-				} 
+				}
+
+				var msg = '${msg}';
+				<%--var userVO = '${userVO}';--%>
+                // console.log("userVO.uid="+userVO);
+                <%--console.log("userVO.uid4="+'${userVO.uid}');--%>
+				if(msg == 'snsLogin'){
+
+				    var form = $('<form></form>');
+
+				    form.attr({action:"/thearc/login" , method:"post"});
+				    form.appendTo('body');
+
+                    $("<input></input>").attr({type:"hidden",name:"username",value:'허정원'}).appendTo(form);
+                    $("<input></input>").attr({type:"hidden",name:"password",value:'11226265'}).appendTo(form);
+                    $("<input></input>").attr({type:"hidden",name:"${_csrf.parameterName}",value: "${_csrf.token}"}).appendTo(form);
+                    form.submit();
+
+                }
 				
 			});
 	</script>

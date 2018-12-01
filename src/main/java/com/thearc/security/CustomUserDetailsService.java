@@ -13,8 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Log4j
 public class CustomUserDetailsService implements UserDetailsService {
 
-    /*@Setter(onMethod_ = { @Autowired })
-    private MemberMapper memberMapper;*/
     @Setter(onMethod_ = { @Autowired })
     private UserMapper userMapper;
 

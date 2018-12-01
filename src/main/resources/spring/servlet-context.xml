@@ -80,6 +80,21 @@
 		</beans:constructor-arg>
 	</beans:bean>
 
+	<!--naver sns 로그인 연동 관련 -->
+	<beans:bean id="naverLoginBO" class="com.thearc.util.sns.NaverLoginBO" />
+
+	<!-- google sns 로그인 연동 관련-->
+	<beans:bean id="googleConnectionFactory"
+				class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<beans:constructor-arg value="150125464011-739ehmurj8nni3hsbo29e3dcr9nq96t3.apps.googleusercontent.com" />
+		<beans:constructor-arg value="vx0Jt30WBpRS3xbWQNFQ4Gl3" />
+	</beans:bean>
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+		<beans:property name="redirectUri" value="http://localhost:8090/login_project/oauth2callback" />
+	</beans:bean>
+
 
 
 <!--	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>

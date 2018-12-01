@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder pwencoder;
 
+	/*
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
 		if(dto.getUid() != "test_thearc") {
@@ -48,6 +49,13 @@ public class UserServiceImpl implements UserService {
 	public void keepLogin(String uid, String sessionId, Date next) throws Exception {
 		mapper.keepLogin(uid, sessionId, next);
 	}
+*/
+	//(Deploy test용)
+	@Override
+	public UserVO testLogin(LoginDTO dto) throws Exception {
+
+		return mapper.testLogin(dto);
+	}
 
 	@Override
 	public UserVO checkLoginBefore(String value) {
@@ -58,8 +66,9 @@ public class UserServiceImpl implements UserService {
 	public void joinPost(UserVO user) throws Exception {
 //		user.setUpw(encrypt.getSHA256(user.getUpw()));
 
+		System.out.println("joinPostTest:"+user.getUpw());
 		user.setUpw(pwencoder.encode(user.getUpw()));
-
+		System.out.println("joinPostTest:"+user.getUpw());
 		mapper.joinPost(user);
 
 		mapper.insertAuth(user);
@@ -106,6 +115,16 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public UserVO hashbyid(UserVO user) throws Exception {
+
+			System.out.println("hashbyidTest:"+user.getUpw());
+			String pw=mapper.getPw(user.getUid());
+			if(pwencoder.matches(user.getUpw(),pw)){
+				System.out.println("matches-success");
+				user.setUpw(pw);
+			}
+
+			System.out.println("hashbyidTest:"+user.getUpw());
+
 		return mapper.hashbyid(user);
 	}
 

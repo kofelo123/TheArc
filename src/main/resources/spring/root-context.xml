@@ -93,10 +93,24 @@
 		<constructor-arg value="${MailPw}">
 		</constructor-arg>
 	</bean>
-	
+
 	
 	<bean id="encrypt" class="com.thearc.util.EncryptUtil">
 	</bean>
+
+	<!-- Google 소셜 로그인 연결 설정 -->
+	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="755792594137-ds9engajnsjvip5mvpetccoql5568af9.apps.googleusercontent.com"/>
+		<constructor-arg value="aP8wZE8SuNf6A1Q43qrKeT6U"/>
+	</bean>
+
+	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login"></property>
+		<property name="redirectUri" value="http://localhost:8080/thearc/googleSignInCallback"/>
+
+	</bean>
+
+
 
 	<context:component-scan base-package="com.thearc.persistence"></context:component-scan>
 	 <context:component-scan base-package="com.thearc.service"></context:component-scan>
