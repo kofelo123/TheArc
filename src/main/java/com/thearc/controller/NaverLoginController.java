@@ -41,13 +41,15 @@ public class NaverLoginController {
     private UserService service;
 
     /* NaverLoginBO */
+    @Autowired
     private NaverLoginBO naverLoginBO;
+
     private String apiResult = null;
 
-    @Autowired
+    /*@Autowired
     private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
         this.naverLoginBO = naverLoginBO;
-    }
+    }*/
 
     //로그인 첫 화면 요청 메소드
     @RequestMapping(value = "/naverlogin2", method = { RequestMethod.GET, RequestMethod.POST })

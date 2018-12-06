@@ -35,5 +35,5 @@ public interface UserService {
 	  public UserVO mailCheck(UserVO user)throws Exception;
 
 	  public String unameCheck(String uname)throws Exception;
-	
+
 }

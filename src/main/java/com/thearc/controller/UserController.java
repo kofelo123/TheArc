@@ -2,22 +2,13 @@ package com.thearc.controller;
 
 //import com.thearc.domain.AddressVO;
 
-import com.thearc.domain.LoginDTO;
+import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
+import com.thearc.util.sns.NaverLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.api.impl.GoogleTemplate;
-import org.springframework.social.google.api.plus.Person;
-import org.springframework.social.google.api.plus.PlusOperations;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -29,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
   *
@@ -57,13 +44,16 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	
+	@Autowired
+    NaverLoginBO naverLoginBO;
+
+
+
 	@GetMapping("/login")
 	public void loginGET(){
-
-		
 	}
-	
+
+
 /*  기존의 로그인post였는데, 시큐리티 도입후 사용x
 	@PostMapping("/loginPost")
 	public String loginPOST(LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {

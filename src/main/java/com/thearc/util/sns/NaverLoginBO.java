@@ -6,8 +6,14 @@ import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import com.thearc.domain.ConfigProfile;
+import com.thearc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.UUID;
@@ -25,8 +31,17 @@ import java.util.UUID;
  * </pre>
  */
 
-
+@Component
 public class NaverLoginBO {
+
+    @Autowired
+    private ConfigProfile configProfile;
+
+   /* public void testMethod1(){
+        String REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
+        System.out.println("REDIRECT_URI="+REDIRECT_URI);
+        System.out.println("configProfile.getIpAddress()="+configProfile.getIpAddress());
+    }*/
 
     /* 인증 요청문을 구성하는 파라미터 */
     //client_id: 애플리케이션 등록 후 발급받은 클라이언트 아이디
@@ -35,7 +50,8 @@ public class NaverLoginBO {
     //state: 애플리케이션이 생성한 상태 토큰
     private final static String CLIENT_ID = "BRgRHW4tmjqSDA6W5Czk";
     private final static String CLIENT_SECRET = "CgeLIoUDVT";
-    private final static String REDIRECT_URI = "http://localhost:8080/thearc/callback";
+//    private String REDIRECT_URI = "http://"+ipAddress+":8080/thearc/callback";
+    private String REDIRECT_URI;
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
@@ -43,11 +59,16 @@ public class NaverLoginBO {
     /* 네이버 아이디로 인증  URL 생성  Method */
     public String getAuthorizationUrl(HttpSession session) {
 
+        REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
+
         /* 세션 유효성 검증을 위하여 난수를 생성 */
         String state = generateRandomString();
 
         /* 생성한 난수 값을 session에 저장 */
         setSession(session,state);
+
+        System.out.println("Test-REDIRECT_URI="+REDIRECT_URI);
+        System.out.println("Test2:"+configProfile.getIpAddress());
 
         /* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL 생성 */
         OAuth20Service oauthService = new ServiceBuilder()
@@ -62,6 +83,8 @@ public class NaverLoginBO {
 
     /* 네이버아이디로 Callback 처리 및  AccessToken 획득 Method */
     public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException{
+
+        REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
 
         /* Callback으로 전달받은 세선검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
         String sessionState = getSession(session);
@@ -98,6 +121,8 @@ public class NaverLoginBO {
     }
     /* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
     public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
+
+        REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
 
         OAuth20Service oauthService =new ServiceBuilder()
                 .apiKey(CLIENT_ID)

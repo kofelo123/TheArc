@@ -14,7 +14,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
-	
+
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<!--
@@ -28,6 +28,8 @@
 		       </property>
 		   </bean>
     -->
+
+
 
 	<bean id="propertyConfigurator" class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
 		<constructor-arg ref="configurationEncryptor"/>
@@ -51,10 +53,18 @@
 
 		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+			<property name="jdbcUrl" value="#{config.url}"></property>
+			<property name="username" value="#{config.userName}"></property>
+			<property name="password" value="#{config.password}"></property>
+		</bean>
+<!--
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="jdbcUrl" value="${Local.Url}"></property>
 			<property name="username" value="${Local.UserName}"></property>
 			<property name="password" value="${Local.Password}"></property>
 		</bean>
+-->
 	<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="url" value="${Local.Url}"></property>
@@ -66,39 +76,40 @@
 		</bean>
 
 
-		
+
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:com/thearc/mapper/**/*Mapper.xml"></property>
 	</bean>
-	
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
+
 	<tx:annotation-driven />
-	
+
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
-	</bean>	
-	
+	</bean>
+
 	<bean id="ipAddress" class="java.lang.String">
-		<constructor-arg value="${Local.IpAddress}">
+		<constructor-arg value="#{config.ipAddress}">
 		</constructor-arg>
 	</bean>
 	<bean id="mailPw" class="java.lang.String">
-		<constructor-arg value="${MailPw}">
+		<constructor-arg value="#{config.mailPw}">
 		</constructor-arg>
 	</bean>
 
-	
+
 	<bean id="encrypt" class="com.thearc.util.EncryptUtil">
 	</bean>
+<!--
 
-	<!-- Google 소셜 로그인 연결 설정 -->
+	&lt;!&ndash; Google 소셜 로그인 연결 설정 &ndash;&gt;
 	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
 		<constructor-arg value="755792594137-ds9engajnsjvip5mvpetccoql5568af9.apps.googleusercontent.com"/>
 		<constructor-arg value="aP8wZE8SuNf6A1Q43qrKeT6U"/>
@@ -109,6 +120,9 @@
 		<property name="redirectUri" value="http://localhost:8080/thearc/googleSignInCallback"/>
 
 	</bean>
+-->
+
+
 
 
 
@@ -133,5 +147,30 @@
 	<task:annotation-driven/>
 
 	<context:component-scan base-package="com.thearc.task"></context:component-scan>
-	
+
+    <!--<bean id="naverLoginBO" class="com.thearc.util.sns.NaverLoginBO" />-->
+
+	<beans profile="local">
+		<bean id="config" class="com.thearc.domain.ConfigProfile">
+			<property name="url" value="${Local.Url}"/>
+			<property name="userName" value="${Local.UserName}"/>
+			<property name="password" value="${Local.Password}"/>
+			<property name="ipAddress" value="${Local.IpAddress}"/>
+			<property name="uploadPath" value="${Local.UploadPath}"/>
+			<property name="mailPw" value="${MailPw}"/>
+		</bean>
+	</beans>
+
+	<beans profile="server">
+		<bean id="config" class="com.thearc.domain.ConfigProfile">
+			<property name="url" value="${Server.Url}"/>
+			<property name="userName" value="${Server.UserName}"/>
+			<property name="password" value="${Server.Password}"/>
+			<property name="ipAddress" value="${Server.IpAddress}"/>
+			<property name="uploadPath" value="${Server.UploadPath}"/>
+			<property name="mailPw" value="${MailPw}"/>
+		</bean>
+	</beans>
+
 </beans>
+

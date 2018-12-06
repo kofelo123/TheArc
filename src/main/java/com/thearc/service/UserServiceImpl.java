@@ -1,6 +1,7 @@
 package com.thearc.service;
 
 
+import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
 import com.thearc.mapper.UserMapper;
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder pwencoder;
 
+
 	/*
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
@@ -55,6 +57,10 @@ public class UserServiceImpl implements UserService {
 	public UserVO testLogin(LoginDTO dto) throws Exception {
 
 		return mapper.testLogin(dto);
+	}
+
+	public String CCC(){
+		return "methodCCC()";
 	}
 
 	@Override
@@ -149,4 +155,5 @@ public class UserServiceImpl implements UserService {
 
 		return mapper.unameCheck(uname);
 	}
+
 }
