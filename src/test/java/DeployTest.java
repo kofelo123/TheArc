@@ -64,7 +64,7 @@ public class DeployTest {
         loginDTO = new LoginDTO();
         loginDTO.setUid("test_thearc");
         loginDTO.setUpw("$2a$10$tI56mHDKbJRDp01OqXCPyOKYD2NEaKWeW8vedeSHkp4jLs4U2G76C");
-        UserVO findUser = userService.login(loginDTO);
+        UserVO findUser = userService.testLogin(loginDTO);
 
         //검증
         assertThat(findUser.getUid(),is(loginDTO.getUid()));

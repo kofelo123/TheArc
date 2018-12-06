@@ -69,15 +69,31 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
+
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="${Server.UploadPath}">
+		<beans:constructor-arg value="#{config.uploadPath}">
 		</beans:constructor-arg>
+	</beans:bean>
+
+	<!--naver sns 로그인 연동 관련 -->
+	<!--<beans:bean id="naverLoginBO" class="com.thearc.util.sns.NaverLoginBO" />-->
+
+	<!-- google sns 로그인 연동 관련-->
+	<beans:bean id="googleConnectionFactory"
+				class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<beans:constructor-arg value="150125464011-739ehmurj8nni3hsbo29e3dcr9nq96t3.apps.googleusercontent.com" />
+		<beans:constructor-arg value="vx0Jt30WBpRS3xbWQNFQ4Gl3" />
+	</beans:bean>
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+		<beans:property name="redirectUri" value="http://localhost:8090/login_project/oauth2callback" />
 	</beans:bean>
 
 
@@ -121,6 +137,7 @@
 
 	<context:component-scan base-package="com.thearc.controller" />
 	<context:component-scan base-package="com.thearc.util" />
+	<context:component-scan base-package="com.thearc.util.sns" />
 
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>

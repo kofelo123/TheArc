@@ -2,9 +2,10 @@ package com.thearc.controller;
 
 //import com.thearc.domain.AddressVO;
 
-import com.thearc.domain.LoginDTO;
+import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
+import com.thearc.util.sns.NaverLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,11 +44,17 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	
+	@Autowired
+    NaverLoginBO naverLoginBO;
+
+
+
 	@GetMapping("/login")
 	public void loginGET(){
 	}
-	
+
+
+/*  기존의 로그인post였는데, 시큐리티 도입후 사용x
 	@PostMapping("/loginPost")
 	public String loginPOST(LoginDTO dto,BindingResult result, HttpSession session, Model model) throws Exception {
 
@@ -60,16 +67,19 @@ public class UserController {
 		System.out.println("loginTest:"+vo);
 		
 		model.addAttribute("userVO", vo);
+*/
 /*
 		if (dto.isUseCookie()) { /// 로그인폼에서 자동로그인 체크여부 -> LoginDto에 필드 있다.
 			int amount = 60 * 60 * 24 * 7;
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
 		}
-		*/
+		*//*
+
 		//인터셉터의 후처리로 인해 일단 컨트롤러가 반환할 view가 필요해서 그냥 login으로 지정해놓은것(의미는없음) , (후처리라 return null은 안됨)
 		return "/user/login";
 	  }
+*/
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
@@ -288,6 +298,10 @@ public class UserController {
 	public void jusoPopupPost() {
 
 	}
+
+
+
+
 
 }
 

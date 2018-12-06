@@ -6,16 +6,23 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.Date;
 
 public interface UserMapper {
 
+/*    @Select("SELECT uid, upw, uname  " +
+            "FROM tbl_user  " +
+            "WHERE uid = #{uid}  " +
+            "AND upw = #{upw}")
+    public UserVO login(LoginDTO dto) throws Exception;*/
+
     @Select("SELECT uid, upw, uname  " +
             "FROM tbl_user  " +
             "WHERE uid = #{uid}  " +
             "AND upw = #{upw}")
-    public UserVO login(LoginDTO dto) throws Exception;
+    public UserVO testLogin(LoginDTO dto)throws Exception;
 
     @Update("UPDATE tbl_user  " +
             "SET sessionKey = #{sessionId}, sessionLimit = #{next}  " +
@@ -72,4 +79,8 @@ public interface UserMapper {
     public String unameCheck(String uname);
 
 
+    @Select("SELECT upw " +
+            "FROM tbl_user " +
+            "WHERE uid = #{uid}")
+    public String getPw(String uid);
 }
