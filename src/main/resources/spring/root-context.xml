@@ -57,14 +57,12 @@
 			<property name="username" value="#{config.userName}"></property>
 			<property name="password" value="#{config.password}"></property>
 		</bean>
-<!--
-		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!--	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="jdbcUrl" value="${Local.Url}"></property>
 			<property name="username" value="${Local.UserName}"></property>
 			<property name="password" value="${Local.Password}"></property>
-		</bean>
--->
+		</bean>-->
 	<!--	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 			<property name="url" value="${Local.Url}"></property>
@@ -149,7 +147,6 @@
 	<context:component-scan base-package="com.thearc.task"></context:component-scan>
 
     <!--<bean id="naverLoginBO" class="com.thearc.util.sns.NaverLoginBO" />-->
-
 	<beans profile="local">
 		<bean id="config" class="com.thearc.domain.ConfigProfile">
 			<property name="url" value="${Local.Url}"/>
@@ -171,6 +168,8 @@
 			<property name="mailPw" value="${MailPw}"/>
 		</bean>
 	</beans>
+
+
 
 </beans>
 
