@@ -172,8 +172,8 @@
 			<property name="mailPw" value="${MailPw}"/>
 			<property name="naverClientId" value="${Server.naverClientId}"/>
 			<property name="naverSecret" value="${Server.naverSecret}"/>
-			<property name="googleClientId" value="${Local.googleClientId}"/>
-			<property name="googleSecret" value="${Local.googleSecret}"/>
+			<property name="googleClientId" value="${Server.googleClientId}"/>
+			<property name="googleSecret" value="${Server.googleSecret}"/>
 
 		</bean>
 	</beans>
