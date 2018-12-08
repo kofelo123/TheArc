@@ -8,7 +8,11 @@ public class JDBCEncryptor {
             //패스워드 넣어주고 써야함(필수)
             enc.setPassword("rktwlsrud");
 
-            System.out.println(enc.encrypt("jdbc:log4jdbc:mysql://jeongwon.me/thearc2"));
+//            System.out.println(enc.encrypt("jdbc:log4jdbc:mysql://jeongwon.me/thearc2"));
+            System.out.println(enc.encrypt("0k9ycdgXO65t3vGApBqf"));
+            System.out.println(enc.encrypt("6t5nZggxgm"));
+            System.out.println(enc.encrypt("BRgRHW4tmjqSDA6W5Czk"));
+            System.out.println(enc.encrypt("CgeLIoUDVT"));
 
 
 //        enc.setPassword("rktwlsrud");

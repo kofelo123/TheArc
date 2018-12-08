@@ -59,10 +59,6 @@ public class UserServiceImpl implements UserService {
 		return mapper.testLogin(dto);
 	}
 
-	public String CCC(){
-		return "methodCCC()";
-	}
-
 	@Override
 	public UserVO checkLoginBefore(String value) {
 		return mapper.checkUserWithSessionKey(value);

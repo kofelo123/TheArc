@@ -155,6 +155,8 @@
 			<property name="ipAddress" value="${Local.IpAddress}"/>
 			<property name="uploadPath" value="${Local.UploadPath}"/>
 			<property name="mailPw" value="${MailPw}"/>
+			<property name="naverClientId" value="${Local.naverClientId}"/>
+			<property name="naverSecret" value="${Local.naverSecret}"/>
 		</bean>
 	</beans>
 
@@ -166,6 +168,8 @@
 			<property name="ipAddress" value="${Server.IpAddress}"/>
 			<property name="uploadPath" value="${Server.UploadPath}"/>
 			<property name="mailPw" value="${MailPw}"/>
+			<property name="naverClientId" value="${Server.naverClientId}"/>
+			<property name="naverSecret" value="${Server.naverSecret}"/>
 		</bean>
 	</beans>
 

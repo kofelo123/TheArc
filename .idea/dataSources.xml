@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="UbuntuServerTheArc" uuid="a9e90d29-d309-43d6-abca-720001805855">
+    <data-source source="LOCAL" name="Server-Thearc" uuid="8b212b4b-d7ef-424e-8019-7893758a09ed">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

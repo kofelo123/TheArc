@@ -31,6 +31,7 @@ import java.util.UUID;
  * </pre>
  */
 
+//local - server 구분해야하는 설정부분(id,secret,redirecturl)에서 Profile을 주입받아서 처리
 @Component
 public class NaverLoginBO {
 
@@ -48,8 +49,12 @@ public class NaverLoginBO {
     //response_type: 인증 과정에 대한 구분값. code로 값이 고정돼 있습니다.
     //redirect_uri: 네이버 로그인 인증의 결과를 전달받을 콜백 URL(URL 인코딩). 애플리케이션을 등록할 때 Callback URL에 설정한 정보입니다.
     //state: 애플리케이션이 생성한 상태 토큰
-    private final static String CLIENT_ID = "BRgRHW4tmjqSDA6W5Czk";
-    private final static String CLIENT_SECRET = "CgeLIoUDVT";
+
+    //'(로컬-서버에 따른 유동값)'
+    //'(필드값들의 경우 변수값에 바로 의존주입값을 넣으려고 접근할때, 시점의 차이때문에 null이 되기때문에
+    //메소드를 호출할때 수정되도록 변경했다.'
+    private String CLIENT_ID ;
+    private String CLIENT_SECRET ;
 //    private String REDIRECT_URI = "http://"+ipAddress+":8080/thearc/callback";
     private String REDIRECT_URI;
     private final static String SESSION_STATE = "oauth_state";
@@ -60,6 +65,8 @@ public class NaverLoginBO {
     public String getAuthorizationUrl(HttpSession session) {
 
         REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
+        CLIENT_ID = configProfile.getNaverClientId();
+        CLIENT_SECRET = configProfile.getNaverSecret();
 
         /* 세션 유효성 검증을 위하여 난수를 생성 */
         String state = generateRandomString();
@@ -85,6 +92,8 @@ public class NaverLoginBO {
     public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException{
 
         REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
+        CLIENT_ID = configProfile.getNaverClientId();
+        CLIENT_SECRET = configProfile.getNaverSecret();
 
         /* Callback으로 전달받은 세선검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
         String sessionState = getSession(session);
@@ -123,6 +132,8 @@ public class NaverLoginBO {
     public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
 
         REDIRECT_URI = "http://"+configProfile.getIpAddress()+":8080/thearc/callback";
+        CLIENT_ID = configProfile.getNaverClientId();
+        CLIENT_SECRET = configProfile.getNaverSecret();
 
         OAuth20Service oauthService =new ServiceBuilder()
                 .apiKey(CLIENT_ID)

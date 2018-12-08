@@ -26,6 +26,10 @@ public class ConfigProfile {
     private String uploadPath;
     private String mailPw;
 
+    //naver sns login
+    private String naverClientId;
+    private String naverSecret;
+
 }
 
 

@@ -110,7 +110,15 @@ public class NaverLoginController {
 
             //hashbyid과정에서 upw인코딩되어서 다시 원래로 돌림.
             userVO.setUpw(jsonObj2.get("id").toString().replaceAll("\"", ""));
-            service.joinPost(userVO);
+            try{
+                service.joinPost(userVO);
+            }catch(Exception e){
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.print("<script>alert('이미 가입된 아이디입니다.');location.href='/thearc/user/login';</script>");
+                out.flush();
+            }
+
 
         }
         userVO.setUpw(jsonObj2.get("id").toString().replaceAll("\"", ""));
