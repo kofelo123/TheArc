@@ -97,12 +97,11 @@
 	</beans:bean>
 
 
+	<!--	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
 
-<!--	<beans:bean id="authInterceptor" class="com.thearc.interceptor.AuthInterceptor"></beans:bean>
+        <beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
 
-	<beans:bean id="loginInterceptor" class="com.thearc.interceptor.LoginInterceptor"></beans:bean>
-
-	<beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>-->
+        <beans:bean id="adminAuthInterceptor" class="com.thearc.interceptor.AdminAuthInterceptor"></beans:bean>-->
 	
 	<!--<interceptors>-->
 	
