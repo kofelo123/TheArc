@@ -30,6 +30,10 @@ public class ConfigProfile {
     private String naverClientId;
     private String naverSecret;
 
+    //google sns login
+    private String googleClientId;
+    private String googleSecret;
+
 }
 
 

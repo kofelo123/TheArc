@@ -9,10 +9,10 @@ public class JDBCEncryptor {
             enc.setPassword("rktwlsrud");
 
 //            System.out.println(enc.encrypt("jdbc:log4jdbc:mysql://jeongwon.me/thearc2"));
-            System.out.println(enc.encrypt("0k9ycdgXO65t3vGApBqf"));
-            System.out.println(enc.encrypt("6t5nZggxgm"));
-            System.out.println(enc.encrypt("BRgRHW4tmjqSDA6W5Czk"));
-            System.out.println(enc.encrypt("CgeLIoUDVT"));
+            System.out.println(enc.encrypt("755792594137-ds9engajnsjvip5mvpetccoql5568af9.apps.googleusercontent.com"));
+            System.out.println(enc.encrypt("aP8wZE8SuNf6A1Q43qrKeT6U"));
+            System.out.println(enc.encrypt("755792594137-44ffp2ghof9gkjt3ua8b6a797n5v6dop.apps.googleusercontent.com"));
+            System.out.println(enc.encrypt("moIgU14cGNtS9TcTfXOymJpp"));
 
 
 //        enc.setPassword("rktwlsrud");

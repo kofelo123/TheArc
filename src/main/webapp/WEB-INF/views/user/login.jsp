@@ -93,6 +93,7 @@
 				</div>
 
                 <a href="/thearc/naverlogin2"><img src="/thearc/resources/bootstrap/image/네이버 아이디로 로그인_완성형_Green.PNG" style="width:250px;height:50px;display:block;margin-top:15px;margin-left:auto;margin-right:auto;text-align:center;"/></a>
+                <a href="/thearc/googleLogin"><img src="/thearc/resources/bootstrap/image/구글로그인버튼.png" style="width:250px;height:50px;display:block;margin-top:15px;margin-left:auto;margin-right:auto;text-align:center;"/></a>
                 <%--<img src="/thearc/resources/bootstrap/image/네이버 아이디로 로그인_축약형_Green.PNG" style="width:110px;height:50px;"/>--%>
 
 			</div>

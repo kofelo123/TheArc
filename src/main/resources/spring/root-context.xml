@@ -157,6 +157,8 @@
 			<property name="mailPw" value="${MailPw}"/>
 			<property name="naverClientId" value="${Local.naverClientId}"/>
 			<property name="naverSecret" value="${Local.naverSecret}"/>
+			<property name="googleClientId" value="${Local.googleClientId}"/>
+			<property name="googleSecret" value="${Local.googleSecret}"/>
 		</bean>
 	</beans>
 
@@ -170,6 +172,9 @@
 			<property name="mailPw" value="${MailPw}"/>
 			<property name="naverClientId" value="${Server.naverClientId}"/>
 			<property name="naverSecret" value="${Server.naverSecret}"/>
+			<property name="googleClientId" value="${Local.googleClientId}"/>
+			<property name="googleSecret" value="${Local.googleSecret}"/>
+
 		</bean>
 	</beans>
 

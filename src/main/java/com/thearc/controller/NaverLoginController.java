@@ -115,7 +115,7 @@ public class NaverLoginController {
             }catch(Exception e){
                 response.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = response.getWriter();
-                out.print("<script>alert('이미 가입된 아이디입니다.');location.href='/thearc/user/login';</script>");
+                out.print("<script>alert('이미 가입된 메일 또은 아이디입니다.');location.href='/thearc/user/login';</script>");
                 out.flush();
             }
 

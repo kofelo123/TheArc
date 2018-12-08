@@ -87,13 +87,13 @@
 	<!-- google sns 로그인 연동 관련-->
 	<beans:bean id="googleConnectionFactory"
 				class="org.springframework.social.google.connect.GoogleConnectionFactory">
-		<beans:constructor-arg value="150125464011-739ehmurj8nni3hsbo29e3dcr9nq96t3.apps.googleusercontent.com" />
-		<beans:constructor-arg value="vx0Jt30WBpRS3xbWQNFQ4Gl3" />
+		<beans:constructor-arg value="#{config.googleClientId}" />
+		<beans:constructor-arg value="#{config.googleSecret}" />
 	</beans:bean>
-	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI('scope를 plus.login에서 이메일이 안나와서 userinfo.email로 수정함' -->
 	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
-		<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
-		<beans:property name="redirectUri" value="http://localhost:8090/login_project/oauth2callback" />
+		<beans:property name="scope" value="https://www.googleapis.com/auth/userinfo.email" />
+		<beans:property name="redirectUri" value="http://#{config.IpAddress}:8080/thearc/googleSignInCallback" />
 	</beans:bean>
 
 
