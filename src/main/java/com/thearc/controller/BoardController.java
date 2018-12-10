@@ -31,7 +31,9 @@ public class BoardController {
 
 	 @RequestMapping(value = "/main", method = RequestMethod.GET)
 	  public void main(Locale locale, Model model, SearchCriteria cri) throws Exception {
-	   	  model.addAttribute("weather",service.getWeather());
+
+	 	//공공데이터 - 날씨
+	 	model.addAttribute("weather",service.getWeather());
 
 	   	 cri.setPerPageNum(5);
 	   	 List<List<BoardVO>> minBoard = new ArrayList<List<BoardVO>>();//미니게시판 - 4개 리스트를 담는 2중forEach사용
