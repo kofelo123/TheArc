@@ -43,7 +43,7 @@
   </head>
   
   <body class="login-page">
-    <div class="login-box2">
+    <div class="login-box2" style="margin-top:3%;">
       <div class="login-logo">
         <a href="#"><b>회원가입</b></a>
       </div>
@@ -102,13 +102,16 @@
         <input type="phone" name="phone" class="phone-number-check" size="30" placeholder="휴대전화"> 
       </fieldset>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><%--시큐리티 권한체크에 필요해서 넣음(수정) --%>
-		<!--  onclick="go_save()" -->
+		<!--  onclick="go_save()" --><br>
         <input type="submit"  id="joinPost"  value="회원가입"   >
         <input type="reset"      value="리셋" style="margin-left:10px"   >
     </form:form>
+
  	 </div>
-  	</div>
-  </div>
+      </div>
+        <a href="/thearc/naverlogin2"><img src="/thearc/resources/bootstrap/image/네이버 아이디 가입.png" style="width:250px;height:50px;display:block;margin-top:15px;margin-left:auto;margin-right:auto;text-align:center;"/></a>
+        <a href="/thearc/googleLogin"><img src="/thearc/resources/bootstrap/image/구글 아이디 가입.png" style="width:250px;height:50px;display:block;margin-top:15px;margin-left:auto;margin-right:auto;text-align:center;"/></a>
+    </div>
   
   </body>
 </html>

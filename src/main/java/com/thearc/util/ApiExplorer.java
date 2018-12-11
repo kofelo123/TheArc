@@ -25,7 +25,7 @@ public class ApiExplorer {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String today = sdf.format(new Date());
 		List<JsonVO> json = apiExplorer.forecast(today);
-		System.out.println("jsontest:" + json.get(0));
+//		System.out.println("jsontest:" + json.get(0));
 
 	}
 
@@ -44,7 +44,7 @@ public class ApiExplorer {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-		System.out.println("Response code: " + conn.getResponseCode());
+//		System.out.println("Response code: " + conn.getResponseCode());
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -59,10 +59,10 @@ public class ApiExplorer {
 		//참고로 날씨관련 배열의 한 요소안에 해당시간의 날씨들의 정보가 한줄에 있는게 아니라 각 날씨,온도 등이 매 배열 단위마다 따로 되어있다.
 		while ((line = rd.readLine()) != null) {
 			String subVal;
-			System.out.println("line=" + line);
+//			System.out.println("line=" + line);
 			String[] split = line.split("baseDate");
 			//9시
-			System.out.println("length:" + split.length);
+//			System.out.println("length:" + split.length);
 			JsonParser parser = new JsonParser();
 
             //Json 오브젝트 하위에 오브젝트가 있는 구조, 최하위의 item이라는 jsonArray 값들이 필요한데, 한번에 접근하는 방법을 모르겠어서 한 단계씩 접근해서 배열가져온것.
@@ -73,7 +73,7 @@ public class ApiExplorer {
 
             //필요한 json배열 값.
             JsonArray jsonArray = (JsonArray) dataObject3.get("item");
-            System.out.println("jsonArraySize="+jsonArray.size());
+//            System.out.println("jsonArraySize="+jsonArray.size());
 
 			for (int arrayIndex = 0; arrayIndex < jsonArray.size(); arrayIndex++) {
 
@@ -89,26 +89,26 @@ public class ApiExplorer {
 
 				switch (category) {
 					case "POP":
-                        System.out.println("Case-pop");
+//                        System.out.println("Case-pop");
 						vo.setPop(fcstValue);
 						break;
 					case "REH":
-                        System.out.println("Case-REH");
+//                        System.out.println("Case-REH");
 						vo.setReh(fcstValue);
                         break;
 					case "SKY":
-                        System.out.println("Case-SKY");
+//                        System.out.println("Case-SKY");
 						vo.setSky(fcstValue);
                         break;
 					case "T3H":
-                        System.out.println("Case-T3H");
+//                        System.out.println("Case-T3H");
 						vo.setT3h(fcstValue);
                         //vo를 List에 add해준다음 다시 동일 객체를 다시 for문 돌리면 다음 List내에 add되는 각 객체가 동일한 객체라 값이 같아져버림 -> add이후 새로운 객체 생성시켜줌
 						jsonList.add(vo);
 						vo = new JsonVO();
                         break;
 				}
-                /*System.out.println("Test-순환="+arrayIndex);
+                /*System.out.println("Test-사이클="+arrayIndex);
                 System.out.println("test-fcstTime="+fcstTime);
                 System.out.println("test-category="+category);
                 System.out.println("test-fcstValue="+fcstValue );
