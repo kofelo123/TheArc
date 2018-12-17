@@ -84,7 +84,6 @@ public class NaverLoginController {
 
         JsonParser parser = new JsonParser();
 
-
         JsonObject jsonObj = (JsonObject) parser.parse(apiResult);
 //        JsonArray jsonArray = (JsonArray) jsonObj.get("response");
         JsonObject jsonObj2 =  (JsonObject)jsonObj.get("response");

@@ -1,8 +1,8 @@
 package com.thearc.domain;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
