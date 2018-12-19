@@ -19,16 +19,32 @@
 	<bean id="customUserDetailsService"
 		  class="com.thearc.security.CustomUserDetailsService"></bean>
 
+<!--
 	<bean id="csrfMatcher" class="org.springframework.security.web.util.matcher.OrRequestMatcher">
 		<constructor-arg>
 			<bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
-				<constructor-arg name="pattern" value="**/addrlink/**"/>
+				<constructor-arg name="pattern" value="/user/jusoPopup"/>
 				<constructor-arg name="httpMethod" value="POST"/>
 			</bean>
 		</constructor-arg>
 	</bean>
+-->
 
 
+<!--
+        <bean id="csrfMatcher"	class="AndRequestMatcher">
+            <constructor-arg>
+                <bean class="org.springframework.security.web.util.matcher.NegatedRequestMatcher">
+                    <bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+                        <constructor-arg value="/chat/**"/>
+                    </bean>
+                </bean>
+            </constructor-arg>
+        </bean>-->
+
+
+	<security:http pattern="/user/jusoPopup" security="none"></security:http>
+	<security:http pattern="/login" security="none"></security:http>
 	<security:http>
 
 		<!--<security:intercept-url pattern="/sample/all"
@@ -44,8 +60,13 @@
 								access="hasRole('ROLE_SUPPORTER') and hasRole('ROLE_ADMIN')" />
 
         <!--<security:csrf disabled="true" ></security:csrf>-->
-		<security:csrf request-matcher-ref="csrfMatcher"/>
 
+		<!--<http security="none" pattern="/pathWhereCSRFWillBeIgnored/**"/>-->
+
+		<!--<security:csrf request-matcher-ref="csrfMatcher"/>-->
+		<!--<security:csrf request-matcher-ref="csrfMatcher"/>-->
+
+		<!--<security:intercept-url pattern="/user/jusoPopup" request-matcher-ref="csrfMatcher"/>-->
 
 		<security:access-denied-handler
 				ref="customAccessDenied" />
@@ -100,5 +121,6 @@
 		</security:authentication-provider>
 
 	</security:authentication-manager>
+
 
 </beans>
