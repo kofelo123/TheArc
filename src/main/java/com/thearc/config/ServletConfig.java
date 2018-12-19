@@ -143,7 +143,7 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Bean
     public String uploadPath(){
-        String string = new String("C:\\\\zzz\\\\upload\n");
+        String string = new String("C:\\\\zzz\\\\upload");
         return string;
     }
 

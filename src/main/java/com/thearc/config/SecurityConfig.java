@@ -68,6 +68,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http)throws Exception{
 
+//        AntPathRequestMatcher antPathRequestMatcher = new AntPathRequestMatcher("**/callback/**","POST");
+//        http.csrf().requireCsrfProtectionMatcher(antPathRequestMatcher);
+
+//        http.csrf().ignoringAntMatchers("**/addrlink/**");
+
+
+
+//        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/addrlink/**","POST"));
+
+
+
+//        http.csrf().requireCsrfProtectionMatcher(csrfMatcher());
+//        http.requestMatcher(new AntPathRequestMatcher("**/addrlink/**")).csrf().disable();
+
+        //        http.csrf().disable();
+
+
         /*http.authorizeRequests().antMatchers("/sample/all")
                 .permitAll()
                 .antMatchers("/sample/admin")
@@ -78,14 +95,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/sboard/list/supporter")
                                 .access("hasRole('ROLE_SUPPORTER') and hasRole('ROLE_ADMIN')");
 
+        http.csrf().ignoringAntMatchers("/user/jusoPopup","/login");
 
 
-
-        http.formLogin()
+/*        http.formLogin()
                 .loginPage("/user/login")
                 .defaultSuccessUrl("/sboard/main");
-//                .loginProcessingUrl("/login")
+////                .loginProcessingUrl("/login")
+////                .successHandler(loginSuccessHandler());*/
+
+//loginProcessingUrl  꼭있어야함.
+        http.formLogin()
+                .loginPage("/user/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/sboard/main");
 //                .successHandler(loginSuccessHandler());
+
+
 
         http.logout()
                 .logoutUrl("/customLogout")
@@ -97,6 +123,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .key("thearc")
                 .tokenRepository(persistentTokenRepository())
                 .tokenValiditySeconds(604800);
+
+
     }
 
     @Bean
@@ -121,16 +149,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomAccessDeniedHandler();
     }
 
-    @Bean
-    public OrRequestMatcher csrfMatcher(){
-        OrRequestMatcher matcher = new OrRequestMatcher(antPathRequestMatcher());
-        return matcher;
-    }
-
-    @Bean
-    public AntPathRequestMatcher antPathRequestMatcher(){
-        AntPathRequestMatcher antPathRequestMatcher = new AntPathRequestMatcher("**/addrlink/**","POST");
-        return antPathRequestMatcher;
-    }
+//    @Bean
+//    public OrRequestMatcher csrfMatcher(){
+//        OrRequestMatcher matcher = new OrRequestMatcher(antPathRequestMatcher());
+//        return matcher;
+//    }
+//
+//    @Bean
+//    public AntPathRequestMatcher antPathRequestMatcher(){
+//        AntPathRequestMatcher antPathRequestMatcher = new AntPathRequestMatcher("**/callback/**","POST");
+//        return antPathRequestMatcher;
+//    }
 
 }
