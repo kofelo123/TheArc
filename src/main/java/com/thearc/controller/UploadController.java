@@ -1,9 +1,11 @@
 package com.thearc.controller;
 
+import com.thearc.domain.ConfigProfile;
 import com.thearc.util.MediaUtils;
 import com.thearc.util.UploadFileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,8 +27,12 @@ import java.util.UUID;
 @Controller
 public class UploadController {
 
-  @Resource(name = "uploadPath")
+  /*@Resource(name = "uploadPath")
   private String uploadPath;
+*/
+
+  @Autowired
+  private ConfigProfile profile;
 
   @GetMapping("/uploadForm")
   public void uploadForm() {
@@ -57,7 +63,7 @@ public class UploadController {
 
     String savedName = uid.toString() + "_" + originalName;
 
-    File target = new File(uploadPath, savedName);
+    File target = new File(profile.getUploadPath(), savedName);
 
     FileCopyUtils.copy(fileData, target);
 
@@ -75,7 +81,7 @@ public class UploadController {
    
     return 
       new ResponseEntity<>(
-          UploadFileUtils.uploadFile(uploadPath, 
+          UploadFileUtils.uploadFile(profile.getUploadPath(),
                 file.getOriginalFilename(), 
                 file.getBytes()), 
           HttpStatus.CREATED);
@@ -99,7 +105,7 @@ public class UploadController {
       
       HttpHeaders headers = new HttpHeaders();
       
-      in = new FileInputStream(uploadPath+fileName);
+      in = new FileInputStream(profile.getUploadPath()+fileName);
       
       if(mType != null){
         headers.setContentType(mType);
@@ -137,10 +143,10 @@ public class UploadController {
       
       String front = fileName.substring(0,12);
       String end = fileName.substring(14);
-      new File(uploadPath + (front+end).replace('/', File.separatorChar)).delete();
+      new File(profile.getUploadPath()+ (front+end).replace('/', File.separatorChar)).delete();
     }
     
-    new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+    new File(profile.getUploadPath()+ fileName.replace('/', File.separatorChar)).delete();
     
     
     return new ResponseEntity<String>("deleted", HttpStatus.OK);

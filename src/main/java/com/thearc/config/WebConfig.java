@@ -76,7 +76,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
             throws ServletException {
         super.onStartup(servletContext);
         servletContext.addListener(RequestContextListener.class);
-        servletContext.setInitParameter("spring.profiles.active", "local");
+        servletContext.setInitParameter("spring.profiles.active", "server");
         //Uma solução melhor, seria usar uma  variavel de ambiente para escolehr o profile ativo dinamicamente;
 //		env.getProperties().get("spring.profiles.active");
     }

@@ -1,6 +1,7 @@
 package com.thearc.task;
 
 import com.thearc.domain.BoardAttachVO;
+import com.thearc.domain.ConfigProfile;
 import com.thearc.mapper.BoardMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -35,7 +36,8 @@ import java.util.stream.Collectors;
 @Component
 public class FileCheckTask {
 
-
+    @Autowired
+    ConfigProfile configProfile;
 
     @Setter(onMethod_ = { @Autowired})
     private BoardMapper mapper;
@@ -66,13 +68,13 @@ public class FileCheckTask {
 
         //썸네일이 아닌 파일
         List<Path> fileListPaths = fileList.stream()
-                                    .map(vo -> Paths.get("C:\\zzz\\upload"
+                                    .map(vo -> Paths.get(configProfile.getUploadPath()
                                                             ,vo.getFullName())).collect(Collectors.toList());
 
         //이미지파일- 썸네일파일
 //        fileList.stream().filter(vo -> vo.isFileType() == true)
             fileList.stream()
-                .map(vo -> Paths.get("C:\\zzz\\upload", vo.getFullName().substring(0,11).replace("/",File.separator)
+                .map(vo -> Paths.get(configProfile.getUploadPath(), vo.getFullName().substring(0,11).replace("/",File.separator)
                         , "s_" + vo.getFullName())).collect(Collectors.toList())
                                     .forEach(p -> fileListPaths.add(p));
 
@@ -82,7 +84,7 @@ public class FileCheckTask {
             fileListPaths.forEach(p -> log.warn(p)); //DB에 등록된파일
 
             //어제날짜경로의 업로드된 모든파일(DB등록 안된것까지모두)
-            File targetDir = Paths.get("C:\\zzz\\upload",getFolderYesterDay()).toFile();
+            File targetDir = Paths.get(configProfile.getUploadPath(),getFolderYesterDay()).toFile();
 
             File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false); //모든파일 - DB에 있는 파일 = 지워야할 파일
 

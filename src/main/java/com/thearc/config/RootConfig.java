@@ -2,8 +2,12 @@ package com.thearc.config;
 
 import com.thearc.domain.ConfigProfile;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cglib.core.Local;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import com.zaxxer.hikari.HikariConfig;
@@ -40,17 +44,37 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan(basePackages={"com.thearc.service","com.thearc.task"})
-//@MapperScan("org.mybatis.spring.sample.mapper")
 @MapperScan("com.thearc.mapper")
-//@MapperScan(basePackages = "com.thearc.mapper")
 @EnableScheduling
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
+//@PropertySource("classpath:/spring/setting.properties")
 public class RootConfig {
+
+   /* @Value("${Local.Url}")
+    String url;*/
+
+    @Autowired
+    private ConfigProfile configProfile;
+
+
 
     public RootConfig() {
     }
 
+    @Bean
+    public DataSource dataSource(){
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+        hikariConfig.setJdbcUrl(configProfile.getUrl());
+        hikariConfig.setUsername(configProfile.getUserName());
+        hikariConfig.setPassword(configProfile.getPassword());
+
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+
+        return dataSource;
+    }
+/*
     @Bean
     public DataSource dataSource(){
         HikariConfig hikariConfig = new HikariConfig();
@@ -63,6 +87,7 @@ public class RootConfig {
 
         return dataSource;
     }
+*/
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(ApplicationContext applicationContext) throws Exception{
@@ -84,6 +109,29 @@ public class RootConfig {
     }
 
     @Bean
+    public static EnvironmentStringPBEConfig environmentVariablesConfiguration() {
+        EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+        config.setAlgorithm("PBEWithMD5AndDES");
+        config.setPasswordEnvName("APP_ENCRYPTION_PASSWORD");
+        return config;
+    }
+
+    @Bean
+    public static StandardPBEStringEncryptor configurationEncryptor() {
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setConfig(environmentVariablesConfiguration());
+        encryptor.setPassword("rktwlsrud");
+        return encryptor;
+    }
+
+    @Bean
+    public static EncryptablePropertyPlaceholderConfigurer propertyConfigurer() {
+        EncryptablePropertyPlaceholderConfigurer configurer = new EncryptablePropertyPlaceholderConfigurer(configurationEncryptor());
+        configurer.setLocations(new ClassPathResource("/spring/setting.properties"));
+        return configurer;
+    }
+
+/*    @Bean
     public EncryptablePropertyPlaceholderConfigurer propertyConfigurator(){
 
         EncryptablePropertyPlaceholderConfigurer configurer = new EncryptablePropertyPlaceholderConfigurer(configurationEncryptor());
@@ -91,6 +139,7 @@ public class RootConfig {
 //        List<String> list = new ArrayList<>();
 //        list.add("classpath:spring/setting.properties");
         configurer.setLocation(new DefaultResourceLoader().getResource("classpath:spring/setting.properties"));
+//        configurer.setLocation(new ClassPathResource("spring/setting.properties"));
 
 
         return configurer;
@@ -113,21 +162,46 @@ public class RootConfig {
         environmentStringPBEConfig.setPasswordEnvName("APP_ENCRYPTION_PASSWORD");
 
         return environmentStringPBEConfig;
-    }
+    }*/
 
 
+    @Profile("local")
     @Bean
-    public String ipAddress(){
-        String string = new String("localhost");
-        return string;
+    public ConfigProfile localConfig(@Value("${Local.Url}") String url,@Value("${Local.UserName}") String userName,@Value("${Local.Password}") String password,@Value("${Local.IpAddress}") String ipAddress,@Value("${Local.UploadPath}") String uploadPath,
+                                @Value("${MailPw}") String mailPw, @Value("${Local.naverClientId}") String naverClientId, @Value("${Local.naverSecret}")String naverSecret, @Value("${Local.googleClientId}") String googleClientId, @Value("${Local.googleSecret}") String googleSecret){
+        ConfigProfile configProfile = new ConfigProfile();
+        configProfile.setUrl(url);
+        configProfile.setUserName(userName);
+        configProfile.setPassword(password);
+        configProfile.setIpAddress(ipAddress);
+        configProfile.setUploadPath(uploadPath);
+        configProfile.setMailPw(mailPw);
+        configProfile.setNaverClientId(naverClientId);
+        configProfile.setNaverSecret(naverSecret);
+        configProfile.setGoogleClientId(googleClientId);
+        configProfile.setGoogleSecret(googleSecret);
+
+        return configProfile;
     }
+    @Profile("server")
     @Bean
-    public String mailPw(){
-        String string = new String("ekflrktmaajfl");
-        return string;
+    public ConfigProfile serverConfig(@Value("${Server.Url}") String url,@Value("${Server.UserName}") String userName,@Value("${Server.Password}") String password,@Value("${Server.IpAddress}") String ipAddress,@Value("${Server.UploadPath}") String uploadPath,
+                                @Value("${MailPw}") String mailPw, @Value("${Server.naverClientId}") String naverClientId, @Value("${Server.naverSecret}")String naverSecret, @Value("${Server.googleClientId}") String googleClientId, @Value("${Server.googleSecret}") String googleSecret){
+        ConfigProfile configProfile = new ConfigProfile();
+        configProfile.setUrl(url);
+        configProfile.setUserName(userName);
+        configProfile.setPassword(password);
+        configProfile.setIpAddress(ipAddress);
+        configProfile.setUploadPath(uploadPath);
+        configProfile.setMailPw(mailPw);
+        configProfile.setNaverClientId(naverClientId);
+        configProfile.setNaverSecret(naverSecret);
+        configProfile.setGoogleClientId(googleClientId);
+        configProfile.setGoogleSecret(googleSecret);
+
+        return configProfile;
     }
-
-
+/*
     @Profile("local")
     @Bean
     public ConfigProfile config(){
@@ -145,6 +219,7 @@ public class RootConfig {
 
         return configProfile;
     }
+*/
 
  /*    @Bean
     @Profile("server")

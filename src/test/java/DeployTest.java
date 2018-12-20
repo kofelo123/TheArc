@@ -1,3 +1,6 @@
+import com.thearc.config.RootConfig;
+import com.thearc.config.SecurityConfig;
+import com.thearc.config.ServletConfig;
 import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
@@ -21,9 +24,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring/test-root-context.xml",
-                                "classpath:spring/root-context.xml",
-                                "classpath:/spring/security-context.xml"})
+@ContextConfiguration(classes={RootConfig.class, ServletConfig.class, SecurityConfig.class})
 @ActiveProfiles("server")
 //@Profile("server")
 public class DeployTest {

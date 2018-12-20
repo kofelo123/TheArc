@@ -1,3 +1,5 @@
+import com.thearc.config.RootConfig;
+import com.thearc.config.ServletConfig;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -5,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -31,8 +34,8 @@ import org.springframework.web.context.WebApplicationContext;
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations={"classpath:spring/root-context.xml",
-								 "classpath:spring/servlet-context.xml"})	
+@ContextConfiguration(classes={RootConfig.class, ServletConfig.class})
+@ActiveProfiles("local")
 public class ValidTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(ValidTest.class);

@@ -1,9 +1,11 @@
 package com.thearc.config;
 
+import com.thearc.domain.ConfigProfile;
 import com.thearc.util.sns.NaverLoginBO;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
 import org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +53,8 @@ import java.util.List;
 @EnableWebMvc
 public class ServletConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private ConfigProfile configProfile;
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
@@ -96,7 +100,7 @@ public class ServletConfig implements WebMvcConfigurer {
 
     }
 
-    @Bean
+   /* @Bean
     public EncryptablePropertyPlaceholderConfigurer propertyConfigurator(){
 
         EncryptablePropertyPlaceholderConfigurer configurer = new EncryptablePropertyPlaceholderConfigurer(configurationEncryptor());
@@ -125,7 +129,7 @@ public class ServletConfig implements WebMvcConfigurer {
 
         return environmentStringPBEConfig;
     }
-
+*/
 
     @Bean
     public ReloadableResourceBundleMessageSource messageSource(){
@@ -141,11 +145,11 @@ public class ServletConfig implements WebMvcConfigurer {
 
     }
 
-    @Bean
+/*    @Bean
     public String uploadPath(){
         String string = new String("C:\\\\zzz\\\\upload");
         return string;
-    }
+    }*/
 
     @Bean
     public NaverLoginBO naverLoginBO(){
@@ -155,8 +159,8 @@ public class ServletConfig implements WebMvcConfigurer {
     @Bean
     public GoogleConnectionFactory googleConnectionFactory(){
         GoogleConnectionFactory factory =
-                new GoogleConnectionFactory("755792594137-ds9engajnsjvip5mvpetccoql5568af9.apps.googleusercontent.com"
-                                            ,"aP8wZE8SuNf6A1Q43qrKeT6U");
+                new GoogleConnectionFactory(configProfile.getGoogleClientId()
+                                            ,configProfile.getGoogleSecret());
         return factory;
     }
 
@@ -164,7 +168,7 @@ public class ServletConfig implements WebMvcConfigurer {
     public OAuth2Parameters googleOAuth2Parameters(){
         OAuth2Parameters parameters = new OAuth2Parameters();
         parameters.setScope("https://www.googleapis.com/auth/userinfo.email");
-        parameters.setRedirectUri("http://localhost:8080/thearc/googleSignInCallback");
+        parameters.setRedirectUri("http://"+configProfile.getIpAddress()+"/thearc/googleSignInCallback");
 
         return parameters;
     }

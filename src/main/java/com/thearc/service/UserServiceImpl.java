@@ -24,12 +24,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper mapper;
 
-	@Resource(name = "ipAddress") // ip 가변적이라서 주입(local-server).
+	@Autowired
+    private ConfigProfile profile;
+
+/*	@Resource(name = "ipAddress") // ip 가변적이라서 주입(local-server).
 	private String ipAddress;
 	
 	//mail에 필요한 pw - 암호화처리함
 	@Resource(name = "mailPw")
-	private String mailPw;
+	private String mailPw;*/
 
 /*	@Autowired
 	private EncryptUtil encrypt;*/
@@ -92,17 +95,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void idfindmail(HttpServletRequest request, ModelMap mo, UserVO user) throws Exception {
 				 
-		 URL url = new URL("http://"+ipAddress+":8080");//이곳 연결안되면 building the MimeMessage failed 500에러 날수있다 주의해야함.
+		 URL url = new URL("http://"+profile.getIpAddress()+":8080");//이곳 연결안되면 building the MimeMessage failed 500에러 날수있다 주의해야함.
 		 ImageHtmlEmail email = new ImageHtmlEmail();
 		 email.setDataSourceResolver(new DataSourceUrlResolver(url));
 		email.setHostName("smtp.naver.com");
 		email.setSmtpPort(587);
-		email.setAuthenticator(new DefaultAuthenticator("hlw123", mailPw));
+		email.setAuthenticator(new DefaultAuthenticator("hlw123", profile.getMailPw()));
 		email.setStartTLSRequired(true);
 		
 		UserVO user2 = mapper.idfindofmail(user); // form으로 전달된 이메일->db로 전달->id반환 ///mail로 uid,upw,uname가져오는걸로 수정.
 		
-		String htmlEmailTemplate = "<a href=http://"+ipAddress+":8080/thearc/user/mailcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
+		String htmlEmailTemplate = "<a href=http://"+profile.getIpAddress()+":8080/thearc/user/mailcheck?uid="+user2.getUid()+"&upw="+user2.getUpw()+"><img src=\"/thearc/resources/bootstrap/images/2-3.jpg\"></a><br><br>"
 						+user2.getUname() +  " 님의 아이디는 " + user2.getUid() + " 입니다.<br/>"
 						+" 위의 이미지링크를 클릭하시면 비밀번호를 변하실수 있습니다.";
 						

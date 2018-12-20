@@ -1,10 +1,13 @@
 package com.thearc.persistence;
 
+import com.thearc.config.RootConfig;
+import com.thearc.config.SecurityConfig;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -27,8 +30,9 @@ import static org.junit.Assert.fail;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/root-context.xml")
+@ContextConfiguration(classes={RootConfig.class, SecurityConfig.class})
 @Log4j
+@ActiveProfiles("local")
 public class DataSourceTests {
 
 @Setter(onMethod_ ={@Autowired})

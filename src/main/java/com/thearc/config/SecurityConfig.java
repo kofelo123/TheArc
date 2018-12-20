@@ -95,6 +95,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/sboard/list/supporter")
                                 .access("hasRole('ROLE_SUPPORTER') and hasRole('ROLE_ADMIN')");
 
+        http.exceptionHandling().accessDeniedHandler(customAccessDenied());
+
         http.csrf().ignoringAntMatchers("/user/jusoPopup","/login");
 
 
