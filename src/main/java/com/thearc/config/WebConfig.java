@@ -12,6 +12,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.util.Log4jConfigListener;
+import org.springframework.web.util.Log4jConfigListener;
 
 
 import javax.servlet.*;
