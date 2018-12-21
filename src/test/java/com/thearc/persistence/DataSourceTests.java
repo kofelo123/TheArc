@@ -4,6 +4,7 @@ import com.thearc.config.RootConfig;
 import com.thearc.config.SecurityConfig;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,11 @@ import static org.junit.Assert.fail;
  * </pre>
  */
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={RootConfig.class, SecurityConfig.class})
 @Log4j
-@ActiveProfiles("local")
+@ActiveProfiles("server")
 public class DataSourceTests {
 
 @Setter(onMethod_ ={@Autowired})
