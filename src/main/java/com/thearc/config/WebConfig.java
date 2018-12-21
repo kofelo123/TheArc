@@ -1,15 +1,22 @@
 package com.thearc.config;
 
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mobile.device.DeviceResolverRequestFilter;
 import org.springframework.test.context.ActiveProfiles;
+//import org.springframework.util.Log4jConfigurer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.util.Log4jConfigListener;
+
 
 import javax.servlet.*;
 import javax.servlet.ServletContext;
+import java.io.FileNotFoundException;
 
 /**
  * @author 허정원
@@ -26,6 +33,8 @@ import javax.servlet.ServletContext;
 
 
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -50,7 +59,13 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
 
-        return new Filter[] { characterEncodingFilter };
+        HiddenHttpMethodFilter hiddenHttpMethodFilter = new HiddenHttpMethodFilter();
+
+        DeviceResolverRequestFilter deviceResolverRequestFilter = new DeviceResolverRequestFilter();
+
+
+
+        return new Filter[] { characterEncodingFilter, hiddenHttpMethodFilter , deviceResolverRequestFilter };
     }
 
 /*    @Override
@@ -66,18 +81,42 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
    @Override
    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 
-//       registration.setInitParameter("spring.profiles.active", "local");
-
-//        registration.
+       registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
    }
 
     @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
-        super.onStartup(servletContext);
-        servletContext.addListener(RequestContextListener.class);
+
         servletContext.setInitParameter("spring.profiles.active", "server");
+        servletContext.addListener(RequestContextListener.class);
+
+        servletContext.setInitParameter("log4jConfigLocation", "classpath:/log4j-"+servletContext.getInitParameter("spring.profiles.active")+".xml");
+        servletContext.addListener(Log4jConfigListener.class);
+
+
+//        servletContext.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+
+        super.onStartup(servletContext);
+
+
+/*
+        try {
+            Log4jConfigurer.initLogging("classpath:/log4j-local.xml");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+*/
+
+
+
+
+//        Log4jConfigListener log4jListener = new Log4jConfigListener();
+//        servletContext.addListener( log4jListener );
+
         //Uma solução melhor, seria usar uma  variavel de ambiente para escolehr o profile ativo dinamicamente;
 //		env.getProperties().get("spring.profiles.active");
     }
+
+
 }

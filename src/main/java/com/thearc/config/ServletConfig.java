@@ -168,7 +168,7 @@ public class ServletConfig implements WebMvcConfigurer {
     public OAuth2Parameters googleOAuth2Parameters(){
         OAuth2Parameters parameters = new OAuth2Parameters();
         parameters.setScope("https://www.googleapis.com/auth/userinfo.email");
-        parameters.setRedirectUri("http://"+configProfile.getIpAddress()+"/thearc/googleSignInCallback");
+        parameters.setRedirectUri("http://"+configProfile.getIpAddress()+":8080/thearc/googleSignInCallback");
 
         return parameters;
     }
