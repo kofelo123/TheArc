@@ -1,3 +1,6 @@
+import com.thearc.config.RootConfig;
+import com.thearc.config.SecurityConfig;
+import com.thearc.config.ServletConfig;
 import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.LoginDTO;
 import com.thearc.domain.UserVO;
@@ -21,30 +24,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/test-root-context.xml"})
-
-@WebAppConfiguration("web.xml")
-@ContextConfiguration(locations={"classpath:spring/test-root-context.xml",
-                                "classpath:spring/root-context.xml",
-                                "classpath:/spring/security-context.xml"})
-//
-/**
- * TestCode Practice
- * @author 허정원
- * @since 2018.05.05
- * @version 1.0
- * @see
- *
- * <pre>
- * << 개정이력(Modification Information) >>
- *
- *   수정일                수정자           수정내용
- *  -------    --------    ---------------------------
- *   2018.05.05  허정원          최초 생성
- *
- * </pre>
- */
-/*@Ignore */
+@ContextConfiguration(classes={RootConfig.class, ServletConfig.class, SecurityConfig.class})
 @ActiveProfiles("server")
 //@Profile("server")
 public class DeployTest {

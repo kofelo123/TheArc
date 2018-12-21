@@ -1,5 +1,7 @@
 package com.thearc.security;
 
+import com.thearc.config.RootConfig;
+import com.thearc.config.SecurityConfig;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Ignore;
@@ -7,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,11 +18,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({
-  "classpath:spring/root-context.xml",
-  "classpath:spring/security-context.xml"
-  })
+@ContextConfiguration(classes={RootConfig.class, SecurityConfig.class})
 @Log4j
+@ActiveProfiles("server")
 public class MemberTests {
 
   @Setter(onMethod_ = @Autowired)
