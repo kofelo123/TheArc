@@ -75,7 +75,6 @@ public class NaverLoginBO {
         setSession(session,state);
 
         System.out.println("Test-REDIRECT_URI="+REDIRECT_URI);
-        System.out.println("Test2:"+configProfile.getIpAddress());
 
         /* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL 생성 */
         OAuth20Service oauthService = new ServiceBuilder()

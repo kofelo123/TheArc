@@ -1,23 +1,18 @@
 package com.thearc.config;
 
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mobile.device.DeviceResolverRequestFilter;
-import org.springframework.test.context.ActiveProfiles;
-//import org.springframework.util.Log4jConfigurer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.util.Log4jConfigListener;
-import org.springframework.web.util.Log4jConfigListener;
 
-
-import javax.servlet.*;
+import javax.servlet.Filter;
 import javax.servlet.ServletContext;
-import java.io.FileNotFoundException;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+
+//import org.springframework.util.Log4jConfigurer;
 
 /**
  * @author 허정원
