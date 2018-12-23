@@ -3,6 +3,7 @@ package com.thearc.controller;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.thearc.domain.ConfigProfile;
 import com.thearc.domain.UserVO;
 import com.thearc.service.UserService;
 import com.thearc.util.sns.NaverLoginBO;
@@ -43,6 +44,9 @@ public class NaverLoginController {
     /* NaverLoginBO */
     @Autowired
     private NaverLoginBO naverLoginBO;
+
+    @Autowired
+    private ConfigProfile configProfile;
 
     private String apiResult = null;
 
@@ -132,7 +136,7 @@ public class NaverLoginController {
             out.print("<script>");
             out.print("$(function(){");
             out.print("var form = $('<form></form>');");
-            out.print("form.attr({action:'/thearc/login' , method:'post'});");
+            out.print("form.attr({action:'http://"+configProfile.getIpAddress()+"/thearc/login' , method:'post'});");
             out.print("form.appendTo('body');");
             out.print("$('<input></input>').attr({type:'hidden',name:'username',value:'"+userVO.getUid()+"'}).appendTo(form);");
             out.print("$('<input></input>').attr({type:'hidden',name:'password',value:'"+userVO.getUpw()+"'}).appendTo(form);");
